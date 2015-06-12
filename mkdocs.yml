@@ -5,3 +5,5 @@ extra_css:
 markdown_extensions:
   - toc:
       permalink: true
+  - sane_lists
+  - admonition

@@ -2,3 +2,6 @@ site_name: HTTP Adapter Documentation
 theme: readthedocs
 extra_css:
   - css/extra.css
+markdown_extensions:
+  - toc:
+      permalink: true

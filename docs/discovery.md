@@ -6,8 +6,8 @@ The discovery service is a set of static classes which allows to find and use in
 Currently available discovery services:
 
 - HTTP Adapter Discovery
-- PSR Message Discovery
-- PSR URI Discovery
+- PSR-7 Message Discovery
+- PSR-7 URI Discovery
 
 
 ## General
@@ -33,14 +33,13 @@ A start value can be defined for the `classes` property in the following structu
 
 ``` php
 [
-    'name' => [
+    [
         'class'     => 'MyClass',
         'condition' => 'MyCondition',
     ],
 ]
 ```
 
-- `name`: A unique name for the resource, can be overwritten using `register`
 - `class`: The class that is instantiated. There MUST NOT be any constructor arguments.
 - `condition`: The condition that is evaluated to boolean to decide whether the resource is available. The following types are allowed:
     - string: Checked for class existence
@@ -51,8 +50,10 @@ A start value can be defined for the `classes` property in the following structu
 By declaring a start value for `classes` only string conditions are allowed, however the `register` method allows any type of arguments:
 
 ``` php
-MyDiscovery::register('name', 'MyClass', true);
+MyDiscovery::register('MyClass', true);
 ```
+
+Classes registered manually are put on top of the list.
 
 The condition can also be omitted. In that case the class is used as the condition (to check for existence).
 
@@ -88,6 +89,69 @@ class MyClass
     public function __construct(HttpAdapter $httpAdapter)
     {
         $this->httpAdapter = $httpAdapter ?: HttpAdapterDiscovery::find();
+    }
+}
+```
+
+
+## Message Factory Discovery
+
+This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their factories.
+
+Currently available factories:
+
+- [Guzzle](https://github.com/guzzle/psr7) factory
+- [Diactoros](https://github.com/zendframework/zend-diactoros) factory
+
+
+``` php
+use Http\Message\MessageFactory;
+use Http\Discovery\MessageFactoryDiscovery;
+
+class MyClass
+{
+    /**
+     * @var MessageFactory
+     */
+    protected $messageFactory;
+
+    /**
+     * @param MessageFactory $messageFactory
+     */
+    public function __construct(MessageFactory $messageFactory)
+    {
+        $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
+    }
+}
+```
+
+## URI Factory Discovery
+
+This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) URI implementations and their factories.
+
+Currently available factories:
+
+- [Guzzle](https://github.com/guzzle/psr7) factory
+- [Diactoros](https://github.com/zendframework/zend-diactoros) factory
+
+
+``` php
+use Http\Message\UriFactory;
+use Http\Discovery\UriFactoryDiscovery;
+
+class MyClass
+{
+    /**
+     * @var UriFactory
+     */
+    protected $uriFactory;
+
+    /**
+     * @param UriFactory $uriFactory
+     */
+    public function __construct(UriFactory $uriFactory)
+    {
+        $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
     }
 }
 ```

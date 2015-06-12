@@ -5,7 +5,9 @@
 
 ## History
 
-This project has been started by [Eric Geloen](https://github.com/egeloen) as [Ivory Http Adapter](https://github.com/egeloen/ivory-http-adapter). It never made it to be really stable, but it relied on PSR-7 which was not stable either that time.
+This project has been started by [Eric Geloen](https://github.com/egeloen) as [Ivory Http Adapter](https://github.com/egeloen/ivory-http-adapter). It never made it to be really stable, but it relied on PSR-7 which was not stable either that time. Because of the constantly changing PSR-7 Eric had to rewrite the library over and over again (at least the message handling part, which in most cases affected every adapters).
+
+in 2015 a decision has been made to move the library to it's own organization, so PHP HTTP was born.
 
 
 ## Getting started
@@ -71,7 +73,7 @@ Read more about it in the [Discovery](discovery.md) part.
 
 When installing in an application or a non-reusable package, using a virtual package doesn't really make sense. However there are a few things which should be taken into consideration before choosing an adapter:
 
-- It is possible that some other package already has an HTTP Client requirement. It doesn't worth to install more than one HTTP Clients.
+- It is possible that some other package already has an HTTP Client requirement. It doesn't worth to install more than one HTTP Clients, so always check your other requirements and choose an adapter based on that.
 - Some adapters support paralell requests, some only emulate them. If paralell requests are needed, use one which supports it.
 
 Installing an implementation is easy:

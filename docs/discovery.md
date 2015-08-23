@@ -1,6 +1,6 @@
 # Discovery
 
-The discovery service is a set of static classes which allows to find and use installed resources. This is especially useful when used with some virtual packages providing an implementation (`php-http/adapter-implementation`, `psr/http-message-implementation`).
+The discovery service is a set of static classes which allows to find and use installed resources. This is useful in libraries that want to offer zero-configuration services and rely only on the virtual packages, e.g. `php-http/adapter-implementation` or `psr/http-message-implementation`.
 
 
 Currently available discovery services:
@@ -9,14 +9,17 @@ Currently available discovery services:
 - PSR-7 Message Factory Discovery
 - PSR-7 URI Factory Discovery
 
-The principle is always the same: you call a static find method if no explicit implementation was specified. Find will try to locate the service that is enabled. If no service is enabled, an `Http\Discovery\NotFoundException` is thrown.
+The principle is always the same: you call the static `find` method on the discovery service if no explicit implementation was specified. The discovery service will try to locate a suitable implementation. If no implementation is found, an `Http\Discovery\NotFoundException` is thrown.
 
 
 ## HTTP Adapter Discovery
 
 This type of discovery finds installed HTTP Adapters.
 
-It is useful to provide zero-configuration for classes relying on an adapter:
+Currently available adapters:
+
+- [Guzzle 6](https://github.com/php-http/guzzle6-adapter)
+- [Guzzle 5](https://github.com/php-http/guzzle5-adapter)
 
 ``` php
 use Http\Adapter\HttpAdapter;
@@ -30,9 +33,9 @@ class MyClass
     protected $httpAdapter;
 
     /**
-     * @param HttpAdapter $httpAdapter
+     * @param HttpAdapter|null $httpAdapter to do HTTP requests.
      */
-    public function __construct(HttpAdapter $httpAdapter)
+    public function __construct(HttpAdapter $httpAdapter = null)
     {
         $this->httpAdapter = $httpAdapter ?: HttpAdapterDiscovery::find();
     }
@@ -62,9 +65,9 @@ class MyClass
     protected $messageFactory;
 
     /**
-     * @param MessageFactory $messageFactory
+     * @param MessageFactory|null $messageFactory to create PSR-7 requests.
      */
-    public function __construct(MessageFactory $messageFactory)
+    public function __construct(MessageFactory $messageFactory = null)
     {
         $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
     }
@@ -93,9 +96,9 @@ class MyClass
     protected $uriFactory;
 
     /**
-     * @param UriFactory $uriFactory
+     * @param UriFactory|null $uriFactory to create UriInterface instances from strings.
      */
-    public function __construct(UriFactory $uriFactory)
+    public function __construct(UriFactory $uriFactory = null)
     {
         $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
     }

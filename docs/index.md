@@ -2,6 +2,8 @@
 
 **This is the documentation for HTTP Adapter and it's software components.**
 
+The HTTP Adapter abstracts from PHP HTTP clients that are based on [PSR-7](http://www.php-fig.org/psr/psr-7/).
+It allows you to write reusable libraries and applications that need a HTTP client without binding to a specific implementation.
 
 ## History
 
@@ -71,10 +73,10 @@ Read more about it in the [Discovery](discovery.md) part.
 
 #### Installation in an end user package
 
-When installing in an application or a non-reusable package, using a virtual package doesn't really make sense. However there are a few things which should be taken into consideration before choosing an adapter:
+When installing in an application or a non-reusable package, requiring the virtual package doesn't really make sense. However there are a few things which should be taken into consideration before choosing an adapter:
 
-- It is possible that some other package already has an HTTP Client requirement. It doesn't worth to install more than one HTTP Clients, so always check your other requirements and choose an adapter based on that.
-- Some adapters support paralell requests, some only emulate them. If paralell requests are needed, use one which supports it.
+- It is possible that some other package already has an HTTP Client requirement. It can be confusing to have more than one HTTP Client installed, so always check your other requirements and choose an adapter based on that.
+- Some adapters support parallel requests, some only emulate them. If parallel requests are needed, use one which supports it.
 
 Installing an implementation is easy:
 

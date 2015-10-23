@@ -5,7 +5,9 @@
 
 ## Rationale
 
-The FIG was pretty straightforward by NOT putting any construction logic into PSR-7. However there is a need for that. This does not try to be the "de facto" way to do message construction, but tries to provide an easy way to construct messages by following already existing patterns. (For example: `MessageFactory` accepts parameters in the order they appear in a request/response: method, uri, protocol version, headers, body (in case of a request)).
+While it should be possible to use every PSR-7 aware HTTP client with any RequestInterface implementation, creating the request objects will still tie an application to a specific implementation. In the case of reusable libraries, an application could end up installing several request implementations. The factories abstract away from this.
+
+The FIG was pretty straightforward by NOT putting any construction logic into PSR-7. The `MessageFactory` aims to provide an easy way to construct messages by following already existing patterns. (For example: `MessageFactory` accepts parameters in the order they appear in a request/response: method, uri, protocol version, headers, body (in case of a request)).
 
 
 ## Usage
@@ -20,8 +22,9 @@ This package provides interfaces for PSR-7 factories including:
 - `ClientContextFactory` (Combines `MessageFactory`, `StreamFactory` and `UriFactory`)
 
 
-A virtual package ([php-http/message-factory-implementation](https://packagist.org/providers/php-http/message-factory-implementation)) MAY be introduced which MUST be versioned together with this package.
+A [virtual package](virtual-package.md) ([php-http/message-factory-implementation](https://packagist.org/providers/php-http/message-factory-implementation)) MAY be introduced which MUST be versioned together with this package.
 
+The adapter repositories provide wrapper classes for those factories to implement the `Http\Message\MessageFactory` interface.
 
 ### General usage
 

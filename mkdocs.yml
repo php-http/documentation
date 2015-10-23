@@ -1,4 +1,4 @@
-site_name: HTTP Adapter Documentation
+site_name: PHP-HTTP Documentation
 theme: readthedocs
 extra_css:
   - css/extra.css

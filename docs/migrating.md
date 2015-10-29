@@ -5,7 +5,7 @@ If you currently use a concrete HTTP client implementation or the Ivory Http Ada
 
 ## Migrating from Ivory Http Adapter
 
-The monolithic ivory package has been separated into several smaller, more specific packages. For a list of the packages, see the (package overview)[package-overview.md]
+The monolithic ivory package has been separated into several smaller, more specific packages. For a list of the packages, see the [package overview](package-overview.md).
 
 Instead of `Ivory\HttpAdapter\PsrHttpAdapter`, use `Http\Client\HttpClient`. The HttpClient simply has a method to send requests.
 

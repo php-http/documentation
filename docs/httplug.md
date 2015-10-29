@@ -7,14 +7,14 @@ Httplug is an abstraction for HTTP clients. There are two main use cases:
 
 In both cases, the client provides a `sendRequest` method to send a PSR-7 `RequestInterface` and returns a PSR-7 `ResponseInterface` or throws an exception that implements `Http\Client\Exception`.
 
-See the (tutorial)[tutorial.md] for a concrete example.
+See the [tutorial](tutorial.md) for a concrete example.
 
 
 ## Httplug implementations
 
 Httplug implementations typically are either HTTP clients of their own, or they are adapters wrapping existing clients like Guzzle 6. In the latter case, they will depend on the required client implementation, so you only need to require the adapter and not the actual client.
 
-See (packagist)[https://packagist.org/providers/php-http/client-implementation] for the full list of implementations.
+See [packagist](https://packagist.org/providers/php-http/client-implementation) for the full list of implementations.
 
 Note: Until Httplug 1.0 becomes stable, we will focus on the Guzzle6 adapter.
 
@@ -46,8 +46,8 @@ You need to edit the `composer.json` of your package to add the virtual package.
 ...
 ```
 
-For extra convenience, you can use the (Discovery)[discovery.md] system to free the user of your package from having to instantiate the client. You should however always accept injecting the client instance to allow the user to configure the client as needed.
+For extra convenience, you can use the [Discovery](discovery.md) system to free the user of your package from having to instantiate the client. You should however always accept injecting the client instance to allow the user to configure the client as needed.
 
-Users of your package will have to select a concrete adapter in their project to make your package installable. Best point them to the (virtual package)[virtual-package.md] howto page.
+Users of your package will have to select a concrete adapter in their project to make your package installable. Best point them to the [virtual package](virtual-package.md) howto page.
 
-To be able to send requests, you should not depend on a specific PSR-7 implementation, but use the (message factory)[message-factory.md] system.
+To be able to send requests, you should not depend on a specific PSR-7 implementation, but use the [message factory](message-factory.md) system.

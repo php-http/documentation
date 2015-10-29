@@ -9,7 +9,7 @@ All packages are installed via [Composer](http://getcomposer.org/).
 
 - Namespace: `Http\Client`
 - Repository: https://github.com/php-http/httplug
-- Documentation: (Httplug)[httplug.md]
+- Documentation: [Httplug](httplug.md)
 
 
 ## message-factory
@@ -36,7 +36,7 @@ The clients are either full HTTP clients or adapters to wrap the Httplug Client 
 
 - Namespace: `Http\Discovery`
 - Repository: https://github.com/php-http/discovery
-- Documentation: (Discovery)[discovery.md]
+- Documentation: [Discovery](discovery.md)
 
 
 ## utils
@@ -45,4 +45,4 @@ The clients are either full HTTP clients or adapters to wrap the Httplug Client 
 
 - Namespace: `Http\Utils`
 - Repository: https://github.com/php-http/utils
-- Documentation: (Utils)[utils.md]
+- Documentation: [Utils](utils.md)

@@ -7,7 +7,7 @@ This tutorial should give you an idea how to use Httplug in your project. Httplu
 
 This tutorial will start with the first use case and then explain the special considerations to take into account when building a reusable package.
 
-We use (composer)[https://getcomposer.org] for dependency management. Install it if you don't have it yet.
+We use [composer](https://getcomposer.org) for dependency management. Install it if you don't have it yet.
 
 ## Setting up the project
 

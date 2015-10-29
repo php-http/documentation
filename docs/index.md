@@ -23,7 +23,7 @@ PHP-HTTP is separated into several packages:
 - [Discovery](discovery.md) to automatically locate a suitable Httplug implementation and PSR-7 message and URI factories.
 - [Utilities](utils.md) convenience tools to simplify working with Httplug in your applications.
 
-See (package overview)[package-overview.md] for a complete list.
+See [package overview](package-overview.md) for a complete list.
 
 
 ## History
@@ -32,4 +32,4 @@ This project has been started by [Eric Geloen](https://github.com/egeloen) as [I
 
 In 2015, a decision has been made to move the library to it's own organization, so PHP HTTP was born.
 
-See (migrating)[migrating.md] for a guide how to migrate your code from the Ivory adapter to Httplug.
+See [migrating](migrating.md) for a guide how to migrate your code from the Ivory adapter to Httplug.

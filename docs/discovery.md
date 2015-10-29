@@ -1,43 +1,38 @@
 # Discovery
 
-The discovery service is a set of static classes which allows to find and use installed resources. This is useful in libraries that want to offer zero-configuration services and rely only on the virtual packages, e.g. `php-http/adapter-implementation` or `psr/http-message-implementation`.
+The discovery service is a set of static classes which allows to find and use installed resources. This is useful in libraries that want to offer zero-configuration services and rely only on the virtual packages, e.g. `php-http/client-implementation` or `psr/http-message-implementation`.
 
 
 Currently available discovery services:
 
-- HTTP Adapter Discovery
+- HTTP client Discovery
 - PSR-7 Message Factory Discovery
 - PSR-7 URI Factory Discovery
 
 The principle is always the same: you call the static `find` method on the discovery service if no explicit implementation was specified. The discovery service will try to locate a suitable implementation. If no implementation is found, an `Http\Discovery\NotFoundException` is thrown.
 
 
-## HTTP Adapter Discovery
+## HTTP Client Discovery
 
-This type of discovery finds installed HTTP Adapters.
-
-Currently available adapters:
-
-- [Guzzle 6](https://github.com/php-http/guzzle6-adapter)
-- [Guzzle 5](https://github.com/php-http/guzzle5-adapter)
+This type of discovery finds installed HTTP Clients.
 
 ``` php
-use Http\Adapter\HttpAdapter;
-use Http\Discovery\HttpAdapterDiscovery;
+use Http\Client\HttpClient;
+use Http\Discovery\HttpClientDiscovery;
 
 class MyClass
 {
     /**
-     * @var HttpAdapter
+     * @var HttpClient
      */
-    protected $httpAdapter;
+    protected $httpClient;
 
     /**
-     * @param HttpAdapter|null $httpAdapter to do HTTP requests.
+     * @param HttpClient|null $httpClient to do HTTP requests.
      */
-    public function __construct(HttpAdapter $httpAdapter = null)
+    public function __construct(HttpClient $httpClient = null)
     {
-        $this->httpAdapter = $httpAdapter ?: HttpAdapterDiscovery::find();
+        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
     }
 }
 ```
@@ -45,13 +40,7 @@ class MyClass
 
 ## PSR-7 Message Factory Discovery
 
-This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their factories.
-
-Currently available factories:
-
-- [Guzzle](https://github.com/guzzle/psr7) factory
-- [Diactoros](https://github.com/zendframework/zend-diactoros) factory
-
+This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their (factories)[message-factory.md].
 
 ``` php
 use Http\Message\MessageFactory;
@@ -74,15 +63,10 @@ class MyClass
 }
 ```
 
+
 ## PSR-7 URI Factory Discovery
 
 This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) URI implementations and their factories.
-
-Currently available factories:
-
-- [Guzzle](https://github.com/guzzle/psr7) factory
-- [Diactoros](https://github.com/zendframework/zend-diactoros) factory
-
 
 ``` php
 use Http\Message\UriFactory;
@@ -111,7 +95,7 @@ class MyClass
 The `php-http/discovery` has built-in support for some implementations. To use a different implementation or override the default when several implementations are available in your codebase, you can register a class explicitly with the corresponding discovery service. For example:
 
 ``` php
-HttpAdapterDiscovery::register('Acme\MyAdapter', true);
+HttpClientDiscovery::register('Acme\MyClient', true);
 ```
 
 - `class`: The class that is instantiated. This class MUST NOT require any constructor arguments.

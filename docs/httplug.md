@@ -38,6 +38,7 @@ You need to edit the `composer.json` of your package to add the virtual package.
 ``` json
 ...
 "require": { 
+    "php-http/httplug": "^1.0",
     "php-http/client-implementation": "^1.0" 
 }, 
 "require-dev": { 

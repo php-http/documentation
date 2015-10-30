@@ -2,7 +2,7 @@
 
 **This is the documentation for the Httplug HTTP client abstraction and the other PHP-HTTP components.**
 
-[PSR-7](http://www.php-fig.org/psr/psr-7/) defines interfaces for HTTP requests and responses. However, it does not define how to create a request or how to send a request. Httplug abstracts from HTTP clients written in PHP, offering a simple interface. It also brings a implementation-independent plugin system to build pipelines regardless of the HTTP client implementation used. The message factory provides an implementation independent way to instantiate `Psr\RequestInterface` objects.
+[PSR-7](http://www.php-fig.org/psr/psr-7/) defines interfaces for HTTP requests and responses. However, it does not define how to create a request or how to send a request. Httplug abstracts from HTTP clients written in PHP, offering a simple interface. It also provides an implementation-independent plugin system to build pipelines regardless of the HTTP client implementation used. The message factory provides an implementation independent way to instantiate `Psr\RequestInterface` objects.
 
 Httplug allows you to write reusable libraries and applications that need a HTTP client without binding to a specific implementation. When all packages used in an application only specify Httplug, the application developers can chose the client that fits best for their project and use the same client with all packages.
 

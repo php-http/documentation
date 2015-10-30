@@ -20,11 +20,9 @@ Note: Until Httplug 1.0 becomes stable, we will focus on the Guzzle6 adapter.
 
 ## Usage in a project
 
-When writing an application, you should require a concrete client implementation. The client will in turn depend on `php-http/httplug`.
+When writing an application, you need to require a concrete [client implementation](https://packagist.org/providers/php-http/client-implementation). The client will in turn depend on `php-http/httplug`, thus you do not need to duplicate the dependency on `php-http/httplug` in your composer.json file. However, if your code depends on a minimal version of Httplug, specify it to have composer report problems rather than the application failing at some point.
 
-A few things should be taken into consideration before choosing an adapter:
-
-- It is possible that some other dependency already has an HTTP Client requirement like Guzzle 6. It can be confusing to have more than one HTTP Client installed, so always check your other requirements and choose an adapter based on that.
+Choose the client based on your personal preferences or dependencies of your project. If your preferred client has no Httplug adapter, submit one.
 
 
 ## Installation in a reusable package

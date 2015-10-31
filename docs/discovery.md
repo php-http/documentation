@@ -11,6 +11,11 @@ Currently available discovery services:
 
 The principle is always the same: you call the static `find` method on the discovery service if no explicit implementation was specified. The discovery service will try to locate a suitable implementation. If no implementation is found, an `Http\Discovery\NotFoundException` is thrown.
 
+## Installation
+
+```
+composer require "php-http/discovery"
+```
 
 ## HTTP Client Discovery
 
@@ -40,7 +45,7 @@ class MyClass
 
 ## PSR-7 Message Factory Discovery
 
-This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their (factories)[message-factory.md].
+This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their [factories](message-factory.md).
 
 ``` php
 use Http\Message\MessageFactory;

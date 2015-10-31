@@ -19,7 +19,7 @@ composer require "php-http/discovery"
 
 ## HTTP Client Discovery
 
-This type of discovery finds installed HTTP Clients.
+This type of discovery finds a HTTPClient implementation.
 
 ``` php
 use Http\Client\HttpClient;
@@ -42,10 +42,34 @@ class MyClass
 }
 ```
 
+## HTTP Async Client Discovery
+
+This type of discovery finds a HttpAsyncClient implementation.
+
+``` php
+use Http\Client\HttpAsyncClient;
+use Http\Discovery\HttpAsyncClientDiscovery;
+
+class MyClass
+{
+    /**
+     * @var HttpAsyncClient
+     */
+    protected $httpAsyncClient;
+
+    /**
+     * @param HttpAsyncClient|null $httpAsyncClient to do HTTP requests.
+     */
+    public function __construct(HttpAsyncClient $httpAsyncClient = null)
+    {
+        $this->httpAsyncClient = $httpAsyncClient ?: HttpAsyncClientDiscovery::find();
+    }
+}
+```
 
 ## PSR-7 Message Factory Discovery
 
-This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementations and their [factories](message-factory.md).
+This type of discovery finds a [PSR-7](http://www.php-fig.org/psr/psr-7/) Message implementation and their [factories](message-factory.md).
 
 ``` php
 use Http\Message\MessageFactory;
@@ -71,7 +95,7 @@ class MyClass
 
 ## PSR-7 URI Factory Discovery
 
-This type of discovery finds installed [PSR-7](http://www.php-fig.org/psr/psr-7/) URI implementations and their factories.
+This type of discovery finds a [PSR-7](http://www.php-fig.org/psr/psr-7/) URI implementation and their factories.
 
 ``` php
 use Http\Message\UriFactory;
@@ -117,7 +141,7 @@ Classes registered manually are put on top of the list.
 
 ### Writing your own discovery
 
-Each discovery service is based on the `ClassDiscovery` and has to specify a `cache` field and a `class` field to specify classes for the corresponding service. The fields need to be redeclared in each discovery class. If `ClassDiscovery` would declare them, they would be shared between the discovery classes which would make no sense.  
+Each discovery service is based on the `ClassDiscovery` and has to specify a `cache` field and a `class` field to specify classes for the corresponding service. The fields need to be redeclared in each discovery class. If `ClassDiscovery` would declare them, they would be shared between the discovery classes which would make no sense.
 
 Here is an example discovery:
 

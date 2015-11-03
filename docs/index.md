@@ -20,7 +20,7 @@ PHP-HTTP is separated into several packages:
 
 - [Httplug](httplug.md), the HTTP client abstraction to send PSR-7 requests without binding to a specific implementation;
 - [Message Factory](message-factory.md) to create PSR-7 requests without binding to a specific implementation; 
-- [Discovery](discovery.md) to automatically locate a suitable Httplug implementation and PSR-7 message and URI factories.
+- [Plugins](plugins.md) to build client-agnostic pipelines for HTTP communication;
 - [Utilities](utils.md) convenience tools to simplify working with Httplug in your applications.
 
 See [package overview](package-overview.md) for a complete list.

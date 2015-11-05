@@ -22,7 +22,7 @@ Note: Until Httplug 1.0 becomes stable, we will focus on the Guzzle6 adapter.
 
 When writing an application, you need to require a concrete [client implementation](https://packagist.org/providers/php-http/client-implementation).
 
-See [virtual package](virtual-package.md) for more information on the topic of working with HTTPlug implementations.
+See [virtual package](virtual-package.md) for more information on the topic of working with Httplug implementations.
 
 
 ## Installation in a reusable package

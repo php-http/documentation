@@ -5,7 +5,7 @@ Virtual packages are a way to specify the dependency on an implementation of an 
 There is no project registered with that name. However, all client implementations including client adapters for Httplug use the `provide` section to tell composer that they do provide the client-implementation.
 
 
-# Using a Library that depends on HTTPlug
+# Using a Library that depends on Httplug
 
 Reusable libraries do not depend on a concrete implementation but only on the virtual package `php-http/client-implementation`. This is to avoid hard coupling and allows the user of the library to choose the implementation. You can think of this as an "interface" or "contract" for packages.
 

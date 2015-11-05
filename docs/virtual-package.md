@@ -5,7 +5,7 @@ Virtual packages are a way to specify the dependency on an implementation of an 
 There is no project registered with that name. However, all client implementations including client adapters for Httplug use the `provide` section to tell composer that they do provide the client-implementation.
 
 
-# Using a Reusable Library
+# Using a Library that depends on HTTPlug
 
 Reusable libraries do not depend on a concrete implementation but only on the virtual package `php-http/client-implementation`. This is to avoid hard coupling and allows the user of the library to choose the implementation. You can think of this as an "interface" or "contract" for packages.
 
@@ -26,6 +26,10 @@ Doing something like the following will make this problem go away:
 ``` bash
 $ composer require php-http/guzzle6-adapter
 ```
+
+Pick a client based on your personal preferences or dependencies of your project. If your preferred client has no Httplug adapter, submit one.
+
+The client will in turn depend on `php-http/httplug`, thus you do not need to duplicate the dependency on `php-http/httplug` in your composer.json file. However, if your code depends on a minimal version of Httplug, specify it to have composer report problems rather than the application failing at some point.
 
 
 # Building a Reusable Library

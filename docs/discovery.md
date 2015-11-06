@@ -19,7 +19,7 @@ composer require "php-http/discovery"
 
 ## HTTP Client Discovery
 
-This type of discovery finds a HTTPClient implementation.
+This type of discovery finds a HTTP Client implementation.
 
 ``` php
 use Http\Client\HttpClient;
@@ -44,7 +44,7 @@ class MyClass
 
 ## HTTP Async Client Discovery
 
-This type of discovery finds a HttpAsyncClient implementation.
+This type of discovery finds a HTTP Async Client implementation.
 
 ``` php
 use Http\Client\HttpAsyncClient;

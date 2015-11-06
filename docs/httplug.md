@@ -11,7 +11,11 @@ or throws an exception that implements `Http\Client\Exception`.
 There is also the HttpAsyncClient, available in [php-http/httplug-async](https://packagist.org/packages/php-http/httplug-async), which provides the `sendAsyncRequest` method to send a request asynchronously and returns a `Http\Client\Promise`.
 It can be used later to retrieve a PSR-7 `ResponseInterface` or an exception that implements `Http\Client\Exception`.
 
-Contract for the HttpAsyncClient is still experimental and will be merged into Httplug repository once we considered it stable.
+
+<p class="text-warning">
+    Contract for the HttpAsyncClient is experimental until [PSR about Promise is released](https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs).
+    Once it is out, we will use this interface in the main client and deprecate the separated repository.
+</p>
 
 See the [tutorial](tutorial.md) for a concrete example.
 

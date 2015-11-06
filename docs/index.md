@@ -25,6 +25,12 @@ PHP-HTTP is separated into several packages:
 
 See [package overview](package-overview.md) for a complete list.
 
+### Framework Integration
+
+Httplug can be used in any PHP based project. Nonetheless, we provide particular integration for some popular frameworks:
+
+- [HttplugBundle](https://github.com/php-http/HttplugBundle/) integration with the Symfony framework.
+
 
 ## History
 

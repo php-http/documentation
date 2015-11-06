@@ -37,7 +37,9 @@ TODO: create client instance with discovery and do some requests
 When using an asynchronous client, it will use a PSR-7 `RequestInterface` and returns a `Http\Client\Promise` :
 
 ```php
-$httpAsyncClient = new HttpAsyncClientImplementation();
+use Http\Discovery\HttpAsyncClientDiscovery;
+
+$httpAsyncClient = HttpAsyncClientDiscovery::find();
 $promise = $httpAsyncClient->sendAsyncRequest($request);
 ```
 
@@ -112,7 +114,9 @@ This promise allows you to :
 Here is a full example of a classic usage when using the `sendAsyncRequest` method:
 
 ```php
-$httpAsyncClient = new HttpAsyncClientImplementation();
+use Http\Discovery\HttpAsyncClientDiscovery;
+
+$httpAsyncClient = HttpAsyncClientDiscovery::find();
 
 $promise = $httpAsyncClient->sendAsyncRequest($request);
 $promise->then(function (ResponseInterface $response) {

@@ -5,10 +5,10 @@ Httplug is an abstraction for HTTP clients. There are two main use cases:
 1. Usage in a project
 2. Usage in a reusable package
 
-In both cases, the client provides a `sendRequest` method to send a PSR-7 `RequestInterface` and returns a PSR-7 `ResponseInterface`
+In both cases, the `Http\Client\HttpClient` provides a `sendRequest` method to send a PSR-7 `RequestInterface` and returns a PSR-7 `ResponseInterface`
 or throws an exception that implements `Http\Client\Exception`.
 
-There is also the HttpAsyncClient, available in [php-http/httplug-async](https://packagist.org/packages/php-http/httplug-async), which provides the `sendAsyncRequest` method to send a request asynchronously and returns a `Http\Client\Promise`.
+There is also the `Http\Client\HttpAsyncClient`, available in [php-http/httplug-async](https://packagist.org/packages/php-http/httplug-async), which provides the `sendAsyncRequest` method to send a request asynchronously and returns a `Http\Client\Promise`.
 It can be used later to retrieve a PSR-7 `ResponseInterface` or an exception that implements `Http\Client\Exception`.
 
 
@@ -24,20 +24,18 @@ See the [tutorial](tutorial.md) for a concrete example.
 Httplug implementations typically are either HTTP clients of their own, or they are adapters wrapping existing clients like Guzzle 6.
 In the latter case, they will depend on the required client implementation, so you only need to require the adapter and not the actual client.
 
-There is two kind of implementation:
+There are two kind of implementation:
 
- * [php-http/client-implementation](https://packagist.org/providers/php-http/client-implementation), the standard implementation, send requests with a synchronous workflow
- * [php-http/client-async-implementation](https://packagist.org/providers/php-http/client-async-implementation), send requests with an asynchronous workflow by returning promises
+ - [php-http/client-implementation](https://packagist.org/providers/php-http/client-implementation), the synchronous implementation that waits for the response / error before returning from the `sendRequest` method.
+ - [php-http/client-async-implementation](https://packagist.org/providers/php-http/async-client-implementation), the asynchronous implementation that immediately returns a `Http\Client\Promise`, allowing to send several requests in parallel and handling responses later.
 
-See [https://packagist.org/providers/php-http/client-implementation](https://packagist.org/providers/php-http/client-implementation) or [https://packagist.org/providers/php-http/client-async-implementation](https://packagist.org/providers/php-http/client-async-implementation) for
-the full list of implementations.
+Check links above for the full list of implementations.
 
 Note: Until Httplug 1.0 becomes stable, we will focus on the Guzzle6 adapter.
 
 ## Usage in a project
 
-When writing an application, you need to require a concrete [client implementation](https://packagist.org/providers/php-http/client-implementation) or
-a concrete [async client implementation](https://packagist.org/providers/php-http/client-async-implementation).
+When writing an application, you need to require a concrete [implementation](https://packagist.org/providers/php-http/client-implementation).
 
 See [virtual package](virtual-package.md) for more information on the topic of working with Httplug implementations.
 

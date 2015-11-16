@@ -8,13 +8,13 @@ Httplug is an abstraction for HTTP clients. There are two main use cases:
 In both cases, the `Http\Client\HttpClient` provides a `sendRequest` method to send a PSR-7 `RequestInterface` and returns a PSR-7 `ResponseInterface`
 or throws an exception that implements `Http\Client\Exception`.
 
-There is also the `Http\Client\HttpAsyncClient`, available in [php-http/httplug-async](https://packagist.org/packages/php-http/httplug-async), which provides the `sendAsyncRequest` method to send a request asynchronously and returns a `Http\Client\Promise`.
+There is also the `Http\Client\HttpAsyncClient` which provides the `sendAsyncRequest` method to send a request asynchronously and returns a `Http\Client\Promise`.
 It can be used later to retrieve a PSR-7 `ResponseInterface` or an exception that implements `Http\Client\Exception`.
 
 
 <p class="text-warning">
-    Contract for the HttpAsyncClient is experimental until [PSR about Promise is released](https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs).
-    Once it is out, we will use this interface in the main client and deprecate the separated repository.
+    Contract for the `Http\Client\Promise` is temporary until [PSR is released](https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs).
+    Once it is out, we will use this PSR in the main client and deprecate the old contract.
 </p>
 
 See the [tutorial](tutorial.md) for a concrete example.
@@ -27,7 +27,7 @@ In the latter case, they will depend on the required client implementation, so y
 There are two kind of implementation:
 
  - [php-http/client-implementation](https://packagist.org/providers/php-http/client-implementation), the synchronous implementation that waits for the response / error before returning from the `sendRequest` method.
- - [php-http/client-async-implementation](https://packagist.org/providers/php-http/async-client-implementation), the asynchronous implementation that immediately returns a `Http\Client\Promise`, allowing to send several requests in parallel and handling responses later.
+ - [php-http/async-client-implementation](https://packagist.org/providers/php-http/async-client-implementation), the asynchronous implementation that immediately returns a `Http\Client\Promise`, allowing to send several requests in parallel and handling responses later.
 
 Check links above for the full list of implementations.
 

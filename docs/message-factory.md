@@ -19,7 +19,6 @@ This package provides interfaces for PSR-7 factories including:
 - `StreamFactory`
 - `UploadedFileFactory` - WIP (PRs welcome)
 - `UriFactory`
-- `ClientContextFactory` (Combines `MessageFactory`, `StreamFactory` and `UriFactory`)
 
 
 A [virtual package](virtual-package.md) ([php-http/message-factory-implementation](https://packagist.org/providers/php-http/message-factory-implementation)) MAY be introduced which MUST be versioned together with this package.
@@ -35,25 +34,4 @@ class MyFactory implements SomeFactory
 {
 
 }
-```
-
-
-### Factory awares and templates
-
-For each factory there is a helper interface and trait to ease injecting them into other objects (such as HTTP clients).
-
-An example:
-
-``` php
-use Http\Message\SomeFactoryAware;
-use Http\Message\SomeFactoryAwareTemplate;
-
-class HttpClient implements SomeFactoryAware
-{
-    use SomeFactoryAwareTemplate;
-}
-
-$client = new HttpClient();
-$someFactory = $client->getSomeFactory();
-$client->setSomeFactory($someFactory);
 ```

@@ -5,7 +5,7 @@ The discovery service is a set of static classes which allows to find and use in
 
 Currently available discovery services:
 
-- HTTP client Discovery
+- HTTP Client Discovery
 - PSR-7 Message Factory Discovery
 - PSR-7 URI Factory Discovery
 
@@ -14,7 +14,7 @@ The principle is always the same: you call the static `find` method on the disco
 ## Installation
 
 ```
-composer require "php-http/discovery"
+$ composer require php-http/discovery
 ```
 
 ## HTTP Client Discovery
@@ -141,7 +141,7 @@ Classes registered manually are put on top of the list.
 
 ### Writing your own discovery
 
-Each discovery service is based on the `ClassDiscovery` and has to specify a `cache` property and a `class` property to specify classes for the corresponding service. 
+Each discovery service is based on the `ClassDiscovery` and has to specify a `cache` property and a `class` property to specify classes for the corresponding service.
 Since they are static, this properties need to be redeclared in each discovery class. If `ClassDiscovery` would declare them, they would be shared between the discovery classes which would make no sense.
 
 Here is an example discovery:

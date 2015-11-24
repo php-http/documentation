@@ -5,8 +5,10 @@ The plugin system allows to look at requests and responses and replace them if n
 Using the `Http\Client\Plugin\PluginClient`, you can inject an `HttpClient`, or an `HttpAsyncClient`, and an array
 of plugins implementing the `Http\Client\Plugin\Plugin` interface.
 
-Each plugin can replace the `RequestInterface` sent or the `ResponseInterface` received. It can also change the behavior of a call,
+Each plugin can replace the `RequestInterface` sent or the `ResponseInterface` received.
+It can also change the behavior of a call,
 like retrying the request or emit another one when a redirection response was received.
+
 
 ## Install
 
@@ -16,11 +18,12 @@ Install the plugin client in your project with composer:
 composer require "php-http/plugins:^1.0"
 ```
 
+
 ## Usage
 
 First you need to have some plugins:
 
-```php
+``` php
 use Http\Client\Plugin\RetryPlugin;
 use Http\Client\Plugin\RedirectPlugin;
 
@@ -30,7 +33,7 @@ $redirectPlugin = new RedirectPlugin();
 
 Then you can create a `PluginClient`:
 
-```php
+``` php
 use Http\Discovery\HttpClientDiscovery;
 use Http\Client\Plugin\PluginClient;
 
@@ -44,7 +47,7 @@ $pluginClient = new PluginClient(HttpClientDiscovery::find(), [
 
 You can use the plugin client like a classic `Http\Client\HttpClient` or `Http\Client\HttpAsyncClient` one:
 
-```php
+``` php
 // Send a request
 $response = $pluginClient->sendRequest($request);
 
@@ -53,6 +56,7 @@ $promise  = $pluginClient->sendAsyncRequest($request);
 ```
 
 Go to the [tutorial](tutorial.md) to read more about using `HttpClient` and `HttpAsyncClient`
+
 
 ## Available plugins
 
@@ -66,12 +70,13 @@ Each plugin has its own configuration and dependencies, check the documentation 
  - [Retry](plugins/retry.md): Retry a failed call
  - [Stopwatch](plugins/stopwatch.md): Log time of a request call by using [the Symfony Stopwatch component](http://symfony.com/doc/current/components/stopwatch.html)
 
+
 ## Order of plugins
 
 When you inject an array of plugins into the `PluginClient`, the order of the plugins matters.
 
-During the request, plugins are called in the order they have in the array, from first to last plugin. Once a response has been received,
-they are called again in inverse order, from last to first.
+During the request, plugins are called in the order they have in the array, from first to last plugin.
+Once a response has been received, they are called again in inverse order, from last to first.
 
 i.e. with the following code:
 
@@ -110,8 +115,10 @@ The recommended way to order plugins is the following rules:
  2. Plugins which intervene in the workflow should be in the "middle" (like the `RetryPlugin` or the `RedirectPlugin`)
  3. Plugins which log information should be last (like the `LoggerPlugin` or the `HistoryPlugin`)
 
-However, there can be exceptions to these rules. For example, for security reasons you might not want to log the authentication header
+However, there can be exceptions to these rules. For example,
+for security reasons you might not want to log the authentication header
 and chose to put the AuthenticationPlugin after the LoggerPlugin.
+
 
 ## Implementing your own Plugin
 

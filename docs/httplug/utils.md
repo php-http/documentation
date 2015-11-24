@@ -1,14 +1,16 @@
-# PHP-HTTP Utilities
+# Utilities
 
-The utilities package provides some useful tools for working with HTTP. Include them in your project with composer:
+The utilities package provides some useful tools for working with HTTPlug. Include them in your project with composer:
 
 ``` bash
 composer require "php-http/utils" "^1.0"
 ```
 
+
 ## HttpMethodsClient
 
-This client wraps the HttpClient and provides convenience methods for common HTTP requests like `GET` and `POST`. To be able to do that, it also wraps a message factory.
+This client wraps the HttpClient and provides convenience methods for common HTTP requests like `GET` and `POST`.
+To be able to do that, it also wraps a message factory.
 
 ``` php
 use Http\Discovery\HttpClientDiscovery;
@@ -24,9 +26,11 @@ $bar = $client->get('http://example.com/bar', ['accept-encoding' => 'application
 $post = $client->post('http://example.com/update', [], 'My post body');
 ```
 
+
 ## BatchClient
 
-This client wraps a HttpClient and extends it with the possibility to send an array of requests and to retrieve their responses as a `BatchResult`.
+This client wraps a HttpClient and extends it with the possibility to send an array of requests and to retrieve
+their responses as a `BatchResult`.
 
 ``` php
 use Http\Discovery\HttpClientDiscovery;
@@ -46,7 +50,8 @@ $client = new BatchClient(
 $batchResult = $client->sendRequests($requests);
 ```
 
-The `BatchResult` itself is an object that contains responses for all requests sent. It provides methods that give appropriate information based on a given request.
+The `BatchResult` itself is an object that contains responses for all requests sent.
+It provides methods that give appropriate information based on a given request.
 
 ``` php
 $requests = [

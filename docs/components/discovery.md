@@ -38,7 +38,7 @@ class MyClass
     protected $httpClient;
 
     /**
-     * @param HttpClient|null $httpClient
+     * @param HttpClient|null $httpClient Client to do HTTP requests, if not set, autodiscovery will be used to find a HTTP client.
      */
     public function __construct(HttpClient $httpClient = null)
     {
@@ -64,7 +64,7 @@ class MyClass
     protected $httpAsyncClient;
 
     /**
-     * @param HttpAsyncClient|null $httpAsyncClient
+     * @param HttpAsyncClient|null $httpAsyncClient Client to do HTTP requests, if not set, autodiscovery will be used to find an asynchronous client.
      */
     public function __construct(HttpAsyncClient $httpAsyncClient = null)
     {

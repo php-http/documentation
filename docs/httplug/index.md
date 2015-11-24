@@ -81,6 +81,7 @@ add a concrete implementation in the `require-dev` section to make the project i
 For extra convenience, you can use the [Discovery Component](/components/discovery) system to free the user of your
 package from having to instantiate the client.
 You should however always accept injecting the client instance to allow the user to configure the client as needed.
+You can find an example in the [Discovery Component](/components/discovery) documentation.
 
 Users of your package will have to select a concrete adapter in their project to make your package installable.
 Best point them to the [virtual package](virtual-package.md) howto page.

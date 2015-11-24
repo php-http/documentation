@@ -11,7 +11,8 @@ and returns a PSR-7 `ResponseInterface`or throws an exception that implements `H
 There is also the `Http\Client\HttpAsyncClient` which provides the `sendAsyncRequest` method to send
 a request asynchronously and returns a `Http\Client\Promise`.
 
-It can be used later to retrieve a PSR-7 `ResponseInterface` or an exception that implements `Http\Client\Exception`.
+The promise allows to specify handlers for a PSR-7 `ResponseInterface`
+or an exception that implements `Http\Client\Exception`.
 
 
 <p class="text-warning">
@@ -41,12 +42,8 @@ There are two kind of implementations:
 
 Check links above for the full list of implementations.
 
-<p class="text-warning">
-    Note: Until HTTPlug 1.0 becomes stable, we will focus on the Guzzle6 adapter.
-</p>
 
-
-## Usage in a project
+## Usage in an application
 
 When writing an application, you need to require a concrete
 [implementation](https://packagist.org/providers/php-http/client-implementation).
@@ -59,7 +56,7 @@ See [virtual package](virtual-package.md) for more information on the topic of w
 In many cases, packages are designed to be reused from the very beginning.
 For example, API clients are usually used in other packages/applications, not on their own.
 
-In these cases, they should **not rely on a concrete implementation** (like Guzzle 6),
+Reusable packages should **not rely on a concrete implementation** (like Guzzle 6),
 but only require any implementation of HTTPlug. HTTPlug uses the concept of virtual packages.
 Instead of depending on only the interfaces, which would be missing an implementation,
 or depending on one concrete implementation, you should depend on the virtual package `php-http/client-implementation`

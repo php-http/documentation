@@ -35,3 +35,5 @@ Read our [tutorial](httplug/tutorial.md).
 
 As explained above, PHP HTTP has room for anything that is connected to HTTP and PHP.
 Although [HTTPlug](http://httplug.io) is considered to be our "main product", we have other components as well.
+
+See the list of components in the left side navigation.

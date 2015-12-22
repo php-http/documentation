@@ -101,7 +101,7 @@ Nonetheless, we provide particular integration for some popular frameworks:
 ## History
 
 This project has been started by [Eric Geloen](https://github.com/egeloen) as
-Ivory Http Adapter](https://github.com/egeloen/ivory-http-adapter). It never made it to a stable release,
+[Ivory Http Adapter](https://github.com/egeloen/ivory-http-adapter). It never made it to a stable release,
 but it relied on PSR-7 which was not stable either that time. Because of the constantly changing PSR-7,
 Eric had to rewrite the library over and over again (at least the message handling part,
 which in most cases affected every adapter as well).

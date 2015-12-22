@@ -138,7 +138,7 @@ $authentication = new QueryParams([
 ]);
 ```
 
-!!! warning "Warning:"
+!!! danger "Warning:"
     Using query parameters for authentication is not safe.
     Only use it when absolutely necessary.
 

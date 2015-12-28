@@ -10,7 +10,7 @@ Browse the documentation on [Read the Docs](http://php-http.readthedocs.org/).
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+Please see our [contributing guide](http://docs.httplug.io/en/latest/contributing).
 
 
 ## Security

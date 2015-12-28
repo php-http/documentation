@@ -9,20 +9,18 @@ In both cases, the `Http\Client\HttpClient` provides a `sendRequest` method to s
 and returns a PSR-7 `ResponseInterface`or throws an exception that implements `Http\Client\Exception`.
 
 There is also the `Http\Client\HttpAsyncClient` which provides the `sendAsyncRequest` method to send
-a request asynchronously and returns a `Http\Client\Promise`.
+a request asynchronously and returns a `Http\Promise\Promise`.
 
 The promise allows to specify handlers for a PSR-7 `ResponseInterface`
 or an exception that implements `Http\Client\Exception`.
 
-
-<p class="text-warning">
-    Contract for the `Http\Client\Promise` is temporary until
+!!! warning "Warning:"
+    Contract for the `Http\Promise\Promise` is temporary until
     [PSR is released](https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs).
     Once it is out, we will use this PSR in the main client and deprecate the old contract.
-</p>
 
 
-See the [tutorial](tutorial.md) for a concrete example.
+See the [tutorial](httplug/tutorial.md) for a concrete example.
 
 
 ## HTTPlug implementations
@@ -37,7 +35,7 @@ There are two kind of implementations:
  - [php-http/client-implementation](https://packagist.org/providers/php-http/client-implementation):
  the synchronous implementation that waits for the response / error before returning from the `sendRequest` method.
  - [php-http/async-client-implementation](https://packagist.org/providers/php-http/async-client-implementation):
- the asynchronous implementation that immediately returns a `Http\Client\Promise`,
+ the asynchronous implementation that immediately returns a `Http\Promise\Promise`,
  allowing to send several requests in parallel and handling responses later.
 
 Check links above for the full list of implementations.
@@ -48,7 +46,7 @@ Check links above for the full list of implementations.
 When writing an application, you need to require a concrete
 [implementation](https://packagist.org/providers/php-http/client-implementation).
 
-See [virtual package](virtual-package.md) for more information on the topic of working with HTTPlug implementations.
+See [virtual package](httplug/virtual-package.md) for more information on the topic of working with HTTPlug implementations.
 
 
 ## Installation in a reusable package
@@ -84,10 +82,10 @@ You should however always accept injecting the client instance to allow the user
 You can find an example in the [Discovery Component](/components/discovery) documentation.
 
 Users of your package will have to select a concrete adapter in their project to make your package installable.
-Best point them to the [virtual package](virtual-package.md) howto page.
+Best point them to the [virtual package](httplug/virtual-package.md) howto page.
 
 To be able to send requests, you should not depend on a specific PSR-7 implementation,
-but use the [Message Factory Component](/components/message-factory) system.
+but use the [Message Factory Component](message-factory.md) system.
 
 
 ### Framework Integration
@@ -108,4 +106,4 @@ which in most cases affected every adapter as well).
 
 In 2015, a decision has been made to move the library to it's own organization, so PHP HTTP was born.
 
-See [migrating](migrating.md) for a guide how to migrate your code from the Ivory adapter to HTTPlug.
+See [migrating](httplug/migrating.md) for a guide how to migrate your code from the Ivory adapter to HTTPlug.

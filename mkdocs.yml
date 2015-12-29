@@ -3,9 +3,9 @@ site_favicon: favicon.ico
 copyright: © 2015 PHP HTTP Team
 theme: readthedocs
 extra_css:
-  - css/extra.css
+    - css/extra.css
 markdown_extensions:
-  - toc:
-      permalink: true
-  - sane_lists
-  - admonition
+    - toc:
+          permalink: true
+    - sane_lists
+    - admonition

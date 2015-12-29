@@ -1,17 +1,23 @@
 # Authentication Plugin
 
-This plugin uses the [authentication component](/components/authentication) to authenticate requests sent through
-the client.
+This plugin uses the [authentication component](http://docs.httplug.io/en/latest/components/authentication/)
+from `php-http/message` to authenticate requests sent through the client.
 
-
-## Usage
 
 ``` php
+use Http\Discovery\HttpClientDiscovery;
+use Http\Message\Authentication\BasicAuth;
 use Http\Plugins\PluginClient;
 use Http\Plugins\AuthenticationPlugin;
 
-$pluginClient = new PluginClient(new HttpClient(), [new AuthenticationPlugin(new AuthenticationMethod()]);
+$authentication = new BasicAuth('username', 'password');
+$authenticationPlugin = new AuthenticationPlugin($authentication);
+
+$pluginClient = new PluginClient(
+    HttpClientDiscovery::find(),
+    [$authenticationPlugin]
+);
 ```
 
-Check the [authentication component documentation](/components/authentication)
+Check the [authentication component documentation](http://docs.httplug.io/en/latest/components/authentication/)
 for the list of available authentication methods.

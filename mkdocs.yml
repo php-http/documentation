@@ -1,4 +1,6 @@
 site_name: PHP-HTTP Documentation
+site_favicon: favicon.ico
+copyright: © 2015 PHP HTTP Team
 theme: readthedocs
 extra_css:
   - css/extra.css

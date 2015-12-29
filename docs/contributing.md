@@ -1,6 +1,6 @@
 # Contributing
 
-If you're here, you would like to contribute to this repository and you're really welcome!
+If you're here, you would like to contribute to this project and you're really welcome!
 
 
 ## Bug reports

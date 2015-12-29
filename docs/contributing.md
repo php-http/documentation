@@ -16,7 +16,7 @@ please be as precise as possible. Here is a little list of required information:
 ## Security issues
 
 If you discover any security related issues,
-please contact us at the [security email address](../../#security) instead of submitting an issue on Github.
+please contact us at the [security@php-http.org](mailto:security@php-http.org) instead of submitting an issue on Github.
 This allows us to fix the issue and release a security hotfix without publicly disclosing the vulnerability.
 
 
@@ -135,7 +135,7 @@ This Code of Conduct applies both within project spaces and in public spaces
 when an individual is representing the project or its community.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting a project maintainer at [team@php-http.org]. All
+reported by contacting a project maintainer at [team@php-http.org](mailto:team@php-http.org). All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. Maintainers are
 obligated to maintain confidentiality with regard to the reporter of an

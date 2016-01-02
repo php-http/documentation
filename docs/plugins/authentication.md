@@ -19,5 +19,5 @@ $pluginClient = new PluginClient(
 );
 ```
 
-Check the [authentication component documentation](http://docs.httplug.io/en/latest/components/authentication/)
+Check the [authentication component documentation](../components/message.md#authentication)
 for the list of available authentication methods.

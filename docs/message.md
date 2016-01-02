@@ -1,9 +1,12 @@
-# Authentication
+# Message
 
-The Authentication component allows you to to implement authentication methods which can simply update the request
-with authentication detail (for example by adding an `Authorization` header).
-This is useful when you have to send multiple requests to the same endpoint. Using an authentication implementation,
-these details can be separated from the actual requests.
+This package contains various HTTP Message related tools:
+
+- Authentication
+- Stream encoding
+- Message decorators
+- [Message factory](/message-factory) for Guzzle PSR-7 and Diactoros
+- Cookie
 
 
 ## Installation
@@ -12,8 +15,15 @@ these details can be separated from the actual requests.
 $ composer require php-http/message
 ```
 
+## Authentication
 
-## Authentication methods
+The Authentication component allows you to to implement authentication methods which can simply update the request
+with authentication detail (for example by adding an `Authorization` header).
+This is useful when you have to send multiple requests to the same endpoint. Using an authentication implementation,
+these details can be separated from the actual requests.
+
+
+### Authentication methods
 
 Method           | Parameters                                        | Behavior
 ---------------- | ------------------------------------------------- | --------
@@ -28,7 +38,7 @@ Matching         | An authentication instance and a matcher callback | Behavior 
 [2]: http://www.xml.com/pub/a/2003/12/17/dive.html
 
 
-## Integration with HTTPlug
+### Integration with HTTPlug
 
 Normally requests must be authenticated "by hand" which is not really convenient.
 
@@ -36,7 +46,7 @@ If you use HTTPlug, you can integrate this component into the client using the
 [authentication plugin](/httplug/plugins/authentication).
 
 
-## Examples
+### Examples
 
 General usage looks like the following:
 
@@ -48,7 +58,7 @@ $authentication->authenticate($request);
 ```
 
 
-### Basic Auth
+#### Basic Auth
 
 ``` php
 use Http\Message\Authentication\BasicAuth;
@@ -57,7 +67,7 @@ $authentication = new BasicAuth('username', 'password');
 ```
 
 
-### Bearer
+#### Bearer
 
 ``` php
 use Http\Message\Authentication\Bearer;
@@ -66,7 +76,7 @@ $authentication = new Bearer('token');
 ```
 
 
-### WSSE
+#### WSSE
 
 ``` php
 use Http\Message\Authentication\Wsse;
@@ -75,7 +85,7 @@ $authentication = new Wsse('username', 'password');
 ```
 
 
-### Query Params
+#### Query Params
 
 `http://api.example.com/endpoint?access_token=9zh987g86fg87gh978hg9g79`
 
@@ -94,7 +104,7 @@ $authentication = new QueryParams([
 
 
 
-### Chain
+#### Chain
 
 The idea behind this authentication method is that in some cases you might need to
 authenticate the request with multiple methods.
@@ -115,7 +125,7 @@ $authentication = new Chain($authenticationChain);
 ```
 
 
-### Matching
+#### Matching
 
 With this authentication method you can conditionally add authentication details to your request by passing a callable
 to it. When a request is passed, the callable is called and used as a boolean value in order to decide whether
@@ -152,7 +162,7 @@ $authentication = Matching::createUrlMatcher(new AuthenticationMethod(), '\/api'
 ```
 
 
-## Implement your own
+### Implement your own
 
 Implementing an authentication method is easy: only one method needs to be implemented.
 

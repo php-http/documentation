@@ -1,0 +1,4 @@
+Adapter Integration Tests
+=========================
+
+TODO

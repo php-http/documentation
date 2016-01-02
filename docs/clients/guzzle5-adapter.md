@@ -1,1 +1,0 @@
-# Guzzle5 Adapter

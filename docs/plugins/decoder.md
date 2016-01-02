@@ -1,3 +1,0 @@
-# Decoder Plugin
-
-TODO

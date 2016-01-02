@@ -1,39 +1,50 @@
-# PHP-HTTP and HTTPlug
+# PHP-HTTP: standardized HTTP interaction for PHP
 
-**This is the documentation for the HTTPlug client abstraction and the other PHP-HTTP components.**
+PHP-HTTP is the next step in standardizing HTTP interaction for PHP packages.
+It builds on top of [PSR-7](http://www.php-fig.org/psr/psr-7/), which defines
+interfaces for HTTP requests and responses. PSR-7 does not describe, however,
+the way you should create requests or send them. PHP-HTTP aims to fill that gap
+by offering an HTTP client interface: HTTPlug.
 
+PHP-HTTP has three goals:
 
-In the past few years HTTP related actions got much more attention. We took a long way from `file_get_contents` to
-[PSR-7](http://www.php-fig.org/psr/psr-7/). We still felt that something was missing: and PHP HTTP was born.
+1. Encourage package developers to depend on the simple HTTPlug interface
+   instead of concrete HTTP clients.
 
-We aim to provide good quality, HTTP related packages to the PHP community. Our main product is
-[HTTPlug](http://httplug.io), but we also have other smaller packages to make using HTTP more convenient.
+2. Provide good quality HTTP-related packages to the PHP community.
 
+3. Over time, make HTTPlug a PSR so that clients will directly implement the
+   HTTPlug interface and our adapters are no longer needed.
 
 ## HTTPlug
 
-[PSR-7](http://www.php-fig.org/psr/psr-7/) defines interfaces for HTTP requests and responses.
-However, it does not define how to create a request or how to send a request.
 HTTPlug abstracts from HTTP clients written in PHP, offering a simple interface.
-It also provides an implementation-independent plugin system to build pipelines regardless of the
-HTTP client implementation used.
+It also provides an implementation-independent plugin system to build pipelines
+regardless of the HTTP client implementation used.
 
 HTTPlug allows you to write reusable libraries and applications that need
 an HTTP client without binding to a specific implementation.
 When all packages used in an application only specify HTTPlug,
-the application developers can chose the client that fits best for their
-project and use the same client with all packages.
+the application developers can choose the client that best fits their project
+and use the same client with all packages.
 
 There are clients implementing one of the HTTPlug interfaces directly,
-and adapter packages that implement the interface and forward the calls to HTTP clients not implementing the interface.
+and adapter packages that implement the interface and forward the calls to HTTP
+clients not implementing the interface.
 
+Get started by reading our [tutorial](httplug/tutorial.md).
 
-Read our [tutorial](httplug/tutorial.md).
+## Packages
 
+PHP-HTTP offers several packages:
 
-# PHP-HTTP Components
+| Type            | Description                                                 | Namespace            |
+| --------------- | ----------------------------------------------------------- | -------------------- |
+| Clients         | HTTP clients: Socket, cURL and others                       | `Http\Client\[Name]` |
+| Client adapters | Adapters for other clients: Guzzle, React and others        | `Http\Adapter\[Name]`|
+| Plugins         | Implementation-independent authentication, cookies and more | `Http\Plugin\[Name]` |
 
-As explained above, PHP HTTP has room for anything that is connected to HTTP and PHP.
-Although [HTTPlug](http://httplug.io) is considered to be our "main product", we have other components as well.
+## The future
 
-See the list of components in the left side navigation.
+HTTPlug, a working example of an HTTP client interface, can serve as a basis
+for discussion around a future HTTP client PSR.

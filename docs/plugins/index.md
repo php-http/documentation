@@ -180,5 +180,5 @@ the core as small as possible with the most widely used plugin implementations.
 
 Even if we think that a plugin is not suitable for the core, we want to help you sharing your work with the community.
 You can always open a Pull Request to place a link and a small description of your plugin on the
-[Third Party Plugins](plugins/third-party-plugins.md) page. In special cases,
+[Third Party Plugins](third-party-plugins.md) page. In special cases,
 we might offer you to host your package under the PHP HTTP namespace.

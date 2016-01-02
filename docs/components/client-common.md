@@ -1,6 +1,7 @@
-# Utilities
+# Client Common
 
-The utilities package provides some useful tools for working with HTTPlug. Include them in your project with composer:
+The client-common package provides some useful tools for working with HTTPlug.
+Include them in your project with composer:
 
 ``` bash
 composer require "php-http/utils" "^1.0"

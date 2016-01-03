@@ -43,9 +43,7 @@ obligated to maintain confidentiality with regard to the reporter of an
 incident.
 
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
-version 1.3.0, available at
-[http://contributor-covenant.org/version/1/3/0/][version]
+This Code of Conduct is adapted from the `Contributor Covenant`_,
+version 1.3.0, available at http://contributor-covenant.org/version/1/3/0/
 
-[homepage]: http://contributor-covenant.org
-[version]: http://contributor-covenant.org/version/1/3/0/
+.. _Contributor Covenant: http://contributor-covenant.org

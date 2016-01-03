@@ -1,3 +1,0 @@
-# Logger Plugin
-
-TODO

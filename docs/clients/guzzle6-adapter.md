@@ -1,1 +1,0 @@
-# Guzzle6 Adapter

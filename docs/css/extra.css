@@ -1,6 +1,0 @@
-/*
- * Exclude first title from TOC
- */
-li.toctree-l3:first-child {
-    display: none;
-}

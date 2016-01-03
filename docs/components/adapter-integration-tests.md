@@ -1,3 +1,0 @@
-# Adapter Integration Tests
-
-TODO

@@ -1,28 +1,5 @@
-HTTPlug: HTTP client abstraction
-================================
-
-HTTPlug is an abstraction for HTTP clients. There are two main use cases:
-
-1. Usage in a project/application
-2. Usage in a reusable package
-
-In both cases, the ``Http\Client\HttpClient`` provides a ``sendRequest`` method
-to send a PSR-7 ``RequestInterface`` and returns a PSR-7 ``ResponseInterface``
-or throws an exception that implements ``Http\Client\Exception``.
-
-There is also the ``Http\Client\HttpAsyncClient` which provides the
-``sendAsyncRequest`` method to send a request asynchronously and returns a
-``Http\Client\Promise``.
-
-The promise allows to specify handlers for a PSR-7 ``ResponseInterface``
-or an exception that implements ``Http\Client\Exception``.
-
-.. warning::
-
-    Contract for the ``Http\Promise\Promise`` is temporary until `PSR is released`_.
-    Once it is out, we will use this PSR in the main client and deprecate the old contract.
-
-See the :doc:``tutorial`` for a concrete example.
+Introduction to HTTPlug
+=======================
 
 HTTPlug implementations
 -----------------------
@@ -49,8 +26,7 @@ Check links above for the full list of implementations.
 Usage in an application
 -----------------------
 
-When writing an application, you need to require a concrete
-[implementation](https://packagist.org/providers/php-http/client-implementation).
+When writing an application, you need to require a concrete implementation_.
 
 See :doc:`virtual-package` for more information on the topic of working with HTTPlug implementations.
 
@@ -113,7 +89,7 @@ In 2015, a decision has been made to move the library to its own organization, s
 
 See :doc:`migrating` for a guide how to migrate your code from the Ivory adapter to HTTPlug.
 
-.. _`PSR is released`: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
+.. _implementation: https://packagist.org/providers/php-http/client-implementation
 .. _HttplugBundle: https://github.com/php-http/HttplugBundle
 .. _`Eric Geloen`: https://github.com/egeloen
 .. _`Ivory Http Adapter`: https://github.com/egeloen/ivory-http-adapter).

@@ -18,7 +18,7 @@ Security issues
 ---------------
 
 If you discover any security related issues,
-please contact us at [security@php-http.org](mailto:security@php-http.org) instead of submitting an issue on GitHub.
+please contact us at security@php-http.org instead of submitting an issue on GitHub.
 This allows us to fix the issue and release a security hotfix without publicly disclosing the vulnerability.
 
 
@@ -49,7 +49,7 @@ Then install the dependencies through Composer_:
     $ composer install
 
 Write code and tests. When you are ready, run the tests.
-(This is usually [PHPUnit](http://phpunit.de/) or [PHPSpec](http://phpspec.net/))
+(This is usually PHPUnit_ or PHPSpec_)
 
 .. code-block:: bash
 
@@ -112,6 +112,8 @@ License
 
 All of our packages are licensed under the :doc:`MIT license <license>`.
 
+.. _PHPUnit: http://phpunit.de/
+.. _PHPSpec: http://phpspec.net/
 .. _guidelines: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 .. _create a pull request: https://help.github.com/articles/creating-a-pull-request/
 .. _semver: http://semver.org

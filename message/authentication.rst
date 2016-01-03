@@ -84,7 +84,7 @@ WSSE
     $authentication = new Wsse('username', 'password');
 
 Query Params
-*************
+************
 
 ``http://api.example.com/endpoint?access_token=9zh987g86fg87gh978hg9g79``::
 
@@ -163,7 +163,9 @@ Implementing an authentication method is easy: only one method needs to be imple
         {
             // do something with the request
 
-            // keep in mind that the request is immutable - return the updated version of the request with the authentication information added to it.
+            // keep in mind that the request is immutable - return the updated
+            // version of the request with the authentication information added
+            // to it.
             return $request;
         }
     }

@@ -59,18 +59,14 @@ for discussion around a future HTTP client PSR.
 
 .. toctree::
     :hidden:
-    :maxdepth: 2
+    :maxdepth: 3
 
     PHP-HTTP <self>
 
 .. toctree::
    :hidden:
-   :caption: HTTPlug
 
-   Introduction <httplug/introduction>
-   Tutorial <httplug/tutorial>
-   Migrating <httplug/migrating>
-   Virtual package <httplug/virtual-package>
+   HTTPlug <httplug>
 
 .. toctree::
    :hidden:
@@ -90,6 +86,6 @@ for discussion around a future HTTP client PSR.
 
 .. toctree::
    :hidden:
-   :caption: Development
+   :caption: ---------
 
    development/index.rst

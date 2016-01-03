@@ -17,12 +17,7 @@ There is also the ``Http\Client\HttpAsyncClient`` which provides the
 The promise allows to specify handlers for a PSR-7 ``ResponseInterface``
 or an exception that implements ``Http\Client\Exception``.
 
-.. warning::
-
-    Contract for the ``Http\Promise\Promise`` is temporary until `PSR is released`_.
-    Once it is out, we will use this PSR in the main client and deprecate the old contract.
-
-See the :doc:``tutorial`` for a concrete example.
+See the :doc:`tutorial </httplug/tutorial>` for a concrete example.
 
 
 .. toctree::
@@ -32,4 +27,3 @@ See the :doc:``tutorial`` for a concrete example.
    Migrating <httplug/migrating>
    Virtual Package <httplug/virtual-package>
 
-.. _`PSR is released`: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs

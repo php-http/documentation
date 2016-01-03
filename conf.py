@@ -301,4 +301,5 @@ texinfo_documents = [
 rst_epilog = """
 .. _PSR-7: http://www.php-fig.org/psr/psr-7
 .. _Composer: https://getcomposer.org
+.. _HttplugBundle: https://github.com/php-http/HttplugBundle
 """

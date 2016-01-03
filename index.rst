@@ -29,17 +29,7 @@ HTTPlug abstracts from HTTP clients written in PHP, offering a simple interface.
 It also provides an implementation-independent plugin system to build pipelines
 regardless of the HTTP client implementation used.
 
-HTTPlug allows you to write reusable libraries and applications that need
-an HTTP client without binding to a specific implementation.
-When all packages used in an application only specify HTTPlug,
-the application developers can choose the client that best fits their project
-and use the same client with all packages.
-
-There are clients implementing one of the HTTPlug interfaces directly,
-and adapter packages that implement the interface and forward the calls to HTTP
-clients not implementing the interface.
-
-Get started by reading our :doc:`tutorial </httplug/tutorial>`.
+Read more about :doc:`HTTPlug </httplug/introduction>`.
 
 Packages
 --------
@@ -64,17 +54,19 @@ for discussion around a future HTTP client PSR.
 
 .. toctree::
     :hidden:
-    :maxdepth: 3
 
     PHP-HTTP <self>
 
 .. toctree::
    :hidden:
+   :caption: HTTPlug
+   :maxdepth: 4
 
-   HTTPlug <httplug>
-
-.. toctree::
-   :hidden:
+   Introduction <httplug/introduction>
+   Usage <httplug/usage>
+   Tutorial <httplug/tutorial>
+   Migrating <httplug/migrating>
+   Virtual package <httplug/virtual-package>
 
    clients
    plugins/index

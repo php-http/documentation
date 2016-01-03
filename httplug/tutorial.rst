@@ -78,7 +78,7 @@ still provide a way to interact with this object for your users::
 
         throw $e;
     })->then(function (ResponseInterface $response) {
-        echo 'Response stil available';
+        echo 'Response still available';
 
         return $response;
     }, function (Exception $e) {
@@ -159,4 +159,4 @@ TODO: explain how to handle exceptions, distinction between network exception an
 Writing a reusable package
 --------------------------
 
-TODO: explain the virtual package
+See :ref:`httplug-building-reusable-library`

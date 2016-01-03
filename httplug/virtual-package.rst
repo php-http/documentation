@@ -46,6 +46,8 @@ dependency on ``php-http/httplug`` in your ``composer.json`` file.
 However, if your code depends on a minimal version of HTTPlug,
 specify it to have composer report problems rather than the application failing at some point.
 
+.. _httplug-building-reusable-library:
+
 Building a Reusable Library
 ---------------------------
 

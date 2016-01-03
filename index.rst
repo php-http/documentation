@@ -1,5 +1,5 @@
-PHP-HTTP: standardized HTTP interaction for PHP
-===============================================
+PHP-HTTP: standardized HTTP for PHP
+===================================
 
 .. image:: assets/img/plugefant.png
     :align: right

@@ -155,8 +155,3 @@ Handling errors
 ---------------
 
 TODO: explain how to handle exceptions, distinction between network exception and HttpException.
-
-Writing a reusable package
---------------------------
-
-See :ref:`httplug-building-reusable-library`

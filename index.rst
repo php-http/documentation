@@ -19,8 +19,9 @@ PHP-HTTP has three goals:
 
 2. Provide good quality HTTP-related packages to the PHP community.
 
-3. Over time, make HTTPlug a PSR so that clients will directly implement the
-   HTTPlug interface and our adapters are no longer needed.
+3. Over time, make HTTPlug a PHP Standards Recommendation (PSR) so that clients
+   will directly implement the HTTPlug interface and our adapters are no longer
+   needed.
 
 HTTPlug
 -------
@@ -46,6 +47,8 @@ PHP-HTTP offers several packages:
 | Plugins         | Implementation-independent authentication, cookies and more | ``Http\Plugin\[Name]`` |
 +-----------------+-------------------------------------------------------------+------------------------+
 
+Read more about :doc:`clients and adapters <clients>` and :doc:`plugins <plugins/index>`.
+
 The future
 ----------
 
@@ -66,7 +69,6 @@ for discussion around a future HTTP client PSR.
    Usage <httplug/usage>
    Tutorial <httplug/tutorial>
    Migrating <httplug/migrating>
-   Virtual package <httplug/virtual-package>
 
    clients
    plugins/index

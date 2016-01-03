@@ -39,51 +39,13 @@ PHP-HTTP offers two types of clients that implement the above interfaces:
     Ideally, all HTTP client libraries out there will implement the HTTPlug
     interfaces. At that point, our adapters will no longer be necessary.
 
-Usage in an application
------------------------
+Usage
+-----
 
-When writing an application, you need to require a concrete implementation.
+There are two main use cases for HTTPlug:
 
-See :doc:`virtual-package` for more information on the topic of working with HTTPlug implementations.
-
-Installation in a reusable package
-----------------------------------
-
-In many cases, packages are designed to be reused from the very beginning.
-For example, API clients are usually used in other packages/applications, not on their own.
-
-Reusable packages should **not rely on a concrete implementation** (like Guzzle 6),
-but only require any implementation of HTTPlug. HTTPlug uses the concept of virtual packages.
-Instead of depending on only the interfaces, which would be missing an implementation,
-or depending on one concrete implementation, you should depend on the virtual package ``php-http/client-implementation``
-or ``php-http/async-client-implementation``. There is no package with that name,
-but all clients and adapters implementing HTTPlug declare that they provide one of this virtual package or both.
-
-You need to edit the ``composer.json`` of your package to add the virtual package.
-For development (installing the package standalone, running tests),
-add a concrete implementation in the ``require-dev`` section to make the project installable:
-
-.. code-block:: json
-
-    {
-        "require": {
-            "php-http/client-implementation": "^1.0"
-        },
-        "require-dev": {
-            "php-http/guzzle6-adapter": "^1.0"
-        },
-    }
-
-For extra convenience, you can use the :doc:`/discovery` system to free the user of your
-package from having to instantiate the client.
-You should however always accept injecting the client instance to allow the user to configure the client as needed.
-You can find an example in the :doc:`/discovery` documentation.
-
-Users of your package will have to select a concrete adapter in their project to make your package installable.
-Best point them to the :doc:`virtual-package` page.
-
-To be able to send requests, you should not depend on a specific PSR-7 implementation,
-but use the :ref:`message-factory` system.
+* usage in an application that executes HTTP requests (see :doc:`application-developers`).
+* usage in a reusable package that executes HTTP requests (see :doc:`library-developers`).
 
 History
 -------

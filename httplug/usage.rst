@@ -1,17 +1,12 @@
-Usage
-=====
+HTTPlug usage
+=============
 
-HTTPlug is an abstraction for HTTP clients. There are two main use cases:
+HTTPlug is relevant for three groups of users:
 
-1. Usage in a project/application
-2. Usage in a reusable package
+.. toctree::
+   :maxdepth: 1
 
-
-Framework Integration
-^^^^^^^^^^^^^^^^^^^^^
-
-HTTPlug can be used in any PHP based project.
-Nonetheless, we provide particular integration for some popular frameworks:
-
-- HttplugBundle_: integration with the Symfony framework.
+   Library users <users>
+   Application developers <application-developers>
+   Library developers <library-developers>
 

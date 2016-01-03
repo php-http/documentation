@@ -37,15 +37,13 @@ Packages
 
 PHP-HTTP offers several packages:
 
-+-----------------+-------------------------------------------------------------+------------------------+
-| Type            | Description                                                 | Namespace              |
-+=================+=============================================================+========================+
-| Clients         | HTTP clients: Socket, cURL and others                       | ``Http\Client\[Name]`` |
-+-----------------+-------------------------------------------------------------+------------------------+
-| Client adapters | Adapters for other clients: Guzzle, React and others        | ``Http\Adapter\[Name]``|
-+-----------------+-------------------------------------------------------------+------------------------+
-| Plugins         | Implementation-independent authentication, cookies and more | ``Http\Plugin\[Name]`` |
-+-----------------+-------------------------------------------------------------+------------------------+
+=============== =========================================================== =============================
+Type            Description                                                 Namespace
+=============== =========================================================== =============================
+Clients         HTTP clients: Socket, cURL and others                       ``Http\Client\[Name]``
+Client adapters Adapters for other clients: Guzzle, React and others        ``Http\Adapter\[Name]``
+Plugins         Implementation-independent authentication, cookies and more ``Http\Client\Plugin\[Name]``
+=============== =========================================================== =============================
 
 Read more about :doc:`clients and adapters <clients>` and :doc:`plugins <plugins/index>`.
 

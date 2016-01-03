@@ -1,6 +1,11 @@
 PHP-HTTP: standardized HTTP interaction for PHP
 ===============================================
 
+.. image:: assets/img/plugefant.png
+    :align: right
+    :width: 120px
+    :alt: HTTPlug Logo
+
 PHP-HTTP is the next step in standardizing HTTP interaction for PHP packages.
 It builds on top of PSR-7_, which defines interfaces for HTTP requests and
 responses. PSR-7 does not describe, however, the way you should create requests

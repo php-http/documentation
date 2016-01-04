@@ -65,6 +65,7 @@ for discussion around a future HTTP client PSR.
 
    Introduction <httplug/introduction>
    Usage <httplug/usage>
+   Exceptions <httplug/exceptions>
    Tutorial <httplug/tutorial>
    Migrating <httplug/migrating>
 

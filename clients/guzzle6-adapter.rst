@@ -44,11 +44,6 @@ Or send asynchronous ones::
     // Returns a Http\Promise\Promise
     $promise = $adapter->sendAsyncRequest(request);
 
-Further reading
----------------
-
-* Read more about :doc:`promises </components/promise>`.
-* Learn how you can decouple your code from any PSR-7 implementation (such as
-  Guzzle’s above) by using a :ref:`message factory <message-factory>`.
+.. include:: includes/further-reading-async.inc
 
 .. _Guzzle 6 HTTP client: http://docs.guzzlephp.org/

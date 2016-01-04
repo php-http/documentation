@@ -6,7 +6,7 @@ then download the requirements:
 
 .. code-block:: bash
 
-    $ pip install -r doc/requirements.txt
+    $ pip install -r requirements.txt
 
 To build the docs:
 

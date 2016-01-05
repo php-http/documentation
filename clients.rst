@@ -14,6 +14,7 @@ Clients:
 
    clients/curl-client
    clients/socket-client
+   clients/batch-client
    clients/mock-client
 
 Client adapters:

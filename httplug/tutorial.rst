@@ -116,6 +116,10 @@ will return of one ``Promise::PENDING``, ``Promise::FULFILLED`` or ``Promise::RE
 Then you can get the response of the promise if it's in ``FULFILLED`` state with ``$promise->getResponse()`` call or
 get the error of the promise if it's in ``REJECTED`` state with ``$promise->getRequest()`` call
 
+.. note::
+
+    Read :doc:`/components/promise` for more information about promises.
+
 Example
 ^^^^^^^
 

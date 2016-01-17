@@ -1,8 +1,7 @@
 History Plugin
 ==============
 
-History plugin use a `Http\Client\Plugin\Journal` to collect successful or failed calls of an Http Client. This is
-mainly used for debugging like in the Symfony Bundle to get information in the debug toolbar with a DataCollector::
+The ``HistoryPlugin`` notifies a Http\Client\Plugin\Journal of all successful and failed calls::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Plugin\PluginClient;
@@ -15,3 +14,9 @@ mainly used for debugging like in the Symfony Bundle to get information in the d
         [$historyPlugin]
     );
 
+
+As an example, HttplugBundle uses this plugin to collect responses or exceptions associated with
+requests for the debug toolbar
+
+This plugin only collect data after resolution. For logging purposes it's best to use the `LoggerPlugin` which logs
+as soon as possible.

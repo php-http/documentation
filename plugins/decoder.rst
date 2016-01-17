@@ -1,8 +1,8 @@
 Decoder Plugin
 ==============
 
-Decoder Plugin decodes the body of the response with filters coming from the `Transfer-Encoding` or `Content-Encoding`
-headers::
+The ``DecoderPlugin`` decodes the body of the response with filters coming from the ``Transfer-Encoding``
+or ``Content-Encoding`` headers::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Plugin\PluginClient;
@@ -15,20 +15,17 @@ headers::
         [$decoderPlugin]
     );
 
-Actually it can decodes 4 different filters:
+The plugin can handle the following encodings:
 
- * chunked: Decode a stream with a chunked encoding (no size in the `Content-Length` header of the response)
- * compress: Decode a stream encoded with the compress filter according to `RFC 1950`_
- * Deflate: Decode a stream encoded with the inflate filter according to `RFC 1951`_
- * gzip: Decode a stream encoded with the gzip filter according to `RFC 1952`_
+ * ``chunked``: Decode a stream with a ``chunked`` encoding (no size in the ``Content-Length`` header of the response)
+ * ``compress``: Decode a stream encoded with the ``compress`` encoding according to :rfc:`1950`
+ * ``deflate``: Decode a stream encoded with the ``inflate`` encoding according to :rfc:`1951`
+ * ``gzip``: Decode a stream encoded with the ``gzip`` encoding according to :rfc:`1952`
 
-You can also use the decoder plugin to only decodes the `Transfer-Encoding` header and not the `Content-Encoding` one
-by setting the first parameter of the constructor to false::
+You can also use the decoder plugin to decode only the ``Transfer-Encoding`` header and not the ``Content-Encoding`` one
+by setting the ``use_content_encoding`` configuration option to false::
 
-    $decoderPlugin = new DecoderPlugin(false);
+    $decoderPlugin = new DecoderPlugin(['use_content_encoding' => false]);
 
-This is useful when you want to get the encoded response body, or acting as a proxy.
-
-.. _RFC 1950: https://tools.ietf.org/html/rfc1950
-.. _RFC 1951: https://tools.ietf.org/html/rfc1951
-.. _RFC 1952: https://tools.ietf.org/html/rfc1952
+Not decoding content is useful when you don't want to get the encoded response body, or acting as a proxy but sill
+be able to decode message from the ``Transfer-Encoding`` header value.

@@ -6,8 +6,8 @@ from ``php-http/message`` to authenticate requests sent through the client::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Message\Authentication\BasicAuth;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\AuthenticationPlugin;
+    use Http\Client\Plugin\PluginClient;
+    use Http\Client\Plugin\AuthenticationPlugin;
 
     $authentication = new BasicAuth('username', 'password');
     $authenticationPlugin = new AuthenticationPlugin($authentication);

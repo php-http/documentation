@@ -6,8 +6,8 @@ to `RFC 6265`_ specification::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Message\CookieJar;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\CookiePlugin;
+    use Http\Client\Plugin\PluginClient;
+    use Http\Client\Plugin\CookiePlugin;
 
     $cookiePlugin = new CookiePlugin(new CookieJar());
 

@@ -22,25 +22,21 @@ factories in order to to work::
 
     $client = new Client($messageFactory, $streamFactory);
 
+Using `php-http/message <https://packagist.org/packages/php-http/message>`_::
+
+    use Http\Client\Curl\Client;
+    use Http\Message\MessageFactory\DiactorosMessageFactory;
+    use Http\Message\StreamFactory\DiactorosStreamFactory;
+
+    $client = new Client(new DiactorosMessageFactory(), new DiactorosStreamFactory());
+
 Using `php-http/discovery <https://packagist.org/packages/php-http/discovery>`_::
 
     use Http\Client\Curl\Client;
     use Http\Discovery\MessageFactoryDiscovery;
     use Http\Discovery\StreamFactoryDiscovery;
 
-    $messageFactory = MessageFactoryDiscovery::find();
-    $streamFactory = StreamFactoryDiscovery::find();
-    $client = new Client($messageFactory, $streamFactory);
-
-
-Using `mekras/httplug-diactoros-bridge <https://packagist.org/packages/mekras/httplug-diactoros-bridge>`_::
-
-    use Http\Client\Curl\Client;
-    use Mekras\HttplugDiactorosBridge\DiactorosMessageFactory;
-    use Mekras\HttplugDiactorosBridge\DiactorosStreamFactory;
-
-    $client = new Client(new DiactorosMessageFactory(), new DiactorosStreamFactory());
-
+    $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find());
 
 Configuring client
 ------------------

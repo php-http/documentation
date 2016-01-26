@@ -1,8 +1,9 @@
 Promise
 =======
 
-When sending asynchronous HTTP requests, a promise is returned. The promise acts
-as a proxy for the response or error result, which is not yet known.
+A promise represents a single result of an asynchronous operation.
+It is not necessarily available at a specific time, but should become in the future.
+
 The PHP-HTTP promise follows the `Promises/A+`_ standard.
 
 .. note::
@@ -13,8 +14,11 @@ The PHP-HTTP promise follows the `Promises/A+`_ standard.
 Asynchronous requests
 ---------------------
 
-Asynchronous requests enable non-blocking HTTP operations. To execute such a
-request with HTTPlug::
+Asynchronous requests enable non-blocking HTTP operations.
+When sending asynchronous HTTP requests, a promise is returned. The promise acts
+as a proxy for the response or error result, which is not yet known.
+
+To execute such a request with HTTPlug::
 
     $request = $messageFactory->createRequest('GET', 'http://php-http.org');
 
@@ -26,6 +30,9 @@ request with HTTPlug::
     echo 'Wow, non-blocking!';
 
 See :ref:`message-factory` on how to use message factories.
+
+Although the promise itself is not restricted to resolve a specific result type,
+in HTTP context it resolves a PSR-7 ``Psr\Http\Message\ResponseInterface`` or fails with an ``Http\Client\Exception``.
 
 Wait
 ----

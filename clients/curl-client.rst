@@ -53,7 +53,7 @@ You can use `cURL options <http://php.net/curl_setopt>`_ to configure Client::
     ];
     $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find(), $options);
 
-These options can not be used:
+These options cannot be used (will be overwritten by Client):
 
     * CURLOPT_CUSTOMREQUEST
     * CURLOPT_FOLLOWLOCATION
@@ -64,9 +64,6 @@ These options can not be used:
     * CURLOPT_POSTFIELDS
     * CURLOPT_RETURNTRANSFER
     * CURLOPT_URL
-
-These options can be overwritten by Client:
-
     * CURLOPT_USERPWD
 
 .. include:: includes/further-reading-sync.inc

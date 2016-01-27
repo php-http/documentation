@@ -3,16 +3,16 @@ to install one as well (for example `Guzzle PSR-7`_):
 
 .. code-block:: bash
 
-$ composer require guzzlehttp/psr7
+    $ composer require guzzlehttp/psr7
 
 In order to provide full interoperability, message implementations are
-accessed through :ref:`factories <message-factory>`. Message factories for
-`Diactoros`_ are `Guzzle PSR-7`_ implementations are available in the
-:ref:`message <message>` component:
+accessed through :doc:`factories </message/message-factory>`. Message factories for
+`Diactoros`_ and `Guzzle PSR-7`_ are available in the
+:doc:`message </message>` component:
 
 .. code-block:: bash
 
-$ composer require php-http/message
+    $ composer require php-http/message
 
 .. _Diactoros: http://docs.guzzlephp.org/en/5.3/
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7

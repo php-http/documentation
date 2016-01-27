@@ -37,7 +37,7 @@ Then create the adapter::
 
     $adapter = new GuzzleAdapter($guzzle, new GuzzleMessageFactory());
 
-Or if you installed the :ref:`discovery <discovery>` layer::
+Or if you installed the :doc:`discovery </discovery>` layer::
 
     use Http\Adapter\Guzzle5\Client as GuzzleAdapter;
 

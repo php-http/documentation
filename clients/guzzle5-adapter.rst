@@ -3,6 +3,9 @@ Guzzle5 Adapter
 
 An HTTPlug adapter for the `Guzzle 5 HTTP client`_.
 
+Installation
+------------
+
 To install the Guzzle adapter, which will also install Guzzle itself (if it was
 not yet included in your project), run:
 
@@ -14,7 +17,10 @@ not yet included in your project), run:
 
 .. include:: includes/install-discovery.inc
 
-Then begin by creating a Guzzle client, passing any configuration parameters you
+Usage
+-----
+
+Begin by creating a Guzzle client, passing any configuration parameters you
 like::
 
     use GuzzleHttp\Client as GuzzleClient;

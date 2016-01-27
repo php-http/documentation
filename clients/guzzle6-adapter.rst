@@ -3,6 +3,9 @@ Guzzle 6 Adapter
 
 An HTTPlug adapter for the `Guzzle 6 HTTP client`_.
 
+Installation
+------------
+
 To install the Guzzle adapter, which will also install Guzzle itself (if it was
 not yet included in your project), run:
 
@@ -10,7 +13,10 @@ not yet included in your project), run:
 
     $ composer require php-http/guzzle6-adapter
 
-Then begin by creating a Guzzle client, passing any configuration parameters you
+Usage
+-----
+
+Begin by creating a Guzzle client, passing any configuration parameters you
 like::
 
     use GuzzleHttp\Client as GuzzleClient;

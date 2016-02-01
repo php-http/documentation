@@ -21,6 +21,8 @@ To install the Socket client, run:
 
     $ composer require php-http/socket-client
 
+.. include:: includes/install-message-factory.inc
+
 Usage
 -----
 

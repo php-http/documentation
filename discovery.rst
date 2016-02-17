@@ -1,12 +1,17 @@
 Discovery
 =========
 
-The discovery service is a set of static classes which allows to find and use installed resources.
-This is useful in libraries that want to offer zero-configuration services and rely only on the virtual packages.
+The discovery service allows to find and use installed resources.
+Under the hood it uses `Puli`_ for the discovery logic. All of our packages provide Puli resources.
+Discovery is simply a convenience wrapper to statically access clients and factories for when
+Dependency Injection is not an option. Discovery is useful in libraries that want to offer
+zero-configuration services relying on the virtual packages. If you have Dependency Injection available,
+using Puli directly is more elegant (see for example the Symfony HttplugBundle).
 
 Currently available discovery services:
 
 - HTTP Client Discovery
+- HTTP Async Client Discovery
 - PSR-7 Message Factory Discovery
 - PSR-7 URI Factory Discovery
 - PSR-7 Stream Factory Discovery
@@ -15,13 +20,33 @@ The principle is always the same: you call the static ``find`` method on the dis
 implementation was specified. The discovery service will try to locate a suitable implementation.
 If no implementation is found, an ``Http\Discovery\NotFoundException`` is thrown.
 
-
 Installation
 ------------
+
+There are two kinds of installation:
+
+- In a reusable library
+- In an application
+
+In both cases you have to install the discovery package itself:
 
 .. code-block:: bash
 
         $ composer require php-http/discovery
+
+As mentioned above, discovery relies on Puli. In order to use discovery, you need to also set up Puli.
+The easiest way is installing the composer-plugin which automatically configures all the composer packages to act as
+Puli modules:
+
+.. code-block:: bash
+
+        $ composer require puli/composer-plugin
+
+This is only necessary in an application. However, you might also want to install the composer-plugin as a development
+dependency in reusable libraries as well (for example to use discovery in tests).
+
+Read more about setting up Puli in their `official documentation`_.
+
 
 HTTP Client Discovery
 ---------------------
@@ -123,53 +148,19 @@ This type of discovery finds a URI factory for a PSR-7_ URI implementation::
 Integrating your own implementation with the discovery mechanism
 ----------------------------------------------------------------
 
-The ``php-http/discovery`` has built-in support for some implementations.
-To use a different implementation or override the default when several implementations are available in your code base,
-you can register a class explicitly with the corresponding discovery service. For example::
+ When you are working on an HTTP Client or Message Factory, you can easily make your class discoverable:
+ you have to configure it as a Puli resource (`binding`_ in Puli terminology).
 
-    HttpClientDiscovery::register('Acme\MyClient', true);
+A binding must have a type, called `binding-type`_. All of our interfaces are registered as binding types.
 
-- ``class``: The class that is instantiated. This class MUST NOT require any constructor arguments.
-- ``condition``: The condition that is evaluated to boolean to decide whether the class can be instantiated.
+For example: a client ``Http\Client\MyClient`` should be bind to ``Http\Client\HttpClient``
 
-The following types are allowed:
-    - string: Checked for class existence
-    - callable: Called and evaluated to boolean
-    - boolean: Can be true or false
-    - any other: considered false
+Puli uses a ``puli.json`` file for configuration (placed in the package root).
+Use the CLI tool for configuring bindings. It is necessary, because each binding must have a unique identifier.
+Read more in Puli's documentation (`Providing Resources`_).
 
-The condition can also be omitted. In that case the class is used as the condition (to check for existence).
-
-Classes registered manually are put on top of the list.
-
-Writing your own discovery
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Each discovery service is based on the ``ClassDiscovery`` and has to specify a ``cache`` property and a ``class`` property
-to specify classes for the corresponding service. Since they are static, this properties need to be re-declared
-in each discovery class. If ``ClassDiscovery`` would declare them,
-they would be shared between the discovery classes which would make no sense.
-
-Here is an example discovery::
-
-    use Http\Discovery\ClassDiscovery;
-
-    class MyDiscovery extends ClassDiscovery
-    {
-        // IMPORTANT: not declared in the parent to avoid overwritting
-        protected static $cache;
-
-        // IMPORTANT: not declared in the parent
-        protected static $classes = [];
-    }
-
-A start value can be defined for the ``classes`` property in the following structure::
-
-    [
-        [
-            'class'     => 'MyClass',
-            'condition' => 'MyCondition',
-        ],
-    ]
-
-The condition is as described above for ``register``.
+.. _`Puli`: http://puli.io
+.. _official documentation: http://docs.puli.io/en/latest
+.. _`binding`: http://docs.puli.io/en/latest/glossary.html#glossary-binding
+.. _`binding-type`: http://docs.puli.io/en/latest/glossary.html#glossary-binding-type
+.. _Providing Resources: http://docs.puli.io/en/latest/discovery/providing-resources.html

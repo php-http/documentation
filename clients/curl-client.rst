@@ -15,7 +15,7 @@ To install the cURL client, run:
 Usage
 -----
 
-The cURL client needs a :ref:`message <message-factory>` and a :ref:`stream <message-factory>`
+The cURL client needs a :ref:`message <message-factory>` and a :ref:`stream <stream-factory>`
 factory in order to to work::
 
     use Http\Client\Curl\Client;

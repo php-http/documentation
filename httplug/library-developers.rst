@@ -69,6 +69,13 @@ When you construct HTTP message objects in your library, you should not depend
 on a concrete PSR-7 message implementation. Instead, use the
 :ref:`PHP-HTTP message factory <message-factory>`.
 
+Plugins
+-------
+
+If your library relies on specific plugins, the recommended way is to provide a factory method for
+your users, so they can create the correct client from a base HttpClient. See
+:ref:`plugin-client.libraries` for a concrete example.
+
 User documentation
 ------------------
 

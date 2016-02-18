@@ -23,6 +23,7 @@ sexualized
 sublicense
 sync
 username
+whitelist
 wiki
 workflow
 Puli

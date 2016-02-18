@@ -86,13 +86,16 @@ You can manipulate the ``ResponseInterface`` or the ``Exception`` by using the
 To better understand the whole process check existing implementations in the
 `plugin repository`_.
 
-Contributions
--------------
+Contributing Your Plugins to PHP-HTTP
+-------------------------------------
 
-We are always open to contributions. Either in form of Pull Requests to the core package or self-made plugin packages.
-We encourage everyone to prefer sending Pull Requests, however we don't promise that every plugin gets
-merged into the core. If this is the case, it is not because we think your work is not good enough. We try to keep
-the core as small as possible with the most widely used plugin implementations.
+We are open to contributions. If the plugin is of general interest and is not too complex, the best
+is to do a Pull Request to ``php-http/plugins``. Please see the :doc:`contribution guide <../development/contributing>`.
+We don't promise that every plugin gets merged into the core. We need to keep the core as small as
+possible with only the most widely used plugins to keep it maintainable.
+
+The alternative is providing your plugins in your own repository. Please let us know when you do,
+we would like to add a list of existing third party plugins to the list of plugins.
 
 .. _PSR: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
 .. _plugin repository: https://github.com/php-http/plugins

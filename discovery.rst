@@ -2,11 +2,15 @@ Discovery
 =========
 
 The discovery service allows to find and use installed resources.
+
 Under the hood it uses `Puli`_ for the discovery logic. All of our packages provide Puli resources.
 Discovery is simply a convenience wrapper to statically access clients and factories for when
 Dependency Injection is not an option. Discovery is useful in libraries that want to offer
 zero-configuration services relying on the virtual packages. If you have Dependency Injection available,
 using Puli directly is more elegant (see for example the Symfony HttplugBundle).
+
+Consumers of libraries using discovery still need to make sure they install one of the implementations.
+Discovery can only find installed code, not fetch code from other sources.
 
 Currently available discovery services:
 
@@ -32,7 +36,7 @@ In both cases you have to install the discovery package itself:
 
 .. code-block:: bash
 
-        $ composer require php-http/discovery
+    $ composer require php-http/discovery
 
 As mentioned above, discovery relies on Puli. In order to use discovery, you need to also set up Puli.
 The easiest way is installing the composer-plugin which automatically configures all the composer packages to act as

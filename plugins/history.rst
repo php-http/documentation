@@ -1,7 +1,8 @@
 History Plugin
 ==============
 
-The ``HistoryPlugin`` notifies a Http\Client\Plugin\Journal of all successful and failed calls::
+The ``HistoryPlugin`` notifies a ``Http\Client\Plugin\Journal`` of all
+successful and failed calls::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Plugin\PluginClient;
@@ -15,8 +16,8 @@ The ``HistoryPlugin`` notifies a Http\Client\Plugin\Journal of all successful an
     );
 
 
-As an example, HttplugBundle uses this plugin to collect responses or exceptions associated with
-requests for the debug toolbar
+As an example, HttplugBundle uses this plugin to collect responses and exceptions associated with
+requests for the debug toolbar.
 
-This plugin only collect data after resolution. For logging purposes it's best to use the `LoggerPlugin` which logs
-as soon as possible.
+This plugin only collects data after resolution. For logging purposes, it is recommended to use
+the :doc:`LoggerPlugin <logger>` instead, which logs events as they occur.

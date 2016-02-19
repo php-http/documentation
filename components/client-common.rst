@@ -1,5 +1,3 @@
-.. _client-common:
-
 Client Common
 =============
 

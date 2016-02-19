@@ -12,17 +12,16 @@ To install the cURL client, run:
 
     $ composer require php-http/curl-client
 
+.. include:: includes/install-message-factory.inc
+
+.. include:: includes/install-discovery.inc
+
 Usage
 -----
 
-The cURL client needs a :ref:`message <message-factory>` and a :ref:`stream <message-factory>`
-factory in order to to work::
-
-    use Http\Client\Curl\Client;
-
-    $client = new Client($messageFactory, $streamFactory);
-
-Using `php-http/message <https://packagist.org/packages/php-http/message>`_::
+The cURL client needs a :ref:`message factory <message-factory>` and a
+:ref:`stream factory <stream-factory>` in order to to work. You can either specify the factory
+explicitly::
 
     use Http\Client\Curl\Client;
     use Http\Message\MessageFactory\DiactorosMessageFactory;
@@ -30,7 +29,7 @@ Using `php-http/message <https://packagist.org/packages/php-http/message>`_::
 
     $client = new Client(new DiactorosMessageFactory(), new DiactorosStreamFactory());
 
-Using `php-http/discovery <https://packagist.org/packages/php-http/discovery>`_::
+Or you can use :doc:`../discovery`::
 
     use Http\Client\Curl\Client;
     use Http\Discovery\MessageFactoryDiscovery;
@@ -53,7 +52,8 @@ You can use `cURL options <http://php.net/curl_setopt>`_ to configure Client::
     ];
     $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find(), $options);
 
-These options cannot be used (will be overwritten by Client):
+The following options can not be changed in the set up. Most of them are to be provided with the
+request instead:
 
     * CURLOPT_CUSTOMREQUEST
     * CURLOPT_FOLLOWLOCATION

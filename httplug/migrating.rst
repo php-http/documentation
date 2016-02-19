@@ -12,7 +12,7 @@ The monolithic Ivory package has been separated into several smaller, more speci
 Instead of ``Ivory\HttpAdapter\PsrHttpAdapter``, use ``Http\Client\HttpClient``.
 The HttpClient simply has a method to send requests.
 
-If you used the ``Ivory\HttpAdapter\HttpAdapter``, have a look at :ref:`client-common`
+If you used the ``Ivory\HttpAdapter\HttpAdapter``, have a look at :doc:`../components/client-common`
 and use the ``Http\Client\Utils\HttpMethodsClient`` which wraps any HttpClient
 and provides the convenience methods to send requests without creating
 RequestInterface instances.
@@ -26,7 +26,7 @@ Instead of the ``$options`` argument, configure the client appropriately during 
 If you need different settings, create different instances of the client.
 You can use :doc:`/plugins/index` to further tune your client.
 
-If you used the ``request`` method, have a look at :ref:`client-common` and
+If you used the ``request`` method, have a look at :doc:`../components/client-common` and
 use the ``Http\Client\Utils\HttpMethodsClient`` which wraps any HttpClient and
 provides the convenience methods to send requests without creating
 RequestInterface instances.

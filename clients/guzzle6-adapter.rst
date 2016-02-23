@@ -24,7 +24,7 @@ like::
     $config = [
         // Config params
     ];
-    $guzzle = new GuzzleClientClient($config);
+    $guzzle = new GuzzleClient($config);
 
 Then create the adapter::
 

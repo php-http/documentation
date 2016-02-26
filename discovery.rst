@@ -40,14 +40,18 @@ In both cases you have to install the discovery package itself:
 
 As mentioned above, discovery relies on Puli. In order to use discovery, you need to also set up Puli.
 The easiest way is installing the composer-plugin which automatically configures all the composer packages to act as
-Puli modules:
+Puli modules. For applications, simply do:
 
 .. code-block:: bash
 
         $ composer require puli/composer-plugin
 
-This is only necessary in an application. However, you might also want to install the composer-plugin as a development
-dependency in reusable libraries as well (for example to use discovery in tests).
+If you need the composer-plugin for testing in a reusable library, make it a development dependency instead:
+
+.. code-block:: bash
+
+        $ composer require --dev puli/composer-plugin
+
 
 Read more about setting up Puli in their `official documentation`_.
 

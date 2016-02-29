@@ -155,6 +155,7 @@ html_favicon = 'favicon.ico'
 html_static_path = ['_static']
 
 def setup(app):
+    app.add_stylesheet('custom.css')
     app.add_stylesheet('highlight.css')
 
 # Add any extra paths that contain custom files (such as robots.txt or

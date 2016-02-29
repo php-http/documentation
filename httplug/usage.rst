@@ -7,6 +7,6 @@ HTTPlug is relevant for three groups of users:
    :maxdepth: 1
 
    Library users <users>
-   Application developers <application-developers>
+   Application developers <tutorial>
    Library developers <library-developers>
 

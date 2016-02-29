@@ -17,13 +17,14 @@ plugins
 matchers
 param
 params
+Puli
 rebase
 Semver
 sexualized
 sublicense
 sync
+toolbar
 username
 whitelist
 wiki
 workflow
-Puli

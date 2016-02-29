@@ -44,8 +44,8 @@ Usage
 
 There are two main use cases for HTTPlug:
 
-* usage in an application that executes HTTP requests (see :doc:`application-developers`).
-* usage in a reusable package that executes HTTP requests (see :doc:`library-developers`).
+* Usage in an application that executes HTTP requests (see :doc:`tutorial` and :doc:`../integrations/index`);
+* Usage in a reusable package that executes HTTP requests (see :doc:`library-developers`).
 
 History
 -------

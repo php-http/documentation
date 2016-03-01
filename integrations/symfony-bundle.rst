@@ -91,22 +91,25 @@ You can configure your clients with default options. These default values will b
                         headers:
                             Content-Type: 'application/json'
             acme:
-                factory: 'httplug.factory.guzzle6'
+                factory: 'httplug.factory.curl'
                 config:
-                    base_uri: 'http://google.se/'
+                    78: 4 #CURLOPT_CONNECTTIMEOUT
 
 .. code-block:: php
 
     $httpClient = $this->container->get('httplug.client.my_guzzle5');
-    $httpClient = $this->container->get('httplug.client.acme');
+    $httpClient = $this->container->get('httplug.client.curl');
 
     // will be the same as ``httplug.client.my_guzzle5``
     $httpClient = $this->container->get('httplug.client');
 
 The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBudle\ClientFactory\ClientFactory``. The build in services are:
 
+* ``httplug.factory.curl``
 * ``httplug.factory.guzzle5``
 * ``httplug.factory.guzzle6``
+* ``httplug.factory.react``
+* ``httplug.factory.socket``
 
 Plugins
 ```````

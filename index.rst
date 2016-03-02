@@ -72,6 +72,8 @@ for discussion around a future HTTP client PSR.
    clients
    plugins/index
 
+   integrations/index
+
 .. toctree::
    :hidden:
    :caption: Components

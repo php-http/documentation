@@ -11,6 +11,12 @@ take into account when building a reusable package.
 
 We use Composer_ for dependency management. Install it if you don't have it yet.
 
+.. note::
+
+    If you are using a framework, check the :doc:`../integrations/index` to see if
+    there is an integration available. Framework integrations will simplify the way
+    you set up clients, letting you focus on handling the requests.
+
 Setting up the project
 ----------------------
 

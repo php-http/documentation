@@ -74,5 +74,8 @@ executed if the request results in an error::
         }
     );
 
+The ``$exception`` of the failure callback SHOULD implement ``Http\Client\Exception``.
+See :doc:`../httplug/exceptions` for more information on the exception classes you might encounter.
+
 .. _`Promise PSR`: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
 .. _Promises/A+: https://promisesaplus.com

@@ -52,7 +52,7 @@ Web Debug Toolbar
 `````````````````
 .. image:: /assets/img/debug-toolbar.png
     :align: right
-    :width: 120px
+    :width: 260px
 
 When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
@@ -170,21 +170,21 @@ List of Services
 +-------------------------------------+-------------------------------------------------------------------------+
 | ``httplug.client.[name]``           | There is one service per named client.                                  |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.client``                  | | If there is a client named "default", this service is an alias to     |
-|                                     | | that client, otherwise it is an alias to the first client configured. |
+| ``httplug.client``                  | If there is a client named "default", this service is an alias to       |
+|                                     | that client, otherwise it is an alias to the first client configured.   |
 +-------------------------------------+-------------------------------------------------------------------------+
-| | ``httplug.plugin.content_length`` | | These are plugins that are enabled by default.                        |
-| | ``httplug.plugin.decoder``        | | These services are private and should only be used to configure       |
-| | ``httplug.plugin.error``          | | clients or other services.                                            |
-| | ``httplug.plugin.logger``         |                                                                         |
-| | ``httplug.plugin.redirect``       |                                                                         |
-| | ``httplug.plugin.retry``          |                                                                         |
-| | ``httplug.plugin.stopwatch``      |                                                                         |
+| ``httplug.plugin.content_length``   | These are plugins that are enabled by default.                          |
+| ``httplug.plugin.decoder``          | These services are private and should only be used to configure         |
+| ``httplug.plugin.error``            | clients or other services.                                              |
+| ``httplug.plugin.logger``           |                                                                         |
+| ``httplug.plugin.redirect``         |                                                                         |
+| ``httplug.plugin.retry``            |                                                                         |
+| ``httplug.plugin.stopwatch``        |                                                                         |
 +-------------------------------------+-------------------------------------------------------------------------+
-| | ``httplug.plugin.cache``          | | These are plugins that are disabled by default and only get           |
-| | ``httplug.plugin.cookie``         | | activated when configured.                                            |
-| | ``httplug.plugin.history``        | | These services are private and should only be used to configure       |
-|                                     | | clients or other services.                                            |
+| ``httplug.plugin.cache``            | These are plugins that are disabled by default and only get             |
+| ``httplug.plugin.cookie``           | activated when configured.                                              |
+| ``httplug.plugin.history``          | These services are private and should only be used to configure         |
+|                                     | clients or other services.                                              |
 +-------------------------------------+-------------------------------------------------------------------------+
 
 \* *These services are always an alias to another service. You can specify your own service or leave the default, which is the same name with `.default` appended.*

@@ -7,7 +7,7 @@ This bundle integrate HTTPlug with the Symfony framework. The bundle helps to re
 Installation
 ````````````
 
-Install the Httplug bundle with composer and enable it in your AppKernel.php.
+Install the HTTPlug bundle with composer and enable it in your AppKernel.php.
 
 .. code-block:: bash
 
@@ -53,7 +53,7 @@ Web Debug Toolbar
     :align: right
     :width: 120px
 
-When using a client configured with HttplugBundle, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
+When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
 Discovery of Factory Classes
 ````````````````````````````
@@ -85,11 +85,8 @@ You can configure your clients with default options. These default values will b
                 config:
                     # These options are given to Guzzle without validation.
                     defaults:
-                        base_uri: 'http://google.se/'
                         verify_ssl: false
                         timeout: 4
-                        headers:
-                            Content-Type: 'application/json'
             acme:
                 factory: 'httplug.factory.curl'
                 config:
@@ -103,7 +100,7 @@ You can configure your clients with default options. These default values will b
     // will be the same as ``httplug.client.my_guzzle5``
     $httpClient = $this->container->get('httplug.client');
 
-The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBudle\ClientFactory\ClientFactory``. The build in services are:
+The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBudle\ClientFactory\ClientFactory``. The built-in services are:
 
 * ``httplug.factory.curl``
 * ``httplug.factory.guzzle5``
@@ -161,40 +158,40 @@ You can configure a client with authentication. Valid authentication types are `
 List of Services
 ````````````````
 
-+----------------------------------+-------------------------------------------------------------------------+
-| Service id                       | Description                                                             |
-+==================================+=========================================================================+
-| httplug.message_factory          | Service* that provides the `Http\Message\MessageFactory`                |
-+----------------------------------+-------------------------------------------------------------------------+
-| httplug.uri_factory              | Service* that provides the `Http\Message\UriFactory`                    |
-+----------------------------------+-------------------------------------------------------------------------+
-| httplug.stream_factory           | Service* that provides the `Http\Message\StreamFactory`                 |
-+----------------------------------+-------------------------------------------------------------------------+
-| httplug.client.[name]            | There is one service per named client.                                  |
-+----------------------------------+-------------------------------------------------------------------------+
-| httplug.client                   | | If there is a client named "default", this service is an alias to     |
-|                                  | | that client, otherwise it is an alias to the first client configured. |
-+----------------------------------+-------------------------------------------------------------------------+
-| | httplug.plugin.content_length  | | These are plugins that are enabled by default.                        |
-| | httplug.plugin.decoder         | | These services are private and should only be used to configure       |
-| | httplug.plugin.error           | | clients or other services.                                            |
-| | httplug.plugin.logger          |                                                                         |
-| | httplug.plugin.redirect        |                                                                         |
-| | httplug.plugin.retry           |                                                                         |
-| | httplug.plugin.stopwatch       |                                                                         |
-+----------------------------------+-------------------------------------------------------------------------+
-| | httplug.plugin.cache           | | These are plugins that are disabled by default and only get           |
-| | httplug.plugin.cookie          | | activated when configured.                                            |
-| | httplug.plugin.history         | | These services are private and should only be used to configure       |
-|                                  | | clients or other services.                                            |
-+----------------------------------+-------------------------------------------------------------------------+
++-------------------------------------+-------------------------------------------------------------------------+
+| Service id                          | Description                                                             |
++=====================================+=========================================================================+
+| ``httplug.message_factory``         | Service* that provides the `Http\Message\MessageFactory`                |
++-------------------------------------+-------------------------------------------------------------------------+
+| ``httplug.uri_factory``             | Service* that provides the `Http\Message\UriFactory`                    |
++-------------------------------------+-------------------------------------------------------------------------+
+| ``httplug.stream_factory``          | Service* that provides the `Http\Message\StreamFactory`                 |
++-------------------------------------+-------------------------------------------------------------------------+
+| ``httplug.client.[name]``           | There is one service per named client.                                  |
++-------------------------------------+-------------------------------------------------------------------------+
+| ``httplug.client``                  | | If there is a client named "default", this service is an alias to     |
+|                                     | | that client, otherwise it is an alias to the first client configured. |
++-------------------------------------+-------------------------------------------------------------------------+
+| | ``httplug.plugin.content_length`` | | These are plugins that are enabled by default.                        |
+| | ``httplug.plugin.decoder``        | | These services are private and should only be used to configure       |
+| | ``httplug.plugin.error``          | | clients or other services.                                            |
+| | ``httplug.plugin.logger``         |                                                                         |
+| | ``httplug.plugin.redirect``       |                                                                         |
+| | ``httplug.plugin.retry``          |                                                                         |
+| | ``httplug.plugin.stopwatch``      |                                                                         |
++-------------------------------------+-------------------------------------------------------------------------+
+| | ``httplug.plugin.cache``          | | These are plugins that are disabled by default and only get           |
+| | ``httplug.plugin.cookie``         | | activated when configured.                                            |
+| | ``httplug.plugin.history``        | | These services are private and should only be used to configure       |
+|                                     | | clients or other services.                                            |
++-------------------------------------+-------------------------------------------------------------------------+
 
 \* *These services are always an alias to another service. You can specify your own service or leave the default, which is the same name with `.default` appended.*
 
 
-Useage for Reusable Bundles
+Usage for Reusable Bundles
 ``````````````````````````
 
-Rather than code against specific HTTP clients, you want to use the Httplug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
+Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
 
-The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the HttplugBundle in their kernel.
+The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the ``HttplugBundle`` in their kernel.

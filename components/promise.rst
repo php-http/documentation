@@ -34,6 +34,13 @@ See :ref:`message-factory` on how to use message factories.
 Although the promise itself is not restricted to resolve a specific result type,
 in HTTP context it resolves a PSR-7 ``Psr\Http\Message\ResponseInterface`` or fails with an ``Http\Client\Exception``.
 
+.. note::
+
+    An asynchronous request will never throw an exception directly but always
+    return a promise. All exceptions SHOULD implement ``Http\Client\Exception``.
+    See :doc:`../httplug/exceptions` for more information on the exceptions
+    you might encounter.
+
 Wait
 ----
 
@@ -73,9 +80,6 @@ executed if the request results in an error::
             throw $exception;
         }
     );
-
-The ``$exception`` of the failure callback SHOULD implement ``Http\Client\Exception``.
-See :doc:`../httplug/exceptions` for more information on the exception classes you might encounter.
 
 .. _`Promise PSR`: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
 .. _Promises/A+: https://promisesaplus.com

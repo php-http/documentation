@@ -9,7 +9,7 @@ Every exception thrown by a HTTP client must implement ``Http\Client\Exception``
 ================================== ============================= ===================
 Exception                          Thrown when                   Methods available
 ================================== ============================= ===================
-TransferException                  something unexpected happened -
+TransferException                  something unexpected happened \-
 └ RequestException                 the request is invalid        ``getRequest()``
  |nbsp| |nbsp| └ NetworkException  no response received
                                    due to network issues         ``getRequest()``

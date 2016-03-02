@@ -18,6 +18,7 @@ HTTPlug defines two HTTP client interfaces that we kept as simple as possible:
 
 * ``HttpAsyncClient`` defines a ``sendAsyncRequest`` method that sends a request
   asynchronously and always returns a ``Http\Client\Promise``.
+  See :doc:`../components/promise` for more information.
 
 Implementations
 ---------------

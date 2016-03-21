@@ -104,6 +104,7 @@ You can configure your clients with default options. These default values will b
 The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBudle\ClientFactory\ClientFactory``. The built-in services are:
 
 * ``httplug.factory.curl``
+* ``httplug.factory.buzz``
 * ``httplug.factory.guzzle5``
 * ``httplug.factory.guzzle6``
 * ``httplug.factory.react``
@@ -170,21 +171,21 @@ List of Services
 +-------------------------------------+-------------------------------------------------------------------------+
 | ``httplug.client.[name]``           | There is one service per named client.                                  |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.client``                  | If there is a client named "default", this service is an alias to       |
-|                                     | that client, otherwise it is an alias to the first client configured.   |
+| ``httplug.client``                  | | If there is a client named "default", this service is an alias to     |
+|                                     | | that client, otherwise it is an alias to the first client configured. |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.plugin.content_length``   | These are plugins that are enabled by default.                          |
-| ``httplug.plugin.decoder``          | These services are private and should only be used to configure         |
-| ``httplug.plugin.error``            | clients or other services.                                              |
-| ``httplug.plugin.logger``           |                                                                         |
-| ``httplug.plugin.redirect``         |                                                                         |
-| ``httplug.plugin.retry``            |                                                                         |
-| ``httplug.plugin.stopwatch``        |                                                                         |
+| | ``httplug.plugin.content_length`` | | These are plugins that are enabled by default.                        |
+| | ``httplug.plugin.decoder``        | | These services are private and should only be used to configure       |
+| | ``httplug.plugin.error``          | | clients or other services.                                            |
+| | ``httplug.plugin.logger``         |                                                                         |
+| | ``httplug.plugin.redirect``       |                                                                         |
+| | ``httplug.plugin.retry``          |                                                                         |
+| | ``httplug.plugin.stopwatch``      |                                                                         |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.plugin.cache``            | These are plugins that are disabled by default and only get             |
-| ``httplug.plugin.cookie``           | activated when configured.                                              |
-| ``httplug.plugin.history``          | These services are private and should only be used to configure         |
-|                                     | clients or other services.                                              |
+| | ``httplug.plugin.cache``          | | These are plugins that are disabled by default and only get           |
+| | ``httplug.plugin.cookie``         | | activated when configured.                                            |
+| | ``httplug.plugin.history``        | | These services are private and should only be used to configure       |
+|                                     | | clients or other services.                                            |
 +-------------------------------------+-------------------------------------------------------------------------+
 
 \* *These services are always an alias to another service. You can specify your own service or leave the default, which is the same name with `.default` appended.*

@@ -56,6 +56,27 @@ If you need the composer-plugin for testing in a reusable library, make it a dev
 Read more about setting up Puli in their `official documentation`_.
 
 
+Common Errors
+-------------
+
+Puli Factory is not available
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error that says "*Puli Factory is not available*", it means that you have failed to install Puli. You should
+make sure you install the latest version of ``puli/composer-plugin``.
+
+No factories found
+^^^^^^^^^^^^^^^^^^
+
+The error "*No factories found. To use Guzzle or Diactoros factories install php-http/message and the chosen message implementation.*"
+tells you that Puli could not find an installed implementation of PSR-7 and/or factories to that implementation. You
+need to install those libraries. If you want to use Guzzle you may run:
+
+.. code-block:: bash
+
+        $ composer require php-http/message guzzlehttp/psr7
+
+
 HTTP Client Discovery
 ---------------------
 

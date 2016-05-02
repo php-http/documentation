@@ -1,3 +1,7 @@
 .row-even .line-block, .row-odd .line-block {
     margin-left: 0;
 }
+
+.versionmodified {
+    font-weight: bold;
+}

@@ -6,8 +6,8 @@ to :rfc:`6265#section-4` specification::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Message\CookieJar;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\CookiePlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\CookiePlugin;
 
     $cookiePlugin = new CookiePlugin(new CookieJar());
 

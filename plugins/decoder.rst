@@ -5,8 +5,8 @@ The ``DecoderPlugin`` decodes the body of the response with filters coming from 
 or ``Content-Encoding`` headers::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\DecoderPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\DecoderPlugin;
 
     $decoderPlugin = new DecoderPlugin();
 

@@ -12,8 +12,8 @@ situation is caught by the plugin client itself and can be controlled through th
 Initiate the redirect plugin as follows::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\RedirectPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\RedirectPlugin;
 
     $redirectPlugin = new RedirectPlugin();
 
@@ -41,4 +41,4 @@ request.
 ``use_default_for_multiple``: bool (default: true)
 
 Whether to follow the default direction on the multiple redirection status code 300. If set to
-false, a status of 300 will raise the ``MultipleRedirectionException``.
+false, a status of 300 will raise the ``Http\Client\Common\Exception\MultipleRedirectionException``.

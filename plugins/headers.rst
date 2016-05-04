@@ -13,8 +13,8 @@ However, if the header already is present, the request is left unchanged.
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\HeaderDefaultPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HeaderDefaultPlugin;
 
     $defaultUserAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 
@@ -36,8 +36,8 @@ this plugin will have the given value for given header.
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\HeaderSetPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HeaderSetPlugin;
 
     $userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 
@@ -61,8 +61,8 @@ The plugin ``HeaderRemovePlugin`` allows to remove given headers from the reques
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\HeaderRemovePlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HeaderRemovePlugin;
 
     $userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 
@@ -90,8 +90,8 @@ but if the request does not already have the given header, it will be added to t
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\HeaderAppendPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HeaderAppendPlugin;
 
     $myIp = '100.100.100.100';
 
@@ -116,9 +116,9 @@ The following example will force the ``User-Agent`` and the ``Accept`` header va
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Plugins\PluginClient;
-    use Http\Plugins\HeaderSetPlugin;
-    use Http\Plugins\HeaderRemovePlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HeaderSetPlugin;
+    use Http\Client\Common\Plugin\HeaderRemovePlugin;
 
     $userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 

@@ -1,12 +1,22 @@
 Stopwatch Plugin
 ================
 
+Install
+-------
+
+.. code-block:: bash
+
+    $ composer require php-http/stopwatch-plugin
+
+Usage
+-----
+
 The ``StopwatchPlugin`` records the duration of HTTP requests with a
 ``Symfony\Component\Stopwatch\Stopwatch`` instance::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\StopwatchPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\StopwatchPlugin;
     use Symfony\Component\Stopwatch\Stopwatch;
 
     $stopwatch = new Stopwatch();

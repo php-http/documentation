@@ -4,11 +4,19 @@ Introduction
 Install
 -------
 
-Install the plugin client in your project with Composer_:
+The plugin client and the core plugins are available in the `php-http/client-common`_ package:
 
 .. code-block:: bash
 
-    $ composer require php-http/plugins
+    $ composer require php-http/client-common
+
+.. _php-http/client-common: https://github.com/php-http/client-common
+
+.. versionadded:: 1.1
+    The plugins were moved to the clients-common package in version 1.1.
+    If you work with version 1.0, you need to require the separate `php-http/plugins` package
+    and the namespace is ``Http\Client\Plugin`` instead of ``Http\Client\Common``
+
 
 How it works
 ------------
@@ -24,9 +32,9 @@ The Plugin Client accepts an HTTP Client implementation and an array of plugins.
 Let’s see an example::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\RetryPlugin;
-    use Http\Client\Plugin\RedirectPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\RetryPlugin;
+    use Http\Client\Common\Plugin\RedirectPlugin;
 
     $retryPlugin = new RetryPlugin();
     $redirectPlugin = new RedirectPlugin();
@@ -99,6 +107,8 @@ plugins or configure a different client. For example::
     $myApiClient = new My\Api\Client('https://api.example.org', My\Api\HttpClientFactory::create('john', 's3cr3t'));
 
     use Http\Client\HttpClient;
+    use Http\Client\Common\Plugin\AuthenticationPlugin;
+    use Http\Client\Common\Plugin\ErrorPlugin;
     use Http\Discovery\HttpClientDiscovery;
 
     class HttpClientFactory
@@ -118,7 +128,7 @@ plugins or configure a different client. For example::
                 $client = HttpClientDiscovery::find();
             }
             return new PluginClient($client, [
-                new Http\Client\Plugin\ErrorPlugin(),
+                new ErrorPlugin(),
                 new AuthenticationPlugin(
                      // This API has it own authentication algorithm
                     new ApiAuthentication(Client::AUTH_OAUTH_TOKEN, $user, $pass)

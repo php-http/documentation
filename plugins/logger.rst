@@ -1,12 +1,22 @@
 Logger Plugin
 =============
 
+Install
+-------
+
+.. code-block:: bash
+
+    $ composer require php-http/logger-plugin
+
+Usage
+-----
+
 The ``LoggerPlugin`` converts requests, responses and exceptions to strings and logs them with a PSR3_
 compliant logger::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\LoggerPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\LoggerPlugin;
     use Monolog\Logger;
 
     $loggerPlugin = new LoggerPlugin(new Logger('http'));

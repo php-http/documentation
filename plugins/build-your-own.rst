@@ -4,7 +4,13 @@ Building Custom Plugins
 When writing your own Plugin, you need to be aware that the Plugin Client is async first.
 This means that every plugin must be written with Promises. More about this later.
 
-Each plugin must implement the ``Http\Client\Plugin\Plugin`` interface.
+Each plugin must implement the ``Http\Client\Common\Plugin`` interface.
+
+.. versionadded:: 1.1
+    The plugins were moved to the `client-common` package in version 1.1.
+    If you work with version 1.0, the interface is called ``Http\Client\Plugin\Plugin`` and
+    you need to require the separate `php-http/plugins` package.
+    The old interface will keep extending ``Http\Client\Common\Plugin``, but relying on it is deprecated.
 
 This interface defines the ``handleRequest`` method that allows to modify behavior of the call::
 
@@ -84,13 +90,13 @@ You can manipulate the ``ResponseInterface`` or the ``Exception`` by using the
     deprecate the old contract.
 
 To better understand the whole process check existing implementations in the
-`plugin repository`_.
+`client-common package`_.
 
 Contributing Your Plugins to PHP-HTTP
 -------------------------------------
 
-We are open to contributions. If the plugin is of general interest and is not too complex, the best
-is to do a Pull Request to ``php-http/plugins``. Please see the :doc:`contribution guide <../development/contributing>`.
+We are open to contributions. If the plugin is of general interest, is not too complex and does not have dependencies, the best
+is to do a Pull Request to ``php-http/client-common``. Please see the :doc:`contribution guide <../development/contributing>`.
 We don't promise that every plugin gets merged into the core. We need to keep the core as small as
 possible with only the most widely used plugins to keep it maintainable.
 
@@ -98,4 +104,4 @@ The alternative is providing your plugins in your own repository. Please let us 
 we would like to add a list of existing third party plugins to the list of plugins.
 
 .. _PSR: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
-.. _plugin repository: https://github.com/php-http/plugins
+.. _client-common package: https://github.com/php-http/client-common

@@ -6,9 +6,9 @@ unreliable connections and servers. It relies on errors to throw exceptions, so 
 to place the :doc:`error` later in the plugin chain::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\ErrorPlugin;
-    use Http\Client\Plugin\RetryPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\ErrorPlugin;
+    use Http\Client\Common\Plugin\RetryPlugin;
 
     $pluginClient = new PluginClient(
         HttpClientDiscovery::find(),

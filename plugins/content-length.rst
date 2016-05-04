@@ -5,8 +5,8 @@ The ``ContentLengthPlugin`` sets the correct ``Content-Length`` header value bas
 request. This helps HTTP servers to handle the request::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\ContentLengthPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\ContentLengthPlugin;
 
     $contentLengthPlugin = new ContentLengthPlugin();
 

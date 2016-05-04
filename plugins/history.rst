@@ -1,12 +1,12 @@
 History Plugin
 ==============
 
-The ``HistoryPlugin`` notifies a ``Http\Client\Plugin\Journal`` of all
+The ``HistoryPlugin`` notifies a ``Http\Client\Common\Plugin\Journal`` of all
 successful and failed calls::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Client\Plugin\PluginClient;
-    use Http\Client\Plugin\HistoryPlugin;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\HistoryPlugin;
 
     $historyPlugin = new HistoryPlugin(new \My\Journal\Implementation());
 

@@ -76,3 +76,8 @@ If one or more of the requests throw exceptions, they are added to the
     } catch (BatchException $e) {
         var_dump($e->getResult()->getExceptions());
     }
+
+PluginClient
+------------
+
+See :doc:`/plugins/introduction`

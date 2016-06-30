@@ -92,7 +92,7 @@ You can configure your clients with default options. These default values will b
                 factory: 'httplug.factory.curl'
                 config:
                     CURLOPT_CONNECTTIMEOUT: 4
-                    CURLOPT_SSL_VERIFYHOST: 0
+                    CURLOPT_SSL_VERIFYHOST: false
 
 .. code-block:: php
 

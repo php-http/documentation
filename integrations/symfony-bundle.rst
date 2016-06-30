@@ -91,7 +91,8 @@ You can configure your clients with default options. These default values will b
             acme:
                 factory: 'httplug.factory.curl'
                 config:
-                    78: 4 #CURLOPT_CONNECTTIMEOUT
+                    CURLOPT_CONNECTTIMEOUT: 4
+                    CURLOPT_SSL_VERIFYHOST: false
 
 .. code-block:: php
 

@@ -6,7 +6,7 @@ Header plugins are useful to manage request headers. Many operations are possibl
 Default headers values
 ----------------------
 
-The plugin ``HeaderDefaultPlugin`` allows to set default values for given headers.
+The plugin ``HeaderDefaultsPlugin`` allows to set default values for given headers.
 That means if a header is not set, it will be added.
 However, if the header already is present, the request is left unchanged.
 
@@ -14,17 +14,17 @@ However, if the header already is present, the request is left unchanged.
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Common\PluginClient;
-    use Http\Client\Common\Plugin\HeaderDefaultPlugin;
+    use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 
     $defaultUserAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 
-    $headerDefaultPlugin = new HeaderDefaultPlugin([
+    $headerDefaultsPlugin = new HeaderDefaultsPlugin([
         'User-Agent' => $defaultUserAgent
     ]);
 
     $pluginClient = new PluginClient(
         HttpClientDiscovery::find(),
-        [$headerDefaultPlugin]
+        [$headerDefaultsPlugin]
     );
 
 Mandatory headers values

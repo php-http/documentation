@@ -94,6 +94,14 @@ To prevent issues with faulty plugins or endless redirects, the ``PluginClient``
 check to the start of the plugin chain. If the same request is restarted more than specified by
 that value, execution is aborted and an error is raised.
 
+.. _plugin-client.debug-plugins:
+
+``debug_plugins``: array of Plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A debug plugin is injected between each normal plugin. This could be used to log the changes each
+plugin does on the Request and Response objects.
+
 .. _plugin-client.libraries:
 
 Libraries that Require Plugins

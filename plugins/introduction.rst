@@ -99,7 +99,7 @@ that value, execution is aborted and an error is raised.
 ``debug_plugins``: array of Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A debug plugin is injected between each normal plugin. This could be used to log the changes each
+Debug plugins are injected between each normal plugin. This could be used to log the changes each
 plugin does on the Request and Response objects.
 
 .. _plugin-client.libraries:

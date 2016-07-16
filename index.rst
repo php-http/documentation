@@ -74,6 +74,8 @@ for discussion around a future HTTP client PSR.
 
    integrations/index
 
+   Backwards compatibility <httplug/backwards-compatibility>
+
 .. toctree::
    :hidden:
    :caption: Components

@@ -20,6 +20,7 @@ Client adapters:
 
 .. toctree::
 
+   clients/buzz-adapter
    clients/guzzle5-adapter
    clients/guzzle6-adapter
    clients/react-adapter

@@ -42,7 +42,7 @@ Then create the adapter::
     use Http\Adapter\Buzz\Client as BuzzAdapter;
     use Http\Message\MessageFactory\GuzzleMessageFactory;
 
-    $adapter = new GuzzleAdapter($browser, new GuzzleMessageFactory());
+    $adapter = new BuzzAdapter($browser, new GuzzleMessageFactory());
 
 Or if you installed the :doc:`discovery </discovery>` layer::
 

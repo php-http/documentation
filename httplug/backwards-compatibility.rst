@@ -25,7 +25,6 @@ However, we do promise that we will not remove a strategy neither will we remove
 * 1.0.0-beta10
 
 The consequences of the BC promise for the discovery library is that you can not rely on the *same* client to be
-returned in the future. However, you can be sure that if discovery finds you a client now, future updates will still
-find a client.
+returned in the future. However, if discovery does find a client now, you can be sure that after future updates it will still discover a client.
 
 .. _Semver: http://semver.org/

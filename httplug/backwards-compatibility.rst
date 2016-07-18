@@ -17,7 +17,7 @@ of those values).
 Discovery
 ---------
 
-The order of which the strategies are included is not part of our BC promise. The strategies themselves are marked
+The order of the strategies is not part of our BC promise. The strategies themselves are marked
 as ``@internal`` so they are also not part of our BC promise.
 However, we do promise that we will not remove a strategy neither will we remove classes from the `
 ``CommonClassesStrategy``. We will also support the following Puli versions:

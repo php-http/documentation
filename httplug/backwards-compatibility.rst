@@ -23,8 +23,8 @@ However, we do promise that we will not remove a strategy neither will we remove
 ``CommonClassesStrategy``. We will also support the following Puli versions:
 * 1.0.0-beta10
 
-The consequences of the BC promise on the discovery library is that you can never be sure *what* client that is
-being returned but you can be sure that if discovery finds you a client we will not make an update that will break
-discovery for you.
+The consequences of the BC promise for the discovery library is that you can not rely on the *same* client to be
+returned in the future. However, you can be sure that if discovery finds you a client now, future updates will still
+find a client.
 
 .. _Semver: http://semver.org/

@@ -3,12 +3,6 @@ Discovery
 
 The discovery service allows to find and use installed resources.
 
-Under the hood it uses `Puli`_ for the discovery logic. All of our packages provide Puli resources.
-Discovery is simply a convenience wrapper to statically access clients and factories for when
-Dependency Injection is not an option. Discovery is useful in libraries that want to offer
-zero-configuration services relying on the virtual packages. If you have Dependency Injection available,
-using Puli directly is more elegant (see for example the Symfony HttplugBundle).
-
 Consumers of libraries using discovery still need to make sure they install one of the implementations.
 Discovery can only find installed code, not fetch code from other sources.
 
@@ -22,36 +16,67 @@ Currently available discovery services:
 
 The principle is always the same: you call the static ``find`` method on the discovery service if no explicit
 implementation was specified. The discovery service will try to locate a suitable implementation.
-If no implementation is found, an ``Http\Discovery\NotFoundException`` is thrown.
+If no implementation is found, an ``Http\Discovery\Exception\NotFoundException`` is thrown.
+
+.. versionadded:: 0.9
+    The exception ``Http\Discovery\NotFoundException`` has been moved to ``Http\Discovery\Exception\NotFoundException``.
+
+Discovery is simply a convenience wrapper to statically access clients and factories for when
+Dependency Injection is not an option. Discovery is useful in libraries that want to offer
+zero-configuration services relying on the virtual packages.
+
+
+Strategies
+----------
+
+The package supports multiple discovery strategies and comes with two out-of-the-box:
+
+- A built-in strategy supporting the HTTPlug adapters, clients and factories (including Guzzle and Diactoros)
+- A strategy supporting the beta version of `Puli`_
+
+Strategies provide candidates of a type which gets evaluated by the discovery service.
+When it finds the best candidate, it caches it and stops looking in further strategies.
+
 
 Installation
 ------------
-
-There are two kinds of installation:
-
-- In a reusable library
-- In an application
-
-In both cases you have to install the discovery package itself:
 
 .. code-block:: bash
 
     $ composer require php-http/discovery
 
-As mentioned above, discovery relies on Puli. In order to use discovery, you need to also set up Puli.
-The easiest way is installing the composer-plugin which automatically configures all the composer packages to act as
-Puli modules. For applications, simply do:
+
+Using Puli
+^^^^^^^^^^
+
+`Puli`_ is a first class citizen, but completely optional strategy in discovery.
+It provides better flexibility than the built-in strategy, but requires more configuration.
+
+There are two kinds of installation:
+
+- In an application
+- In a reusable library (for development)
+
+In both cases you have to install the discovery package itself and set up Puli.
+The easiest way is installing the composer-plugin which automatically configures
+all the composer packages to act as Puli modules.
+
+For applications, simply do:
 
 .. code-block:: bash
 
-        $ composer require puli/composer-plugin
+    $ composer require puli/composer-plugin
 
-If you need the composer-plugin for testing in a reusable library, make it a development dependency instead:
+
+If you need the composer-plugin for development or testing in a reusable library,
+make it a development dependency instead:
 
 .. code-block:: bash
 
-        $ composer require --dev puli/composer-plugin
+    $ composer require --dev puli/composer-plugin
 
+All of our packages provide Puli resources too, so if Puli is installed, discovery will use it as the primary strategy
+and fall back to the built-in list.
 
 Read more about setting up Puli in their `official documentation`_.
 
@@ -62,8 +87,8 @@ Common Errors
 Puli Factory is not available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you get an error that says "*Puli Factory is not available*", it means that you have failed to install Puli. You should
-make sure you install the latest version of ``puli/composer-plugin``.
+If you get an error that says "*Puli Factory is not available*", it means that you have failed to install Puli.
+You should make sure you install the latest version of ``puli/composer-plugin``.
 
 No factories found
 ^^^^^^^^^^^^^^^^^^
@@ -174,11 +199,11 @@ This type of discovery finds a URI factory for a PSR-7_ URI implementation::
         }
     }
 
-Integrating your own implementation with the discovery mechanism
-----------------------------------------------------------------
+Integrating your own implementation with the discovery mechanism using Puli
+---------------------------------------------------------------------------
 
- When you are working on an HTTP Client or Message Factory, you can easily make your class discoverable:
- you have to configure it as a Puli resource (`binding`_ in Puli terminology).
+If you use `Puli`_ you can easily make your own HTTP Client or Message Factory discoverable:
+you have to configure it as a Puli resource (`binding`_ in Puli terminology).
 
 A binding must have a type, called `binding-type`_. All of our interfaces are registered as binding types.
 

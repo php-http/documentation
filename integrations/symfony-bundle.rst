@@ -56,6 +56,32 @@ Web Debug Toolbar
 
 When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
+You can configure the bundle to show debug information for clients found with discovery. You can also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
+
+.. code-block:: yaml
+
+    httplug:
+        clients:
+            my_guzzle5:
+                factory: 'httplug.factory.guzzle5'
+        discovery:
+            client: 'httplug.clients.my_guzzle5'
+            async_client: 'auto'
+
+The debug info for normal http clients are enabled by default but not for async clients. You can turn all debug info off for auto discovered clients by setting the value to ``false``.
+
+The web profiler page will show you lots of information about the request and also how diffrent plugins changes the message. See example screenshots below.
+
+IMAGES
+
+The body of the HTTP messages is not captured by default because of performance reasons. Turn this on by changing the ``captured_body_length`` configuration.
+
+.. code-block:: yaml
+
+    httplug:
+        toolbar:
+            captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
+
 Discovery of Factory Classes
 ````````````````````````````
 
@@ -157,6 +183,23 @@ You can configure a client with authentication. Valid authentication types are `
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse']
 
+Special HTTP clients
+````````````````````
+
+If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the ``php-http/message`` package you may specify that on the client configuration.
+
+.. code-block:: yaml
+
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                factory: 'httplug.factory.guzzle6'
+                flexible_client: true
+
+            foobar:
+                factory: 'httplug.factory.guzzle6'
+                http_methods_client: true
 
 List of Services
 ````````````````

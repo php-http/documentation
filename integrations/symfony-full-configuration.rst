@@ -55,7 +55,6 @@ This page shows an example of all configuration values provided by the bundle.
                 enabled: true
                 logger: 'logger'
                 formatter: null
-                captured_body_length: 0
             redirect:
                 enabled: true
                 preserve_header: true
@@ -66,6 +65,11 @@ This page shows an example of all configuration values provided by the bundle.
             stopwatch:
                 enabled: true
                 stopwatch: 'debug.stopwatch'
+
+        toolbar:
+            enabled: true
+            formatter: null # Defaults to FullHttpMessageFormatter
+            captured_body_length: 0
 
         discovery:
             client: 'auto'

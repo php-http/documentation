@@ -55,6 +55,7 @@ This page shows an example of all configuration values provided by the bundle.
                 enabled: true
                 logger: 'logger'
                 formatter: null
+                captured_body_length: 0
             redirect:
                 enabled: true
                 preserve_header: true
@@ -65,10 +66,17 @@ This page shows an example of all configuration values provided by the bundle.
             stopwatch:
                 enabled: true
                 stopwatch: 'debug.stopwatch'
+
+        discovery:
+            client: 'auto'
+            async_client: null
+
         clients:
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse', 'httplug.plugin.cache', 'httplug.plugin.retry']
+                flexible_client: false
+                http_methods_client: false
                 config:
                     verify: false
                     timeout: 2

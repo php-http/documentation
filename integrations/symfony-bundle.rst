@@ -68,9 +68,9 @@ You can configure the bundle to show debug information for clients found with di
             client: 'httplug.clients.my_guzzle5'
             async_client: 'auto'
 
-The debug info for normal http clients are enabled by default but not for async clients. You can turn all debug info off for auto discovered clients by setting the value to ``false``.
+The debug info for normal HTTP clients are enabled by default but not for async clients. You can turn all debug info off for auto discovered clients by setting the value to ``false``.
 
-The web profiler page will show you lots of information about the request and also how diffrent plugins changes the message. See example screenshots below.
+The web profiler page will show you lots of information about the request and also how different plugins changes the message. See example screen shots below.
 
 .. image:: /assets/img/symfony-profiler/dashboard.png
     :width: 200px

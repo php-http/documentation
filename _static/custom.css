@@ -5,3 +5,13 @@
 .versionmodified {
     font-weight: bold;
 }
+
+.wy-menu-vertical p.caption {
+    color: #b3b3b3;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+.wy-menu-vertical p.caption .caption-text {
+    text-decoration: underline;
+    font-size: 120%;
+}

@@ -86,6 +86,6 @@ for discussion around a future HTTP client PSR.
 
 .. toctree::
    :hidden:
-   :caption: Other
+   :caption: ---------
 
    development/index.rst

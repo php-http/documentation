@@ -3,7 +3,7 @@ Multipart Stream Builder
 
 A multipart stream is a special kind of stream that could be used when transferring files over HTTP. There is currently no PSR-7 support for multipart streams as they are considered to be normal streams with a special content. A multipart stream HTTP request may look like this:
 
-.. code-block:: http
+.. code-block:: none
 
     POST / HTTP1/1
     User-Agent: curl/7.21.2 (x86_64-apple-darwin)

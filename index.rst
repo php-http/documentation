@@ -83,6 +83,7 @@ for discussion around a future HTTP client PSR.
    components/adapter-integration-tests
    components/promise
    discovery
+   components/multipart-stream-builder
 
 .. toctree::
    :hidden:

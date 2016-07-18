@@ -56,7 +56,7 @@ Web Debug Toolbar
 
 When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
-You can configure the bundle to show debug information for clients found with discovery. You can also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
+You can configure the bundle to show debug information for clients found with discovery. You may also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
 
 .. code-block:: yaml
 
@@ -72,7 +72,19 @@ The debug info for normal http clients are enabled by default but not for async 
 
 The web profiler page will show you lots of information about the request and also how diffrent plugins changes the message. See example screenshots below.
 
-IMAGES
+.. image:: /assets/img/symfony-profiler/dashboard.png
+    :width: 200px
+    :align: left
+
+.. image:: /assets/img/symfony-profiler/request-stack.png
+    :width: 200px
+    :align: left
+
+.. image:: /assets/img/symfony-profiler/error-plugin-failure.png
+    :width: 200px
+    :align: left
+
+|clearfloat|
 
 The body of the HTTP messages is not captured by default because of performance reasons. Turn this on by changing the ``captured_body_length`` configuration.
 
@@ -241,3 +253,7 @@ Usage for Reusable Bundles
 Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
 
 The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the ``HttplugBundle`` in their kernel.
+
+.. |clearfloat|  raw:: html
+
+    <div style="clear:left"></div>

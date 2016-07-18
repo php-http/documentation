@@ -19,8 +19,9 @@ Discovery
 
 The order of the strategies is not part of our BC promise. The strategies themselves are marked
 as ``@internal`` so they are also not part of our BC promise.
-However, we do promise that we will not remove a strategy neither will we remove classes from the `
+However, we do promise that we will not remove a strategy neither will we remove classes from the
 ``CommonClassesStrategy``. We will also support the following Puli versions:
+* 1.0.0-beta9
 * 1.0.0-beta10
 
 The consequences of the BC promise for the discovery library is that you can not rely on the *same* client to be

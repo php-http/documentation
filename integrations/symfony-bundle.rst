@@ -56,20 +56,6 @@ Web Debug Toolbar
 
 When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
-You can configure the bundle to show debug information for clients found with discovery. You may also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
-
-.. code-block:: yaml
-
-    httplug:
-        clients:
-            my_guzzle5:
-                factory: 'httplug.factory.guzzle5'
-        discovery:
-            client: 'httplug.clients.my_guzzle5'
-            async_client: 'auto'
-
-The debug info for normal HTTP clients are enabled by default but not for async clients. You can turn all debug info off for auto discovered clients by setting the value to ``false``.
-
 The web profiler page will show you lots of information about the request and also how different plugins changes the message. See example screen shots below.
 
 .. image:: /assets/img/symfony-profiler/dashboard.png
@@ -93,6 +79,33 @@ The body of the HTTP messages is not captured by default because of performance 
     httplug:
         toolbar:
             captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
+
+The toolbar is automatically turned of when ``kernel.debug = false``. You can also disable the toolbar by configuration.
+
+.. code-block:: yaml
+
+    httplug:
+        toolbar: false
+
+You can configure the bundle to show debug information for clients found with discovery. You may also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
+
+.. note::
+
+    Ideally, you would always use depndency injection and never rely on auto discovery to find a client.
+
+.. code-block:: yaml
+
+    httplug:
+        clients:
+            my_guzzle5:
+                factory: 'httplug.factory.guzzle5'
+        discovery:
+            client: 'httplug.clients.my_guzzle5'
+            async_client: 'auto'
+
+For normal clients, the auto discovery debug info is enabled by default. For async clients, debug is not enabled by default to avoid errors when using the bundle with a client that can not do async. To get debug information for async clients, set ``discovery.async_client`` to ``'auto'`` or an explicit client.
+
+You can turn off all interaction of the bundle with auto discovery by setting the value of ``discovery.client`` to ``false``.
 
 Discovery of Factory Classes
 ````````````````````````````

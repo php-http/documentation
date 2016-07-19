@@ -17,6 +17,7 @@ plugins
 matchers
 param
 params
+profiler
 Puli
 rebase
 Semver
@@ -28,4 +29,3 @@ username
 whitelist
 wiki
 workflow
-profiler

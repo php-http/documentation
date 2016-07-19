@@ -80,7 +80,7 @@ The body of the HTTP messages is not captured by default because of performance 
         toolbar:
             captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
 
-The toolbar is automatically turned of when ``kernel.debug = false``. You can also disable the toolbar by configuration.
+The toolbar is automatically turned off when ``kernel.debug = false``. You can also disable the toolbar by configuration.
 
 .. code-block:: yaml
 

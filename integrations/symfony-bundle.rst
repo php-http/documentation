@@ -91,7 +91,7 @@ You can configure the bundle to show debug information for clients found with di
 
 .. note::
 
-    Ideally, you would always use depndency injection and never rely on auto discovery to find a client.
+    Ideally, you would always use dependency injection and never rely on auto discovery to find a client.
 
 .. code-block:: yaml
 

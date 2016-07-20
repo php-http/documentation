@@ -18,6 +18,7 @@ matchers
 multipart
 param
 params
+profiler
 Puli
 rebase
 Semver

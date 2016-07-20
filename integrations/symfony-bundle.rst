@@ -56,6 +56,57 @@ Web Debug Toolbar
 
 When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
 
+The web profiler page will show you lots of information about the request and also how different plugins changes the message. See example screen shots below.
+
+.. image:: /assets/img/symfony-profiler/dashboard.png
+    :width: 200px
+    :align: left
+
+.. image:: /assets/img/symfony-profiler/request-stack.png
+    :width: 200px
+    :align: left
+
+.. image:: /assets/img/symfony-profiler/error-plugin-failure.png
+    :width: 200px
+    :align: left
+
+|clearfloat|
+
+The body of the HTTP messages is not captured by default because of performance reasons. Turn this on by changing the ``captured_body_length`` configuration.
+
+.. code-block:: yaml
+
+    httplug:
+        toolbar:
+            captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
+
+The toolbar is automatically turned off when ``kernel.debug = false``. You can also disable the toolbar by configuration.
+
+.. code-block:: yaml
+
+    httplug:
+        toolbar: false
+
+You can configure the bundle to show debug information for clients found with discovery. You may also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
+
+.. note::
+
+    Ideally, you would always use dependency injection and never rely on auto discovery to find a client.
+
+.. code-block:: yaml
+
+    httplug:
+        clients:
+            my_guzzle5:
+                factory: 'httplug.factory.guzzle5'
+        discovery:
+            client: 'httplug.clients.my_guzzle5'
+            async_client: 'auto'
+
+For normal clients, the auto discovery debug info is enabled by default. For async clients, debug is not enabled by default to avoid errors when using the bundle with a client that can not do async. To get debug information for async clients, set ``discovery.async_client`` to ``'auto'`` or an explicit client.
+
+You can turn off all interaction of the bundle with auto discovery by setting the value of ``discovery.client`` to ``false``.
+
 Discovery of Factory Classes
 ````````````````````````````
 
@@ -157,6 +208,23 @@ You can configure a client with authentication. Valid authentication types are `
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse']
 
+Special HTTP clients
+````````````````````
+
+If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the ``php-http/message`` package you may specify that on the client configuration.
+
+.. code-block:: yaml
+
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                factory: 'httplug.factory.guzzle6'
+                flexible_client: true
+
+            foobar:
+                factory: 'httplug.factory.guzzle6'
+                http_methods_client: true
 
 List of Services
 ````````````````
@@ -198,3 +266,7 @@ Usage for Reusable Bundles
 Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
 
 The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the ``HttplugBundle`` in their kernel.
+
+.. |clearfloat|  raw:: html
+
+    <div style="clear:left"></div>

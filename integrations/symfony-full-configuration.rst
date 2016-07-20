@@ -65,12 +65,24 @@ This page shows an example of all configuration values provided by the bundle.
             stopwatch:
                 enabled: true
                 stopwatch: 'debug.stopwatch'
+
+        toolbar:
+            enabled: true
+            formatter: null # Defaults to \Http\Message\Formatter\FullHttpMessageFormatter
+            captured_body_length: 0
+
+        discovery:
+            client: 'auto'
+            async_client: false
+
         clients:
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse', 'httplug.plugin.cache', 'httplug.plugin.retry']
+                flexible_client: false      # Can only be true if http_methods_client is false
+                http_methods_client: false  # Can only be true if flexible_client is false
                 config:
                     verify: false
                     timeout: 2
-                    # more options to the guzzle 6 constructor
+                    # more options to the Guzzle 6 constructor
 

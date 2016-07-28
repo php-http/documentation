@@ -38,7 +38,7 @@ Virtual packages are a way to specify the dependency on an implementation of an 
 without forcing a specific implementation. For HTTPlug, the virtual packages are called `php-http/client-implementation`_
 and `php-http/async-client-implementation`_.
 
-There is no library registered with those names. However, all client implementations including client adapters for
+There is no library registered with those names. However, all client implementations (including client adapters) for
 HTTPlug use the ``provide`` section to tell composer that they do provide the client-implementation.
 
 .. _`php-http/client-implementation`: https://packagist.org/providers/php-http/client-implementation

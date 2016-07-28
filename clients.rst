@@ -2,7 +2,7 @@ Clients & Adapters
 ==================
 
 There are two types of libraries you can use to send HTTP messages; clients and adapters. A client implements the
-``HttpClient`` and/or the ``HttpAsyncClient`` interfaces directly. A client adapter package that implement the
+``HttpClient`` and/or the ``HttpAsyncClient`` interfaces directly. A client adapter is a class implementing the
 interface and forward the calls to a HTTP client not implementing the interface. (See `Adapter pattern`_ on Wikipedia).
 
 .. note::

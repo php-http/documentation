@@ -3,7 +3,6 @@ Buzz Adapter
 
 An HTTPlug adapter for the `Buzz HTTP client`_.
 
-
 Installation
 ------------
 

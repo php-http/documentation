@@ -8,6 +8,7 @@ Diactoros
 fallback
 GitHub
 hotfix
+Liskov
 Symfony
 HTTPlug
 Ivory

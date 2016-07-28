@@ -3,6 +3,7 @@ Buzz Adapter
 
 An HTTPlug adapter for the `Buzz HTTP client`_.
 
+
 Installation
 ------------
 
@@ -53,6 +54,13 @@ Or if you installed the :doc:`discovery </discovery>` layer::
 .. warning::
 
     The message factory parameter is mandatory if the discovery layer is not installed.
+
+Be aware
+--------
+
+This adapter violates the Liskov substitution principle in a rare edge case. When the adapter is configured to use
+Buzz' Curl client, it does not send request bodies for request methods such as GET, HEAD and TRACE. A RequestException
+will be thrown if this ever happens.
 
 .. include:: includes/further-reading-sync.inc
 

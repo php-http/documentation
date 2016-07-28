@@ -20,6 +20,8 @@ The ``MessageFactory`` aims to provide an easy way to construct messages.
 Usage
 -----
 
+.. _stream-factory:
+
 This package provides interfaces for PSR-7 factories including:
 
 - ``MessageFactory``

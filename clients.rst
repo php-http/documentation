@@ -5,8 +5,6 @@ There are two types of libraries you can use to send HTTP messages; clients and 
 ``HttpClient`` and/or the ``HttpAsyncClient`` interfaces directly. A client adapter package that implement the
 interface and forward the calls to a HTTP client not implementing the interface. (See `Adapter pattern`_ on Wikipedia).
 
-
-
 .. note::
 
     All clients and adapters comply with `Liskov substitution principle`_ which means that you can easily change one

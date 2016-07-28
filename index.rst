@@ -80,6 +80,7 @@ for discussion around a future HTTP client PSR.
    :hidden:
    :caption: Components
 
+   components/dependency-graph
    message
    components/client-common
    components/adapter-integration-tests

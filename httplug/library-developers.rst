@@ -5,7 +5,7 @@ If you’re developing a library or framework that performs HTTP requests, you
 should not be dependent on concrete HTTP client libraries (such as Guzzle).
 Instead, you should only make sure that *some* HTTP client is available. It is
 then up to your users to decide which HTTP client they want to include in their
-projects.
+projects. This complies with the `dependency inversion principle`_.
 
 Manage dependencies
 -------------------
@@ -38,14 +38,12 @@ to include the Socket client:
         }
     }
 
-Standalone installation
------------------------
+Testing you library
+-------------------
 
-This is sufficient for your library’s users. For the library’s developers,
-however, it’s best if some specific client is installed when they run
-``composer install`` in the library’s directory. So specify any concrete client
-in the ``require-dev`` section in your library’s ``composer.json``. In this
-example, we chose the Guzzle 6 adapter:
+When you install your library on a CI-server (like Travis) you need to include a client. So specify any concrete client
+in the ``require-dev`` section in your library’s ``composer.json``. You could use any client but the
+:doc:`/clients/mock-client` will make it easier to write good tests.
 
 .. code-block:: json
 
@@ -55,19 +53,23 @@ example, we chose the Guzzle 6 adapter:
             "php-http/client-implementation": "^1.0"
         },
         "require-dev": {
-            "php-http/guzzle6-adapter": "^1.0"
+            "php-http/mock-client": "^0.3"
         }
     }
 
-For extra convenience, you can use :doc:`/discovery` to free your users from
-having to instantiate the client.
+
 
 Messages
 --------
 
-When you construct HTTP message objects in your library, you should not depend
-on a concrete PSR-7 message implementation. Instead, use the
-:ref:`PHP-HTTP message factory <message-factory>`.
+When you construct HTTP message objects in your library, you should not depend on a concrete PSR-7 message
+implementation. Instead, use the :ref:`PHP-HTTP message factory <message-factory>`.
+
+Discovery
+---------
+
+To make it as convenient as possible for your users you should use the :doc:`/discovery` component. It will help you
+find factories to create ``Request``, ``Streams`` etc. That component is light weight and has no hard dependencies.
 
 Plugins
 -------
@@ -81,3 +83,6 @@ User documentation
 
 To explain to your users that they need to install a concrete HTTP client,
 you can point them to :doc:`users`.
+
+
+.. _`dependency inversion principle`: https://en.wikipedia.org/wiki/Dependency_inversion_principle

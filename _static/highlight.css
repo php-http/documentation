@@ -53,3 +53,7 @@ table.highlighttable td div.linenodiv {
     text-align: right;
     width: 38px;
 }
+
+div.highlight-json pre span.nt {
+    color: cornsilk;
+}

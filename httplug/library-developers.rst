@@ -85,4 +85,27 @@ To explain to your users that they need to install a concrete HTTP client,
 you can point them to :doc:`users`.
 
 
+You final ``composer.json``
+---------------------------
+
+Putting it all together your final ``composer.json`` is much likely to look similar to this:
+
+.. code-block:: json
+
+    {
+        "name": "you/and-your-awesome-library",
+        "require": {
+            "psr/http-message": "^1.0",
+            "php-http/client-implementation": "^1.0",
+            "php-http/httplug": "^1.0",
+            "php-http/message-factory": "^1.0",
+            "php-http/discovery": "^1.0"
+        },
+        "require-dev": {
+            "php-http/mock-client": "^0.3",
+            "php-http/message": "^1.0",
+            "guzzlehttp/psr7": "^1.0"
+        }
+    }
+
 .. _`dependency inversion principle`: https://en.wikipedia.org/wiki/Dependency_inversion_principle

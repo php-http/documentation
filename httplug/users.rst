@@ -11,7 +11,7 @@ below we are using cURL.
 
 .. note::
 
-    Read about the clients and adapters provided by the php-http organisation at :doc:`this page </clients>`.
+    Read about the clients and adapters provided by the PHP-HTTP organization at :doc:`this page </clients>`.
 
 .. code-block:: bash
 
@@ -67,7 +67,7 @@ PSR-7 implementation or that there is no factories installed to create HTTP mess
     the chosen message implementation.
 
 
-You can solve this by including ``php-http/message`` and ``zendframework/zend-diactoros``, as descibed above.
+You can solve this by including ``php-http/message`` and ``zendframework/zend-diactoros``, as described above.
 
 Background
 ----------

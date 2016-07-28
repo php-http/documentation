@@ -63,4 +63,15 @@ use case would be::
     ];
     $client = new Client($messageFactory, $options);
 
+.. warning::
+
+    This client assumes that the request is compliant with HTTP 2.0, 1.1 or 1.0 standard. So a request without a ``Host`` header, or
+    with a body but without a ``Content-Length`` will certainly fail.
+    To make sure all requests will be sent out correctly, we recommend to use the ``PluginClient`` with the following plugins:
+
+    * ``ContentLengthPlugin`` sets the correct ``Content-Length`` header, or decorate the stream to use chunked encoding
+    * ``DecoderPlugin`` decodes encoding coming from the response (chunked, gzip, deflate and compress)
+
+    :doc:`Read more on plugins </plugins/introduction>`
+
 .. include:: includes/further-reading-sync.inc

@@ -14,5 +14,5 @@ accessed through :doc:`factories </message/message-factory>`. Message factories 
 
     $ composer require php-http/message
 
-.. _Diactoros: http://docs.guzzlephp.org/en/5.3/
+.. _Diactoros: https://github.com/zendframework/zend-diactoros
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7

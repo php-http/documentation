@@ -5,6 +5,7 @@ boolean
 callables
 cURL
 Diactoros
+Elasticsearch
 fallback
 GitHub
 hotfix

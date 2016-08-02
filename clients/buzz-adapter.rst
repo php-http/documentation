@@ -58,8 +58,10 @@ Be aware
 --------
 
 This adapter violates the Liskov substitution principle in a rare edge case. When the adapter is configured to use
-Buzz' Curl client, it does not send request bodies for request methods such as GET, HEAD and TRACE. A RequestException
+Buzz' Curl client, it does not send request bodies for request methods such as GET, HEAD and TRACE. A ``RequestException``
 will be thrown if this ever happens.
+
+If you need GET request with a body (e.g. for Elasticsearch) you need to use a different client like Guzzle 6.
 
 .. include:: includes/further-reading-sync.inc
 

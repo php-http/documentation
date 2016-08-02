@@ -18,8 +18,9 @@ TransferException                  something unexpected happened \-
 ================================== ============================= ===================
 
 .. note::
-    By default clients will always return a PSR-7 response instead of throwing a HttpException. Configure your client
-    or use the :doc:`/plugins/error` to make sure the HttpException is thrown.
+    By default clients will always return a PSR-7 response instead of throwing a ``HttpException``. Write your 
+    application to check the response status or use the :doc:`/plugins/error` to make sure 
+    the ``HttpException`` is thrown.
 
 .. note::
 

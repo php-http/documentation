@@ -29,4 +29,5 @@ toolbar
 username
 whitelist
 wiki
+Wikipedia
 workflow

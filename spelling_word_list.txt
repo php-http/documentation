@@ -5,9 +5,11 @@ boolean
 callables
 cURL
 Diactoros
+Elasticsearch
 fallback
 GitHub
 hotfix
+Liskov
 Symfony
 HTTPlug
 Ivory

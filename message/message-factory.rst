@@ -51,5 +51,5 @@ You could also use :doc:`/discovery` to find an installed factory automatically.
     $request = $factory->createRequest('GET', 'http://example.com');
 
 
-.. _Diactoros: http://docs.guzzlephp.org/en/5.3/
+.. _Diactoros: https://github.com/zendframework/zend-diactoros
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7

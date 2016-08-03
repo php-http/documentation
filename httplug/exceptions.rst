@@ -18,6 +18,11 @@ TransferException                  something unexpected happened \-
 ================================== ============================= ===================
 
 .. note::
+    By default clients will always return a PSR-7 response instead of throwing a ``HttpException``. Write your 
+    application to check the response status or use the :doc:`/plugins/error` to make sure 
+    the ``HttpException`` is thrown.
+
+.. note::
 
     The ``sendAsyncRequest`` should never throw an exception but always return a
     :doc:`../components/promise`. The exception classes used in ``Promise::wait`` and the ``then``

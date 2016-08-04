@@ -1,30 +1,40 @@
 HTTPlug for library users
 =========================
 
-If you use a library that depends on HTTPlug (say, ``some/awesome-library``),
-you need to include an HTTPlug client in your project before you can include
-``awesome-library``.
+This page explains how to set up a library that depends on HTTPlug.
 
-First you need to choose library to send HTTP messages and that also provide the virtual package
-`php-http/client-implementation`_. In the example
-below we are using cURL.
+TL;DR
+-----
 
-.. note::
-
-    Read about the clients and adapters provided by the PHP-HTTP organization at :doc:`this page </clients>`.
+For the impatient: Require the following packages before requiring the library
+you plan to use:
 
 .. code-block:: bash
 
-    $ composer require php-http/curl-client
+    composer require php-http/curl-client guzzlehttp/psr7 php-http/message
 
-Then you can include the library:
+Details
+-------
+
+If a library depends on HTTPlug, it requires the virtual package
+`php-http/client-implementation`_. A virtual package is used to declare that
+the library needs *an* implementation of the HTTPlug interfaces, but does not
+care which implementation specifically.
+
+When using such a library, you need to choose a HTTPlug client and include that
+in your project explicitly. Lets say you want to use ``some/awesome-library``
+that depends on ``php-http/client implementation``. In the example we are using cURL:
 
 .. code-block:: bash
 
-    $ composer require some/awesome-library
+    $ composer require php-http/curl-client some/awesome-library
 
-Secondly you need to install a library that implements PSR-7 and a library containing message factories. The majority
-of users installs Zend's Diactoros or Guzzle's PSR-7. Do one of the following:
+You can pick any of the clients or adapters :doc:`provided by PHP-HTTP </clients>`.
+Popular choices are ``php-http/curl-client`` and ``php-http/guzzle6-adapter``.
+
+Many libraries also need a PSR-7 implementation and the PHP-HTTP message
+factories to create messages. The PSR-7 implementations are Zend's Diactoros
+and Guzzle's PSR-7. Do one of the following:
 
 .. code-block:: bash
 
@@ -58,16 +68,17 @@ You can solve this by including a HTTP client or adapter, as described above.
 No  message factories
 `````````````````````
 
-You may get an exception telling you that "No message factories found", this means that either you have not installed a
-PSR-7 implementation or that there is no factories installed to create HTTP messages.
+You may get an exception telling you that "No message factories found", this
+means that either you have not installed a PSR-7 implementation or that there
+are no factories installed to create HTTP messages.
 
 .. code-block:: none
 
-    No message factories found. To use Guzzle or Diactoros factories install php-http/message and
-    the chosen message implementation.
+    No message factories found. To use Guzzle or Diactoros factories install
+    php-http/message and the chosen message implementation.
 
-
-You can solve this by including ``php-http/message`` and ``zendframework/zend-diactoros``, as described above.
+You can solve this by including ``php-http/message`` and Zend Diactoros or
+Guzzle PSR-7, as described above.
 
 Background
 ----------
@@ -76,7 +87,7 @@ Reusable libraries do not depend on a concrete implementation but only on the vi
 ``php-http/client-implementation``. This is to avoid hard coupling and allows the user of the
 library to choose the implementation. You can think of this as an "interface" or "contract" for packages.
 
-The reusable libraries have no hard coupling to the PSR-7 implementation either which gives you the flexibility to
+The reusable libraries have no hard coupling to the PSR-7 implementation either, which gives you the flexibility to
 choose an implementation yourself.
 
 .. _`php-http/client-implementation`: https://packagist.org/providers/php-http/client-implementation

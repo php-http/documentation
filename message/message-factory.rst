@@ -22,7 +22,7 @@ Usage
 
 .. _stream-factory:
 
-This package provides interfaces for PSR-7 factories including:
+The `php-http/message-factory` package defines interfaces for PSR-7 factories including:
 
 - ``MessageFactory``
 - ``ServerRequestFactory`` - WIP (PRs welcome)

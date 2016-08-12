@@ -165,7 +165,10 @@ The bundle has client factory services that you can use to build your client. If
 Plugins
 ```````
 
-You can configure the clients with plugins. You can choose to use a built in plugin in the ``php-http/plugins`` package or provide a plugin of your own. The order of the specified plugin does matter.
+Clients can have plugins. Generic plugins from ``php-http/plugins`` (e.g. retry or redirect) can be configured globally. You can tell the client which of those plugins to use, as well as custom plugins that you configured a service for.
+
+Additionally you can configure any of the ``php-http/plugins`` specifically on a client. For some plugins this is the only place where they can be configured.
+The order in which you specify the plugins **does** matter.
 
 .. code-block:: yaml
 
@@ -184,7 +187,19 @@ You can configure the clients with plugins. You can choose to use a built in plu
         clients:
             acme:
                 factory: 'httplug.factory.guzzle6'
-                plugins: ['acme_plugin', 'httplug.plugin.cache', 'httplug.plugin.retry']
+                plugins:
+                    - 'acme_plugin'
+                    - 'httplug.plugin.cache'
+                    - 'httplug.plugin.retry'
+                    - add_host:
+                            host: "http://localhost:8000"
+                    - header_defaults:
+                            "X-FOO": bar
+                    - authentication:
+                            acme_basic:
+                                type: 'basic'
+                                username: 'my_username'
+                                password: 'p4ssw0rd'
 
 
 Authentication

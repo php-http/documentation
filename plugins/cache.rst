@@ -62,16 +62,16 @@ cache control headers are not cached. If you want a default cache lifetime if th
         'default_ttl' => 42, // cache lifetime time in seconds
     ];
 
-If you tell the plugin to completely ignore the cache control headers from the server and force caching the response
-for the default time to life. The options below will cache all responses for one hour::
+You can tell the plugin to completely ignore the cache control headers from the server and force caching the response
+for the default time to live. The options below will cache all responses for one hour::
 
     $options = [
         'default_ttl' => 3600, // cache for one hour
         'respect_cache_headers' => false,
     ];
 
-Be ware of null values
-``````````````````````
+Semantics of null values
+````````````````````````
 
 Setting null to the options ``cache_lifetime`` or ``default_ttl`` means "Store this as long as you can (forever)".
 This could be a great thing when you requesting a pay-per-request API (eg. GoogleTranslate).
@@ -94,13 +94,13 @@ Ask the server if the response is valid at most ever hour. Store the cache item 
     ];
 
 
-Ask the server if the response is valid at most ever hour. If the response has not been used within 30 days it will be
+Ask the server if the response is valid at most ever hour. If the response has not been used within one year it will be
 removed from the cache::
 
     $options = [
         'default_ttl' => 3600,
         'respect_cache_headers' => false,
-        'cache_lifetime' => 86400*30, // 30 days
+        'cache_lifetime' => 86400*365, // one year
     ];
 
 

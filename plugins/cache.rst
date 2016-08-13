@@ -53,7 +53,7 @@ configure. Their default values and meaning is described by the table below.
 
     A HTTP response may have expired but it is still in cache. If so, headers like ``If-Modified-Since`` and
     ``If-None-Match`` are added to the HTTP request to allow the server answer with 304 status code. When
-    a 304 response is recieved we update the CacheItem and save it again for at least ``cache_lifetime``.
+    a 304 response is received we update the CacheItem and save it again for at least ``cache_lifetime``.
 
 Using these options together you may control the how your cached responses behave. By default, responses with no
 cache control headers are not cached. If you want a default cache lifetime if the server specifies no ``max-age``, use::

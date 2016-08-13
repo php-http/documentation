@@ -21,9 +21,9 @@ control headers from the server as specified in :rfc:`7234`. It needs a
     use Http\Client\Common\Plugin\CachePlugin;
 
     /** @var \Psr\Cache\CacheItemPoolInterface $pool */
-    $pool...
+    $pool = ...
     /** @var \Http\Message\StreamFactory $streamFactory */
-    $streamFactory...
+    $streamFactory = ...
 
     $options = [];
     $cachePlugin = new CachePlugin($pool, $streamFactory, $options);
@@ -33,21 +33,77 @@ control headers from the server as specified in :rfc:`7234`. It needs a
         [$cachePlugin]
     );
 
-By default, responses with no cache control headers are not cached. If you want
-a default cache lifetime if the server specifies no ``max-age``, use::
+Options
+-------
+
+The third parameter to the ``CachePlugin`` constructor takes an array of options. The plugin has 3 options you can
+configure. Their default values and meaning is described by the table below.
+
++---------------------------+---------------+------------------------------------------------------+
+| Name                      | Default value | Description                                          |
++===========================+===============+======================================================+
+| ``default_ttl``           | ``null``      | The default max age of a Response                    |
++---------------------------+---------------+------------------------------------------------------+
+| ``respect_cache_headers`` | ``true``      | Whatever or not we should care about cache headers   |
++---------------------------+---------------+------------------------------------------------------+
+| ``cache_lifetime``        | 30 days       | The minimum time we should store a cache item        |
++---------------------------+---------------+------------------------------------------------------+
+
+.. note::
+
+    A HTTP response may have expired but it is still in cache. If so, headers like ``If-Modified-Since`` and
+    ``If-None-Match`` are added to the HTTP request to allow the server answer with 304 status code. When
+    a 304 response is recieved we update the CacheItem and save it again for at least ``cache_lifetime``.
+
+Using these options together you may control the how your cached responses behave. By default, responses with no
+cache control headers are not cached. If you want a default cache lifetime if the server specifies no ``max-age``, use::
 
     $options = [
         'default_ttl' => 42, // cache lifetime time in seconds
     ];
 
-You can also tell the plugin to completely ignore the cache control headers
-from the server and force caching for the default time to life. Note that in
-this case, ``default_ttl`` is required::
+If you tell the plugin to completely ignore the cache control headers from the server and force caching the response
+for the default time to life. The options below will cache all responses for one hour::
 
     $options = [
         'default_ttl' => 3600, // cache for one hour
         'respect_cache_headers' => false,
     ];
+
+Be ware of null values
+``````````````````````
+
+Setting null to the options ``cache_lifetime`` or ``default_ttl`` means "Store this as long as you can (forever)".
+This could be a great thing when you requesting a pay-per-request API (eg. GoogleTranslate).
+
+Store a response as long the cache implementation allows::
+
+    $options = [
+        'default_ttl' => null,
+        'respect_cache_headers' => false,
+        'cache_lifetime' => null,
+    ];
+
+
+Ask the server if the response is valid at most ever hour. Store the cache item forever::
+
+    $options = [
+        'default_ttl' => 3600,
+        'respect_cache_headers' => false,
+        'cache_lifetime' => null,
+    ];
+
+
+Ask the server if the response is valid at most ever hour. If the response has not been used within 30 days it will be
+removed from the cache::
+
+    $options = [
+        'default_ttl' => 3600,
+        'respect_cache_headers' => false,
+        'cache_lifetime' => 86400*30, // 30 days
+    ];
+
+
 
 Cache Control Handling
 ----------------------

@@ -6,7 +6,6 @@ callables
 cURL
 Diactoros
 Elasticsearch
-eg
 fallback
 GitHub
 hotfix

@@ -55,7 +55,7 @@ configure. Their default values and meaning is described by the table below.
     ``If-None-Match`` are added to the HTTP request to allow the server answer with 304 status code. When
     a 304 response is received we update the CacheItem and save it again for at least ``cache_lifetime``.
 
-Using these options together you may control the how your cached responses behave. By default, responses with no
+Using these options together you can control how your responses should be cached. By default, responses with no
 cache control headers are not cached. If you want a default cache lifetime if the server specifies no ``max-age``, use::
 
     $options = [

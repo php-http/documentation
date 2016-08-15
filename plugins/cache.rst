@@ -42,7 +42,7 @@ configure. Their default values and meaning is described by the table below.
 +---------------------------+---------------+------------------------------------------------------+
 | Name                      | Default value | Description                                          |
 +===========================+===============+======================================================+
-| ``default_ttl``           | ``null``      | The default max age of a Response                    |
+| ``default_ttl``           | ``0``      | The default max age of a Response                    |
 +---------------------------+---------------+------------------------------------------------------+
 | ``respect_cache_headers`` | ``true``      | Whatever or not we should care about cache headers   |
 +---------------------------+---------------+------------------------------------------------------+
@@ -74,7 +74,7 @@ Semantics of null values
 ````````````````````````
 
 Setting null to the options ``cache_lifetime`` or ``default_ttl`` means "Store this as long as you can (forever)".
-This could be a great thing when you requesting a pay-per-request API (eg. GoogleTranslate).
+This could be a great thing when you requesting a pay-per-request API (e.g. GoogleTranslate).
 
 Store a response as long the cache implementation allows::
 

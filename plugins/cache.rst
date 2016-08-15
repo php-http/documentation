@@ -42,7 +42,7 @@ configure. Their default values and meaning is described by the table below.
 +---------------------------+---------------+------------------------------------------------------+
 | Name                      | Default value | Description                                          |
 +===========================+===============+======================================================+
-| ``default_ttl``           | ``0``      | The default max age of a Response                    |
+| ``default_ttl``           | ``0``         | The default max age of a Response                    |
 +---------------------------+---------------+------------------------------------------------------+
 | ``respect_cache_headers`` | ``true``      | Whatever or not we should care about cache headers   |
 +---------------------------+---------------+------------------------------------------------------+

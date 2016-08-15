@@ -19,7 +19,7 @@ This page shows an example of all configuration values provided by the bundle.
             uri_factory: ~
             stream_factory: ~
 
-        plugins:
+        plugins: # Global plugin configuration. Plugins need to be explicitly added to clients.
             authentication:
                 my_basic:
                     type: 'basic'
@@ -36,38 +36,30 @@ This page shows an example of all configuration values provided by the bundle.
                     type: 'service'
                     service: 'my_authentication_service'
             cache:
-                enabled: true
                 cache_pool: 'my_cache_pool'
                 stream_factory: 'httplug.stream_factory'
                 config:
                     default_ttl: 3600
                     respect_cache_headers: true
             cookie:
-                enabled: true
                 cookie_jar: my_cookie_jar
             decoder:
-                enabled: true
                 use_content_encoding: true
             history:
-                enabled: true
                 journal: my_journal
             logger:
-                enabled: true
                 logger: 'logger'
                 formatter: null
             redirect:
-                enabled: true
                 preserve_header: true
                 use_default_for_multiple: true
             retry:
-                enabled: true
                 retry: 1
             stopwatch:
-                enabled: true
                 stopwatch: 'debug.stopwatch'
 
-        toolbar:
-            enabled: true
+        profiling:
+            enabled: true # Defaults to kernel.debug
             formatter: null # Defaults to \Http\Message\Formatter\FullHttpMessageFormatter
             captured_body_length: 0
 
@@ -78,11 +70,42 @@ This page shows an example of all configuration values provided by the bundle.
         clients:
             acme:
                 factory: 'httplug.factory.guzzle6'
-                plugins: ['httplug.plugin.authentication.my_wsse', 'httplug.plugin.cache', 'httplug.plugin.retry']
                 flexible_client: false      # Can only be true if http_methods_client is false
                 http_methods_client: false  # Can only be true if flexible_client is false
                 config:
+                    # Options to the Guzzle 6 constructor
                     verify: false
                     timeout: 2
-                    # more options to the Guzzle 6 constructor
-
+                plugins:
+                    # Can reference a globally configured plugin service
+                    - 'httplug.plugin.authentication.my_wsse'
+                    # Can configure a plugin customized for this client
+                    - cache:
+                        cache_pool: 'my_other_pool'
+                        config:
+                            default_ttl: 120
+                    # Can configure plugins that can not be configured globally
+                    - add_host:
+                            # Host name including protocol and optionally the port number, e.g. https://api.local:8000
+                            host: http://localhost:80 # Required
+                            # Whether to replace the host if request already specifies it
+                            replace: false
+                    # Append headers to the request. If the header already exists the value will be appended to the current value.
+                    - header_append:
+                            # Keys are the header names, values the header values
+                            headers:
+                                'X-FOO': bar # contrary to default symfony behaviour, hyphens "-" are NOT translated to underscores "_" for the headers.
+                    # Set header to default value if it does not exist.
+                    - header_defaults:
+                            # Keys are the header names, values the header values
+                            headers:
+                                'X-FOO': bar
+                    # Set headers to requests. If the header does not exist it wil be set, if the header already exists it will be replaced.
+                    - header_set:
+                            # Keys are the header names, values the header values
+                            headers:
+                                'X-FOO': bar
+                    # Remove headers from requests.
+                    - header_remove:
+                            # List of header names to remove
+                            headers: ["X-FOO"]

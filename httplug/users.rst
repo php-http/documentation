@@ -13,6 +13,9 @@ you plan to use:
 
     composer require php-http/curl-client guzzlehttp/psr7 php-http/message
 
+If you use a framework, check the :doc:`integrations <../integrations/index>`
+overview to see if there is a plugin for your framework.
+
 Details
 -------
 

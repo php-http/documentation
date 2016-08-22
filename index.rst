@@ -32,6 +32,47 @@ regardless of the HTTP client implementation used.
 
 Read more about :doc:`HTTPlug </httplug/introduction>`.
 
+They use us
+```````````
+
+.. image:: https://avatars3.githubusercontent.com/u/5303359?v=3&s=100
+    :align: left
+    :width: 50px
+    :target: https://github.com/geocoder-php/Geocoder
+    :alt: Geocoder
+
+.. image:: https://avatars0.githubusercontent.com/u/447686?v=3&s=100
+    :align: left
+    :width: 50px
+    :target: https://github.com/mailgun/mailgun-php
+    :alt: Mailgun
+
+.. image:: https://avatars2.githubusercontent.com/u/529709?v=3&s=100
+    :align: left
+    :width: 50px
+    :target: https://github.com/FriendsOfSymfony/FOSHttpCache
+    :alt: FOSHttpCache
+
+.. image:: https://avatars3.githubusercontent.com/u/202732?v=3&s=100
+    :align: left
+    :width: 50px
+    :target: https://github.com/KnpLabs/php-github-api
+    :alt: KnpLabs
+
+.. image:: https://github.com/florianv/swap/raw/master/doc/logo.png
+    :align: left
+    :width: 50px
+    :target: https://github.com/florianv/swap
+    :alt: Swap
+
+.. image:: https://avatars3.githubusercontent.com/u/9406778?v=3&s=100
+    :align: left
+    :width: 50px
+    :target: https://github.com/SparkPost/php-sparkpost
+    :alt: SparkPost
+
+|clearfloat|
+
 Packages
 --------
 
@@ -92,3 +133,7 @@ for discussion around a future HTTP client PSR.
    :caption: ---------
 
    development/index.rst
+
+.. |clearfloat|  raw:: html
+
+    <div style="clear:left"></div>

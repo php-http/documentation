@@ -30,6 +30,9 @@ highlight_language = 'php'
 
 # -- General configuration ------------------------------------------------
 
+# Warnings
+suppress_warnings = ["image.nonlocal_uri"]
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
@@ -307,3 +310,5 @@ rst_epilog = """
 .. _Composer: https://getcomposer.org
 .. _HttplugBundle: https://github.com/php-http/HttplugBundle
 """
+
+

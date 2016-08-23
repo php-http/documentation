@@ -37,37 +37,37 @@ They use us
 
 .. image:: https://avatars3.githubusercontent.com/u/5303359?v=3&s=100
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/geocoder-php/Geocoder
     :alt: Geocoder
 
 .. image:: https://avatars0.githubusercontent.com/u/447686?v=3&s=100
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/mailgun/mailgun-php
     :alt: Mailgun
 
 .. image:: https://avatars2.githubusercontent.com/u/529709?v=3&s=100
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/FriendsOfSymfony/FOSHttpCache
     :alt: FOSHttpCache
 
 .. image:: https://avatars3.githubusercontent.com/u/202732?v=3&s=100
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/KnpLabs/php-github-api
     :alt: KnpLabs
 
-.. image:: https://github.com/florianv/swap/raw/master/doc/logo.png
+.. image:: http://httplug.io/assets/img/logo/swap.png
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/florianv/swap
     :alt: Swap
 
 .. image:: https://avatars3.githubusercontent.com/u/9406778?v=3&s=100
     :align: left
-    :width: 50px
+    :width: 10%
     :target: https://github.com/SparkPost/php-sparkpost
     :alt: SparkPost
 

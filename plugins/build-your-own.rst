@@ -67,7 +67,7 @@ Like in case of the ``$next`` callable, you must pass the ``$request`` as the fi
     or you will end up in an infinite execution loop.
 
 The ``$next`` and ``$first`` callables will return a :doc:`/components/promise`.
-You can manipulate the ``ResponseInterface`` or the ``Exception`` by using the
+You can manipulate the ``Psr\Http\Message\ResponseInterface`` or the ``Http\Client\Exception`` by using the
 ``then`` method of the promise::
 
     public function handleRequest(RequestInterface $request, callable $next, callable $first)
@@ -76,7 +76,7 @@ You can manipulate the ``ResponseInterface`` or the ``Exception`` by using the
 
         return $next($request)->then(function (ResponseInterface $response) {
             return $response->withHeader('MyResponseHeader', 'value');
-        }, function (Exception $exception) {
+        }, function (\Http\Client\Exception $exception) {
             echo $exception->getMessage();
 
             throw $exception;
@@ -88,6 +88,11 @@ You can manipulate the ``ResponseInterface`` or the ``Exception`` by using the
     Contract for the ``Http\Promise\Promise`` is temporary until a
     PSR_ is released. Once it is out, we will use this PSR in HTTPlug and
     deprecate the old contract.
+
+.. warning::
+
+    If a plugin throws an exception that does not implement ``Http\Client\Exception``
+    it will break the plugin chain.
 
 To better understand the whole process check existing implementations in the
 `client-common package`_.

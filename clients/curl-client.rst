@@ -35,7 +35,7 @@ Or you can use :doc:`../discovery`::
     use Http\Discovery\MessageFactoryDiscovery;
     use Http\Discovery\StreamFactoryDiscovery;
 
-    $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find());
+    $client = new Client();
 
 Configuring client
 ------------------

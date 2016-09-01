@@ -148,7 +148,7 @@ You can configure your clients with default options. These default values will b
 .. code-block:: php
 
     $httpClient = $this->container->get('httplug.client.my_guzzle5');
-    $httpClient = $this->container->get('httplug.client.curl');
+    $httpClient = $this->container->get('httplug.client.acme');
 
     // will be the same as ``httplug.client.my_guzzle5``
     $httpClient = $this->container->get('httplug.client');

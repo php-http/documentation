@@ -152,3 +152,79 @@ RandomClientPool
 ****************
 
 ``RandomClientPool`` randomly choose an available client, throw a ``NotFoundHttpClientException`` if none are available.
+
+
+HTTP Client Router
+------------------
+
+This client accepts pairs of clients and request matchers.
+Every request is "routed" through the ``HttpClientRouter``, checked against the request matchers
+and sent using the first matched client. If there is no matching client, an exception is thrown.
+
+This allows a single client to be used for different requests.
+
+In the following example we use the client router to access an API protected by basic auth
+and also to download an image from a static host::
+
+    use Http\Client\Common\HttpClientRouter;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\AuthenticationPlugin;
+    use Http\Client\Common\Plugin\CachePlugin;
+    use Http\Discovery\HttpClientDiscovery;
+    use Http\Discovery\MessageFactoryDiscovery;
+    use Http\Message\Authentication\BasicAuth;
+    use Http\Message\RequestMatcher\RequestMatcher;
+
+    $client = new HttpClientRouter();
+
+    $requestMatcher = new RequestMatcher(null, 'api.example.com');
+    $pluginClient = new PluginClient(
+        HttpClientDiscovery::find(),
+        [new AuthenticationPlugin(new BasicAuth('user', 'password'))]
+    );
+
+    $client->addClient($pluginClient, $requestMatcher);
+
+
+    $requestMatcher = new RequestMatcher(null, 'images.example.com');
+
+    /** @var \Psr\Cache\CacheItemPoolInterface $pool */
+    $pool = ...
+    /** @var \Http\Message\StreamFactory $streamFactory */
+    $streamFactory = ...
+
+    $pluginClient = new PluginClient(
+        HttpClientDiscovery::find(),
+        [new CachePlugin($pool, $streamFactory)]
+    );
+
+    $client->addClient($pluginClient, $requestMatcher);
+
+
+    $messageFactory = MessageFactoryDiscovery::find();
+
+    // Get the user data
+    $request = $messageFactory->createRequest('GET', 'https://api.example.com/user/1');
+
+    $response = $client->send($request);
+    $imagePath = json_decode((string) $response->getBody(), true)['image_path'];
+
+    // Download the image and store it in cache
+    $request = $messageFactory->createRequest('GET', 'https://images.example.com/user/'.$imagePath);
+
+    $response = $client->send($request);
+
+    file_put_contents('path/to/images/'.$imagePath, (string) $response->getBody());
+
+    $request = $messageFactory->createRequest('GET', 'https://api2.example.com/user/1');
+
+    // Throws an Http\Client\Exception\RequestException
+    $client->send($request);
+
+
+.. note::
+
+    When you have small difference between the underlying clients (for example different credentials based on host)
+    it's easier to use the ``RequestConditionalPlugin`` and the ``PluginClient``,
+    but in that case the routing logic is integrated into the linear request flow
+    which might make debugging harder.

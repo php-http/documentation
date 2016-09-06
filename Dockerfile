@@ -1,18 +1,21 @@
-FROM  debian:latest
+FROM alpine:3.4
 
-# Credit goes to https://github.com/headstar/sphinx-doc-docker
+RUN set -xe \
+    && apk --no-cache add \
+        bash \
+        enchant \
+        aspell-en \
+        git \
+        make \
+        python \
+        py-pip
 
-RUN apt-get update
+ADD requirements.txt .
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y texlive texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y enchant
-RUN apt-get update --fix-missing
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git
+RUN pip install -r requirements.txt --no-cache-dir
 
-RUN pip install Sphinx==1.4
-RUN pip install sphinx_rtd_theme
-RUN pip install alabaster
-RUN pip install sphinx_bootstrap_theme
+WORKDIR /doc
+
+VOLUME ["/doc"]
 
 CMD ["/bin/bash"]

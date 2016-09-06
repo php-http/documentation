@@ -3,14 +3,17 @@ Building the Documentation
 
 We build the documentation with Sphinx. You could install it on your system or use Docker.
 
+
 Install Sphinx
 --------------
+
 
 Install on local machine
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The installation for Sphinx differs between system. See `Sphinx installation page`_ for details. When Sphinx is
 installed you need to `install enchant`_ (e.g. ``sudo apt-get install enchant``).
+
 
 Using Docker
 ~~~~~~~~~~~~
@@ -19,10 +22,25 @@ If you are using docker. Run the following commands from the repository root.
 
 .. code-block:: bash
 
-    $ docker build -t sphinx-doc .
-    $ docker run -i -t -v /absolute/path/to/repo/root:/doc sphinx-doc
+    $ docker run --rm -it -v "$PWD":/doc phphttp/documentation
     $ # You are now in the docker image
-    $ cd doc
+    $ make html
+    $ make spelling
+
+Alternatively you can run the commands directly from the host
+without entering the container shell:
+
+.. code-block:: bash
+
+    $ docker run --rm -t -v "$PWD":/doc phphttp/documentation make html
+    $ docker run --rm -t -v "$PWD":/doc phphttp/documentation make spelling
+
+.. warning::
+
+    The Docker container runs with `root` user by default
+    which means the owner of the generated files will be `root`
+    on the host too.
+
 
 Build documentation
 -------------------

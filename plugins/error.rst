@@ -30,3 +30,9 @@ and the response coming from them::
             // Something has not been found
         }
     }
+
+The error plugin is intended for when an application operates with the client directly. When
+writing a library around an API, the best practice is to have the client convert responses into
+domain objects, and transform HTTP errors into meaningful domain exceptions. In that scenario,
+the ErrorPlugin is not needed. It is more efficient to check the HTTP status codes yourself than
+throwing and catching exceptions.

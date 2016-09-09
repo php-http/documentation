@@ -85,8 +85,8 @@ To explain to your users that they need to install a concrete HTTP client,
 you can point them to :doc:`users`.
 
 
-You final ``composer.json``
----------------------------
+Your final ``composer.json``
+----------------------------
 
 Putting it all together your final ``composer.json`` is much likely to look similar to this:
 

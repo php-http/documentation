@@ -89,9 +89,9 @@ Query Params
 ``http://api.example.com/endpoint?access_token=9zh987g86fg87gh978hg9g79``::
 
 
-    use Http\Authentication\QueryParams;
+    use Http\Message\Authentication\QueryParam;
 
-    $authentication = new QueryParams([
+    $authentication = new QueryParam([
         'access_token' => '9zh987g86fg87gh978hg9g79',
     ]);
 

@@ -109,12 +109,13 @@ Libraries that Require Plugins
 
 When :doc:`writing a library based on HTTPlug <../httplug/library-developers>`, you might require
 specific plugins to be active. The recommended way for doing this is to provide a factory method
-for the ``PluginClient`` that your library users should use. This allows them to inject their own
+for the ``PluginClient`` that library users should use. This allows them to inject their own
 plugins or configure a different client. For example::
 
     $myApiClient = new My\Api\Client('https://api.example.org', My\Api\HttpClientFactory::create('john', 's3cr3t'));
 
     use Http\Client\HttpClient;
+    use Http\Client\Common\Plugin;
     use Http\Client\Common\Plugin\AuthenticationPlugin;
     use Http\Client\Common\Plugin\ErrorPlugin;
     use Http\Discovery\HttpClientDiscovery;
@@ -124,22 +125,22 @@ plugins or configure a different client. For example::
         /**
          * Build the HTTP client to talk with the API.
          *
-         * @param string     $user   Username
-         * @param string     $pass   Password
-         * @param HttpClient $client Base HTTP client
+         * @param string     $user    Username for the application on the API
+         * @param string     $pass    Password for the application on the API
+         * @param Plugin[]   $plugins List of additional plugins to use
+         * @param HttpClient $client  Base HTTP client
          *
          * @return HttpClient
          */
-        public static function create($user, $pass, HttpClient $client = null)
+        public static function create($user, $pass, array $plugins = [], HttpClient $client = null)
         {
             if (!$client) {
                 $client = HttpClientDiscovery::find();
             }
-            return new PluginClient($client, [
-                new ErrorPlugin(),
-                new AuthenticationPlugin(
-                     // This API has it own authentication algorithm
-                    new ApiAuthentication(Client::AUTH_OAUTH_TOKEN, $user, $pass)
-                ),
-            ]);
+            $plugins[] = new ErrorPlugin();
+            $plugins[] = new AuthenticationPlugin(
+                 // This API has it own authentication algorithm
+                new ApiAuthentication(Client::AUTH_OAUTH_TOKEN, $user, $pass)
+            );
+            return new PluginClient($client, $plugins);
         }

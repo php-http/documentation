@@ -7,7 +7,7 @@ to install one as well (for example `Guzzle PSR-7`_):
 
 In order to provide full interoperability, message implementations are
 accessed through :doc:`factories </message/message-factory>`. Message factories for
-`Diactoros`_ and `Guzzle PSR-7`_ are available in the
+`Diactoros`_, `Guzzle PSR-7`_ and `Slim Framework`_ are available in the
 :doc:`message </message>` component:
 
 .. code-block:: bash
@@ -16,3 +16,4 @@ accessed through :doc:`factories </message/message-factory>`. Message factories 
 
 .. _Diactoros: https://github.com/zendframework/zend-diactoros
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7
+.. _Slim Framework: https://github.com/slimphp/Slim

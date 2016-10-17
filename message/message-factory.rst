@@ -30,7 +30,7 @@ The `php-http/message-factory` package defines interfaces for PSR-7 factories in
 - ``UploadedFileFactory`` - WIP (PRs welcome)
 - ``UriFactory``
 
-Implementation for the interfaces above for `Diactoros`_ and `Guzzle PSR-7`_ can be found in ``php-http/message``.
+Implementation for the interfaces above for `Diactoros`_ and `Guzzle PSR-7`_ and `Slim Framework`_ can be found in ``php-http/message``.
 
 .. code:: php
 
@@ -53,3 +53,5 @@ You could also use :doc:`/discovery` to find an installed factory automatically.
 
 .. _Diactoros: https://github.com/zendframework/zend-diactoros
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7
+.. _Slim Framework: https://github.com/slimphp/Slim
+

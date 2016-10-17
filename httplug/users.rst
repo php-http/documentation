@@ -36,8 +36,7 @@ You can pick any of the clients or adapters :doc:`provided by PHP-HTTP </clients
 Popular choices are ``php-http/curl-client`` and ``php-http/guzzle6-adapter``.
 
 Many libraries also need a PSR-7 implementation and the PHP-HTTP message
-factories to create messages. The PSR-7 implementations are Zend's Diactoros
-and Guzzle's PSR-7. Do one of the following:
+factories to create messages. The PSR-7 implementations are Zend's Diactoros, Guzzle's PSR-7 and Slim Framework's PSR-7 messages. Do one of the following:
 
 .. code-block:: bash
 
@@ -46,6 +45,10 @@ and Guzzle's PSR-7. Do one of the following:
 .. code-block:: bash
 
     $ composer require php-http/message guzzlehttp/psr7
+
+.. code-block:: bash
+
+    $ composer require php-http/message slim/slim
 
 Troubleshooting
 ---------------

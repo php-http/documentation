@@ -37,7 +37,7 @@ Or you can use :doc:`../discovery`::
 
     $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find());
 
-Configuring client
+Configuring Client
 ------------------
 
 You can use `cURL options <http://php.net/curl_setopt>`_ to configure Client::

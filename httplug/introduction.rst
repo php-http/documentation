@@ -7,8 +7,8 @@ When all packages used in an application only specify HTTPlug,
 the application developers can choose the client that best fits their project
 and use the same client with all packages.
 
-The client interfaces
----------------------
+Client Interfaces
+-----------------
 
 HTTPlug defines two HTTP client interfaces that we kept as simple as possible:
 

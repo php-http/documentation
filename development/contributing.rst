@@ -3,7 +3,7 @@ Contributing
 
 If you're here, you would like to contribute to this project and you're really welcome!
 
-Bug reports
+Bug Reports
 -----------
 
 If you find a bug or a documentation issue, please report it or even better: fix it :). If you report it,
@@ -14,7 +14,7 @@ please be as precise as possible. Here is a little list of required information:
  - Backtrace which might help identifying the bug
 
 
-Security issues
+Security Issues
 ---------------
 
 If you discover any security related issues,
@@ -22,7 +22,7 @@ please contact us at security@php-http.org instead of submitting an issue on Git
 This allows us to fix the issue and release a security hotfix without publicly disclosing the vulnerability.
 
 
-Feature requests
+Feature Requests
 ----------------
 
 If you think a feature is missing, please report it or even better: implement it :). If you report it, describe the more
@@ -86,7 +86,7 @@ If your branch conflicts with the master branch, you will need to rebase and re-
     $ git pull --rebase upstream master
     $ git push -f origin feature-or-bug-fix-description
 
-Coding standard
+Coding Standard
 ---------------
 
 This repository follows the `PSR-2 standard`_ and so, if you want to contribute,

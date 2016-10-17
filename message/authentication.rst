@@ -14,7 +14,7 @@ Installation
 
     $ composer require php-http/message
 
-Authentication methods
+Authentication Methods
 ^^^^^^^^^^^^^^^^^^^^^^
 
 +----------------+---------------------------------------------------+-----------------------------------------------------+
@@ -149,7 +149,7 @@ The first argument is an authentication method, the second is a regular expressi
     $authentication = Matching::createUrlMatcher(new AuthenticationMethod(), '\/api');
 
 
-Implement your own
+Implement Your Own
 ^^^^^^^^^^^^^^^^^^
 
 Implementing an authentication method is easy: only one method needs to be implemented::

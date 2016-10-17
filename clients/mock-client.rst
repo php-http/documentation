@@ -14,7 +14,7 @@ To install the Mock client, run:
 
     $ composer require php-http/mock-client
 
-Collect requests
+Collect Requests
 ----------------
 
 To make assertions::
@@ -40,7 +40,7 @@ To make assertions::
         }
     }
 
-Fake responses and exceptions
+Fake Responses and Exceptions
 -----------------------------
 
 Test how your code behaves when the HTTP client throws exceptions or returns

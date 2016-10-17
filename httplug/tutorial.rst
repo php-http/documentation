@@ -1,4 +1,4 @@
-HTTPlug tutorial
+HTTPlug Tutorial
 ================
 
 This tutorial should give you an idea how to use HTTPlug in your project. HTTPlug has two main use cases:
@@ -17,7 +17,7 @@ We use Composer_ for dependency management. Install it if you don't have it yet.
     there is an integration available. Framework integrations will simplify the way
     you set up clients, letting you focus on handling the requests.
 
-Setting up the project
+Setting up the Project
 ----------------------
 
 .. code-block:: bash
@@ -32,7 +32,7 @@ The last command will install Guzzle as well as the Guzzle HTTPlug adapter and t
 We are now ready to start coding.
 
 
-Writing some simple code
+Writing Some Simple Code
 ------------------------
 
 Create a file ``demo.php`` in the root folder and write the following code::
@@ -43,7 +43,7 @@ Create a file ``demo.php`` in the root folder and write the following code::
     TODO: create client instance with discovery and do some requests
 
 
-Using an asynchronous client
+Using an Asynchronous Client
 ----------------------------
 
 Asynchronous client accepts a PSR-7 ``RequestInterface`` and returns a ``Http\Promise\Promise``::
@@ -53,10 +53,10 @@ Asynchronous client accepts a PSR-7 ``RequestInterface`` and returns a ``Http\Pr
     $httpAsyncClient = HttpAsyncClientDiscovery::find();
     $promise = $httpAsyncClient->sendAsyncRequest($request);
 
-Using callback system
-^^^^^^^^^^^^^^^^^^^^^
+Using the Callback System
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This promise allows you to add callbacks for when the response is available or an errors happens by using the then method::
+The promise allows you to add callbacks for when the response is available or an errors happens by using the then method::
 
     $promise->then(function (ResponseInterface $response) {
         // onFulfilled callback
@@ -161,7 +161,7 @@ Here is a full example of a classic usage when using the ``sendAsyncRequest`` me
     // Do your stuff with the response
     ...
 
-Handling errors
+Handling Errors
 ---------------
 
 TODO: explain how to handle exceptions, distinction between network exception and HttpException.

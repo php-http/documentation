@@ -54,7 +54,7 @@ Or if you installed the :doc:`discovery </discovery>` layer::
 
     The message factory parameter is mandatory if the discovery layer is not installed.
 
-Be aware
+Be Aware
 --------
 
 This adapter violates the Liskov substitution principle in a rare edge case. When the adapter is configured to use

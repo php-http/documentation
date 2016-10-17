@@ -34,7 +34,7 @@ A multipart stream is a special kind of stream that is used to transfer files ov
 
 In the request above you see a set of HTTP headers and a body with two streams. The body starts and ends with a "boundary" and it is also this boundary that separates the streams. That boundary also needs to be specified in the ``Content-Type`` header.
 
-Building a multipart stream
+Building a Multipart Stream
 ```````````````````````````
 
 To build a multipart stream you may use the ``MultipartStreamBuilder``. It is not coupled to any stream implementation so it needs a ``StreamFactory`` to create the streams.

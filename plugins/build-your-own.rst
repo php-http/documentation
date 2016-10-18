@@ -25,12 +25,8 @@ This interface defines the ``handleRequest`` method that allows to modify behavi
      */
     public function handleRequest(RequestInterface $request, callable $next, callable $first);
 
-The ``$request`` comes from an upstream plugin or Plugin Client itself.
+The ``$request`` comes from an upstream plugin or ``PluginClient`` itself.
 You can replace it and pass a new version downstream if you need.
-
-.. note::
-
-    Be aware that the request is immutable.
 
 The ``$next`` callable is the next plugin in the execution chain. When you need to call it, you must pass the ``$request``
 as the first argument of this callable.

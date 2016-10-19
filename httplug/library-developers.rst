@@ -1,4 +1,4 @@
-HTTPlug for library developers
+HTTPlug for Library Developers
 ==============================
 
 If you’re developing a library or framework that performs HTTP requests, you
@@ -7,7 +7,7 @@ Instead, you should only make sure that *some* HTTP client is available. It is
 then up to your users to decide which HTTP client they want to include in their
 projects. This complies with the `dependency inversion principle`_.
 
-Manage dependencies
+Manage Dependencies
 -------------------
 
 To depend on *some* HTTP client, specify either
@@ -78,14 +78,14 @@ If your library relies on specific plugins, the recommended way is to provide a 
 your users, so they can create the correct client from a base HttpClient. See
 :ref:`plugin-client.libraries` for a concrete example.
 
-User documentation
+User Documentation
 ------------------
 
 To explain to your users that they need to install a concrete HTTP client,
 you can point them to :doc:`users`.
 
 
-Your final ``composer.json``
+Your Final ``composer.json``
 ----------------------------
 
 Putting it all together your final ``composer.json`` is much likely to look similar to this:

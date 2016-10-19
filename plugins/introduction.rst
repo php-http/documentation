@@ -23,12 +23,11 @@ How it works
 
 In the plugin package, you can find the following content:
 
-- the Plugin Client itself which acts as a wrapper around any kind of HTTP Client (sync/async)
-- a Plugin interface
-- a set of core plugins (see the full list in the left side navigation)
+- the ``PluginClient`` itself which acts as a wrapper around any kind of HTTP client (sync/async);
+- the ``Plugin`` interface;
+- a set of core plugins (see the full list in the left side navigation).
 
-The Plugin Client accepts an HTTP Client implementation and an array of plugins.
-
+The ``PluginClient`` accepts an HTTP client implementation and an array of plugins.
 Let’s see an example::
 
     use Http\Discovery\HttpClientDiscovery;
@@ -47,31 +46,37 @@ Let’s see an example::
         ]
     );
 
-The Plugin Client accepts and implements both ``Http\Client\HttpClient`` and ``Http\Client\HttpAsyncClient``, so you can use
-both ways to send a request. In case the passed client implements only one of these interfaces, the Plugin Client
+The ``PluginClient`` accepts and implements both ``Http\Client\HttpClient`` and
+``Http\Client\HttpAsyncClient``, so you can use both ways to send a request. In
+case the passed client implements only one of these interfaces, the ``PluginClient``
 "emulates" the other behavior as a fallback.
 
-It is important, that the order of plugins matters. During the request, plugins are called in the order they have
-been added, from first to last. Once a response has been received, they are called again in reversed order,
-from last to first.
+It is important to note that the order of plugins matters. During the request,
+plugins are executed in the order they have been specified in the constructor,
+from first to last. Once a response has been received, the plugins are called
+again in reversed order, from last to first.
 
-In case of our previous example, the execution chain will look like this::
+For our previous example, the execution chain will look like this:
+
+.. code::
 
     Request  ---> PluginClient ---> RetryPlugin ---> RedirectPlugin ---> HttpClient ----
                                                                                        | (processing call)
     Response <--- PluginClient <--- RetryPlugin <--- RedirectPlugin <--- HttpClient <---
 
-In order to have correct behavior over the global process, you need to understand well how each plugin is used,
-and manage a correct order when passing the array to the Plugin Client.
+In order to achieve the intended behavior in the global process, you need to
+pay attention to what each plugin does and define the correct order accordingly.
 
-Retry Plugin will be best at the end to optimize the retry process, but it can also be good
-to have it as the first plugin, if one of the plugins is inconsistent and may need a retry.
+For example, the ``RetryPlugin`` should probably be at the end of the chain to
+keep the retry process as short as possible. However, if one of the other
+plugins is doing a fragile operation that might need a retry, place the retry
+plugin before that.
 
 The recommended way to order plugins is the following:
 
- 1. Plugins that modify the request should be at the beginning (like Authentication or Cookie Plugin)
- 2. Plugins which intervene in the workflow should be in the "middle" (like Retry or Redirect Plugin)
- 3. Plugins which log information should be last (like Logger or History Plugin)
+ 1. Plugins that modify the request should be at the beginning (like Authentication or Cookie Plugin);
+ 2. Plugins which intervene in the workflow should be in the "middle" (like Retry or Redirect Plugin);
+ 3. Plugins which log information should be last (like Logger or History Plugin).
 
 .. note::
 
@@ -79,11 +84,10 @@ The recommended way to order plugins is the following:
     to log the authentication information (like ``Authorization`` header) and choose to put the
     :doc:`Authentication Plugin <authentication>` after the doc:`Logger Plugin <logger>`.
 
-
 Configuration Options
 ---------------------
 
-The PluginClient accepts an array of configuration options that can tweak its behavior.
+The ``PluginClient`` accepts an array of configuration options to tweak its behavior.
 
 .. _plugin-client.max-restarts:
 
@@ -99,8 +103,8 @@ that value, execution is aborted and an error is raised.
 ``debug_plugins``: array of Plugin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Debug plugins are injected between each normal plugin. This could be used to log the changes each
-plugin does on the Request and Response objects.
+The debug plugins are injected between each normal plugin. This can be used to
+log the changes each plugin does on the request and response objects.
 
 .. _plugin-client.libraries:
 
@@ -144,3 +148,4 @@ plugins or configure a different client. For example::
             );
             return new PluginClient($client, $plugins);
         }
+    }

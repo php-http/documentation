@@ -223,7 +223,7 @@ You can configure a client with authentication. Valid authentication types are `
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse']
 
-Special HTTP clients
+Special HTTP Clients
 ````````````````````
 
 If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the ``php-http/message`` package you may specify that on the client configuration.

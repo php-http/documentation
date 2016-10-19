@@ -1,16 +1,15 @@
 Header Plugins
 ==============
 
-Header plugins are useful to manage request headers. Many operations are possible:
+Header plugins are useful to manage request headers. Many operations are
+possible with the provided plugins.
 
-Default headers values
+Default Headers Values
 ----------------------
 
-The plugin ``HeaderDefaultsPlugin`` allows you to set default values for given headers.
-That means if a header is not set, it will be added.
-However, if the header is already present, the request is left unchanged.
-
-.. code:: php
+The plugin ``HeaderDefaultsPlugin`` allows you to define default values for
+given headers. If a header is not set, it will be added. However, if the header
+is already present, the request is left unchanged::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Common\PluginClient;
@@ -27,11 +26,12 @@ However, if the header is already present, the request is left unchanged.
         [$headerDefaultsPlugin]
     );
 
-Mandatory headers values
+Mandatory Headers Values
 ------------------------
 
-The plugin ``HeaderSetPlugin`` allows you to fix values of given headers. That means that any request passing through
-this plugin will have the given value for the given header.
+The plugin ``HeaderSetPlugin`` allows you to fix values of given headers. That
+means that any request passing through this plugin will be set to the specified
+value. Existing values of the header will be overwritten.
 
 .. code:: php
 
@@ -51,20 +51,16 @@ this plugin will have the given value for the given header.
         [$headerSetPlugin]
     );
 
-
-
-Removing headers
+Removing Headers
 ----------------
 
-The plugin ``HeaderRemovePlugin`` allows you to remove given headers from the request.
+The plugin ``HeaderRemovePlugin`` allows you to remove headers from the request.
 
 .. code:: php
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Common\PluginClient;
     use Http\Client\Common\Plugin\HeaderRemovePlugin;
-
-    $userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1';
 
     $headerRemovePlugin = new HeaderRemovePlugin([
         'User-Agent'
@@ -75,17 +71,17 @@ The plugin ``HeaderRemovePlugin`` allows you to remove given headers from the re
         [$headerRemovePlugin]
     );
 
-
-Appending header values
+Appending Header Values
 -----------------------
 
-The plugin ``HeaderAppendPlugin`` allows you to set headers or to add values to existing headers.
-That means if the request already has the given headers then the value will be appended to the current value
-but if the request does not already have the given header, it will be added to the request with the given value.
+The plugin ``HeaderAppendPlugin`` allows you to add headers. The header will be
+created if not existing yet. If the header already exists, the value will be
+appended to the list of values for this header.
 
 .. note::
 
-    This plugin is very specific and is mostly useful for headers like "forwarded"
+    The use cases for this plugin are limited. One real world example of
+    headers that can have multiple values is "Forwarded".
 
 .. code:: php
 
@@ -103,7 +99,6 @@ but if the request does not already have the given header, it will be added to t
         HttpClientDiscovery::find(),
         [$headerAppendPlugin]
     );
-
 
 Mixing operations
 -----------------

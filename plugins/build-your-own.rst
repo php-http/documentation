@@ -96,13 +96,16 @@ To better understand the whole process check existing implementations in the
 Contributing Your Plugins to PHP-HTTP
 -------------------------------------
 
-We are open to contributions. If the plugin is of general interest, is not too complex and does not have dependencies, the best
-is to do a Pull Request to ``php-http/client-common``. Please see the :doc:`contribution guide <../development/contributing>`.
-We don't promise that every plugin gets merged into the core. We need to keep the core as small as
-possible with only the most widely used plugins to keep it maintainable.
+We are open to contributions. If the plugin is of general interest, not too
+complex and does not have dependencies, the best is to do a Pull Request to
+``php-http/client-common``. Please see the :doc:`contribution guide <../development/contributing>`.
+We don't promise that every plugin gets merged into the core. We need to keep
+the core as small as possible with only the most widely used plugins to keep
+it maintainable.
 
-The alternative is providing your plugins in your own repository. Please let us know when you do,
-we would like to add a list of existing third party plugins to the list of plugins.
+The alternative is providing your plugins in your own repository. Please let us
+know when you do, we would like to add a list of existing third party plugins
+to the list of plugins.
 
 .. _PSR: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
 .. _client-common package: https://github.com/php-http/client-common

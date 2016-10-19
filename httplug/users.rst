@@ -71,7 +71,7 @@ HTTP client in your project, Composer will throw an error:
 
 You can solve this by including a HTTP client or adapter, as described above.
 
-No  message factories
+No  Message Factories
 `````````````````````
 
 You may get an exception telling you that "No message factories found", this

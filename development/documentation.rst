@@ -8,7 +8,7 @@ Install Sphinx
 --------------
 
 
-Install on local machine
+Install on Local Machine
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The installation for Sphinx differs between system. See `Sphinx installation page`_ for details. When Sphinx is
@@ -42,7 +42,7 @@ without entering the container shell:
     on the host too.
 
 
-Build documentation
+Build Documentation
 -------------------
 
 Before we can build the documentation we have to make sure to install all requirements.

@@ -22,30 +22,29 @@ If you are using docker. Run the following commands from the repository root.
 
 .. code-block:: bash
 
-    $ docker run --rm -it -v "$PWD":/doc phphttp/documentation
-    $ # You are now in the docker image
-    $ make html
-    $ make spelling
+    $ docker run --rm -t -v "$PWD":/doc webplates/readthedocs build
+    $ docker run --rm -t -v "$PWD":/doc webplates/readthedocs check
 
-Alternatively you can run the commands directly from the host
-without entering the container shell:
+Alternatively you can run the make commands as well:
 
 .. code-block:: bash
 
-    $ docker run --rm -t -v "$PWD":/doc phphttp/documentation make html
-    $ docker run --rm -t -v "$PWD":/doc phphttp/documentation make spelling
+    $ docker run --rm -t -v "$PWD":/doc webplates/readthedocs make html
+    $ docker run --rm -t -v "$PWD":/doc webplates/readthedocs make spelling
 
-.. warning::
+To automatically rebuild the documentation upon change run:
 
-    The Docker container runs with `root` user by default
-    which means the owner of the generated files will be `root`
-    on the host too.
+.. code-block:: bash
+
+    $ docker run --rm -t -v "$PWD":/doc webplates/readthedocs watch
+
+For more details see the `readthedocs image`_ documentation.
 
 
 Build Documentation
 -------------------
 
-Before we can build the documentation we have to make sure to install all requirements.
+Before building the documentation make sure to install all requirements.
 
 .. code-block:: bash
 
@@ -58,6 +57,7 @@ To build the docs:
     $ make html
     $ make spelling
 
+
 .. _Sphinx installation page: http://sphinx-doc.org/latest/install.html
 .. _install enchant: http://www.abisource.com/projects/enchant/
-
+.. _readthedocs image: https://hub.docker.com/r/webplates/readthedocs/

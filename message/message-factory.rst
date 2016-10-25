@@ -11,7 +11,7 @@ Rationale
 
 While it should be possible to use every PSR-7 aware HTTP client with any
 request, URI and stream implementation, instantiating objects explicitly would
-still  tie the code to a specific implementation. If each reusable library is
+still tie the code to a specific implementation. If each reusable library is
 tied to a specific message implementation, an application could end up
 installing several message implementations. The factories move instantiation
 out of the library code, further decoupling libraries from implementation.

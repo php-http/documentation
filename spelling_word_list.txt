@@ -30,6 +30,7 @@ sublicense
 sync
 toolbar
 username
+versa
 whitelist
 wiki
 Wikipedia

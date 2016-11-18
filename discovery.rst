@@ -89,7 +89,7 @@ Could not find resource using any discovery strategy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you get an error saying "*Could not find resource using any discovery strategy.*" it means that all the
-discovery :ref:`strategies <discovery-strategies> have failed. Most likely, your project is missing the message factories and/or a PRS-7
+discovery :ref:`strategies <discovery-strategies>` have failed. Most likely, your project is missing the message factories and/or a PRS-7
 implementation. See the :doc:`user documentation <httplug/users>`.
 
 To resolve this you may run

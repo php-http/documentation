@@ -88,8 +88,8 @@ Could not find resource using any discovery strategy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you get an error saying "*Could not find resource using any discovery strategy.*" it means that all the
-discovery [#strategies]_ have failed. The cause of this is probably because you have not installed message factories
-and/or a PSR-7 implementation. See the :doc:`user documentation <httplug/users>`.
+discovery [#strategies]_ have failed. Most likely, your project is missing the message factories and/or a PRS-7
+implementation. See the :doc:`user documentation <httplug/users>`.
 
 To resolve this you may run
 
@@ -124,7 +124,7 @@ implementation. You need to install those libraries. If you want to use Guzzle y
 No HTTPlug clients found
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The error "No HTTPlug clients found. Make sure to install a package providing 'php-http/client-implementation'*" says that
+The error "*No HTTPlug clients found. Make sure to install a package providing 'php-http/client-implementation'*" says that
 we cannot find a client. See our :doc:`list of clients <clients>` and install one of them.
 
 .. code-block:: bash

@@ -114,7 +114,7 @@ No factories found
 
 The error "*No message factories found. To use Guzzle, Diactoros or Slim Framework factories install php-http/message
 and the chosen message implementation.*"
-tells you that no discovery strategy could not find an installed implementation of PSR-7 and/or factories for that
+tells you that no discovery strategy could find an installed implementation of PSR-7 and/or factories for that
 implementation. You need to install those libraries. If you want to use Guzzle you may run:
 
 .. code-block:: bash
@@ -125,7 +125,7 @@ No HTTPlug clients found
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The error "No HTTPlug clients found. Make sure to install a package providing 'php-http/client-implementation'*" says that
-we cant find a client. See our :doc:`list of clients <clients>` and install one of them.
+we cannot find a client. See our :doc:`list of clients <clients>` and install one of them.
 
 .. code-block:: bash
 

@@ -25,6 +25,7 @@ Discovery is simply a convenience wrapper to statically access clients and facto
 Dependency Injection is not an option. Discovery is useful in libraries that want to offer
 zero-configuration services relying on the virtual packages.
 
+.. _discovery-strategies:
 
 Strategies
 ----------
@@ -88,7 +89,7 @@ Could not find resource using any discovery strategy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you get an error saying "*Could not find resource using any discovery strategy.*" it means that all the
-discovery [#strategies]_ have failed. Most likely, your project is missing the message factories and/or a PRS-7
+discovery :ref:`strategies <discovery-strategies> have failed. Most likely, your project is missing the message factories and/or a PRS-7
 implementation. See the :doc:`user documentation <httplug/users>`.
 
 To resolve this you may run

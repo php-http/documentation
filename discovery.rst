@@ -25,6 +25,7 @@ Discovery is simply a convenience wrapper to statically access clients and facto
 Dependency Injection is not an option. Discovery is useful in libraries that want to offer
 zero-configuration services relying on the virtual packages.
 
+.. _discovery-strategies:
 
 Strategies
 ----------
@@ -84,23 +85,56 @@ Read more about setting up Puli in their `official documentation`_.
 Common Errors
 -------------
 
+Could not find resource using any discovery strategy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error saying "*Could not find resource using any discovery strategy.*"
+it means that all the discovery :ref:`strategies <discovery-strategies>` have failed.
+Most likely, your project is missing the message factories and/or a PRS-7 implementation.
+See the :doc:`user documentation <httplug/users>`.
+
+To resolve this you may run
+
+.. code-block:: bash
+
+        $ composer require php-http/curl-client guzzlehttp/psr7 php-http/message
+
 Puli Factory is not available
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you get an error that says "*Puli Factory is not available*", it means that you have failed to install Puli.
-You should make sure you install the latest version of ``puli/composer-plugin``.
+If you get an error that says "*Puli Factory is not available*", it means that you
+have failed to install Puli. Using Puli is optional and you will be able to use
+common clients and message factories without Puli (:doc:`see how <httplug/users>`).
+If you want to use Puli, make sure to install the latest version of
+``puli/composer-plugin``.
+
+.. code-block:: bash
+
+        $ composer require puli/composer-plugin
 
 No factories found
 ^^^^^^^^^^^^^^^^^^
 
-The error "*No factories found. To use Guzzle or Diactoros factories install php-http/message and the chosen message implementation.*"
-tells you that Puli could not find an installed implementation of PSR-7 and/or factories to that implementation. You
-need to install those libraries. If you want to use Guzzle you may run:
+The error "*No message factories found. To use Guzzle, Diactoros or Slim Framework
+factories install php-http/message and the chosen message implementation.*" tells
+you that no discovery strategy could find an installed implementation of PSR-7
+and/or factories for that implementation. You need to install those libraries.
+If you want to use Guzzle you may run:
 
 .. code-block:: bash
 
         $ composer require php-http/message guzzlehttp/psr7
 
+No HTTPlug clients found
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The error "*No HTTPlug clients found. Make sure to install a package providing
+'php-http/client-implementation'*" says that we cannot find a client. See our
+:doc:`list of clients <clients>` and install one of them.
+
+.. code-block:: bash
+
+        $ composer require php-http/curl-client
 
 HTTP Client Discovery
 ---------------------
@@ -118,7 +152,7 @@ This type of discovery finds an HTTP Client implementation::
         protected $httpClient;
 
         /**
-         * @param HttpClient|null $httpClient Client to do HTTP requests, if not set, autodiscovery will be used to find a HTTP client.
+         * @param HttpClient|null $httpClient Client to do HTTP requests, if not set, auto discovery will be used to find a HTTP client.
          */
         public function __construct(HttpClient $httpClient = null)
         {
@@ -142,7 +176,7 @@ This type of discovery finds a HTTP asynchronous Client implementation::
         protected $httpAsyncClient;
 
         /**
-         * @param HttpAsyncClient|null $httpAsyncClient Client to do HTTP requests, if not set, autodiscovery will be used to find an asynchronous client.
+         * @param HttpAsyncClient|null $httpAsyncClient Client to do HTTP requests, if not set, auto discovery will be used to find an asynchronous client.
          */
         public function __construct(HttpAsyncClient $httpAsyncClient = null)
         {

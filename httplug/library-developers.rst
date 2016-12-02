@@ -63,7 +63,7 @@ Messages
 --------
 
 When you construct HTTP message objects in your library, you should not depend on a concrete PSR-7 message
-implementation. Instead, use the :ref:`PHP-HTTP message factory <message-factory>`.
+implementation. Instead, use the :doc:`HTTP factories <../message/message-factory>`.
 
 Discovery
 ---------

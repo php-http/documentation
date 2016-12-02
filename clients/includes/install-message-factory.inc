@@ -6,7 +6,7 @@ to install one as well (for example `Guzzle PSR-7`_):
     $ composer require guzzlehttp/psr7
 
 In order to provide full interoperability, message implementations are
-accessed through :doc:`factories </message/message-factory>`. Message factories for
+accessed through :ref:`factories <message-factory>`. Message factories for
 `Diactoros`_, `Guzzle PSR-7`_ and `Slim Framework`_ are available in the
 :doc:`message </message>` component:
 

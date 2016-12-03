@@ -3,6 +3,7 @@ auth
 backtrace
 boolean
 callables
+chunked
 cURL
 Diactoros
 Elasticsearch

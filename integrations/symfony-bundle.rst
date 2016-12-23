@@ -153,7 +153,7 @@ You can configure your clients with default options. These default values will b
     // will be the same as ``httplug.client.my_guzzle5``
     $httpClient = $this->container->get('httplug.client');
 
-The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBudle\ClientFactory\ClientFactory``. The built-in services are:
+The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBundle\ClientFactory\ClientFactory``. The built-in services are:
 
 * ``httplug.factory.curl``
 * ``httplug.factory.buzz``

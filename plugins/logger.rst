@@ -29,7 +29,7 @@ compliant logger::
 By default it uses ``Http\Message\Formatter\SimpleFormatter`` to format the request or the response into a string.
 You can use any formatter implementing the ``Http\Message\Formatter`` interface::
 
-    $formatter = new \My\Formatter\Implemenation();
+    $formatter = new \My\Formatter\Implementation();
 
     $loggerPlugin = new LoggerPlugin(new Logger('http'), $formatter);
 

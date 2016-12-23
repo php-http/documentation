@@ -59,7 +59,7 @@ It provides methods that give appropriate information based on a given request::
     $batchResult = $client->sendRequests($requests);
 
     if ($batchResult->hasResponses()) {
-        $fooSuccessful = $batchResult->isSuccesful($requests[0]);
+        $fooSuccessful = $batchResult->isSuccessful($requests[0]);
         $updateResponse = $batchResult->getResponseFor($request[1]);
     }
 

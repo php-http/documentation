@@ -38,7 +38,7 @@ to include the Socket client:
         }
     }
 
-Testing you library
+Testing your library
 -------------------
 
 When you install your library on a CI-server (like Travis) you need to include a client. So specify any concrete client

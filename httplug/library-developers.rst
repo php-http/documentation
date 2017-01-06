@@ -39,7 +39,7 @@ to include the Socket client:
     }
 
 Testing your library
--------------------
+--------------------
 
 When you install your library on a CI-server (like Travis) you need to include a client. So specify any concrete client
 in the ``require-dev`` section in your library’s ``composer.json``. You could use any client but the

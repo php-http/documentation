@@ -119,8 +119,8 @@ Using the promise directly
 If you don't want to use the callback system, you can also get the state of the promise with ``$promise->getState()``
 will return of one ``Promise::PENDING``, ``Promise::FULFILLED`` or ``Promise::REJECTED``.
 
-Then you can get the response of the promise if it's in ``FULFILLED`` state with ``$promise->getResponse()`` call or
-get the error of the promise if it's in ``REJECTED`` state with ``$promise->getRequest()`` call
+Then you can get the response of the promise if it's in ``FULFILLED`` state or trigger the exception of the promise
+if it's in ``REJECTED`` state with ``$promise->wait(true)`` call.
 
 .. note::
 
@@ -131,6 +131,7 @@ Example
 
 Here is a full example of a classic usage when using the ``sendAsyncRequest`` method::
 
+    use Http\Client\Exception;
     use Http\Discovery\HttpAsyncClientDiscovery;
 
     $httpAsyncClient = HttpAsyncClientDiscovery::find();
@@ -149,13 +150,11 @@ Here is a full example of a classic usage when using the ``sendAsyncRequest`` me
     // Do some stuff not depending on the response, calling another request, etc ..
     ...
 
-    // We need now the response for our final treatment
-    $promise->wait();
-
-    if (Promise::FULFILLED === $promise->getState()) {
-        $response = $promise->getResponse();
-    } else {
-        throw new \Exception('Response not available');
+    try {
+        // We need now the response for our final treatment...
+        $response = $promise->wait(true);
+    } catch (Exception $e) {
+        // ...or catch the thrown exception
     }
 
     // Do your stuff with the response

@@ -250,7 +250,7 @@ You may find yourself testing parts of your application that are dependent on an
         {
             HttpClientDiscovery::prependStrategy(MockClientStrategy::class);
 
-            $this->service = new ThirdPartyService;
+            $this->service = new MyCustomService;
         }
 
         public function testMyCustomServiceDoesSomething()

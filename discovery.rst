@@ -237,7 +237,16 @@ This type of discovery finds a URI factory for a PSR-7_ URI implementation::
 Mock Client Discovery
 ---------------------------
 
-You may find yourself testing parts of your application that are dependent on an HTTP Client using the Discovery Service, but do not necessarily need to perform the request nor contain any special configuration. In this case, the ``Http\Mock\Client`` from the ``php-http/mock-client`` package is typically used to fake requests and keep your tests nicely decoupled. However, for the best stability in a production environment, the mock client is not set to be found via the Discovery Service. Attempting to run a test which relies on discovery and uses a mock client will result in an ``Http\Discovery\Exception\NotFoundException``. Thankfully, Discovery gives us a Mock Client strategy that can be added straight to the Discovery. Let's take a look::
+You may find yourself testing parts of your application that are dependent on an
+HTTP Client using the Discovery Service, but do not necessarily need to perform
+the request nor contain any special configuration. In this case, the
+``Http\Mock\Client`` from the ``php-http/mock-client`` package is typically used
+to fake requests and keep your tests nicely decoupled. However, for the best
+stability in a production environment, the mock client is not set to be found
+via the Discovery Service. Attempting to run a test which relies on discovery
+and uses a mock client will result in an ``Http\Discovery\Exception\NotFoundException``.
+Thankfully, Discovery gives us a Mock Client strategy that can be added straight
+to the Discovery. Let's take a look::
 
     use MyCustomService;
     use Http\Mock\Client as MockClient;
@@ -259,9 +268,19 @@ You may find yourself testing parts of your application that are dependent on an
         }
     }
     
-In the example of a test class above, we have our ``MyCustomService`` which relies on an HTTP Client implementation. We do not need to test that the actual request our custom service makes is successful in this test class, so it makes sense to use the Mock Client. However, we do want to make sure that our dependency injection using the Discovery service properly works, as this is a major feature of our service. By calling the ``HttpClientDiscovery``'s ``prependStrategy`` method and passing in the ``MockClientStrategy`` namespace, we have now added the ability to discover the mock client and our tests will work as desired.
+In the example of a test class above, we have our ``MyCustomService`` which
+relies on an HTTP Client implementation. We do not need to test that the actual
+request our custom service makes is successful in this test class, so it makes
+sense to use the Mock Client. However, we do want to make sure that our
+dependency injection using the Discovery service properly works, as this is a
+major feature of our service. By calling the ``HttpClientDiscovery``'s
+``prependStrategy`` method and passing in the ``MockClientStrategy`` namespace,
+we have now added the ability to discover the mock client and our tests will
+work as desired.
 
-It is important to note that you must explicitly enable the ``MockClientStrategy`` and that it is not used by the Discovery Service by default. It is simply provided as a convenient option when writing tests.
+It is important to note that you must explicitly enable the ``MockClientStrategy``
+and that it is not used by the Discovery Service by default. It is simply
+provided as a convenient option when writing tests.
 
 Integrating your own implementation with the discovery mechanism using Puli
 ---------------------------------------------------------------------------

@@ -7,7 +7,7 @@ A multipart stream is a special kind of stream that is used to transfer files ov
 
     POST / HTTP/1.1
     Host: example.com
-    Content-Type: multipart/form-data; boundary=578de3b0e3c46
+    Content-Type: multipart/form-data; boundary="578de3b0e3c46.2334ba3"
 
     --578de3b0e3c46
     Content-Disposition: form-data; name="foo"
@@ -54,7 +54,7 @@ To build a multipart stream you may use the ``MultipartStreamBuilder``. It is no
     $request = MessageFactoryDiscovery::find()->createRequest(
       'POST',
       'http://example.com',
-      ['Content-Type' => 'multipart/form-data; boundary='.$boundary],
+      ['Content-Type' => 'multipart/form-data; boundary="'.$boundary.'"'],
       $multipartStream
     );
 

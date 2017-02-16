@@ -36,8 +36,7 @@ control headers from the server as specified in :rfc:`7234`. It needs a
 Options
 -------
 
-The third parameter to the ``CachePlugin`` constructor takes an array of options. The plugin has four options you can
-configure. Their default values and meaning is described by the table below.
+The third parameter to the ``CachePlugin`` constructor takes an array of options. The available options are:
 
 +---------------------------+---------------------+------------------------------------------------------+
 | Name                      | Default value       | Description                                          |

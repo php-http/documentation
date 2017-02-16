@@ -44,7 +44,7 @@ configure. Their default values and meaning is described by the table below.
 +===========================+=====================+======================================================+
 | ``default_ttl``           | ``0``               | The default max age of a Response                    |
 +---------------------------+---------------------+------------------------------------------------------+
-| ``respect_cache_headers`` | ``true``            | Whatever or not we should care about cache headers   |
+| ``respect_cache_headers`` | ``true``            | Whether we should care about cache headers or not    |
 +---------------------------+---------------------+------------------------------------------------------+
 | ``cache_lifetime``        | 30 days             | The minimum time we should store a cache item        |
 +---------------------------+---------------------+------------------------------------------------------+
@@ -109,13 +109,15 @@ Caching of different request methods
 ````````````````````````````````````
 
 Most of the time you should not change the ``methods`` option. However if you are working for example with HTTPlug
-based SOAP client you might want to additionally enable caching of POST requests::
+based SOAP client you might want to additionally enable caching of ``POST`` requests::
 
     $options = [
         'methods' => ['GET', 'HEAD', 'POST'],
     ];
 
-You can cache any valid request method.
+The ``methods`` setting overrides the defaults. If you want to keep caching ``GET`` and ``HEAD`` requests, you need
+to include them. You can specify any request method that conforms to RFC-7230. Request methods are case sensitive,
+this means ``post`` and ``POST`` are not the same.
 
 .. note::
 

@@ -36,18 +36,19 @@ control headers from the server as specified in :rfc:`7234`. It needs a
 Options
 -------
 
-The third parameter to the ``CachePlugin`` constructor takes an array of options. The plugin has 3 options you can
-configure. Their default values and meaning is described by the table below.
+The third parameter to the ``CachePlugin`` constructor takes an array of options. The available options are:
 
-+---------------------------+---------------+------------------------------------------------------+
-| Name                      | Default value | Description                                          |
-+===========================+===============+======================================================+
-| ``default_ttl``           | ``0``         | The default max age of a Response                    |
-+---------------------------+---------------+------------------------------------------------------+
-| ``respect_cache_headers`` | ``true``      | Whatever or not we should care about cache headers   |
-+---------------------------+---------------+------------------------------------------------------+
-| ``cache_lifetime``        | 30 days       | The minimum time we should store a cache item        |
-+---------------------------+---------------+------------------------------------------------------+
++---------------------------+---------------------+------------------------------------------------------+
+| Name                      | Default value       | Description                                          |
++===========================+=====================+======================================================+
+| ``default_ttl``           | ``0``               | The default max age of a Response                    |
++---------------------------+---------------------+------------------------------------------------------+
+| ``respect_cache_headers`` | ``true``            | Whether we should care about cache headers or not    |
++---------------------------+---------------------+------------------------------------------------------+
+| ``cache_lifetime``        | 30 days             | The minimum time we should store a cache item        |
++---------------------------+---------------------+------------------------------------------------------+
+| ``methods``               | ``['GET', 'HEAD']`` | Which request methods to cache                       |
++---------------------------+---------------------+------------------------------------------------------+
 
 .. note::
 
@@ -103,7 +104,23 @@ removed from the cache::
         'cache_lifetime' => 86400*365, // one year
     ];
 
+Caching of different request methods
+````````````````````````````````````
 
+Most of the time you should not change the ``methods`` option. However if you are working for example with HTTPlug
+based SOAP client you might want to additionally enable caching of ``POST`` requests::
+
+    $options = [
+        'methods' => ['GET', 'HEAD', 'POST'],
+    ];
+
+The ``methods`` setting overrides the defaults. If you want to keep caching ``GET`` and ``HEAD`` requests, you need
+to include them. You can specify any uppercase request method which conforms to :rfc:`7230`.
+
+.. note::
+
+    If your system has both normal and SOAP clients you need to use two different ``PluginClient`` instances. SOAP
+    client should use ``PluginClient`` with POST caching enabled and normal client with POST caching disabled.
 
 Cache Control Handling
 ----------------------

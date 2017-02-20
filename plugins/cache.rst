@@ -115,8 +115,7 @@ based SOAP client you might want to additionally enable caching of ``POST`` requ
     ];
 
 The ``methods`` setting overrides the defaults. If you want to keep caching ``GET`` and ``HEAD`` requests, you need
-to include them. You can specify any request method that conforms to RFC-7230. Request methods are case sensitive,
-this means ``post`` and ``POST`` are not the same.
+to include them. You can specify any uppercase request method which conforms to :rfc:`7230`.
 
 .. note::
 

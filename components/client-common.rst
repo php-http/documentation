@@ -80,7 +80,7 @@ If one or more of the requests throw exceptions, they are added to the
 PluginClient
 ------------
 
-See :doc:`/plugins/introduction`
+See :doc:`the documentation about plugins </plugins/introduction>`
 
 HttpClientPool
 --------------

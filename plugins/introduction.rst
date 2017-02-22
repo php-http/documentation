@@ -82,7 +82,7 @@ The recommended way to order plugins is the following:
 
     There can be exceptions to these rules. For example, for security reasons you might not want
     to log the authentication information (like ``Authorization`` header) and choose to put the
-    :doc:`Authentication Plugin <authentication>` after the doc:`Logger Plugin <logger>`.
+    :doc:`Authentication Plugin <authentication>` after the :doc:`Logger Plugin <logger>`.
 
 Configuration Options
 ---------------------

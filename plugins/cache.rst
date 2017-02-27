@@ -33,22 +33,40 @@ control headers from the server as specified in :rfc:`7234`. It needs a
         [$cachePlugin]
     );
 
+
+The ``CachePlugin`` has also 2 factory methods to easily setup the plugin by caching type. See the example below.
+
+.. code-block:: php
+
+    // This will allows caching responses with the 'private' and/or 'no-store' cache directives
+    $cachePlugin = CachePlugin::clientCache($pool, $streamFactory, $options);
+
+    // Returns a cache plugin with the current default behavior
+    $cachePlugin = CachePlugin::serverCache($pool, $streamFactory, $options);
+
+.. note::
+
+    The two factory methods have been added in version 1.3.0.
+
 Options
 -------
 
 The third parameter to the ``CachePlugin`` constructor takes an array of options. The available options are:
 
-+---------------------------+---------------------+------------------------------------------------------+
-| Name                      | Default value       | Description                                          |
-+===========================+=====================+======================================================+
-| ``default_ttl``           | ``0``               | The default max age of a Response                    |
-+---------------------------+---------------------+------------------------------------------------------+
-| ``respect_cache_headers`` | ``true``            | Whether we should care about cache headers or not    |
-+---------------------------+---------------------+------------------------------------------------------+
-| ``cache_lifetime``        | 30 days             | The minimum time we should store a cache item        |
-+---------------------------+---------------------+------------------------------------------------------+
-| ``methods``               | ``['GET', 'HEAD']`` | Which request methods to cache                       |
-+---------------------------+---------------------+------------------------------------------------------+
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| Name                                  | Default value                                      | Description                                                           |
++=======================================+====================================================+=======================================================================+
+| ``default_ttl``                       | ``0``                                              | The default max age of a Response                                     |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``respect_cache_headers``             | ``true``                                           | Whether we should care about cache headers or not                     |
+|                                       |                                                    | * This option is deprecated. Use  `respect_response_cache_directives` |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``cache_lifetime``                    | 30 days                                            | The minimum time we should store a cache item                         |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``methods``                           | ``['GET', 'HEAD']``                                | Which request methods to cache                                        |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``respect_response_cache_directives`` | ``['no-cache', 'private', 'max-age', 'no-store']`` | A list of cache directives to respect when caching responses          |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 
 .. note::
 
@@ -68,7 +86,7 @@ for the default time to live. The options below will cache all responses for one
 
     $options = [
         'default_ttl' => 3600, // cache for one hour
-        'respect_cache_headers' => false,
+        'respect_response_cache_directives' => [],
     ];
 
 Semantics of null values
@@ -81,7 +99,7 @@ Store a response as long the cache implementation allows::
 
     $options = [
         'default_ttl' => null,
-        'respect_cache_headers' => false,
+        'respect_response_cache_directives' => [],
         'cache_lifetime' => null,
     ];
 
@@ -90,7 +108,7 @@ Ask the server if the response is valid at most ever hour. Store the cache item 
 
     $options = [
         'default_ttl' => 3600,
-        'respect_cache_headers' => false,
+        'respect_response_cache_directives' => [],
         'cache_lifetime' => null,
     ];
 
@@ -100,7 +118,7 @@ removed from the cache::
 
     $options = [
         'default_ttl' => 3600,
-        'respect_cache_headers' => false,
+        'respect_response_cache_directives' => [],
         'cache_lifetime' => 86400*365, // one year
     ];
 
@@ -125,7 +143,9 @@ to include them. You can specify any uppercase request method which conforms to 
 Cache Control Handling
 ----------------------
 
-This plugin does not cache responses with ``no-store`` or ``private`` instructions.
+By default this plugin does not cache responses with ``no-store``, ``no-cache`` or ``private`` instructions. Use
+``CachePlugin::clientCache($pool, $streamFactory, $options);`` to cache ``no-store`` or ``private`` responses or change
+the ``respect_response_cache_directives`` option to your needs.
 
 It does store responses with cookies or a ``Set-Cookie`` header. Be careful with
 the order of your plugins.

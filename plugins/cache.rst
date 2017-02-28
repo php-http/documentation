@@ -34,11 +34,11 @@ control headers from the server as specified in :rfc:`7234`. It needs a
     );
 
 
-The ``CachePlugin`` has also 2 factory methods to easily setup the plugin by caching type. See the example below.
+The ``CachePlugin`` has also 2 factory methods to easily set up the plugin by caching type. See the example below.
 
 .. code-block:: php
 
-    // This will allows caching responses with the 'private' and/or 'no-store' cache directives
+    // This will allow caching responses with the 'private' and/or 'no-store' cache directives
     $cachePlugin = CachePlugin::clientCache($pool, $streamFactory, $options);
 
     // Returns a cache plugin with the current default behavior

@@ -53,7 +53,7 @@ in the ``require-dev`` section in your library’s ``composer.json``. You could 
             "php-http/client-implementation": "^1.0"
         },
         "require-dev": {
-            "php-http/mock-client": "^0.3"
+            "php-http/mock-client": "^1.0"
         }
     }
 

@@ -278,7 +278,7 @@ List of Services
 Usage for Reusable Bundles
 ``````````````````````````
 
-Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
+Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
 
 The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the ``HttplugBundle`` in their kernel.
 

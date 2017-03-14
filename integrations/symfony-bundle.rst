@@ -225,7 +225,8 @@ The order in which you specify the plugins **does** matter.
                     - add_host:
                             host: "http://localhost:8000"
                     - header_defaults:
-                            "X-FOO": bar
+                            headers:
+                                "X-FOO": bar
                     - authentication:
                             acme_basic:
                                 type: 'basic'

@@ -1,9 +1,13 @@
 Symfony Bundle
 ==============
 
-This bundle integrate HTTPlug with the Symfony framework. The bundle helps to register services for all your clients and makes sure all the configuration is in one place. The bundle also feature a toolbar plugin with information about your requests.
+This bundle integrate HTTPlug with the Symfony framework. The bundle helps to
+register services for all your clients and makes sure all the configuration is
+in one place. The bundle also feature a toolbar plugin with information about
+your requests.
 
-This guide explains how to configure HTTPlug in the Symfony framework. See the :doc:`../httplug/tutorial` for examples how to use HTTPlug in general.
+This guide explains how to configure HTTPlug in the Symfony framework. See the
+:doc:`../httplug/tutorial` for examples how to use HTTPlug in general.
 
 Installation
 ````````````
@@ -24,7 +28,8 @@ Install the HTTPlug bundle with composer and enable it in your AppKernel.php.
         );
     }
 
-You will find all available configuration at the :doc:`full configuration </integrations/symfony-full-configuration>` page.
+You will find all available configuration at the
+:doc:`full configuration </integrations/symfony-full-configuration>` page.
 
 Usage
 `````
@@ -54,9 +59,13 @@ Web Debug Toolbar
     :align: right
     :width: 260px
 
-When using a client configured with ``HttplugBundle``, you will get debug information in the web debug toolbar. It will tell you how many request were made and how many of those that were successful or not. It will also show you detailed information about each request.
+When using a client configured with ``HttplugBundle``, you will get debug
+information in the web debug toolbar. It will tell you how many request were
+made and how many of those that were successful or not. It will also show you
+detailed information about each request.
 
-The web profiler page will show you lots of information about the request and also how different plugins changes the message. See example screen shots below.
+The web profiler page will show you lots of information about the request and
+also how different plugins changes the message. See example screen shots below.
 
 .. image:: /assets/img/symfony-profiler/dashboard.png
     :width: 200px
@@ -72,7 +81,8 @@ The web profiler page will show you lots of information about the request and al
 
 |clearfloat|
 
-The body of the HTTP messages is not captured by default because of performance reasons. Turn this on by changing the ``captured_body_length`` configuration.
+The body of the HTTP messages is not captured by default because of performance
+reasons. Turn this on by changing the ``captured_body_length`` configuration.
 
 .. code-block:: yaml
 
@@ -80,14 +90,20 @@ The body of the HTTP messages is not captured by default because of performance 
         toolbar:
             captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
 
-The toolbar is automatically turned off when ``kernel.debug = false``. You can also disable the toolbar by configuration.
+The toolbar is automatically turned off when ``kernel.debug = false``. You can
+also disable the toolbar by configuration.
 
 .. code-block:: yaml
 
     httplug:
         toolbar: false
 
-You can configure the bundle to show debug information for clients found with discovery. You may also force a specific client to be found when a third party library is using discovery. The configuration below makes sure the client with service id ``httplug.clients.my_guzzle5`` is returned when calling ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for asynchronous clients.
+You can configure the bundle to show debug information for clients found with
+discovery. You may also force a specific client to be found when a third party
+library is using discovery. The configuration below makes sure the client with
+service id ``httplug.clients.my_guzzle5`` is returned when calling
+``HttpClientDiscovery::find()`` . It does also make sure to show debug info for
+asynchronous clients.
 
 .. note::
 
@@ -103,14 +119,21 @@ You can configure the bundle to show debug information for clients found with di
             client: 'httplug.clients.my_guzzle5'
             async_client: 'auto'
 
-For normal clients, the auto discovery debug info is enabled by default. For async clients, debug is not enabled by default to avoid errors when using the bundle with a client that can not do async. To get debug information for async clients, set ``discovery.async_client`` to ``'auto'`` or an explicit client.
+For normal clients, the auto discovery debug info is enabled by default. For
+async clients, debug is not enabled by default to avoid errors when using the
+bundle with a client that can not do async. To get debug information for async
+clients, set ``discovery.async_client`` to ``'auto'`` or an explicit client.
 
-You can turn off all interaction of the bundle with auto discovery by setting the value of ``discovery.client`` to ``false``.
+You can turn off all interaction of the bundle with auto discovery by setting
+the value of ``discovery.client`` to ``false``.
 
 Discovery of Factory Classes
 ````````````````````````````
 
-If you want the bundle to automatically find usable factory classes, install and enable ``puli/symfony-bundle``. If you do not want use auto discovery, you need to specify all the factory classes for you client. The following example show how you configure factory classes using Guzzle:
+If you want the bundle to automatically find usable factory classes, install
+and enable ``puli/symfony-bundle``. If you do not want use auto discovery, you
+need to specify all the factory classes for you client. The following example
+show how you configure factory classes using Guzzle:
 
 .. code-block:: yaml
 
@@ -126,7 +149,9 @@ If you want the bundle to automatically find usable factory classes, install and
 Configure Clients
 `````````````````
 
-You can configure your clients with default options. These default values will be specific to you client you are using. The clients are later registered as services.
+You can configure your clients with default options. These default values will
+be specific to you client you are using. The clients are later registered as
+services.
 
 .. code-block:: yaml
 
@@ -153,7 +178,10 @@ You can configure your clients with default options. These default values will b
     // will be the same as ``httplug.client.my_guzzle5``
     $httpClient = $this->container->get('httplug.client');
 
-The bundle has client factory services that you can use to build your client. If you need a very custom made client you could create your own factory service implementing ``Http\HttplugBundle\ClientFactory\ClientFactory``. The built-in services are:
+The bundle has client factory services that you can use to build your client.
+If you need a very custom made client you could create your own factory service
+implementing ``Http\HttplugBundle\ClientFactory\ClientFactory``. The built-in
+services are:
 
 * ``httplug.factory.curl``
 * ``httplug.factory.buzz``
@@ -165,9 +193,12 @@ The bundle has client factory services that you can use to build your client. If
 Plugins
 ```````
 
-Clients can have plugins. Generic plugins from ``php-http/plugins`` (e.g. retry or redirect) can be configured globally. You can tell the client which of those plugins to use, as well as custom plugins that you configured a service for.
+Clients can have plugins. Generic plugins from ``php-http/plugins`` (e.g. retry
+or redirect) can be configured globally. You can tell the client which of those
+plugins to use, as well as custom plugins that you configured a service for.
 
-Additionally you can configure any of the ``php-http/plugins`` specifically on a client. For some plugins this is the only place where they can be configured.
+Additionally you can configure any of the ``php-http/plugins`` specifically on
+a client. For some plugins this is the only place where they can be configured.
 The order in which you specify the plugins **does** matter.
 
 .. code-block:: yaml
@@ -205,7 +236,9 @@ The order in which you specify the plugins **does** matter.
 Authentication
 ``````````````
 
-You can configure a client with authentication. Valid authentication types are ``basic``, ``bearer``, ``service`` and ``wsse``. See more examples at the :doc:`full configuration </integrations/symfony-full-configuration>`.
+You can configure a client with authentication. Valid authentication types are
+``basic``, ``bearer``, ``service`` and ``wsse``. See more examples at the
+:doc:`full configuration </integrations/symfony-full-configuration>`.
 
 .. code-block:: yaml
 
@@ -226,7 +259,8 @@ You can configure a client with authentication. Valid authentication types are `
 Special HTTP Clients
 ````````````````````
 
-If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the ``php-http/message`` package you may specify that on the client configuration.
+If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the
+``php-http/message`` package you may specify that on the client configuration.
 
 .. code-block:: yaml
 
@@ -278,9 +312,18 @@ List of Services
 Usage for Reusable Bundles
 ``````````````````````````
 
-Rather than code against specific HTTP clients, you want to use the HTTPlug ``Client`` interface. To avoid building your own infrastructure to define services for the client, simply ``require: php-http/httplug-bundle`` in your bundles ``composer.json``. You SHOULD provide a configuration option to specify the which HTTP client service to use for each of your services. This option should default to ``httplug.client``. This way, the default case needs no additional configuration for your users, but they have the option of using specific clients with each of your services.
+Rather than code against specific HTTP clients, you want to use the HTTPlug
+``Client`` interface. To avoid building your own infrastructure to define
+services for the client, simply ``require: php-http/httplug-bundle`` in your
+bundles ``composer.json``. You SHOULD provide a configuration option to specify
+which HTTP client service to use for each of your services. This option should
+default to ``httplug.client``. This way, the default case needs no additional
+configuration for your users, but they have the option of using specific
+clients with each of your services.
 
-The only steps they need is ``require`` one of the adapter implementations in their projects ``composer.json`` and instantiating the ``HttplugBundle`` in their kernel.
+The only steps they need is ``require`` one of the adapter implementations in
+their projects ``composer.json`` and instantiating the ``HttplugBundle`` in
+their kernel.
 
 .. |clearfloat|  raw:: html
 

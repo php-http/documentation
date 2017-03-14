@@ -1,9 +1,9 @@
 Symfony Bundle
 ==============
 
-This bundle integrate HTTPlug with the Symfony framework. The bundle helps to
+This bundle integrates HTTPlug with the Symfony framework. The bundle helps to
 register services for all your clients and makes sure all the configuration is
-in one place. The bundle also feature a toolbar plugin with information about
+in one place. The bundle also features a toolbar plugin with information about
 your requests.
 
 This guide explains how to configure HTTPlug in the Symfony framework. See the

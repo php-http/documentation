@@ -71,6 +71,12 @@ They use us
     :target: https://github.com/SparkPost/php-sparkpost
     :alt: SparkPost
 
+.. image:: https://avatars3.githubusercontent.com/u/551057?v=3&s=100
+    :align: left
+    :width: 10%
+    :target: https://github.com/Nexmo/nexmo-php
+    :alt: Nexmo
+
 |clearfloat|
 
 Packages

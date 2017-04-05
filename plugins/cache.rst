@@ -67,6 +67,9 @@ The third parameter to the ``CachePlugin`` constructor takes an array of options
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 | ``respect_response_cache_directives`` | ``['no-cache', 'private', 'max-age', 'no-store']`` | A list of cache directives to respect when caching responses          |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``cache_key_generator``               | ``new SimpleGenerator()``                          | A class implementing ``CacheKeyGenerator`` to generate a PSR-6 cache  |
+|                                       |                                                    | key.                                                                  |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 
 .. note::
 
@@ -88,6 +91,15 @@ for the default time to live. The options below will cache all responses for one
         'default_ttl' => 3600, // cache for one hour
         'respect_response_cache_directives' => [],
     ];
+
+
+Generating a cache key
+``````````````````````
+
+You may define a method how the PSR-6 cache key should be generated. The default generator is ``SimpleGenerator`` which
+is using the request method, URI and body of the request. The cache plugin does also include a ``HeaderCacheKeyGenerator``
+which allow you to specify what HTTP header you want include in the cache key.
+
 
 Semantics of null values
 ````````````````````````

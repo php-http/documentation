@@ -3,7 +3,7 @@ Symfony Bundle
 
 This bundle integrates HTTPlug with the Symfony framework. The bundle helps to
 register services for all your clients and makes sure all the configuration is
-in one place. The bundle also features a toolbar plugin with information about
+in one place. The bundle also features a profiling plugin with information about
 your requests.
 
 This guide explains how to configure HTTPlug in the Symfony framework. See the
@@ -87,16 +87,16 @@ reasons. Turn this on by changing the ``captured_body_length`` configuration.
 .. code-block:: yaml
 
     httplug:
-        toolbar:
+        profiling:
             captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
 
-The toolbar is automatically turned off when ``kernel.debug = false``. You can
-also disable the toolbar by configuration.
+The profiling is automatically turned off when ``kernel.debug = false``. You can
+also disable the profiling by configuration.
 
 .. code-block:: yaml
 
     httplug:
-        toolbar: false
+        profiling: false
 
 You can configure the bundle to show debug information for clients found with
 discovery. You may also force a specific client to be found when a third party

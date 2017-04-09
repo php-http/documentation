@@ -102,7 +102,7 @@ Putting it all together your final ``composer.json`` is much likely to look simi
             "php-http/discovery": "^1.0"
         },
         "require-dev": {
-            "php-http/mock-client": "^0.3",
+            "php-http/mock-client": "^1.0",
             "php-http/message": "^1.0",
             "guzzlehttp/psr7": "^1.0"
         }

@@ -101,7 +101,7 @@ also disable the profiling by configuration.
 You can configure the bundle to show debug information for clients found with
 discovery. You may also force a specific client to be found when a third party
 library is using discovery. The configuration below makes sure the client with
-service id ``httplug.clients.my_guzzle5`` is returned when calling
+service id ``httplug.client.my_guzzle5`` is returned when calling
 ``HttpClientDiscovery::find()`` . It does also make sure to show debug info for
 asynchronous clients.
 
@@ -116,7 +116,7 @@ asynchronous clients.
             my_guzzle5:
                 factory: 'httplug.factory.guzzle5'
         discovery:
-            client: 'httplug.clients.my_guzzle5'
+            client: 'httplug.client.my_guzzle5'
             async_client: 'auto'
 
 For normal clients, the auto discovery debug info is enabled by default. For

@@ -3,3 +3,4 @@ sphinx~=1.4.0
 sphinx-rtd-theme==0.1.6
 sphinxcontrib-spelling
 pyenchant
+docutils==0.12

@@ -57,7 +57,7 @@ Web Debug Toolbar
 `````````````````
 .. image:: /assets/img/debug-toolbar.png
     :align: right
-    :width: 260px
+    :width: 380px
 
 When using a client configured with ``HttplugBundle``, you will get debug
 information in the web debug toolbar. It will tell you how many request were

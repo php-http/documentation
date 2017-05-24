@@ -20,7 +20,7 @@ Install the HTTPlug bundle with composer and enable it in your AppKernel.php.
 
 If you already added the HTTPlug client requirement to your project, then you
 only need to add ``php-http/httplug-bundle``. Otherwise, you also need to
-specify a HTTP client to use - see :doc:`../clients` for a list of available
+specify an HTTP client to use - see :doc:`../clients` for a list of available
 clients.
 
 .. code-block:: php

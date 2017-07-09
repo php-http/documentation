@@ -10,7 +10,18 @@ interface and forwarding the calls to an HTTP client not implementing the interf
     All clients and adapters comply with `Liskov substitution principle`_ which means that you can easily change one
     for another without any side effects.
 
+.. toctree::
+   :hidden:
 
+   clients/curl-client
+   clients/socket-client
+   clients/mock-client
+   clients/buzz-adapter
+   clients/cakephp-adapter
+   clients/guzzle5-adapter
+   clients/guzzle6-adapter
+   clients/react-adapter
+   clients/zend-adapter
 
 .. csv-table::
    :header: "Name", "Type", "Links", "Stats"
@@ -35,19 +46,6 @@ and `php-http/async-client-implementation`_.
 
 There is no library registered with those names. However, all client implementations (including client adapters) for
 HTTPlug use the ``provide`` section to tell composer that they do provide the client-implementation.
-
-.. toctree::
-   :hidden:
-
-   clients/curl-client
-   clients/socket-client
-   clients/mock-client
-   clients/buzz-adapter
-   clients/cakephp-adapter
-   clients/guzzle5-adapter
-   clients/guzzle6-adapter
-   clients/react-adapter
-   clients/zend-adapter
 
 .. _`php-http/client-implementation`: https://packagist.org/providers/php-http/client-implementation
 .. _`php-http/async-client-implementation`: https://packagist.org/providers/php-http/async-client-implementation

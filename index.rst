@@ -94,6 +94,12 @@ The future
 HTTPlug, as a working example of an HTTP client interface, can serve as a basis
 for discussion around a future HTTP client PSR.
 
+Community
+---------
+
+If you want to get in touch, feel free to ask questions on `our Slack channel`_ or ping `@httplug`_ on Twitter.
+
+
 .. toctree::
     :hidden:
 
@@ -137,3 +143,6 @@ for discussion around a future HTTP client PSR.
 .. |clearfloat|  raw:: html
 
     <div style="clear:left"></div>
+
+.. _`our Slack channel`: http://slack.httplug.io/
+.. _`@httplug`: https://twitter.com/httplug

@@ -22,7 +22,10 @@ like::
     use GuzzleHttp\Client as GuzzleClient;
 
     $config = [
-        // Config params
+        'verify' => false,
+        'timeout' => 2,
+        'handler' => //...
+        // ...
     ];
     $guzzle = new GuzzleClient($config);
 
@@ -31,6 +34,15 @@ Then create the adapter::
     use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
     $adapter = new GuzzleAdapter($guzzle);
+
+.. note::
+
+    You can also use the quicker `createWithConfig()` function::
+
+        use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+
+        $config = ['verify' => false ];
+        $adapter = GuzzleAdapter::createWithConfig($config);
 
 And use it to send synchronous requests::
 
@@ -49,6 +61,7 @@ Or send asynchronous ones::
 
     // Returns a Http\Promise\Promise
     $promise = $adapter->sendAsyncRequest(request);
+
 
 .. include:: includes/further-reading-async.inc
 

@@ -16,10 +16,10 @@ not yet included in your project), run:
 Usage
 -----
 
-Begin by creating a Guzzle client, passing any configuration parameters you
-like::
+To create a Guzzle6 adapter you should use the `createWithConfig()` function. It will let you to pass Guzzle configuration
+to the client::
 
-    use GuzzleHttp\Client as GuzzleClient;
+    use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
     $config = [
         'verify' => false,
@@ -27,22 +27,21 @@ like::
         'handler' => //...
         // ...
     ];
-    $guzzle = new GuzzleClient($config);
-
-Then create the adapter::
-
-    use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-
-    $adapter = new GuzzleAdapter($guzzle);
+    $adapter = GuzzleAdapter::createWithConfig($config);
 
 .. note::
 
-    You can also use the quicker `createWithConfig()` function::
+    If you want even more control over your Guzzle object, you may give a Guzzle client as first argument to the adapter's
+    constructor::
 
+        use GuzzleHttp\Client as GuzzleClient;
         use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
         $config = ['verify' => false ];
-        $adapter = GuzzleAdapter::createWithConfig($config);
+        // ...
+        $guzzle = new GuzzleClient($config);
+        // ...
+        $adapter = new GuzzleAdapter($guzzle);
 
 And use it to send synchronous requests::
 

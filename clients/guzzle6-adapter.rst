@@ -16,21 +16,32 @@ not yet included in your project), run:
 Usage
 -----
 
-Begin by creating a Guzzle client, passing any configuration parameters you
-like::
-
-    use GuzzleHttp\Client as GuzzleClient;
-
-    $config = [
-        // Config params
-    ];
-    $guzzle = new GuzzleClient($config);
-
-Then create the adapter::
+To create a Guzzle6 adapter you should use the `createWithConfig()` function. It will let you to pass Guzzle configuration
+to the client::
 
     use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
-    $adapter = new GuzzleAdapter($guzzle);
+    $config = [
+        'verify' => false,
+        'timeout' => 2,
+        'handler' => //...
+        // ...
+    ];
+    $adapter = GuzzleAdapter::createWithConfig($config);
+
+.. note::
+
+    If you want even more control over your Guzzle object, you may give a Guzzle client as first argument to the adapter's
+    constructor::
+
+        use GuzzleHttp\Client as GuzzleClient;
+        use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+
+        $config = ['verify' => false ];
+        // ...
+        $guzzle = new GuzzleClient($config);
+        // ...
+        $adapter = new GuzzleAdapter($guzzle);
 
 And use it to send synchronous requests::
 
@@ -49,6 +60,7 @@ Or send asynchronous ones::
 
     // Returns a Http\Promise\Promise
     $promise = $adapter->sendAsyncRequest(request);
+
 
 .. include:: includes/further-reading-async.inc
 

@@ -59,17 +59,17 @@ They use us
     :target: https://github.com/KnpLabs/php-github-api
     :alt: KnpLabs
 
-.. image:: http://httplug.io/assets/img/logo/swap.png
+.. image:: https://avatars1.githubusercontent.com/u/1396951?v=3&s=100
     :align: left
     :width: 10%
-    :target: https://github.com/florianv/swap
-    :alt: Swap
+    :target: https://github.com/getsentry/sentry-php
+    :alt: Sentry
 
-.. image:: https://avatars3.githubusercontent.com/u/9406778?v=3&s=100
+.. image:: https://avatars2.githubusercontent.com/u/1150427?v=3&s=100
     :align: left
     :width: 10%
-    :target: https://github.com/SparkPost/php-sparkpost
-    :alt: SparkPost
+    :target: https://github.com/hwi/HWIOAuthBundle
+    :alt: HWIOAuthBundle
 
 |clearfloat|
 

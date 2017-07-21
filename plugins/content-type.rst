@@ -16,3 +16,15 @@ request. This helps HTTP servers to handle the request::
     );
 
 For now, the plugin can only detect JSON or XML content. If the content of the stream can not be determined, the plugin does nothing.
+
+Options
+-------
+
+``skip_detection``: boolean (default: false)
+
+When set to ``true``, content type detection will be performed only if the body request content size is under the
+size_limit parameter value.
+
+``size_limit``: int (default: 16 Mb)
+
+Determine the size stream limit for which the detection as to be skipped if ``skip_detection`` is ``true``.

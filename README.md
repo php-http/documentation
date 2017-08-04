@@ -12,6 +12,13 @@ Browse the documentation on [Read the Docs](http://php-http.readthedocs.org/).
 
 Please see our [contributing guide](http://docs.php-http.org/en/latest/development/contributing.html).
 
+#### Add your package under "They use us"
+
+We want to keep this list of packages to a small number. If your package should be considered for be listed here
+it must be a well known packages with a significant number of downloads (a million or more).
+
+However, we are much less strict with the packages on [httplug.io](http://httplug.io/). On [that repository](https://github.com/php-http/httplug.github.io)
+we generally accept any stable and documented package using httplug. 
 
 ## Security
 

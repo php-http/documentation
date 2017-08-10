@@ -25,6 +25,6 @@ Options
 When set to ``true``, content type detection will be performed only if the body request content size is under the
 size_limit parameter value.
 
-``size_limit``: int (default: 16 Mb)
+``size_limit``: int (default: a little bit over 15Mb)
 
 Determine the size stream limit for which the detection as to be skipped if ``skip_detection`` is ``true``.

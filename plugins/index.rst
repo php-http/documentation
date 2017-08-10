@@ -13,6 +13,7 @@ request or you can even start a completely new request. This gives you full cont
    authentication
    cache
    content-length
+   content-type
    cookie
    decoder
    error

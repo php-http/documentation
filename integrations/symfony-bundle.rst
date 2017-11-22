@@ -12,6 +12,18 @@ This guide explains how to configure HTTPlug in the Symfony framework. See the
 Installation
 ````````````
 
+Using Symfony Flex
+------------------
+
+HttplugBundle is officialy supported by `Symfony Flex`_ and available as the ``http`` alias.
+
+.. code-block:: bash
+
+    $ composer require http
+
+Without Symfony Flex
+--------------------
+
 Install the HTTPlug bundle with composer and enable it in your AppKernel.php.
 
 .. code-block:: bash
@@ -334,3 +346,5 @@ their kernel.
 .. |clearfloat|  raw:: html
 
     <div style="clear:left"></div>
+
+.. _`Symfony Flex`: https://symfony.com/doc/current/setup/flex.html

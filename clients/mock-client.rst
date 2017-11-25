@@ -43,6 +43,13 @@ To make assertions::
 Fake Responses and Exceptions
 -----------------------------
 
+By default, the mock client returns an empty response with status 200.
+You can set responses and exceptions the mock client should return / throw.
+You can set several exceptions and responses, to have the client first throw
+each exception once and then each response once on subsequent calls to send().
+Additionally you can set a default response or a default exception to be used
+instead of the empty response.
+
 Test how your code behaves when the HTTP client throws exceptions or returns
 certain responses::
 
@@ -65,6 +72,27 @@ certain responses::
         }
     }
 
+Or set a default response::
+
+    use Http\Mock\Client;
+
+    class YourTest extends \PHPUnit_Framework_TestCase
+    {
+        public function testClientReturnsResponse()
+        {
+            $client = new Client();
+
+            $response = $this->getMock('Psr\Http\Message\ResponseInterface');
+            $client->setDefaultResponse($response);
+
+            // $firstRequest and $secondRequest are instances of Psr\Http\Message\RequestInterface
+            $firstReturnedResponse = $client->sendRequest($firstRequest);
+            $secondReturnedResponse = $client->sendRequest($secondRequest);
+            $this->assertSame($response, $firstReturnedResponse);
+            $this->assertSame($response, $secondReturnedResponse);
+        }
+    }
+
 To fake an exception being thrown::
 
     use Http\Mock\Client;
@@ -84,6 +112,33 @@ To fake an exception being thrown::
 
             // $request is an instance of Psr\Http\Message\RequestInterface
             $returnedResponse = $client->sendRequest($request);
+        }
+    }
+
+Or set a default exception::
+
+    use Http\Mock\Client;
+
+    class YourTest extends \PHPUnit_Framework_TestCase
+    {
+        /**
+         * @expectedException \Exception
+         */
+        public function testClientThrowsException()
+        {
+            $client = new Client();
+
+            $exception = new \Exception('Whoops!');
+            $client->setDefaultException($exception);
+
+            $response = $this->getMock('Psr\Http\Message\ResponseInterface');
+            $client->addResponse($response);
+
+            // $firstRequest and $secondRequest are instances of Psr\Http\Message\RequestInterface
+            // The first request will returns the added response.
+            $firstReturnedResponse = $client->sendRequest($firstRequest);
+            // There is no more added response, the default exception will be thrown.
+            $secondReturnedResponse = $client->sendRequest($secondRequest);
         }
     }
 

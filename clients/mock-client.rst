@@ -63,7 +63,6 @@ certain responses::
 
             $response = $this->getMock('Psr\Http\Message\ResponseInterface');
             $client->addResponse($response);
-            $this->assertSame($response, $client->getLastResponse());
 
             // $request is an instance of Psr\Http\Message\RequestInterface
             $returnedResponse = $client->sendRequest($request);
@@ -108,7 +107,6 @@ To fake an exception being thrown::
 
             $exception = new \Exception('Whoops!');
             $client->addException($exception);
-            $this->assertSame($exception, $client->getLastException());
 
             // $request is an instance of Psr\Http\Message\RequestInterface
             $returnedResponse = $client->sendRequest($request);

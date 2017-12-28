@@ -48,7 +48,6 @@ You can use `cURL options <http://php.net/curl_setopt>`_ to configure Client::
 
     $options = [
         CURLOPT_CONNECTTIMEOUT => 10, // The number of seconds to wait while trying to connect.
-        CURLOPT_SSL_VERIFYPEER => false // Stop cURL from verifying the peer's certificate
     ];
     $client = new Client(MessageFactoryDiscovery::find(), StreamFactoryDiscovery::find(), $options);
 

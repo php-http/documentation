@@ -22,7 +22,6 @@ to the client::
     use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
     $config = [
-        'verify' => false,
         'timeout' => 2,
         'handler' => //...
         // ...
@@ -37,7 +36,7 @@ to the client::
         use GuzzleHttp\Client as GuzzleClient;
         use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
-        $config = ['verify' => false ];
+        $config = ['timeout' => 5];
         // ...
         $guzzle = new GuzzleClient($config);
         // ...

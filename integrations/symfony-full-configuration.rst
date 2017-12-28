@@ -75,7 +75,6 @@ This page shows an example of all configuration values provided by the bundle.
                 http_methods_client: false  # Can only be true if flexible_client is false
                 config:
                     # Options to the Guzzle 6 constructor
-                    verify: false
                     timeout: 2
                 plugins:
                     # Can reference a globally configured plugin service

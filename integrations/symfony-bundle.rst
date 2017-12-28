@@ -61,7 +61,6 @@ Usage
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.logger']
                 config:
-                    verify: false
                     timeout: 2
 
 .. code-block:: php
@@ -177,7 +176,7 @@ services.
                 config:
                     # These options are given to Guzzle without validation.
                     defaults:
-                        verify_ssl: false
+                        # timeout if connection is not established after 4 seconds
                         timeout: 4
             acme:
                 factory: 'httplug.factory.curl'

@@ -161,8 +161,6 @@ show how you configure factory classes using Guzzle:
             uri_factory: Http\Message\UriFactory\GuzzleUriFactory
             stream_factory: Http\Message\StreamFactory\GuzzleStreamFactory
 
-
-
 Configure Clients
 `````````````````
 
@@ -184,8 +182,10 @@ services.
             acme:
                 factory: 'httplug.factory.curl'
                 config:
+                    # timeout if connection is not established after 4 seconds
                     CURLOPT_CONNECTTIMEOUT: 4
-                    CURLOPT_SSL_VERIFYHOST: false
+                    # throttle sending data if more than ~ 1MB / second
+                    CURLOPT_MAX_SEND_SPEED_LARGE: 1000000
 
 .. code-block:: php
 

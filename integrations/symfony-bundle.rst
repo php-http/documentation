@@ -221,8 +221,8 @@ The order in which you specify the plugins **does** matter.
 
     // services.yml
     acme_plugin:
-          class: Acme\Plugin\MyCustomPlugin
-          arguments: ["%some_parameter%"]
+        class: Acme\Plugin\MyCustomPlugin
+        arguments: ["%some_parameter%"]
 
 .. code-block:: yaml
 
@@ -239,15 +239,15 @@ The order in which you specify the plugins **does** matter.
                     - 'httplug.plugin.cache'
                     - 'httplug.plugin.retry'
                     - add_host:
-                            host: "http://localhost:8000"
+                        host: "http://localhost:8000"
                     - header_defaults:
-                            headers:
-                                "X-FOO": bar
+                        headers:
+                            "X-FOO": bar
                     - authentication:
-                            acme_basic:
-                                type: 'basic'
-                                username: 'my_username'
-                                password: 'p4ssw0rd'
+                        acme_basic:
+                            type: 'basic'
+                            username: 'my_username'
+                            password: 'p4ssw0rd'
 
 
 Authentication

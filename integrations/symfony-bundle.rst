@@ -348,6 +348,7 @@ Mock responses in functional tests
 To mock responses in your functional tests, proceed as follow:
 
 .. code-block:: yaml
+
     # config_test.yml
     httplug:
         clients:
@@ -355,7 +356,9 @@ To mock responses in your functional tests, proceed as follow:
                 factory: 'httplug.factory.mock' # replace factory
 
 And in your tests:
+
 .. code-block:: php
+
     // SomeWebTestCase.php
     $client = static::createClient();
     // $client->disableReboot(); You might uncomment this if your client (BrowserKit) make multiple requests as kernel is rebooted on each request.

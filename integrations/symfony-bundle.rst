@@ -353,6 +353,7 @@ To mock responses in your functional tests, proceed as follow:
         clients:
             my_awesome_client:
                 factory: 'httplug.factory.mock' # replace factory
+
 And in your tests:
 .. code-block:: php
     // SomeWebTestCase.php

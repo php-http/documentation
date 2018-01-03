@@ -205,6 +205,7 @@ services are:
 * ``httplug.factory.guzzle6``
 * ``httplug.factory.react``
 * ``httplug.factory.socket``
+* ``httplug.factory.mock`` (Install ``php-http/mock-client``first)
 
 Plugins
 ```````
@@ -341,6 +342,26 @@ clients with each of your services.
 The only steps they need is ``require`` one of the adapter implementations in
 their projects ``composer.json`` and instantiating the ``HttplugBundle`` in
 their kernel.
+
+Mock responses in functional tests
+``````````````````````````````````
+To mock responses in your functional tests, proceed as follow:
+
+.. code-block:: yaml
+    # config_test.yml
+    httplug:
+        clients:
+            my_awesome_client:
+                factory: 'httplug.factory.mock' # replace factory
+And in your tests:
+.. code-block:: php
+    // SomeWebTestCase.php
+    $client = static::createClient();
+    // $client->disableReboot(); You might uncomment this if your client (BrowserKit) make multiple requests as kernel is rebooted on each request.
+    
+    $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+    $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
+    $client->getContainer()->get('httplug.client.mock')->addResponse($response);
 
 .. |clearfloat|  raw:: html
 

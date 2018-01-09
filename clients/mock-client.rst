@@ -140,4 +140,9 @@ Or set a default exception::
         }
     }
 
+
+.. hint::
+
+    If you're using the :doc:`/integrations/symfony-bundle`, the mock client is available as a service with ``httplug.client.mock`` id.
+
 .. include:: includes/further-reading-async.inc

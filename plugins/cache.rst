@@ -16,9 +16,9 @@ any PSR-6 compatible caching engine. By default, the plugin respects the cache
 control headers from the server as specified in :rfc:`7234`. It needs a
 :ref:`stream <stream-factory>` and a `PSR-6`_ implementation::
 
-    use Http\Discovery\HttpClientDiscovery; use
-    Http\Client\Common\PluginClient; use
-    Http\Client\Common\Plugin\CachePlugin;
+    use Http\Discovery\HttpClientDiscovery;
+    use Http\Client\Common\PluginClient;
+    use Http\Client\Common\Plugin\CachePlugin;
 
     /** @var \Psr\Cache\CacheItemPoolInterface $pool */
     $pool = ...

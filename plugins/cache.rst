@@ -70,8 +70,8 @@ The third parameter to the ``CachePlugin`` constructor takes an array of options
 | ``cache_key_generator``               | ``new SimpleGenerator()``                          | A class implementing ``CacheKeyGenerator`` to generate a PSR-6 cache  |
 |                                       |                                                    | key.                                                                  |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
-| ``response_mutator``                  | ``null``                                           | A class implementing ``ResponseMutator`` to mutate a response         |
-|                                       |                                                    | depending if it was from cache or not.                                |
+| ``cache_listeners``                   | ``[]]``                                            | A array of classes implementing ``CacheListener`` to act on a         |
+|                                       |                                                    | response with information on its cache status.                        |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 
 

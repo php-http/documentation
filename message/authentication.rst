@@ -154,7 +154,7 @@ Implement Your Own
 
 Implementing an authentication method is easy: only one method needs to be implemented::
 
-    use Http\Message\Authentication\Authentication;
+    use Http\Message\Authentication;
     use Psr\Http\Message\RequestInterface;
 
     class MyAuth implements Authentication

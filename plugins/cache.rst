@@ -107,10 +107,10 @@ which allow you to specify what HTTP header you want include in the cache key.
 Controlling cache listeners
 ```````````````````````````
 
-One or more classes ``CacheListener`` can be added through ``cache_listeners``. These classes recieve a notification on
-whether a request was a cache hit or miss, and can optionally mutate the response based on those signals. As an example,
-adding the provided ``AddHeaderCacheListener`` will mutate the response, adding an ``X-Cache`` header with a value ``HIT``
-or ``MISS``.
+One or more classes implementing ``CacheListener`` can be added through ``cache_listeners``. These classes recieve a
+notification on whether a request was a cache hit or miss, and can optionally mutate the response based on those signals.
+As an example, adding the provided ``AddHeaderCacheListener`` will mutate the response, adding an ``X-Cache`` header with
+a value ``HIT`` or ``MISS``, which can be useful in debugging.
 
 
 Semantics of null values

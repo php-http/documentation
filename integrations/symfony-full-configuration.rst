@@ -86,26 +86,26 @@ This page shows an example of all configuration values provided by the bundle.
                             default_ttl: 120
                     # Can configure plugins that can not be configured globally
                     - add_host:
-                            # Host name including protocol and optionally the port number, e.g. https://api.local:8000
-                            host: http://localhost:80 # Required
-                            # Whether to replace the host if request already specifies it
-                            replace: false
+                        # Host name including protocol and optionally the port number, e.g. https://api.local:8000
+                        host: http://localhost:80 # Required
+                        # Whether to replace the host if request already specifies it
+                        replace: false
                     # Append headers to the request. If the header already exists the value will be appended to the current value.
                     - header_append:
-                            # Keys are the header names, values the header values
-                            headers:
-                                'X-FOO': bar # contrary to default symfony behaviour, hyphens "-" are NOT translated to underscores "_" for the headers.
+                        # Keys are the header names, values the header values
+                        headers:
+                            'X-FOO': bar # contrary to default symfony behaviour, hyphens "-" are NOT translated to underscores "_" for the headers.
                     # Set header to default value if it does not exist.
                     - header_defaults:
-                            # Keys are the header names, values the header values
-                            headers:
-                                'X-FOO': bar
+                        # Keys are the header names, values the header values
+                        headers:
+                            'X-FOO': bar
                     # Set headers to requests. If the header does not exist it wil be set, if the header already exists it will be replaced.
                     - header_set:
-                            # Keys are the header names, values the header values
-                            headers:
-                                'X-FOO': bar
+                        # Keys are the header names, values the header values
+                        headers:
+                            'X-FOO': bar
                     # Remove headers from requests.
                     - header_remove:
-                            # List of header names to remove
-                            headers: ["X-FOO"]
+                        # List of header names to remove
+                        headers: ["X-FOO"]

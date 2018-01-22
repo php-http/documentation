@@ -70,6 +70,10 @@ The third parameter to the ``CachePlugin`` constructor takes an array of options
 | ``cache_key_generator``               | ``new SimpleGenerator()``                          | A class implementing ``CacheKeyGenerator`` to generate a PSR-6 cache  |
 |                                       |                                                    | key.                                                                  |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``cache_listeners``                   | ``[]``                                             | A array of classes implementing ``CacheListener`` to act on a         |
+|                                       |                                                    | response with information on its cache status.                        |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+
 
 .. note::
 
@@ -99,6 +103,14 @@ Generating a cache key
 You may define a method how the PSR-6 cache key should be generated. The default generator is ``SimpleGenerator`` which
 is using the request method, URI and body of the request. The cache plugin does also include a ``HeaderCacheKeyGenerator``
 which allow you to specify what HTTP header you want include in the cache key.
+
+Controlling cache listeners
+```````````````````````````
+
+One or more classes implementing ``CacheListener`` can be added through ``cache_listeners``. These classes recieve a
+notification on whether a request was a cache hit or miss, and can optionally mutate the response based on those signals.
+As an example, adding the provided ``AddHeaderCacheListener`` will mutate the response, adding an ``X-Cache`` header with
+a value ``HIT`` or ``MISS``, which can be useful in debugging.
 
 
 Semantics of null values

@@ -14,7 +14,7 @@ A multipart stream is a special kind of stream that is used to transfer files ov
     Content-Length: 15
 
     A normal stream
-    --578de3b0e3c46
+    --578de3b0e3c46.2334ba3
     Content-Disposition: form-data; name="bar"; filename="bar.png"
     Content-Length: 71
     Content-Type: image/png

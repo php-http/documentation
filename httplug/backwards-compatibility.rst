@@ -21,6 +21,7 @@ The order of the strategies is not part of our BC promise. The strategies themse
 as ``@internal`` so they are also not part of our BC promise.
 However, we do promise that we will not remove a strategy neither will we remove classes from the
 ``CommonClassesStrategy``. We will also support the following Puli versions:
+
 * 1.0.0-beta9
 * 1.0.0-beta10
 

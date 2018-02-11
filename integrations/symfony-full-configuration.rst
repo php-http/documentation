@@ -90,6 +90,11 @@ This page shows an example of all configuration values provided by the bundle.
                         host: http://localhost:80 # Required
                         # Whether to replace the host if request already specifies it
                         replace: false
+                    - base_uri:
+                        # Base Uri including protocol, optionally the port number and prepend path, e.g. https://api.local:8000/api
+                        uri: http://localhost:80 # Required
+                        # Whether to replace the host if request already specifies one
+                        replace: false
                     # Append headers to the request. If the header already exists the value will be appended to the current value.
                     - header_append:
                         # Keys are the header names, values the header values

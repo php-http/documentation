@@ -40,8 +40,22 @@ Create a file ``demo.php`` in the root folder and write the following code::
     <?php
     require('vendor/autoload.php');
 
-    TODO: create client instance with discovery and do some requests
+    use Http\Discovery\HttpClientDiscovery;
+    use Http\Discovery\MessageFactoryDiscovery;
 
+    $client = HttpClientDiscovery::find();
+    $messageFactory = MessageFactoryDiscovery::find();
+    $homeResponse = $client->sendRequest(
+        $messageFactory->createRequest('GET', 'http://httplug.io')
+    );
+
+    var_dump($homeResponse->getStatusCode()); // 200, hopefully
+
+    $missingPageResponse = $client->sendRequest(
+        $messageFactory->createRequest('GET', 'http://httplug.io/missingPage')
+    );
+
+    var_dump($missingPageResponse->getStatusCode()); // 404
 
 Using an Asynchronous Client
 ----------------------------

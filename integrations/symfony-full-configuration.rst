@@ -90,6 +90,11 @@ This page shows an example of all configuration values provided by the bundle.
                         host: http://localhost:80 # Required
                         # Whether to replace the host if request already specifies it
                         replace: false
+                    - add_path:
+                        # Path to be added, e.g. /api/v1
+                        path: /api/v1 # Required
+                        # Whether to replace the path if request already specifies it
+                        replace: false
                     - base_uri:
                         # Base Uri including protocol, optionally the port number and prepend path, e.g. https://api.local:8000/api
                         uri: http://localhost:80 # Required

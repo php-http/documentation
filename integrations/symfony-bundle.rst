@@ -207,6 +207,18 @@ services are:
 * ``httplug.factory.socket``
 * ``httplug.factory.mock`` (Install ``php-http/mock-client`` first)
 
+.. note::
+
+    If you already have a client service registered you can skip using the ``factory``
+    and use the ``service`` key instead.
+
+    .. code-block:: yaml
+
+        httplug:
+            clients:
+                my_client:
+                    service: 'my_custom_client_service'
+
 Plugins
 ```````
 
@@ -366,7 +378,7 @@ To mock a response in your tests, do:
 
     // If your test has the client (BrowserKit) make multiple requests, you need to disable reboot as the kernel is rebooted on each request.
     // $client->disableReboot();
-    
+
     $response = $this->createMock('Psr\Http\Message\ResponseInterface');
     $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
     $client->getContainer()->get('httplug.client.mock')->addResponse($response);

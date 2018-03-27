@@ -71,6 +71,7 @@ This page shows an example of all configuration values provided by the bundle.
         clients:
             acme:
                 factory: 'httplug.factory.guzzle6'
+                service: 'my_service'       # Can not be used with "factory" or "config"
                 flexible_client: false      # Can only be true if http_methods_client is false
                 http_methods_client: false  # Can only be true if flexible_client is false
                 config:

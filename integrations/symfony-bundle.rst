@@ -209,15 +209,17 @@ services are:
 
 .. note::
 
-    If you already have a client service registered you can skip using the ``factory``
-    and use the ``service`` key instead.
+    .. versionadded:: 1.10
 
-    .. code-block:: yaml
+        If you already have a client service registered you can skip using the ``factory``
+        and use the ``service`` key instead.
 
-        httplug:
-            clients:
-                my_client:
-                    service: 'my_custom_client_service'
+        .. code-block:: yaml
+
+            httplug:
+                clients:
+                    my_client:
+                        service: 'my_custom_client_service'
 
 Plugins
 ```````

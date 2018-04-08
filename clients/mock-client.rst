@@ -61,7 +61,7 @@ certain responses::
         {
             $client = new Client();
 
-            $response = $this->getMock('Psr\Http\Message\ResponseInterface');
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
             $client->addResponse($response);
 
             // $request is an instance of Psr\Http\Message\RequestInterface
@@ -81,7 +81,7 @@ Or set a default response::
         {
             $client = new Client();
 
-            $response = $this->getMock('Psr\Http\Message\ResponseInterface');
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
             $client->setDefaultResponse($response);
 
             // $firstRequest and $secondRequest are instances of Psr\Http\Message\RequestInterface
@@ -129,7 +129,7 @@ Or set a default exception::
             $exception = new \Exception('Whoops!');
             $client->setDefaultException($exception);
 
-            $response = $this->getMock('Psr\Http\Message\ResponseInterface');
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
             $client->addResponse($response);
 
             // $firstRequest and $secondRequest are instances of Psr\Http\Message\RequestInterface

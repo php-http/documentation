@@ -224,20 +224,39 @@ services are:
 Plugins
 ```````
 
-Clients can have plugins. Generic plugins from ``php-http/plugins`` (e.g. retry
-or redirect) can be configured globally. You can tell the client which of those
-plugins to use, as well as custom plugins that you configured a service for.
+Clients can have plugins that act on the request before it is sent out and/or
+on the response before it is returned to the caller. Generic plugins from 
+``php-http/client-common`` (e.g. retry or redirect) can be configured globally.
+You can tell the client which of those plugins to use, as well as specify the
+service names of custom plugins that you want to use.
 
 Additionally you can configure any of the ``php-http/plugins`` specifically on
 a client. For some plugins this is the only place where they can be configured.
 The order in which you specify the plugins **does** matter.
 
+Configure plugins directly on the client:
+
 .. code-block:: yaml
 
-    // services.yml
-    acme_plugin:
-        class: Acme\Plugin\MyCustomPlugin
-        arguments: ["%some_parameter%"]
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                factory: 'httplug.factory.guzzle6'
+                plugins:
+                    - add_host:
+                        host: "http://localhost:8000"
+                    - header_defaults:
+                        headers:
+                            "X-FOO": bar
+                    - authentication:
+                        acme_basic:
+                            type: 'basic'
+                            username: 'my_username'
+                            password: 'p4ssw0rd'
+
+
+Configure the cache plugin globally and use it in the ``acme`` client:
 
 .. code-block:: yaml
 
@@ -250,20 +269,26 @@ The order in which you specify the plugins **does** matter.
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins:
-                    - 'acme_plugin'
                     - 'httplug.plugin.cache'
-                    - 'httplug.plugin.retry'
-                    - add_host:
-                        host: "http://localhost:8000"
-                    - header_defaults:
-                        headers:
-                            "X-FOO": bar
-                    - authentication:
-                        acme_basic:
-                            type: 'basic'
-                            username: 'my_username'
-                            password: 'p4ssw0rd'
 
+Configure a service for your custom plugin and use it in the client:
+
+.. code-block:: yaml
+
+    // services.yml
+    acme_plugin:
+        class: Acme\Plugin\MyCustomPlugin
+        arguments: ["%some_parameter%"]
+
+.. code-block:: yaml
+
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                factory: 'httplug.factory.guzzle6'
+                plugins:
+                    - 'acme_plugin'
 
 Authentication
 ``````````````

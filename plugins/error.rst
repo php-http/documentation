@@ -36,3 +36,8 @@ writing a library around an API, the best practice is to have the client convert
 domain objects, and transform HTTP errors into meaningful domain exceptions. In that scenario,
 the ErrorPlugin is not needed. It is more efficient to check the HTTP status codes yourself than
 throwing and catching exceptions.
+
+If your application handles responses with 4xx status codes, but needs exceptions for 5xx status codes only, 
+you can set the option ``only_server_exception`` to ``true``::
+
+    $errorPlugin = new ErrorPlugin(['only_server_exception' => true]);

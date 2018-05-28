@@ -37,7 +37,7 @@ domain objects, and transform HTTP errors into meaningful domain exceptions. In 
 the ErrorPlugin is not needed. It is more efficient to check the HTTP status codes yourself than
 throwing and catching exceptions.
 
-If you need to handle 4XX responses, as having a 404 can have meaning in your http client, but sill want 
-exception for 5XX responses, you can set the ``only_server_exception`` option to ``true``::
+If your application handles responses with 4xx status codes, but needs exceptions for 5xx status codes only, 
+you can set the option ``only_server_exception`` to ``true``::
 
     $errorPlugin = new ErrorPlugin(['only_server_exception' => true]);

@@ -15,7 +15,7 @@ This client wraps the HttpClient and provides convenience methods for common HTT
 To be able to do that, it also wraps a message factory::
 
     use Http\Discovery\HttpClientDiscovery;
-    use Http\Discovery\MessageFactoryDiscovery
+    use Http\Discovery\MessageFactoryDiscovery;
 
     $client = new HttpMethodsClient(
         HttpClientDiscovery::find(),

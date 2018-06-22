@@ -27,6 +27,12 @@ place something like the :doc:`ErrorPlugin <error>` later in the plugin chain::
 Contrary to the :doc:`redirect`, the retry plugin does not restart the chain
 but simply tries again from the current position.
 
+Async
+-----
+
+This plugin is not fully compatible with asynchronous behavior, as the wait between retries is done 
+with a blocking call to a sleep function.
+
 Options
 -------
 

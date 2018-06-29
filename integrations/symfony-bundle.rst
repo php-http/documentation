@@ -269,7 +269,7 @@ Authentication
 ``````````````
 
 You can configure a client with authentication. Valid authentication types are
-``basic``, ``bearer``, ``service`` and ``wsse``. See more examples at the
+``basic``, ``bearer``, ``service``, ``wsse`` and ``query_param``. See more examples at the
 :doc:`full configuration </integrations/symfony-full-configuration>`.
 
 .. code-block:: yaml
@@ -287,6 +287,11 @@ You can configure a client with authentication. Valid authentication types are
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins: ['httplug.plugin.authentication.my_wsse']
+
+.. warning::
+
+    Using query parameters for authentication is :doc:`not safe </message/authentication#query-params>`.
+    The auth params will appear on the URL and we recommend to NOT log your request, especially on production side.
 
 Special HTTP Clients
 ````````````````````

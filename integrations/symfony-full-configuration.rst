@@ -32,6 +32,10 @@ This page shows an example of all configuration values provided by the bundle.
                 my_bearer:
                     type: 'bearer'
                     token: 'authentication_token_hash'
+                my_query_param:
+                    type: 'query_param'
+                    params:
+                        access_token: '9zh987g86fg87gh978hg9g79'
                 my_service:
                     type: 'service'
                     service: 'my_authentication_service'

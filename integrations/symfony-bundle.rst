@@ -290,7 +290,7 @@ You can configure a client with authentication. Valid authentication types are
 
 .. warning::
 
-    Using query parameters for authentication is :doc:`not safe </message/authentication#query-params>`.
+    Using query parameters for authentication is :ref:`not safe <Authentication-QueryParams>`.
     The auth params will appear on the URL and we recommend to NOT log your request, especially on production side.
 
 Special HTTP Clients

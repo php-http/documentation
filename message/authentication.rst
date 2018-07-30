@@ -83,6 +83,8 @@ WSSE
 
     $authentication = new Wsse('username', 'password');
 
+.. _Authentication-QueryParams:
+
 Query Params
 ************
 

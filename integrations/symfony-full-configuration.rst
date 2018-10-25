@@ -78,7 +78,7 @@ This page shows an example of all configuration values provided by the bundle.
                 service: 'my_service'       # Can not be used with "factory" or "config"
                 flexible_client: false      # Can only be true if http_methods_client is false
                 http_methods_client: false  # Can only be true if flexible_client is false
-                public: false               # Set to true if you really cannot use dependency injection and need to make the client service public
+                public: null                # Set to true if you really cannot use dependency injection and need to make the client service public
                 config:
                     # Options to the Guzzle 6 constructor
                     timeout: 2

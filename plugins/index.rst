@@ -20,6 +20,7 @@ request or you can even start a completely new request. This gives you full cont
    headers
    history
    logger
+   query
    redirect
    request-uri-manipulations
    retry

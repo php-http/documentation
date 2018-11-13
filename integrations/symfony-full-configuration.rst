@@ -123,3 +123,7 @@ This page shows an example of all configuration values provided by the bundle.
                     - header_remove:
                         # List of header names to remove
                         headers: ["X-FOO"]
+                    # Sets query parameters to default value if they are not present in the request.
+                    - query_defaults:
+                        parameters:
+                            locale: en

@@ -26,6 +26,10 @@ To be able to do that, it also wraps a message factory::
     $bar = $client->get('http://example.com/bar', ['accept-encoding' => 'application/json']);
     $post = $client->post('http://example.com/update', [], 'My post body');
 
+..versionadded:: 2.0
+    ``HttpMethodsClient`` is final since version 2.0. You can typehint the
+    ``HttpMethodsClientInterface`` to allow mocking the client in unit tests.
+
 BatchClient
 -----------
 
@@ -47,6 +51,10 @@ their responses as a ``BatchResult``::
     );
 
     $batchResult = $client->sendRequests($requests);
+
+..versionadded:: 2.0
+    ``BatchClient`` is final since version 2.0. You can typehint the
+    ``BatchClientInterface`` to allow mocking the client in unit tests.
 
 The ``BatchResult`` itself is an object that contains responses for all requests sent.
 It provides methods that give appropriate information based on a given request::
@@ -123,7 +131,7 @@ To enable the behavior, wrap the clients with the ``HttpClientPoolItem`` class y
     // Never reactivate the client (default)
     $httpClientPool->addHttpClient(new HttpClientPoolItem($httpClient, null));
 
-``HttpClientPool`` is abstract. There are three concrete implementations with specific strategies on how to choose clients:
+``HttpClientPool`` is an interface. There are three concrete implementations with specific strategies on how to choose clients:
 
 LeastUsedClientPool
 *******************
@@ -228,3 +236,7 @@ and also to download an image from a static host::
     it's easier to use the ``RequestConditionalPlugin`` and the ``PluginClient``,
     but in that case the routing logic is integrated into the linear request flow
     which might make debugging harder.
+
+..versionadded:: 2.0
+    ``HttpClientRouter`` is final since version 2.0. You can typehint the
+    ``HttpClientRouterInterface`` to allow mocking the client in unit tests.

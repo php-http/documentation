@@ -225,7 +225,7 @@ Plugins
 ```````
 
 Clients can have plugins that act on the request before it is sent out and/or
-on the response before it is returned to the caller. Generic plugins from 
+on the response before it is returned to the caller. Generic plugins from
 ``php-http/client-common`` (e.g. retry or redirect) can be configured globally.
 You can tell the client which of those plugins to use, as well as specify the
 service names of custom plugins that you want to use.
@@ -322,7 +322,7 @@ Special HTTP Clients
 ````````````````````
 
 If you want to use the ``FlexibleHttpClient`` or ``HttpMethodsClient`` from the
-``php-http/message`` package you may specify that on the client configuration.
+``php-http/client-common`` package, you may specify that on the client configuration.
 
 .. code-block:: yaml
 

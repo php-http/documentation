@@ -34,7 +34,7 @@ Number of retry attempts to make before giving up.
 
 ``error_response_decider``: callable (default behaviour: retry if status code is in 5xx range)
 
-A callback function that gets the request and response to decide whether the
+A callback function that receives the request and response to decide whether the
 request should be retried.
 
 ``exception_decider``: callable (default behaviour: retry if the exception is not an HttpException or status code is in 5xx range)

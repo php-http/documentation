@@ -49,7 +49,7 @@ and returns how many microseconds we should wait before trying again.
 
 ``exception_delay``: callable (default: exponential backoff)
 
-A callback that gets a request, an exception and the current number of retries 
+A callback that receives a request, an exception, the current number of retries 
 and returns how many microseconds we should wait before trying again.
 
 Interaction with Exceptions

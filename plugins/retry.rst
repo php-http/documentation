@@ -55,7 +55,7 @@ and returns how many microseconds we should wait before trying again.
 Interaction with Exceptions
 ---------------------------
 
-If you use the :doc:`ErrorPlugin <error>`, you should place it later in the
+If you use the :doc:`ErrorPlugin <error>`, you should place it after the RetryPlugin in the
 plugin chain::
 
     use Http\Discovery\HttpClientDiscovery;

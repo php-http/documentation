@@ -39,7 +39,7 @@ request should be retried.
 
 ``exception_decider``: callable (default: retry if not a HttpException or status code is in 5xx range)
 
-A callback function that gets a request and an exception to decide after a
+A callback function that receives a request and an exception to decide after a
 failure whether the request should be retried.
 
 ``error_response_delay``: callable (default behaviour: exponential backoff)

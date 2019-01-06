@@ -47,7 +47,7 @@ failure whether the request should be retried.
 A callback that gets a request and response and the current number of retries
 and returns how many microseconds we should wait before trying again.
 
-``exception_delay``: callable (default: exponential backoff)
+``exception_delay``: callable (default behaviour: exponential backoff)
 
 A callback that receives a request, an exception, the current number of retries 
 and returns how many microseconds we should wait before trying again.

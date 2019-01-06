@@ -42,7 +42,7 @@ request should be retried.
 A callback function that gets a request and an exception to decide after a
 failure whether the request should be retried.
 
-``error_response_delay``: callable (default: exponential backoff)
+``error_response_delay``: callable (default behaviour: exponential backoff)
 
 A callback that receives a request, a response, the current number of retries
 and returns how many microseconds we should wait before trying again.

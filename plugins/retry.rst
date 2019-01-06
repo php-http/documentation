@@ -32,7 +32,7 @@ Options
 
 Number of retry attempts to make before giving up.
 
-``error_response_decider``: callable (default: retry if status code is in 5xx range)
+``error_response_decider``: callable (default behaviour: retry if status code is in 5xx range)
 
 A callback function that gets the request and response to decide whether the
 request should be retried.

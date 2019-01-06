@@ -6,6 +6,13 @@ The ``ErrorPlugin`` transforms responses with HTTP error status codes into excep
  * 400-499 status code are transformed into ``Http\Client\Common\Exception\ClientErrorException``;
  * 500-599 status code are transformed into ``Http\Client\Common\Exception\ServerErrorException``
 
+.. warning::
+
+    Throwing an exception on a valid response violates the PSR-18 specification.
+    This plugin is provided as a convenience when writing a small application.
+    When providing a client to a third party library, this plugin must not be
+    included, or the third party library will have problems with error handling.
+
 Both exceptions extend the ``Http\Client\Exception\HttpException`` class, so you can fetch the request
 and the response coming from them::
 

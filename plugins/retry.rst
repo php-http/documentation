@@ -8,7 +8,7 @@ code in the 5xx server error range. Since version 2.0, responses with status
 codes in the 5xx range are also retried. Each retry attempt is delayed by an
 exponential backoff time.
 
-See below for how to configure that behaviour.
+See below for how to configure that behavior.
 
 .. warning::
 
@@ -32,22 +32,22 @@ Options
 
 Number of retry attempts to make before giving up.
 
-``error_response_decider``: callable (default behaviour: retry if status code is in 5xx range)
+``error_response_decider``: callable (default behavior: retry if status code is in 5xx range)
 
 A callback function that receives the request and response to decide whether the
 request should be retried.
 
-``exception_decider``: callable (default behaviour: retry if the exception is not an HttpException or status code is in 5xx range)
+``exception_decider``: callable (default behavior: retry if the exception is not an HttpException or status code is in 5xx range)
 
 A callback function that receives a request and an exception to decide after a
 failure whether the request should be retried.
 
-``error_response_delay``: callable (default behaviour: exponential backoff)
+``error_response_delay``: callable (default behavior: exponential backoff)
 
 A callback that receives a request, a response, the current number of retries
 and returns how many microseconds we should wait before trying again.
 
-``exception_delay``: callable (default behaviour: exponential backoff)
+``exception_delay``: callable (default behavior: exponential backoff)
 
 A callback that receives a request, an exception, the current number of retries 
 and returns how many microseconds we should wait before trying again.

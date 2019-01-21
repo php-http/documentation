@@ -267,7 +267,7 @@ This type of discovery finds a factory for a PSR-17_ implementation::
 PSR-18 Client Discovery
 -----------------------
 
-This type of discovery finds a PSR-18 HTTP Client implementation::
+This type of discovery finds a PSR-18_ HTTP Client implementation::
 
     use Psr\Http\Client\ClientInterface;
     use Http\Discovery\Psr18ClientDiscovery;
@@ -352,3 +352,5 @@ Read more in Puli's documentation (`Providing Resources`_).
 .. _`binding`: http://docs.puli.io/en/latest/glossary.html#glossary-binding
 .. _`binding-type`: http://docs.puli.io/en/latest/glossary.html#glossary-binding-type
 .. _Providing Resources: http://docs.puli.io/en/latest/discovery/providing-resources.html
+.. _PSR-17: http://www.php-fig.org/psr/psr-17
+.. _PSR-18: http://www.php-fig.org/psr/psr-18

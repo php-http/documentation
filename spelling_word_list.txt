@@ -18,6 +18,7 @@ Symfony
 HTTPlug
 Ivory
 instantiation
+integrations
 interoperability
 namespace
 plugin

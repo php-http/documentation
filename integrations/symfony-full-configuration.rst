@@ -108,7 +108,7 @@ This page shows an example of all configuration values provided by the bundle.
                     - header_append:
                         # Keys are the header names, values the header values
                         headers:
-                            'X-FOO': bar # contrary to default symfony behaviour, hyphens "-" are NOT translated to underscores "_" for the headers.
+                            'X-FOO': bar # contrary to default symfony behavior, hyphens "-" are NOT translated to underscores "_" for the headers.
                     # Set header to default value if it does not exist.
                     - header_defaults:
                         # Keys are the header names, values the header values

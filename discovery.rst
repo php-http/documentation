@@ -10,10 +10,12 @@ Currently available discovery services:
 
 - HTTP Client Discovery
 - HTTP Async Client Discovery
-- PSR-7 Message Factory Discovery
-- PSR-7 URI Factory Discovery
-- PSR-7 Stream Factory Discovery
+- PSR-17 Factory Discovery
+- PSR-18 HTTP Client Discovery
 - Mock Client Discovery (not enabled by default)
+- PSR-7 Message Factory Discovery (deprecated)
+- PSR-7 URI Factory Discovery (deprecated)
+- PSR-7 Stream Factory Discovery (deprecated)
 
 The principle is always the same: you call the static ``find`` method on the discovery service if no explicit
 implementation was specified. The discovery service will try to locate a suitable implementation.
@@ -150,7 +152,7 @@ This type of discovery finds an HTTP Client implementation::
         /**
          * @var HttpClient
          */
-        protected $httpClient;
+        private $httpClient;
 
         /**
          * @param HttpClient|null $httpClient Client to do HTTP requests, if not set, auto discovery will be used to find a HTTP client.
@@ -174,7 +176,7 @@ This type of discovery finds a HTTP asynchronous Client implementation::
         /**
          * @var HttpAsyncClient
          */
-        protected $httpAsyncClient;
+        private $httpAsyncClient;
 
         /**
          * @param HttpAsyncClient|null $httpAsyncClient Client to do HTTP requests, if not set, auto discovery will be used to find an asynchronous client.
@@ -185,8 +187,60 @@ This type of discovery finds a HTTP asynchronous Client implementation::
         }
     }
 
+PSR-17 Factory Discovery
+------------------------
+
+This type of discovery finds a factory for a PSR-17_ implementation::
+
+    use Psr\Http\Message\RequestFactoryInterface;
+    use Psr\Http\Message\ResponseFactoryInterface;
+    use Http\Discovery\Psr17FactoryDiscovery;
+
+    class MyClass
+    {
+        /**
+         * @var RequestFactoryInterface
+         */
+        private $requestFactory;
+
+        /**
+         * @var ResponseFactoryInterface
+         */
+        private $responseFactory;
+
+        public function __construct(RequestFactoryInterface $requestFactory = null, ResponseFactoryInterface $responseFactory = null)
+        {
+            $this->requestFactory = $requestFactory ?: Psr17FactoryDiscovery::findRequestFactory();
+            $this->responseFactory = $responseFactory ?: Psr17FactoryDiscovery::findResponseFactory();
+        }
+    }
+
+PSR-18 Client Discovery
+-----------------------
+
+This type of discovery finds a PSR-18_ HTTP Client implementation::
+
+    use Psr\Http\Client\ClientInterface;
+    use Http\Discovery\Psr18ClientDiscovery;
+
+    class MyClass
+    {
+        /**
+         * @var ClientInterface
+         */
+        private $httpClient;
+
+        public function __construct(ClientInterface $httpClient = null)
+        {
+            $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
+        }
+    }
+
 PSR-7 Message Factory Discovery
 -------------------------------
+
+.. versionadded:: 1.6
+    This is deprecated and will be removed in 2.0. Consider using PSR-17 Factory Discovery.
 
 This type of discovery finds a :ref:`message-factory` for a PSR-7_ Message
 implementation::
@@ -199,7 +253,7 @@ implementation::
         /**
          * @var MessageFactory
          */
-        protected $messageFactory;
+        private $messageFactory;
 
         /**
          * @param MessageFactory|null $messageFactory to create PSR-7 requests.
@@ -213,6 +267,9 @@ implementation::
 PSR-7 URI Factory Discovery
 ---------------------------
 
+.. versionadded:: 1.6
+    This is deprecated and will be removed in 2.0. Consider using PSR-17 Factory Discovery.
+
 This type of discovery finds a URI factory for a PSR-7_ URI implementation::
 
     use Http\Message\UriFactory;
@@ -223,7 +280,7 @@ This type of discovery finds a URI factory for a PSR-7_ URI implementation::
         /**
          * @var UriFactory
          */
-        protected $uriFactory;
+        private $uriFactory;
 
         /**
          * @param UriFactory|null $uriFactory to create UriInterface instances from strings.
@@ -301,3 +358,5 @@ Read more in Puli's documentation (`Providing Resources`_).
 .. _`binding`: http://docs.puli.io/en/latest/glossary.html#glossary-binding
 .. _`binding-type`: http://docs.puli.io/en/latest/glossary.html#glossary-binding-type
 .. _Providing Resources: http://docs.puli.io/en/latest/discovery/providing-resources.html
+.. _PSR-17: http://www.php-fig.org/psr/psr-17
+.. _PSR-18: http://www.php-fig.org/psr/psr-18

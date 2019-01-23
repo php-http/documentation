@@ -10,12 +10,12 @@ Currently available discovery services:
 
 - HTTP Client Discovery
 - HTTP Async Client Discovery
-- PSR-7 Message Factory Discovery
-- PSR-7 URI Factory Discovery
-- PSR-7 Stream Factory Discovery
 - PSR-17 Factory Discovery
-- PSR-18 Client Discovery
+- PSR-18 HTTP Client Discovery
 - Mock Client Discovery (not enabled by default)
+- PSR-7 Message Factory Discovery (deprecated)
+- PSR-7 URI Factory Discovery (deprecated)
+- PSR-7 Stream Factory Discovery (deprecated)
 
 The principle is always the same: you call the static ``find`` method on the discovery service if no explicit
 implementation was specified. The discovery service will try to locate a suitable implementation.
@@ -187,55 +187,6 @@ This type of discovery finds a HTTP asynchronous Client implementation::
         }
     }
 
-PSR-7 Message Factory Discovery
--------------------------------
-
-This type of discovery finds a :ref:`message-factory` for a PSR-7_ Message
-implementation::
-
-    use Http\Message\MessageFactory;
-    use Http\Discovery\MessageFactoryDiscovery;
-
-    class MyClass
-    {
-        /**
-         * @var MessageFactory
-         */
-        private $messageFactory;
-
-        /**
-         * @param MessageFactory|null $messageFactory to create PSR-7 requests.
-         */
-        public function __construct(MessageFactory $messageFactory = null)
-        {
-            $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
-        }
-    }
-
-PSR-7 URI Factory Discovery
----------------------------
-
-This type of discovery finds a URI factory for a PSR-7_ URI implementation::
-
-    use Http\Message\UriFactory;
-    use Http\Discovery\UriFactoryDiscovery;
-
-    class MyClass
-    {
-        /**
-         * @var UriFactory
-         */
-        private $uriFactory;
-
-        /**
-         * @param UriFactory|null $uriFactory to create UriInterface instances from strings.
-         */
-        public function __construct(UriFactory $uriFactory = null)
-        {
-            $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
-        }
-    }
-    
 PSR-17 Factory Discovery
 ------------------------
 
@@ -251,7 +202,7 @@ This type of discovery finds a factory for a PSR-17_ implementation::
          * @var RequestFactoryInterface
          */
         private $requestFactory;
-        
+
         /**
          * @var ResponseFactoryInterface
          */
@@ -282,6 +233,61 @@ This type of discovery finds a PSR-18_ HTTP Client implementation::
         public function __construct(ClientInterface $httpClient = null)
         {
             $this->httpClient = $httpClient ?: Psr18ClientDiscovery::find();
+        }
+    }
+
+PSR-7 Message Factory Discovery
+-------------------------------
+
+.. versionadded:: 1.6
+    This is deprecated and will be removed in 2.0. Consider using PSR-17 Factory Discovery.
+
+This type of discovery finds a :ref:`message-factory` for a PSR-7_ Message
+implementation::
+
+    use Http\Message\MessageFactory;
+    use Http\Discovery\MessageFactoryDiscovery;
+
+    class MyClass
+    {
+        /**
+         * @var MessageFactory
+         */
+        private $messageFactory;
+
+        /**
+         * @param MessageFactory|null $messageFactory to create PSR-7 requests.
+         */
+        public function __construct(MessageFactory $messageFactory = null)
+        {
+            $this->messageFactory = $messageFactory ?: MessageFactoryDiscovery::find();
+        }
+    }
+
+PSR-7 URI Factory Discovery
+---------------------------
+
+.. versionadded:: 1.6
+    This is deprecated and will be removed in 2.0. Consider using PSR-17 Factory Discovery.
+
+This type of discovery finds a URI factory for a PSR-7_ URI implementation::
+
+    use Http\Message\UriFactory;
+    use Http\Discovery\UriFactoryDiscovery;
+
+    class MyClass
+    {
+        /**
+         * @var UriFactory
+         */
+        private $uriFactory;
+
+        /**
+         * @param UriFactory|null $uriFactory to create UriInterface instances from strings.
+         */
+        public function __construct(UriFactory $uriFactory = null)
+        {
+            $this->uriFactory = $uriFactory ?: UriFactoryDiscovery::find();
         }
     }
 

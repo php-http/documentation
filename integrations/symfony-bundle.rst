@@ -45,7 +45,7 @@ clients.
         );
     }
 
-You will find all available configuration at the
+You can find all available configuration at the
 :doc:`full configuration </integrations/symfony-full-configuration>` page.
 
 Usage
@@ -234,7 +234,7 @@ Additionally you can configure any of the ``php-http/plugins`` specifically on
 a client. For some plugins this is the only place where they can be configured.
 The order in which you specify the plugins **does** matter.
 
-Configure plugins directly on the client:
+You can configure many of the plugins directly on the client:
 
 .. code-block:: yaml
 
@@ -256,7 +256,12 @@ Configure plugins directly on the client:
                             password: 'p4ssw0rd'
 
 
-Configure the cache plugin globally and use it in the ``acme`` client:
+See :doc:`full configuration </integrations/symfony-full-configuration>` for
+the full list of plugins you can configure.
+
+Alternatively, the same configuration also works on a global level. With this,
+you can configure plugins once and then use them in several clients. The plugin
+service names follow the pattern ``httplug.plugin.<name>``:
 
 .. code-block:: yaml
 
@@ -270,8 +275,14 @@ Configure the cache plugin globally and use it in the ``acme`` client:
                 factory: 'httplug.factory.guzzle6'
                 plugins:
                     - 'httplug.plugin.cache'
+            app:
+                plugins:
+                    - 'httplug.plugin.cache'
 
-Configure a service for your custom plugin and use it in the client:
+To use a custom plugin or when you need specific configuration that is not
+covered by the bundle configuration, you can configure the plugin as a normal
+symfony service and then reference that service name in the plugin list of your
+client:
 
 .. code-block:: yaml
 

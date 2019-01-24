@@ -19,8 +19,9 @@ This page shows an example of all configuration values provided by the bundle.
             uri_factory: ~
             stream_factory: ~
 
-        plugins: # Global plugin configuration. Plugins need to be explicitly added to clients.
+        plugins: # Global plugin configuration. When configured here, plugins need to be explicitly added to clients by service name.
             authentication:
+                # The names can be freely chosen, the authentication type is specified in the "type" option
                 my_basic:
                     type: 'basic'
                     username: 'my_username'

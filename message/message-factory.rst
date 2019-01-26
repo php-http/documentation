@@ -76,7 +76,7 @@ choice to the bootstrapping code::
         {
             $request = $this->requestFactory->createRequest('GET', 'http://httplug.io');
             $stream = $this->streamFactory->createStream('stream content');
-            $uri = $this->UriFactory->createUri('http://httplug.io');
+            $uri = $this->uriFactory->createUri('http://httplug.io');
             ...
         }
     }

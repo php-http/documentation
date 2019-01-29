@@ -10,6 +10,7 @@ request or you can even start a completely new request. This gives you full cont
 
    introduction
    build-your-own
+   always-seekable-body-plugin
    authentication
    cache
    content-length

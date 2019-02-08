@@ -279,6 +279,11 @@ service names follow the pattern ``httplug.plugin.<name>``:
                 plugins:
                     - 'httplug.plugin.cache'
 
+.. note::
+
+    To configure HTTP caching, you need to require ``php-http/cache-plugin`` in
+    your project. It is available as a separate composer package.
+
 To use a custom plugin or when you need specific configuration that is not
 covered by the bundle configuration, you can configure the plugin as a normal
 symfony service and then reference that service name in the plugin list of your

@@ -40,7 +40,7 @@ This page shows an example of all configuration values provided by the bundle.
                 my_service:
                     type: 'service'
                     service: 'my_authentication_service'
-            cache:
+            cache: # requires the php-http/cache-plugin package to be installed in your package
                 cache_pool: 'my_cache_pool'
                 stream_factory: 'httplug.stream_factory'
                 config:

@@ -140,6 +140,88 @@ Or set a default exception::
         }
     }
 
+Mocking request-dependent responses
+-----------------------------------
+
+You can mock responses and exceptions which are only used in certain requests
+or act differently depending on the request.
+
+To conditionally return a response when a request is matched::
+
+    use Http\Mock\Client;
+
+    class YourTest extends \PHPUnit_Framework_TestCase
+    {
+        /**
+         * @expectedException \Exception
+         */
+        public function testClientThrowsException()
+        {
+            $client = new Client();
+
+            // $requestMatcher is an instance of Http\Message\RequestMatcher
+
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            $client->on($requestMatcher, $response);
+
+            // $request is an instance of Psr\Http\Message\RequestInterface
+            $returnedResponse = $client->sendRequest($request);
+        }
+    }
+
+Or for an exception::
+
+    use Http\Mock\Client;
+
+    class YourTest extends \PHPUnit_Framework_TestCase
+    {
+        /**
+         * @expectedException \Exception
+         */
+        public function testClientThrowsException()
+        {
+            $client = new Client();
+
+            // $requestMatcher is an instance of Http\Message\RequestMatcher
+
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            $client->on($requestMatcher, $response);
+
+            // $request is an instance of Psr\Http\Message\RequestInterface
+            $returnedResponse = $client->sendRequest($request);
+        }
+    }
+
+Or pass a callable, and return a response or exception based on the request::
+
+    use Http\Mock\Client;
+    use Psr\Http\Message\RequestInterface;
+
+    class YourTest extends \PHPUnit_Framework_TestCase
+    {
+        /**
+         * @expectedException \Exception
+         */
+        public function testClientThrowsException()
+        {
+            $client = new Client();
+
+            // $requestMatcher is an instance of Http\Message\RequestMatcher
+
+            $client->on($requestMatcher, function (RequestInterface $request) {
+
+                // return a response
+                return $this->createMock('Psr\Http\Message\ResponseInterface');
+
+                // or an exception
+                return new \Exception('Whoops!');
+            });
+
+            // $request is an instance of Psr\Http\Message\RequestInterface
+            $returnedResponse = $client->sendRequest($request);
+        }
+    }
+
 
 .. hint::
 

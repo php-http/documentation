@@ -149,6 +149,7 @@ or act differently depending on the request.
 To conditionally return a response when a request is matched::
 
     use Http\Mock\Client;
+    use Psr\Http\Message\ResponseInterface;
 
     class YourTest extends \PHPUnit_Framework_TestCase
     {
@@ -161,7 +162,7 @@ To conditionally return a response when a request is matched::
 
             // $requestMatcher is an instance of Http\Message\RequestMatcher
 
-            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            $response = $this->createMock(ResponseInterface:class);
             $client->on($requestMatcher, $response);
 
             // $request is an instance of Psr\Http\Message\RequestInterface
@@ -172,22 +173,22 @@ To conditionally return a response when a request is matched::
 Or for an exception::
 
     use Http\Mock\Client;
+    use Exception;
 
     class YourTest extends \PHPUnit_Framework_TestCase
     {
-        /**
-         * @expectedException \Exception
-         */
         public function testClientThrowsException()
         {
             $client = new Client();
 
             // $requestMatcher is an instance of Http\Message\RequestMatcher
 
-            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-            $client->on($requestMatcher, $response);
+            $exception = new \Exception('Whoops!');
+            $client->on($requestMatcher, $exception);
 
             // $request is an instance of Psr\Http\Message\RequestInterface
+
+            $this->expectException(\Exception::class);
             $returnedResponse = $client->sendRequest($request);
         }
     }

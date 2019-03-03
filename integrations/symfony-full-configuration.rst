@@ -105,6 +105,12 @@ This page shows an example of all configuration values provided by the bundle.
                         uri: http://localhost:80 # Required
                         # Whether to replace the host if request already specifies one
                         replace: false
+                    # Set content-type header based on request body, if the header is not already set
+                    - content_type:
+                        # skip content-type detection if body is larger than size_limit
+                        skip_detection: true
+                        # size_limit in bytes for when skip_detection is enabled
+                        size_limit: 200000
                     # Append headers to the request. If the header already exists the value will be appended to the current value.
                     - header_append:
                         # Keys are the header names, values the header values

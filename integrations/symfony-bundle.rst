@@ -106,6 +106,14 @@ reasons. Turn this on by changing the ``captured_body_length`` configuration.
         profiling:
             captured_body_length: 1000 # Capture the first 1000 chars of the HTTP body
 
+You can set ``captured_body_length`` to ``null`` to avoid body limitation size.
+
+.. code-block:: yaml
+
+    httplug:
+        profiling:
+            captured_body_length: ~ # Avoid truncation of body content
+
 The profiling is automatically turned off when ``kernel.debug = false``. You can
 also disable the profiling by configuration.
 

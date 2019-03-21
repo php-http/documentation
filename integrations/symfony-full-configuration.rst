@@ -7,6 +7,10 @@ This page shows an example of all configuration values provided by the bundle.
 
     // config.yml
     httplug:
+        # allows to disable autowiring of the clients
+        default_client_autowiring: true
+        # define which service to use as httplug.<type>
+        # this does NOT change autowiring, which will always go to the "default" client
         main_alias:
             client: httplug.client.default
             message_factory: httplug.message_factory.default

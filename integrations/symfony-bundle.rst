@@ -68,6 +68,21 @@ Usage
     $request = $this->container->get('httplug.message_factory')->createRequest('GET', 'http://example.com');
     $response = $this->container->get('httplug.client.acme')->sendRequest($request);
 
+Autowiring the Default Client
+-----------------------------
+
+The first configured client is considered the "default" client. It is available
+for `autowiring`_ both for ``HttpClient`` and ``HttpAsyncClient``. This can be
+convenient to build your application.
+
+However, if you configured several different clients and need to be sure that
+the correct client is used in each service, it can also hide mistakes.
+Therefore you can disable autowiring with a configuration option:
+
+.. code-block:: yaml
+
+    httplug:
+        default_client_autowiring: false
 
 Web Debug Toolbar
 `````````````````
@@ -444,3 +459,4 @@ To mock a response in your tests, do:
     <div style="clear:left"></div>
 
 .. _`Symfony Flex`: https://symfony.com/doc/current/setup/flex.html
+.. _`autowiring`: https://symfony.com/doc/current/service_container/autowiring.html

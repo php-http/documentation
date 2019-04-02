@@ -25,7 +25,7 @@ The naming strategy turn a request into a deterministic and unique identifier.
 The identifier must be safe to use with a filesystem.
 The plugin provide a default naming strategy, the ``PathNamingStrategy``. You can define two options:
 
-* **hash_headers**: the list of header(s) that make the request unique (Ex: 'Authorization'). The content of the header will be hashed to generate a unique signature. By default no header is used.
+* **hash_headers**: the list of header(s) that make the request unique (Ex: 'Authorization'). The name & content of the header will be hashed to generate a unique signature. By default no header is used.
 * **hash_body_methods**: indicate for which request methods the body makes requests distinct. (Default: PUT, POST, PATCH)
 
 This naming strategy will turn a GET request to https://example.org/my-path to the ``example.org_GET_my-path`` name, and optionally add hashes if the request

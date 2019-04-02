@@ -1,11 +1,20 @@
 sudo: false
 
+language: python
+
+matrix:
+    include:
+        - python: 3.7
+          dist: xenial
+          sudo: true
+
 addons:
     apt_packages:
         - enchant
 
 install:
-    - pip install --user -r requirements.txt
+    - pip install pipenv
+    - pipenv install
 
 script:
     - make SPHINXOPTS='-nW' html

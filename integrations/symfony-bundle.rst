@@ -309,7 +309,7 @@ service names follow the pattern ``httplug.plugin.<name>``:
 
 To use a custom plugin or when you need specific configuration that is not
 covered by the bundle configuration, you can configure the plugin as a normal
-symfony service and then reference that service name in the plugin list of your
+Symfony service and then reference that service name in the plugin list of your
 client:
 
 .. code-block:: yaml

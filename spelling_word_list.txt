@@ -1,6 +1,7 @@
 Artax
 async
 auth
+autowiring
 backoff
 backtrace
 boolean

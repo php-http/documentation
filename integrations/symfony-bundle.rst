@@ -15,11 +15,11 @@ Installation
 Using Symfony Flex
 ------------------
 
-HttplugBundle is officially supported by `Symfony Flex`_ and available as the ``httplug`` alias.
+HttplugBundle has a `Symfony Flex`_ recipe that will set it up with default configuration:
 
 .. code-block:: bash
 
-    $ composer require httplug
+    $ composer require php-http/httplug-bundle
 
 Without Symfony Flex
 --------------------

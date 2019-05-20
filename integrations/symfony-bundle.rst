@@ -357,6 +357,32 @@ You can configure a client with authentication. Valid authentication types are
     Using query parameters for authentication is :ref:`not safe <Authentication-QueryParams>`.
     The auth params will appear on the URL and we recommend to NOT log your request, especially on production side.
 
+VCR Plugin
+``````````
+
+Allow you to enable the :doc:`VCR Plugin </plugins/vcr>` and configure the behavior to use ( Replay, Record , Replay OR Record).
+
+.. code-block:: yaml
+
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                plugins:
+                - vcr:
+                    mode: replay # record | replay | replay_or_record
+                    recorder: filesystem # optional
+                    fixtures_directory: '%kernel.project_dir%/fixtures/http' # mandatory for "filesystem" recorder
+                    naming_strategy: service_id.of.naming_strategy # optional
+                    naming_strategy_options: # optional
+                      hash_headers: []
+                      hash_body_methods: []
+
+.. warning::
+
+    You have to explicitly require this plugin with composer (``composer require --dev php-http/vcr-plugin``) before
+    using it, as it isn't shipped by default.
+
 Special HTTP Clients
 ````````````````````
 

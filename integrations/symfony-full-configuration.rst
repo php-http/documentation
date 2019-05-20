@@ -138,3 +138,12 @@ This page shows an example of all configuration values provided by the bundle.
                     - query_defaults:
                         parameters:
                             locale: en
+                    # Enable VCR plugin integration (Must be installed first).
+                    - vcr:
+                        mode: replay # record | replay | replay_or_record
+                        fixtures_directory: '%kernel.project_dir%/fixtures/http' # mandatory for "filesystem" recorder
+                        # recorder: filesystem  ## Can be filesystem, in_memory or the id of your custom recorder
+                        # naming_strategy: service_id.of.naming_strategy # or "default"
+                        # naming_strategy_options: # options for the default naming strategy, see VCR plugin documentation
+                        #     hash_headers: []
+                        #     hash_body_methods: []

@@ -371,12 +371,10 @@ Allow you to enable the :doc:`VCR Plugin </plugins/vcr>` and configure the behav
                 plugins:
                 - vcr:
                     mode: replay # record | replay | replay_or_record
-                    recorder: filesystem # optional
                     fixtures_directory: '%kernel.project_dir%/fixtures/http' # mandatory for "filesystem" recorder
-                    naming_strategy: service_id.of.naming_strategy # optional
-                    naming_strategy_options: # optional
-                      hash_headers: []
-                      hash_body_methods: []
+                    # recorder: filesystem
+
+You also specify parameters to configure your naming strategy, see  :doc:`Full configuration </integrations/symfony-full-configuration>` for more details.
 
 .. warning::
 

@@ -141,9 +141,9 @@ This page shows an example of all configuration values provided by the bundle.
                     # Enable VCR plugin integration (Must be installed first).
                     - vcr:
                         mode: replay # record | replay | replay_or_record
-                        recorder: filesystem # optional
                         fixtures_directory: '%kernel.project_dir%/fixtures/http' # mandatory for "filesystem" recorder
-                        naming_strategy: service_id.of.naming_strategy # optional
-                        naming_strategy_options: # optional
-                            hash_headers: []
-                            hash_body_methods: []
+                        # recorder: filesystem  ## Can be filesystem, in_memory or the id of your custom recorder
+                        # naming_strategy: service_id.of.naming_strategy
+                        # naming_strategy_options:
+                        #     hash_headers: []
+                        #     hash_body_methods: []

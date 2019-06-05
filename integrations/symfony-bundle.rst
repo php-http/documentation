@@ -39,10 +39,10 @@ clients.
 
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
             // ...
             new Http\HttplugBundle\HttplugBundle(),
-        );
+        ];
     }
 
 You can find all available configuration at the

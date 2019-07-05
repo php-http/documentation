@@ -244,6 +244,32 @@ services are:
                     my_client:
                         service: 'my_custom_client_service'
 
+    .. versionadded:: 1.17
+
+        All configured clients are tagged with ``'httplug.client'`` (the value of the constant ``Http\HttplugBundle\DependencyInjection\HttplugExtension::HTTPLUG_CLIENT_TAG``),
+        so they can be easily retrieved. This is useful for functional tests, where one might want to replace every
+        configured client with a mock client, so they can be retrieved and configured later
+
+        .. code-block:: php
+
+            use Http\HttplugBundle\DependencyInjection\HttplugExtension;
+            use Http\Mock\Client;
+            use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+            /** @var ContainerBuilder $container */
+            $serviceIds = array_keys($container->findTaggedServiceIds(HttplugExtension::HTTPLUG_CLIENT_TAG));
+
+            foreach ($serviceIds as $serviceId) {
+                $decoratingServiceId = \sprintf(
+                    '%s.mock',
+                    $serviceId
+                );
+
+                $container->register($decoratingServiceId, Client::class)
+                    ->setDecoratedService($serviceId)
+                    ->setPublic(true);
+            }
+
 Plugins
 ```````
 

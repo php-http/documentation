@@ -33,6 +33,8 @@ Authentication Methods
 |Matching        | An authentication instance and a matcher callback | Behavior of the underlying authentication method if |
 |                |                                                   | the matcher callback passes                         |
 +----------------+---------------------------------------------------+-----------------------------------------------------+
+|Header          | Header name and value                             | Add an arbitrary authentication header              |
++----------------+---------------------------------------------------+-----------------------------------------------------+
 
 .. _`Basic Auth`: https://en.wikipedia.org/wiki/Basic_access_authentication
 .. _WSSE: http://www.xml.com/pub/a/2003/12/17/dive.html
@@ -150,6 +152,17 @@ The first argument is an authentication method, the second is a regular expressi
 
     $authentication = Matching::createUrlMatcher(new AuthenticationMethod(), '\/api');
 
+
+Header
+******
+
+With this authentication method you can add arbitrary headers.
+
+In the following example, we are setting a ``X-AUTH-TOKEN`` header with it's value::
+
+    use Http\Message\Authentication\Header;
+
+    $authentication = new Header('X-AUTH-TOKEN', '9zh987g86fg87gh978hg9g79');
 
 Implement Your Own
 ^^^^^^^^^^^^^^^^^^

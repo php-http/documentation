@@ -41,6 +41,8 @@ to the client::
         $guzzle = new GuzzleClient($config);
         // ...
         $adapter = new GuzzleAdapter($guzzle);
+        
+    If you pass a Guzzle instance to the adapter, make sure to configure Guzzle to not throw exceptions on HTTP error status codes, or this adapter will violate PSR-18.
 
 And use it to send synchronous requests::
 

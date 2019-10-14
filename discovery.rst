@@ -35,7 +35,7 @@ Strategies
 
 The package supports multiple discovery strategies and comes with two out-of-the-box:
 
-- A built-in strategy supporting the HTTPlug adapters, clients and factories (including Guzzle, Diactoros and Slim Framework)
+- A built-in strategy supporting the HTTPlug adapters, clients and factories (including Symfony, Guzzle, Diactoros and Slim Framework)
 - A strategy supporting the beta version of `Puli`_
 
 Strategies provide candidates of a type which gets evaluated by the discovery service.

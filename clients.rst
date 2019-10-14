@@ -16,6 +16,7 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    clients/curl-client
    clients/socket-client
    clients/mock-client
+   clients/symfony-client
    clients/artax-adapter
    clients/buzz-adapter
    clients/cakephp-adapter
@@ -31,6 +32,7 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    "``php-http/curl-client``", "Client", ":doc:`Docs </clients/curl-client>`, `Repo <https://github.com/php-http/curl-client>`__", "|curl_version| |curl_downloads| "
    "``php-http/socket-client``", "Client", ":doc:`Docs </clients/socket-client>`, `Repo <https://github.com/php-http/socket-client>`__", "|socket_version| |socket_downloads| "
    "``php-http/mock-client``", "Client", ":doc:`Docs </clients/mock-client>`, `Repo <https://github.com/php-http/mock-client>`__", "|mock_version| |mock_downloads| "
+   "``symfony/http-client``", "Client", ":doc:`Docs </clients/symfony-client>`, `Repo <https://github.com/symfony/http-client>`__", "|symfony_version| |symfony_downloads| "
    "``php-http/artax-adapter``", "Adapter", ":doc:`Docs </clients/artax-adapter>`, `Repo <https://github.com/php-http/artax-adapter>`__", "|artax_version| |artax_downloads| "
    "``php-http/buzz-adapter``", "Adapter", ":doc:`Docs </clients/buzz-adapter>`, `Repo <https://github.com/php-http/buzz-adapter>`__", "|buzz_version| |buzz_downloads| "
    "``php-http/cakephp-adapter``", "Adapter", ":doc:`Docs </clients/cakephp-adapter>`, `Repo <https://github.com/php-http/cakephp-adapter>`__", "|cakephp_version| |cakephp_downloads| "
@@ -74,6 +76,13 @@ HTTPlug use the ``provide`` section to tell composer that they do provide the cl
    :alt: Total Downloads
 .. |mock_version| image:: https://img.shields.io/github/release/php-http/mock-client.svg?style=flat-square
    :target: https://github.com/php-http/mock-client/releases
+   :alt: Latest Version
+
+.. |symfony_downloads| image:: https://img.shields.io/packagist/dt/symfony/http-client.svg?style=flat-square
+   :target: https://packagist.org/packages/symfony/http-client
+   :alt: Total Downloads
+.. |symfony_version| image:: https://img.shields.io/github/v/tag/symfony/http-client.svg?style=flat-square
+   :target: https://github.com/symfony/http-client/releases
    :alt: Latest Version
 
 .. |artax_downloads| image:: https://img.shields.io/packagist/dt/php-http/artax-adapter.svg?style=flat-square

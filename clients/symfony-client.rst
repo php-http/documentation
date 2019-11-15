@@ -23,8 +23,9 @@ to install one as well. `Nyholm PSR-7`_ is supported natively:
 
 Usage
 -----
+.. code-block:: php
 
-    use Symfony\\Component\\HttpClient\\HttplugClient;
+    use Symfony\Component\HttpClient\HttplugClient;
 
     $symfonyClient = new HttplugClient();
 

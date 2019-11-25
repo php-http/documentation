@@ -73,6 +73,9 @@ The third parameter to the ``CachePlugin`` constructor takes an array of options
 | ``cache_listeners``                   | ``[]``                                             | A array of classes implementing ``CacheListener`` to act on a         |
 |                                       |                                                    | response with information on its cache status.                        |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``blacklisted_paths``                 | ``[]``                                             | A array of regular expressions to defined paths, that shall not be    |
+|                                       |                                                    | cached.                                                               |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 
 
 .. note::

@@ -12,6 +12,13 @@ This guide explains how to configure HTTPlug in the Symfony framework. See the
 Installation
 ````````````
 
+HTTPlug works with any HTTP client implementation that provides PSR-18 or a
+HTTPlug adapter. The flex recipe installs the php-http curl client. See
+:doc:`../clients` for a list of clients known to work with the bundle.
+
+You can find all available configuration at the
+:doc:`full configuration </integrations/symfony-full-configuration>` page.
+
 Using Symfony Flex
 ------------------
 
@@ -35,8 +42,23 @@ only need to add ``php-http/httplug-bundle``. Otherwise, you also need to
 specify an HTTP client to use - see :doc:`../clients` for a list of available
 clients.
 
+Activate Bundle in Symfony 4 and newer
+""""""""""""""""""""""""""""""""""""""
+
 .. code-block:: php
 
+    // config/bundles.php
+    return [
+        ...
+        Http\HttplugBundle\HttplugBundle::class => ['all' => true],
+   ];
+
+Activate Bundle in Symfony 3
+""""""""""""""""""""""""""""
+
+.. code-block:: php
+
+    // app/AppKernel.php
     public function registerBundles()
     {
         $bundles = [
@@ -44,9 +66,6 @@ clients.
             new Http\HttplugBundle\HttplugBundle(),
         ];
     }
-
-You can find all available configuration at the
-:doc:`full configuration </integrations/symfony-full-configuration>` page.
 
 Usage
 `````

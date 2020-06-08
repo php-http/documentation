@@ -135,7 +135,7 @@ It would make sense to also provide factories for the server side constructs
 to do that yet. Contributions are welcome if you want to define the
 ``ServerRequestFactory`` and ``UploadedFileFactory``.
 
-.. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7
+.. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
 .. _Slim Framework: https://github.com/slimphp/Slim
 .. _Zend Diactoros: https://github.com/zendframework/zend-diactoros

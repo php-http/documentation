@@ -22,7 +22,7 @@ The naming strategy
 *******************
 
 The naming strategy turn a request into a deterministic and unique identifier.
-The identifier must be safe to use with a filesystem.
+The identifier must be safe to use with a file system.
 The plugin provide a default naming strategy, the ``PathNamingStrategy``. You can define two options:
 
 * **hash_headers**: the list of header(s) that make the request unique (Ex: 'Authorization'). The name & content of the header will be hashed to generate a unique signature. By default no header is used.
@@ -38,7 +38,7 @@ The recorder
 
 The recorder records and replays responses. The plugin provides two recorders:
 
-* ``FilesystemRecorder``: Saves the response on your filesystem using Symfony's `filesystem component`_ and `Guzzle PSR7`_ library.
+* ``FilesystemRecorder``: Saves the response on your file system using Symfony's `filesystem component`_ and `Guzzle PSR7`_ library.
 * ``InMemoryRecorder``: Saves the response in memory. **Response will be lost at the end of the running process**
 
 To create your own recorder, you need to create a class implementing the following interfaces:

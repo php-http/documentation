@@ -13,7 +13,7 @@ Installation
 ````````````
 
 HTTPlug works with any HTTP client implementation that provides PSR-18 or a
-HTTPlug adapter. The flex recipe installs the php-http curl client. See
+HTTPlug adapter. The flex recipe installs the `php-http` curl client. See
 :doc:`../clients` for a list of clients known to work with the bundle.
 
 You can find all available configuration at the

@@ -30,7 +30,7 @@ The `php-http/message-factory` package defines interfaces for PSR-7 factories in
 - ``StreamFactory``
 - ``UriFactory``
 
-Implementations of the interfaces above for `Diactoros`_, `Guzzle PSR-7`_ and the `Slim Framework`_ can be found in ``php-http/message``.
+Implementations of the interfaces above for `Laminas Diactoros`_ (and its abandoned predecessor `Zend Diactoros`_), `Guzzle PSR-7`_ and the `Slim Framework`_ can be found in ``php-http/message``.
 
 Usage
 -----

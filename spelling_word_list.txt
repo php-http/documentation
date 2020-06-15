@@ -14,6 +14,7 @@ Elasticsearch
 fallback
 GitHub
 hotfix
+Laminas
 Liskov
 Symfony
 HTTPlug

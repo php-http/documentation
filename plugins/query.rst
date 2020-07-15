@@ -11,7 +11,7 @@ plugin will encode them::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Common\PluginClient;
-    use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
+    use Http\Client\Common\Plugin\QueryDefaultsPlugin;
 
     $queryDefaultsPlugin = new QueryDefaultsPlugin([
         'locale' => 'en'

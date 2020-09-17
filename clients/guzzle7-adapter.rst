@@ -1,7 +1,7 @@
 Guzzle 7 Adapter
 ================
 
-An HTTPlug adapter for the `Guzzle 7 HTTP client`_. Guzzle 7 will support PSR-18
+An HTTPlug adapter for the `Guzzle 7 HTTP client`_. Guzzle 7 supports PSR-18
 out of the box. This adapter makes sense if you want to use HTTPlug async interface.
 
 Installation

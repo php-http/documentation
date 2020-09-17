@@ -22,6 +22,7 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    clients/cakephp-adapter
    clients/guzzle5-adapter
    clients/guzzle6-adapter
+   clients/guzzle7-adapter
    clients/react-adapter
    clients/zend-adapter
 
@@ -38,6 +39,7 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    "``php-http/cakephp-adapter``", "Adapter", ":doc:`Docs </clients/cakephp-adapter>`, `Repo <https://github.com/php-http/cakephp-adapter>`__", "|cakephp_version| |cakephp_downloads| "
    "``php-http/guzzle5-adapter``", "Adapter", ":doc:`Docs </clients/guzzle5-adapter>`, `Repo <https://github.com/php-http/guzzle5-adapter>`__", "|guzzle5_version| |guzzle5_downloads| "
    "``php-http/guzzle6-adapter``", "Adapter", ":doc:`Docs </clients/guzzle6-adapter>`, `Repo <https://github.com/php-http/guzzle6-adapter>`__", "|guzzle6_version| |guzzle6_downloads| "
+   "``php-http/guzzle7-adapter``", "Adapter", ":doc:`Docs </clients/guzzle7-adapter>`, `Repo <https://github.com/php-http/guzzle7-adapter>`__", "|guzzle7_version| |guzzle7_downloads| "
    "``php-http/react-adapter``", "Adapter", ":doc:`Docs </clients/react-adapter>`, `Repo <https://github.com/php-http/react-adapter>`__", "|react_version| |react_downloads| "
    "``php-http/zend-adapter``", "Adapter", ":doc:`Docs </clients/zend-adapter>`, `Repo <https://github.com/php-http/zend-adapter>`__", "|zend_version| |zend_downloads| "
 
@@ -118,6 +120,13 @@ HTTPlug use the ``provide`` section to tell composer that they do provide the cl
    :alt: Total Downloads
 .. |guzzle6_version| image:: https://img.shields.io/github/release/php-http/guzzle6-adapter.svg?style=flat-square
    :target: https://github.com/php-http/guzzle6-adapter/releases
+   :alt: Latest Version
+
+.. |guzzle7_downloads| image:: https://img.shields.io/packagist/dt/php-http/guzzle7-adapter.svg?style=flat-square
+   :target: https://packagist.org/packages/php-http/guzzle7-adapter
+   :alt: Total Downloads
+.. |guzzle7_version| image:: https://img.shields.io/github/release/php-http/guzzle7-adapter.svg?style=flat-square
+   :target: https://github.com/php-http/guzzle7-adapter/releases
    :alt: Latest Version
 
 .. |react_downloads| image:: https://img.shields.io/packagist/dt/php-http/react-adapter.svg?style=flat-square

@@ -1,7 +1,9 @@
-Guzzle 6 Adapter
+Guzzle 7 Adapter
 ================
 
-An HTTPlug adapter for the `Guzzle 6 HTTP client`_.
+An HTTPlug adapter for the `Guzzle 7 HTTP client`_. Guzzle 7 supports PSR-18
+out of the box. This adapter makes sense if you want to use HTTPlug async interface or to use
+Guzzle 7 with a library that did not upgrade to PSR-18 yet and depends on ``php-http/client-implementation``.
 
 Installation
 ------------
@@ -11,15 +13,15 @@ not yet included in your project), run:
 
 .. code-block:: bash
 
-    $ composer require php-http/guzzle6-adapter
+    $ composer require php-http/guzzle7-adapter
 
 Usage
 -----
 
-To create a Guzzle6 adapter you should use the `createWithConfig()` function. It will let you to pass Guzzle configuration
+To create a Guzzle7 adapter you should use the `createWithConfig()` function. It will let you to pass Guzzle configuration
 to the client::
 
-    use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+    use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 
     $config = [
         'timeout' => 2,
@@ -34,7 +36,7 @@ to the client::
     constructor::
 
         use GuzzleHttp\Client as GuzzleClient;
-        use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+        use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
 
         $config = ['timeout' => 5];
         // ...
@@ -65,4 +67,4 @@ Or send asynchronous ones::
 
 .. include:: includes/further-reading-async.inc
 
-.. _Guzzle 6 HTTP client: http://docs.guzzlephp.org/en/6.5/
+.. _Guzzle 7 HTTP client: http://docs.guzzlephp.org/en/7.0/

@@ -48,7 +48,7 @@ factories to create messages. The PSR-7 implementations are Laminas Diactoros (a
 
 .. code-block:: bash
 
-    $ composer require php-http/message slim/slim
+    $ composer require php-http/message slim/psr7
 
 Troubleshooting
 ---------------

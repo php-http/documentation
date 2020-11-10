@@ -11,7 +11,8 @@ Manage Dependencies
 -------------------
 
 To depend on *some* HTTP client, specify either
-``php-http/client-implementation`` or ``php-http/async-client-implementation``
+``psr/http-client-implementation`` for PSR-18 synchronous requests or
+``php-http/async-client-implementation`` for asynchronous requests
 in your library’s ``composer.json``. These are virtual Composer packages that
 will throw an error if no concrete client was found:
 
@@ -20,7 +21,7 @@ will throw an error if no concrete client was found:
     {
         "name": "you/and-your-awesome-library",
         "require": {
-            "php-http/client-implementation": "^1.0"
+            "psr/http-client-implementation": "^1.0"
         }
     }
 
@@ -50,7 +51,7 @@ in the ``require-dev`` section in your library’s ``composer.json``. You could 
     {
         "name": "you/and-your-awesome-library",
         "require": {
-            "php-http/client-implementation": "^1.0"
+            "psr/http-client-implementation": "^1.0"
         },
         "require-dev": {
             "php-http/mock-client": "^1.0"
@@ -96,7 +97,7 @@ Putting it all together your final ``composer.json`` is much likely to look simi
         "name": "you/and-your-awesome-library",
         "require": {
             "psr/http-message": "^1.0",
-            "php-http/client-implementation": "^1.0",
+            "psr/http-client-implementation": "^1.0",
             "php-http/httplug": "^1.0",
             "php-http/message-factory": "^1.0",
             "php-http/discovery": "^1.0"

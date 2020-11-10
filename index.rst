@@ -7,10 +7,15 @@ PHP-HTTP: standardized HTTP for PHP
     :alt: HTTPlug Logo
 
 PHP-HTTP is the next step in standardizing HTTP interaction for PHP packages.
+
 It builds on top of PSR-7_, which defines interfaces for HTTP requests and
-responses. PSR-7 does not describe, however, the way you should create requests
-or send them. PHP-HTTP aims to fill that gap by offering an HTTP client
-interface: HTTPlug.
+responses. The HTTPlug HTTP client interface has been standardized in PSR-18_
+to define synchronous HTTP requests. When using a client that implements PSR-18,
+we recommend directly using PSR-18 and not HTTPlug nor our adapters.
+
+However, PSR-18 does not define asynchronous requests. HTTPlug provides interfaces
+for those, but to do that also needs to define how :doc:`promises <components/promise>`
+are implemented.
 
 PHP-HTTP has three goals:
 
@@ -19,9 +24,8 @@ PHP-HTTP has three goals:
 
 2. Provide good quality HTTP-related packages to the PHP community.
 
-3. Over time, make HTTPlug a PHP Standards Recommendation (PSR) so that clients
-   will directly implement the HTTPlug interface and our adapters are no longer
-   needed.
+3. Now that PSR-18 exists, we miss a PSR for asynchronous requests. This is blocked
+   by not having a PSR for promises.
 
 HTTPlug
 -------

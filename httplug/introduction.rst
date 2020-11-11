@@ -12,12 +12,16 @@ Client Interfaces
 
 HTTPlug defines two HTTP client interfaces that we kept as simple as possible:
 
-* ``HttpClient`` defines a ``sendRequest`` method that sends a PSR-7
-  ``RequestInterface`` and either returns a PSR-7 ``ResponseInterface`` or
-  throws an exception that implements ``Http\Client\Exception``.
+* PSR-18 defines the ``ClientInterface`` with a ``sendRequest`` method that
+  accepts a PSR-7 ``RequestInterface`` and either returns a PSR-7
+  ``ResponseInterface`` or throws an exception that implements
+  ``Psr\Http\Client\ClientExceptionInterface``.
 
-* ``HttpAsyncClient`` defines a ``sendAsyncRequest`` method that sends a request
-  asynchronously and always returns a ``Http\Client\Promise``.
+  HTTPlug has the compatible interface ``HttpClient`` which now extends the
+  PSR-18 interface to allow migrating to PSR-18.
+
+* ``HttpAsyncClient`` defines a ``sendAsyncRequest`` method that sends a PSR-7
+  request asynchronously and always returns a ``Http\Client\Promise``.
   See :doc:`../components/promise` for more information.
 
 Implementations
@@ -29,16 +33,22 @@ PHP-HTTP offers two types of clients that implement the above interfaces:
 
    Examples: :doc:`/clients/curl-client` and :doc:`/clients/socket-client`.
 
-2. Adapters that wrap existing HTTP client, such as Guzzle. These adapters act
+2. Adapters that wrap existing HTTP clients, such as Guzzle. These adapters act
    as a bridge between the HTTPlug interfaces and the clients that do not (yet)
    implement these interfaces.
 
-   Examples: :doc:`/clients/guzzle6-adapter` and :doc:`/clients/react-adapter`.
+   More and more clients implement PSR-18 directly. If that is all you need, we
+   recommend not using HTTPlug as it would only add overhead. However, as there
+   is no PSR for asynchronous requests yet, you can use the adapters to do such
+   requests without binding yourself to a specific implementation.
+
+   Examples: :doc:`/clients/guzzle7-adapter` and :doc:`/clients/react-adapter`.
 
 .. note::
 
-    Ideally, all HTTP client libraries out there will implement the HTTPlug
-    interfaces. At that point, our adapters will no longer be necessary.
+    Ideally, there will be a PSR for asynchronous requests and all HTTP client
+    libraries out there will implement PSR-18 and the not yet existing PSR. At
+    that point, our adapters will no longer be necessary.
 
 Usage
 -----

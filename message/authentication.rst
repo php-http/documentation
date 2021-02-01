@@ -85,6 +85,14 @@ WSSE
 
     $authentication = new Wsse('username', 'password');
 
+For better security, also pass the 3rd optional parameter to use a better hashing algorithm than ``sha1``, e.g.
+
+.. code-block:: php
+
+    use Http\Message\Authentication\Wsse;
+
+    $authentication = new Wsse('username', 'password', 'sha512');
+
 .. _Authentication-QueryParams:
 
 Query Params

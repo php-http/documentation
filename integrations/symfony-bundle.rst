@@ -188,10 +188,8 @@ the value of ``discovery.client`` to ``false``.
 Discovery of Factory Classes
 ````````````````````````````
 
-If you want the bundle to automatically find usable factory classes, install
-and enable ``puli/symfony-bundle``. If you do not want use auto discovery, you
-need to specify all the factory classes for you client. The following example
-show how you configure factory classes using Guzzle:
+You need to specify all the factory classes for you client. The following
+example shows how you configure factory classes using Guzzle:
 
 .. code-block:: yaml
 

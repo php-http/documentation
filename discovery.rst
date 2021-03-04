@@ -36,7 +36,6 @@ Strategies
 The package supports multiple discovery strategies and comes with two out-of-the-box:
 
 - A built-in strategy supporting the HTTPlug adapters, clients and factories (including Symfony, Guzzle, Diactoros and Slim Framework)
-- A strategy supporting the beta version of `Puli`_
 
 Strategies provide candidates of a type which gets evaluated by the discovery service.
 When it finds the best candidate, it caches it and stops looking in further strategies.
@@ -48,41 +47,6 @@ Installation
 .. code-block:: bash
 
     $ composer require php-http/discovery
-
-
-Using Puli
-^^^^^^^^^^
-
-`Puli`_ is a first class citizen, but completely optional strategy in discovery.
-It provides better flexibility than the built-in strategy, but requires more configuration.
-
-There are two kinds of installation:
-
-- In an application
-- In a reusable library (for development)
-
-In both cases you have to install the discovery package itself and set up Puli.
-The easiest way is installing the composer-plugin which automatically configures
-all the composer packages to act as Puli modules.
-
-For applications, simply do:
-
-.. code-block:: bash
-
-    $ composer require puli/composer-plugin
-
-
-If you need the composer-plugin for development or testing in a reusable library,
-make it a development dependency instead:
-
-.. code-block:: bash
-
-    $ composer require --dev puli/composer-plugin
-
-All of our packages provide Puli resources too, so if Puli is installed, discovery will use it as the primary strategy
-and fall back to the built-in list.
-
-Read more about setting up Puli in their `official documentation`_.
 
 
 Common Errors
@@ -101,19 +65,6 @@ To resolve this you may run
 .. code-block:: bash
 
         $ composer require php-http/curl-client guzzlehttp/psr7 php-http/message
-
-Puli Factory is not available
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you get an error that says "*Puli Factory is not available*", it means that you
-have failed to install Puli. Using Puli is optional and you will be able to use
-common clients and message factories without Puli (:doc:`see how <httplug/users>`).
-If you want to use Puli, make sure to install the latest version of
-``puli/composer-plugin``.
-
-.. code-block:: bash
-
-        $ composer require puli/composer-plugin
 
 No factories found
 ^^^^^^^^^^^^^^^^^^
@@ -339,24 +290,5 @@ It is important to note that you must explicitly enable the ``MockClientStrategy
 and that it is not used by the Discovery Service by default. It is simply
 provided as a convenient option when writing tests.
 
-Integrating your own implementation with the discovery mechanism using Puli
----------------------------------------------------------------------------
-
-If you use `Puli`_ you can easily make your own HTTP Client or Message Factory discoverable:
-you have to configure it as a Puli resource (`binding`_ in Puli terminology).
-
-A binding must have a type, called `binding-type`_. All of our interfaces are registered as binding types.
-
-For example: a client ``Http\Client\MyClient`` should be bind to ``Http\Client\HttpClient``
-
-Puli uses a ``puli.json`` file for configuration (placed in the package root).
-Use the CLI tool for configuring bindings. It is necessary, because each binding must have a unique identifier.
-Read more in Puli's documentation (`Providing Resources`_).
-
-.. _`Puli`: http://puli.io
-.. _official documentation: http://docs.puli.io/en/latest
-.. _`binding`: http://docs.puli.io/en/latest/glossary.html#glossary-binding
-.. _`binding-type`: http://docs.puli.io/en/latest/glossary.html#glossary-binding-type
-.. _Providing Resources: http://docs.puli.io/en/latest/discovery/providing-resources.html
 .. _PSR-17: http://www.php-fig.org/psr/psr-17
 .. _PSR-18: http://www.php-fig.org/psr/psr-18

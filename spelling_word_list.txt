@@ -34,7 +34,6 @@ params
 profiler
 PHP
 phpdoc
-Puli
 rebase
 Semver
 Seekable

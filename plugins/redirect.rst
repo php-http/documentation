@@ -42,3 +42,9 @@ request.
 
 Whether to follow the default direction on the multiple redirection status code 300. If set to
 false, a status of 300 will raise the ``Http\Client\Common\Exception\MultipleRedirectionException``.
+
+``strict``: bool (default: false)
+
+When set to ``true``, 300, 301 and 302 status codes will not modify original request's method and 
+body on consecutive requests. E. g. POST redirect requests are sent as POST requests instead of 
+POST redirect requests are sent as GET requests.

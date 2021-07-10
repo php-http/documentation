@@ -87,8 +87,8 @@ Usage
     $request = $this->container->get('httplug.message_factory')->createRequest('GET', 'http://example.com');
     $response = $this->container->get('httplug.client.acme')->sendRequest($request);
 
-Autowiring the Default Client
------------------------------
+Autowiring
+----------
 
 The first configured client is considered the "default" client. It is available
 for `autowiring`_ both for ``HttpClient`` and ``HttpAsyncClient``. This can be
@@ -102,6 +102,18 @@ Therefore you can disable autowiring with a configuration option:
 
     httplug:
         default_client_autowiring: false
+
+When using this bundle with Symfony 5.3 or newer, you can use the `#[Target]` attribute to select a
+client by name:
+
+.. code-block:: php
+
+    final class MyService
+    {
+        public function __construct(
+            #[Target('acme')] HttpClient $client
+        ) {}
+    }
 
 Web Debug Toolbar
 `````````````````

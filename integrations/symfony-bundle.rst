@@ -104,7 +104,7 @@ Therefore you can disable autowiring with a configuration option:
         default_client_autowiring: false
 
 With Symfony 5.3 it's possible to use the `#[Target]` attribute to select the
-correct client:
+client by name:
 
 .. code-block:: php
 

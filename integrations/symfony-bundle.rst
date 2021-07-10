@@ -103,7 +103,7 @@ Therefore you can disable autowiring with a configuration option:
     httplug:
         default_client_autowiring: false
 
-With Symfony 5.3 it's possible to use the `#[Target]` attribute to select the
+When using this bundle with Symfony 5.3 or newer, you can use the `#[Target]` attribute to select a
 client by name:
 
 .. code-block:: php

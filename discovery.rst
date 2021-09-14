@@ -291,4 +291,3 @@ and that it is not used by the Discovery Service by default. It is simply
 provided as a convenient option when writing tests.
 
 .. _PSR-17: http://www.php-fig.org/psr/psr-17
-.. _PSR-18: http://www.php-fig.org/psr/psr-18

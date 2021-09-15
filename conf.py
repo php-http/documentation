@@ -306,7 +306,8 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 rst_epilog = """
-.. _PSR-7: http://www.php-fig.org/psr/psr-7
+.. _PSR-7: https://www.php-fig.org/psr/psr-7
+.. _PSR-18: https://www.php-fig.org/psr/psr-18
 .. _Composer: https://getcomposer.org
 .. _HttplugBundle: https://github.com/php-http/HttplugBundle
 """

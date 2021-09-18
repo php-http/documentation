@@ -157,9 +157,10 @@ html_favicon = 'favicon.ico'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-def setup(app):
-    app.add_stylesheet('custom.css')
-    app.add_stylesheet('highlight.css')
+html_css_files = [
+    'custom.css',
+    'highlight.css',
+]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -311,5 +312,3 @@ rst_epilog = """
 .. _Composer: https://getcomposer.org
 .. _HttplugBundle: https://github.com/php-http/HttplugBundle
 """
-
-

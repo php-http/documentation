@@ -1,0 +1,26 @@
+name: spellcheck
+
+on: [push]
+
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up Python
+              uses: actions/setup-python@v1
+              with:
+                  python-version: 3.7
+            - name: Install dependencies
+              run: |
+                  sudo apt update && sudo apt install -y enchant
+                  python -m pip install --upgrade setuptools
+                  python -m pip install --upgrade pyenchant sphinx-rtd-theme sphinxcontrib-spelling
+            - name: Check spelling
+                # show list of misspelled words
+              run: |
+                  make spelling
+                  if [[ -s "_build/spelling/output.txt" ]]; then cat "_build/spelling/output.txt"; fi
+                  if [[ -s "_build/spelling/output.txt" ]]; then false; fi

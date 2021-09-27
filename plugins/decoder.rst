@@ -27,5 +27,5 @@ by setting the ``use_content_encoding`` configuration option to false::
 
     $decoderPlugin = new DecoderPlugin(['use_content_encoding' => false]);
 
-Not decoding content is useful when you don't want to get the encoded response body, or acting as a proxy but sill
+Not decoding content is useful when you don't want to get the encoded response body, or acting as a proxy but still
 be able to decode message from the ``Transfer-Encoding`` header value.

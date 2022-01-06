@@ -98,7 +98,7 @@ Putting it all together your final ``composer.json`` is much likely to look simi
         "require": {
             "psr/http-message": "^1.0",
             "psr/http-client-implementation": "^1.0",
-            "php-http/httplug": "^1.0",
+            "php-http/httplug": "^2.0",
             "php-http/message-factory": "^1.0",
             "php-http/discovery": "^1.0"
         },

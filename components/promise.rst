@@ -81,5 +81,41 @@ executed if the request results in an error::
         }
     );
 
+The failure callback can also return a ``Promise``. This can be useful to implement a retry
+mechanism, as follows:
+
+    use Http\Discovery\HttpAsyncClientDiscovery;
+    use Http\Discovery\Psr17FactoryDiscovery;
+
+    $client = HttpAsyncClientDiscovery::find();
+    $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+    $retries = 2; // number of HTTP retries
+    $request = $requestFactory->createRequest("GET", "http://localhost:8080/test");
+
+    // success callback
+    $success = function (ResponseInterface $response) {
+        return $response;
+    };
+    // failure callback
+    $failure = function (Exception $e) use ($client, $request) {
+        // $request can be changed, e.g. using a Round-Robin algorithm
+
+        // try another execution
+        return $client->sendAsyncRequest($request);
+    };
+    
+    $promise = $client->sendAsyncRequest($request);
+    for ($i=0; $i < $retries; $i++) {
+        $promise = $promise->then($success, $failure);
+    }
+    // Add the last callable to manage the exceeded maximum number of retries
+    $promise->then($success, function(\Exception $e) {
+        throw new \Exception(sprintf(
+            "Exceeded maximum number of retries (%d): %s",
+            $retries,
+            $e->getMessage()
+        ));
+    });
+
 .. _`Promise PSR`: https://groups.google.com/forum/?fromgroups#!topic/php-fig/wzQWpLvNSjs
 .. _Promises/A+: https://promisesaplus.com

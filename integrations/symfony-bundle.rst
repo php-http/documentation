@@ -322,6 +322,8 @@ You can configure many of the plugins directly on the client:
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins:
+                    - error:
+                        only_server_exception: true
                     - add_host:
                         host: "http://localhost:8000"
                     - header_defaults:
@@ -475,8 +477,7 @@ List of Services
 +-------------------------------------+-------------------------------------------------------------------------+
 | | ``httplug.plugin.content_length`` | | These are plugins that are enabled by default.                        |
 | | ``httplug.plugin.decoder``        | | These services are private and should only be used to configure       |
-| | ``httplug.plugin.error``          | | clients or other services.                                            |
-| | ``httplug.plugin.logger``         |                                                                         |
+| | ``httplug.plugin.logger``         | | clients or other services.                                            |
 | | ``httplug.plugin.redirect``       |                                                                         |
 | | ``httplug.plugin.retry``          |                                                                         |
 | | ``httplug.plugin.stopwatch``      |                                                                         |
@@ -484,7 +485,7 @@ List of Services
 | | ``httplug.plugin.cache``          | | These are plugins that are disabled by default and only get           |
 | | ``httplug.plugin.cookie``         | | activated when configured.                                            |
 | | ``httplug.plugin.history``        | | These services are private and should only be used to configure       |
-|                                     | | clients or other services.                                            |
+| | ``httplug.plugin.error``          | | clients or other services.                                            |
 +-------------------------------------+-------------------------------------------------------------------------+
 
 \* *These services are always an alias to another service. You can specify your own service or leave the default, which is the same name with `.default` appended.*

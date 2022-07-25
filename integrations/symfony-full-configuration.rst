@@ -67,6 +67,8 @@ This page shows an example of all configuration values provided by the bundle.
                 retry: 1
             stopwatch:
                 stopwatch: 'debug.stopwatch'
+            error:
+                only_server_exception: false
 
         profiling:
             enabled: true # Defaults to kernel.debug

@@ -322,6 +322,8 @@ You can configure many of the plugins directly on the client:
             acme:
                 factory: 'httplug.factory.guzzle6'
                 plugins:
+                    - error:
+                        only_server_exception: true
                     - add_host:
                         host: "http://localhost:8000"
                     - header_defaults:

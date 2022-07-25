@@ -68,6 +68,7 @@ This page shows an example of all configuration values provided by the bundle.
             stopwatch:
                 stopwatch: 'debug.stopwatch'
             error:
+                enabled: false
                 only_server_exception: false
 
         profiling:

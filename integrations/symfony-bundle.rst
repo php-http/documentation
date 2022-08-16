@@ -518,8 +518,12 @@ Then, use the mock client factory in your test environment configuration:
     # config_test.yml
     httplug:
         clients:
-            my_awesome_client:
+            my_awesome_backend:
                 factory: 'httplug.factory.mock' # replace factory
+
+The client is always wrapped into a plugin client. Therefore you need to access
+the inner client, which has `.client` appended. For the example above, the full
+name is `httplug.clients.my_awesome_backend.client`.
 
 To mock a response in your tests, do:
 
@@ -533,7 +537,7 @@ To mock a response in your tests, do:
 
     $response = $this->createMock('Psr\Http\Message\ResponseInterface');
     $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
-    $client->getContainer()->get('httplug.client.mock')->addResponse($response);
+    $client->getContainer()->get('httplug.clients.my_awesome_backend.client')->addResponse($response);
 
 Read more on how the mock client works in the :doc:`mock client documentation </clients/mock-client>`.
 

@@ -535,6 +535,8 @@ To mock a response in your tests, do:
     $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
     $client->getContainer()->get('httplug.client.mock')->addResponse($response);
 
+Read more on how the mock client works in the :doc:`mock client documentation </clients/mock-client>`.
+
 .. |clearfloat|  raw:: html
 
     <div style="clear:left"></div>

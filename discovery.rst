@@ -159,10 +159,40 @@ This type of discovery finds a factory for a PSR-17_ implementation::
          */
         private $responseFactory;
 
-        public function __construct(RequestFactoryInterface $requestFactory = null, ResponseFactoryInterface $responseFactory = null)
-        {
+        /**
+         * @var ServerRequestFactoryInterface
+         */
+        private $serverRequestFactory;
+
+        /**
+         * @var StreamFactoryInterface
+         */
+        private $streamFactory;
+
+        /**
+         * @var UploadedFileFactoryInterface
+         */
+        private $uploadedFileFactory;
+
+        /**
+         * @var UriFactoryInterface
+         */
+        private $uriFactory;
+
+        public function __construct(
+            RequestFactoryInterface $requestFactory = null,
+            ResponseFactoryInterface $responseFactory = null,
+            ServerRequestFactoryInterface $serverRequestFactory = null,
+            StreamFactoryInterface $streamFactory = null,
+            UploadedFileFactoryInterface $uploadedFileFactory = null,
+            UriFactoryInterface = $uriFactoryInterface = null
+        ) {
             $this->requestFactory = $requestFactory ?: Psr17FactoryDiscovery::findRequestFactory();
             $this->responseFactory = $responseFactory ?: Psr17FactoryDiscovery::findResponseFactory();
+            $this->serverRequestFactory = $serverRequestFactory ?: Psr17FactoryDiscovery::findServerRequestFactory();
+            $this->streamFactory = $streamFactory ?: Psr17FactoryDiscovery::findStreamFactory();
+            $this->uploadedFileFactory = $uploadedFileFactory ?: Psr17FactoryDiscovery::findUploadedFileFactory();
+            $this->uriFactory = $uriFactory ?: Psr17FactoryDiscovery::findUriFactory();
         }
     }
 

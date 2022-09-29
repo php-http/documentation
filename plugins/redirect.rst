@@ -29,6 +29,15 @@ Initiate the redirect plugin as follows::
     follow redirects instead of going to the right end point directly makes your application slower
     and increases the load on both server and client.
 
+.. note::
+
+    Depending on the status code, redirecting should change POST/PUT requests to GET requests. This
+    plugin implements this behaviour - except if you set the ``strict`` option to true, as explained
+    below. It removes the request body if the method changes, see ``stream_factory`` below.
+
+    To understand the exact semantics of which HTTP status changes the method and which not, have a
+    look at the configuration in the source code of the RedirectPlugin class.
+
 Options
 -------
 
@@ -45,6 +54,16 @@ false, a status of 300 will raise the ``Http\Client\Common\Exception\MultipleRed
 
 ``strict``: bool (default: false)
 
-When set to ``true``, 300, 301 and 302 status codes will not modify original request's method and 
-body on consecutive requests. E. g. POST redirect requests are sent as POST requests instead of 
+When set to ``true``, 300, 301 and 302 status codes will not modify original request's method and
+body on consecutive requests. E. g. POST redirect requests are sent as POST requests instead of
 POST redirect requests are sent as GET requests.
+
+``stream_factory``: StreamFactoryInterface (default: auto discovered)
+
+The PSR-17 stream factory is used to create an empty stream for removing the body of the request on
+redirection. To keep the body on all redirections, set ``stream_factory`` to null.
+The stream factory is discovered if either ``php-http/discovery`` is installed and provides a
+factory, or ``nyholm/psr7`` or a new enough version of ``guzzlehttp/psr7`` are installed. If you
+only have other implementations, you need to provide the factory in ``stream_factory``.
+
+If no factory is found, the redirect plugin does not remove the body on redirection.

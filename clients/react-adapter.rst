@@ -20,43 +20,31 @@ dependency.
 Usage
 -----
 
-The React client adapter needs a :ref:`message factory <message-factory>` in
-order to to work::
-
-    use Http\Adapter\React\Client;
-
-    $client = new Client($messageFactory);
-
-For simplicity, all required objects are instantiated automatically if not
-explicitly specified:
-
-:React\EventLoop\LoopInterface: The event loop used inside the React engine.
-:React\HttpClient\Client: The HTTP client instance that must be adapted.
-
-If you need more control on the React instances, you can inject them during
+If you need control on the React instances, you can inject them during
 initialization::
 
     use Http\Adapter\React\Client;
 
-    $eventLoop = React\EventLoop\Factory::create();
+    $systemDnsConfig = React\Dns\Config\Config::loadSystemConfigBlocking();
+    if (!$config->nameservers) {
+        $config->nameservers[] = '8.8.8.8';
+    }
+
     $dnsResolverFactory = new React\Dns\Resolver\Factory();
-    $dnsResolver = $dnsResolverFactory->createCached('8.8.8.8', $loop);
+    $dnsResolver = $factory->create($config);
 
-    $factory = new React\HttpClient\Factory();
-    $reactHttp = $factory->create($loop, $dnsResolver);
+    $connector = new React\Socket\Connector([
+        'dns' => $dnsResolver,
+    ]);
+    $browser = new React\Http\Browser($connector);
 
-    $adapter = new Client($messageFactory, $eventLoop, $reactHttp);
-
-If you choose to inject a custom React HTTP client, you must inject the loop
-used during its construction. But if you already use an EventLoop inside your
-code, you can inject only this object.
+    $adapter = new Client($browser);
 
 You can also use a ``ReactFactory`` in order to initialize React instances::
 
     use Http\Adapter\React\ReactFactory;
 
-    $eventLoop = ReactFactory::buildEventLoop();
-    $reactHttp = ReactFactory::buildHttpClient($eventLoop);
+    $reactHttp = ReactFactory::buildHttpClient();
 
 Then you can use the adapter to send synchronous requests::
 
@@ -75,6 +63,18 @@ Or send asynchronous ones::
 
     // Returns a Http\Promise\Promise
     $promise = $adapter->sendAsyncRequest(request);
+
+Note that since v4 calling `wait` on `Http\Promise\Promise` is expected to run inside a fiber::
+
+    use function React\Async\async;
+
+    async(static function () {
+        // Returns a Http\Promise\Promise
+        $promise = $adapter->sendAsyncRequest(request);
+
+        // Returns a Psr\Http\Message\ResponseInterface
+        $response = $promise->wait();
+    })();
 
 .. include:: includes/further-reading-async.inc
 

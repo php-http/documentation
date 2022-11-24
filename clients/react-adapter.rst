@@ -78,4 +78,4 @@ Note that since v4 calling `wait` on `Http\Promise\Promise` is expected to run i
 
 .. include:: includes/further-reading-async.inc
 
-.. _React HTTP client: https://github.com/reactphp/http-client
+.. _React HTTP client: https://github.com/reactphp/http

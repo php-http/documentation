@@ -1,10 +1,7 @@
 Discovery
 =========
 
-The discovery service allows to find and use installed resources.
-
-Consumers of libraries using discovery still need to make sure they install one of the implementations.
-Discovery can only find installed code, not fetch code from other sources.
+The discovery service allows to find installed resources and install missing ones.
 
 Currently available discovery services:
 
@@ -27,6 +24,30 @@ If no implementation is found, an ``Http\Discovery\Exception\NotFoundException``
 Discovery is simply a convenience wrapper to statically access clients and factories for when
 Dependency Injection is not an option. Discovery is useful in libraries that want to offer
 zero-configuration services relying on the virtual packages.
+
+Auto-installation
+-----------------
+
+.. versionadded:: 1.15
+    Auto-installation of missing dependencies is available since v1.15.
+
+Discovery embeds a composer plugin that can auto-install missing implementations
+when an application does not specify any specific implementation.
+
+If a library requires both ``php-http/discovery`` and one of the supported virtual packages
+(see :doc:`library-developers`), but no implementation for the virtual package is already
+installed, the plugin will auto-install the best matching known implementation.
+
+For example, if one is using ``react/event-loop``, the plugin will select ``php-http/react-adapter``
+to meet a missing dependency on ``php-http/client-implementation``.
+
+The following abstractions are currently supported:
+
+- ``php-http/async-client-implementation``
+- ``php-http/client-implementation``
+- ``psr/http-client-implementation``
+- ``psr/http-factory-implementation``
+- ``psr/http-message-implementation``
 
 .. _discovery-strategies:
 

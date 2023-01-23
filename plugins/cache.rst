@@ -61,6 +61,8 @@ The third parameter to the ``CachePlugin`` constructor takes an array of options
 | ``respect_cache_headers``             | ``true``                                           | Whether we should care about cache headers or not                     |
 |                                       |                                                    | * This option is deprecated. Use  `respect_response_cache_directives` |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
+| ``hash_algo``                         | ``sha1``                                           | The hashing algorithm to use when generating cache keys               |
++---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 | ``cache_lifetime``                    | 30 days                                            | The minimum time we should store a cache item                         |
 +---------------------------------------+----------------------------------------------------+-----------------------------------------------------------------------+
 | ``methods``                           | ``['GET', 'HEAD']``                                | Which request methods to cache                                        |

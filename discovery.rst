@@ -196,6 +196,31 @@ This type of discovery finds a factory for a PSR-17_ implementation::
         }
     }
 
+PSR-17 Factory
+--------------
+
+The package also provides an ``Http\Discovery\Psr17Factory`` class that can be instantiated
+to get a generic PSR-17 factory::
+
+    use Http\Discovery\Psr17Factory;
+
+    $factory = new Psr17Factory();
+
+    // use any PSR-17 methods, e.g.
+    $request = $factory->createRequest();
+
+Internally, this class relies on the concrete PSR-17 factories that are installed in your project
+and can use discovery to find implementations if you do not specify them in the constructor.
+
+``Psr17Factory`` provides two additional methods that allow creating
+server requests or URI objects from the PHP super-globals::
+
+    $serverRequest = $factory->createServerRequestFromGlobals();
+    $uri = $factory->createUriFromGlobals();
+
+.. versionadded:: 1.15
+   The ``Psr17Factory`` class is available since version 1.15.
+
 PSR-18 Client Discovery
 -----------------------
 

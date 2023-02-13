@@ -46,7 +46,7 @@ To build a multipart stream you may use the ``MultipartStreamBuilder``. It is no
     $builder
       ->addResource('foo', $stream)
       ->addResource('bar', fopen($filePath, 'r'), ['filename' => 'bar.png'])
-      ->addResource('baz', 'string', ['headers' => ['Content-Type' => 'text/plain']]);
+      ->addData('baz', ['headers' => ['Content-Type' => 'text/plain']]);
 
     $multipartStream = $builder->build();
     $boundary = $builder->getBoundary();

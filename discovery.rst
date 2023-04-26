@@ -5,7 +5,7 @@ The discovery service allows to find installed resources and install missing one
 
 Currently available discovery services:
 
-- HTTP Client Discovery
+- HTTP Client Discovery (deprecated)
 - HTTP Async Client Discovery
 - PSR-17 Factory Discovery
 - PSR-18 HTTP Client Discovery
@@ -69,6 +69,88 @@ Installation
 
     $ composer require php-http/discovery
 
+Usage as a library author
+-------------------------
+
+If your library/SDK needs a PSR-18 client, here is a quick example.
+
+First, you need to install a PSR-18 client and a PSR-17 factory implementations.
+This should be done only for dev dependencies as you don't want to force a
+specific implementation on your users:
+
+.. code-block:: bash
+
+    $ composer require --dev symfony/http-client
+    $ composer require --dev nyholm/psr7
+
+Then, you can disable the Composer plugin embeded in php-http/discovery
+because you just installed the dev dependencies you need for testing:
+
+.. code-block:: bash
+
+    $ composer config allow-plugins.php-http/discovery false
+
+Finally, you need to require php-http/discovery and the generic implementations
+that your library is going to need:
+
+.. code-block:: bash
+
+    $ composer require php-http/discovery:^1.17
+    $ composer require psr/http-client-implementation:*
+    $ composer require psr/http-factory-implementation:*
+
+Now, you're ready to make an HTTP request::
+
+    use Http\Discovery\Psr18Client;
+
+    $client = new Psr18Client();
+
+    $request = $client->createRequest('GET', 'https://example.com');
+    $response = $client->sendRequest($request);
+
+.. versionadded:: 1.17
+    The ``Psr18Client`` is available since v1.17.
+
+Internally, this code will use whatever PSR-7, PSR-17 and PSR-18 implementations
+that your users have installed.
+
+Usage as a library user
+-----------------------
+
+.. versionadded:: 1.17
+    Pinning specific implementations is available since v1.17.
+
+If you use a library/SDK that requires php-http/discovery, you can configure
+the auto-discovery mechanism to pin a specific implementation when many are
+available in your project.
+
+For example, if you have both nyholm/psr7 and guzzlehttp/guzzle in your
+project, you can tell php-http/discovery to use guzzlehttp/guzzle instead of
+nyholm/psr7 by running the following command:
+
+.. code-block:: bash
+
+    $ composer config extra.discovery.psr/http-factory-implementation GuzzleHttp\Psr7\HttpFactory
+
+This will update your composer.json file to add the following configuration:
+
+.. code-block:: javascript
+
+    {
+        "extra": {
+            "discovery": {
+                "psr/http-factory-implementation": "GuzzleHttp\Psr7\HttpFactory"
+            }
+        }
+    }
+
+Don't forget to run composer install to apply the changes, and ensure that
+the composer plugin is enabled:
+
+.. code-block:: bash
+
+    $ composer config allow-plugins.php-http/discovery true
+    $ composer install
 
 Common Errors
 -------------
@@ -113,6 +195,9 @@ The error "*No HTTPlug clients found. Make sure to install a package providing
 
 HTTP Client Discovery
 ---------------------
+
+.. versionadded:: 1.18
+    This is deprecated and will be removed in 2.0. Consider using PSR-18 Factory Discovery.
 
 This type of discovery finds an HTTP Client implementation::
 
@@ -351,7 +436,7 @@ to the Discovery. Let's take a look::
             // Test...
         }
     }
-    
+
 In the example of a test class above, we have our ``MyCustomService`` which
 relies on an HTTP Client implementation. We do not need to test that the actual
 request our custom service makes is successful in this test class, so it makes

@@ -23,7 +23,7 @@ Dependency Injection is not an option. Discovery is particularly useful in libra
 offer zero-configuration services relying on the virtual packages.
 
 Using discovery in a shared library
--------------------------------------
+-----------------------------------
 
 The goal of the PSR standards is that libraries do not depend on specific
 implementations but only on the standard. The library should only require the
@@ -37,7 +37,7 @@ send HTTP requests, you could do:
     $ composer require --dev symfony/http-client
     $ composer require --dev nyholm/psr7
 
-Then, you can disable the Composer plugin provided by``php-http/discovery``
+Then, you can disable the Composer plugin provided by ``php-http/discovery``
 because you just installed the dev dependencies you need for testing:
 
 .. code-block:: bash

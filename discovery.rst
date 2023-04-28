@@ -22,6 +22,54 @@ Discovery is simply a convenience wrapper to statically access clients and facto
 Dependency Injection is not an option. Discovery is particularly useful in libraries that want to
 offer zero-configuration services relying on the virtual packages.
 
+Using discovery in a shared library
+-------------------------------------
+
+The goal of the PSR standards is that libraries do not depend on specific
+implementations but only on the standard. The library should only require the
+PSR standards.
+
+To run tests, you might still need an implementation. We recommend to
+explicitly require that, but only for dev. To build a library that needs to
+send HTTP requests, you could do:
+
+.. code-block:: bash
+    $ composer require --dev symfony/http-client
+    $ composer require --dev nyholm/psr7
+
+Then, you can disable the Composer plugin provided by``php-http/discovery``
+because you just installed the dev dependencies you need for testing:
+
+.. code-block:: bash
+    $ composer config allow-plugins.php-http/discovery false
+
+Finally, you need to require ``php-http/discovery`` and the generic implementations
+that your library is going to need:
+
+.. code-block:: bash
+    $ composer require php-http/discovery:^1.17
+    $ composer require psr/http-client-implementation:*
+    $ composer require psr/http-factory-implementation:*
+
+Now, you're ready to make an HTTP request::
+
+    use Http\Discovery\Psr18Client;
+
+    $client = new Psr18Client();
+
+    $request = $client->createRequest('GET', 'https://example.com');
+    $response = $client->sendRequest($request);
+
+.. versionadded:: 1.17
+    The ``Psr18Client`` is available since v1.17.
+
+Internally, this code will use whatever PSR-7, PSR-17 and PSR-18 implementations
+your users have installed.
+
+It is best practice to allow the users of your library to optionally specify the
+``ClientInterface`` instance and only fallback to discovery when no explicit
+client has been specified.
+
 Auto-installation
 -----------------
 
@@ -80,8 +128,13 @@ Implementation Pinning
     Pinning the preferred implementation is available since v1.17.
 
 In case there are several implementations available, the application can pin which implementation
-to prefer. You can specify the implementation for one of the standards in the ``extra.discovery``
-section of the application ``composer.json`` file:
+to prefer. You can specify the implementation for one of the standards:
+
+
+.. code-block:: bash
+    $ composer config extra.discovery.psr/http-factory-implementation GuzzleHttp\Psr7\HttpFactory
+
+This will update your ``composer.json`` file to add the following configuration:
 
 .. code-block:: json
 
@@ -100,6 +153,13 @@ You can also pin single interfaces, e.g. for the PSR-17 factories:
             "Psr\\Http\\Message\\RequestFactoryInterface": "Slim\\Psr7\\Factory\\RequestFactory"
         }
     }
+
+Don't forget to run composer install to apply the changes, and ensure that
+the composer plugin is enabled:
+
+.. code-block:: bash
+    $ composer config allow-plugins.php-http/discovery true
+    $ composer install
 
 .. note::
     Implementation pinning only works if the composer plugin of discovery is allowed. If you

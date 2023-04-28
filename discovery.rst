@@ -1,29 +1,26 @@
 Discovery
 =========
 
-The discovery service allows to find installed resources and install missing ones.
+The discovery service allows to find installed resources and auto-install missing ones.
 
 Currently available discovery services:
 
-- HTTP Client Discovery
-- HTTP Async Client Discovery
 - PSR-17 Factory Discovery
 - PSR-18 HTTP Client Discovery
+- PSR-7 Message Factory Discovery (deprecated in favor of PSR-17)
+- PSR-7 URI Factory Discovery (deprecated in favor of PSR-17)
+- PSR-7 Stream Factory Discovery (deprecated in favor of PSR-17)
+- HTTP Async Client Discovery
+- HTTP Client Discovery (deprecated in favor of PSR-18)
 - Mock Client Discovery (not enabled by default)
-- PSR-7 Message Factory Discovery (deprecated)
-- PSR-7 URI Factory Discovery (deprecated)
-- PSR-7 Stream Factory Discovery (deprecated)
 
-The principle is always the same: you call the static ``find`` method on the discovery service if no explicit
-implementation was specified. The discovery service will try to locate a suitable implementation.
-If no implementation is found, an ``Http\Discovery\Exception\NotFoundException`` is thrown.
-
-.. versionadded:: 0.9
-    The exception ``Http\Discovery\NotFoundException`` has been moved to ``Http\Discovery\Exception\NotFoundException``.
+The principle is always the same: you call the static ``find`` method on the discovery service. The
+discovery service will try to locate a suitable implementation. If no implementation is found, an
+``Http\Discovery\Exception\NotFoundException`` is thrown.
 
 Discovery is simply a convenience wrapper to statically access clients and factories for when
-Dependency Injection is not an option. Discovery is useful in libraries that want to offer
-zero-configuration services relying on the virtual packages.
+Dependency Injection is not an option. Discovery is particularly useful in libraries that want to
+offer zero-configuration services relying on the virtual packages.
 
 Auto-installation
 -----------------
@@ -35,10 +32,10 @@ Discovery embeds a composer plugin that can auto-install missing implementations
 when an application does not specify any specific implementation.
 
 If a library requires both ``php-http/discovery`` and one of the supported virtual packages
-(see :doc:`library-developers`), but no implementation for the virtual package is already
+(see :doc:`httplug/library-developers`), but no implementation for the virtual package is already
 installed, the plugin will auto-install the best matching known implementation.
 
-For example, if one is using ``react/event-loop``, the plugin will select ``php-http/react-adapter``
+For example, if the project requires ``react/event-loop``, the plugin will select ``php-http/react-adapter``
 to meet a missing dependency on ``php-http/client-implementation``.
 
 The following abstractions are currently supported:
@@ -49,18 +46,65 @@ The following abstractions are currently supported:
 - ``psr/http-factory-implementation``
 - ``psr/http-message-implementation``
 
+.. note::
+    Auto-installation is only done for libraries that directly require ``php-http/discovery`` to
+    avoid unexpected dependency installation.
+
+    If you do not want auto-installation to happen, you can chose to not enable the composer
+    plugin of the discovery component:
+
+    ``composer config allow-plugins.php-http/discovery false``
+
+
 .. _discovery-strategies:
 
 Strategies
 ----------
 
-The package supports multiple discovery strategies and comes with two out-of-the-box:
+The package uses strategies to select an implementation.
 
-- A built-in strategy supporting the HTTPlug adapters, clients and factories (including Symfony, Guzzle, Diactoros and Slim Framework)
+The default strategy contains a list of preferences that looks for well-known implementations:
+Symfony, Guzzle, Diactoros and Slim Framework.
 
-Strategies provide candidates of a type which gets evaluated by the discovery service.
-When it finds the best candidate, it caches it and stops looking in further strategies.
+Once a strategy provided a candidate, the result is cached in memory and reused for further
+discovery calls in the same process.
 
+To register a custom strategy, implement the ``Http\Discovery\Strategy\DiscoveryStrategy``
+interface and register your strategy with the ``prependStrategy``, ``appendStrategy`` or
+``setStrategies`` method of the corresponding discovery type.
+
+Implementation Pinning
+----------------------
+
+.. versionadded:: 1.17
+    Pinning the preferred implementation is available since v1.17.
+
+In case there are several implementations available, the application can pin which implementation
+to prefer. You can specify the implementation for one of the standards in the ``extra.discovery``
+section of the application ``composer.json`` file:
+
+.. code-block:: json
+
+    "extra": {
+        "discovery": {
+            "psr/http-factory-implementation": "GuzzleHttp\\Psr7\\HttpFactory"
+        }
+    }
+
+You can also pin single interfaces, e.g. for the PSR-17 factories:
+
+.. code-block:: json
+
+    "extra": {
+        "discovery": {
+            "Psr\\Http\\Message\\RequestFactoryInterface": "Slim\\Psr7\\Factory\\RequestFactory"
+        }
+    }
+
+.. note::
+    Implementation pinning only works if the composer plugin of discovery is allowed. If you
+    disabled the plugin, you need to configure your own discovery if you need a specific
+    implementation selection.
 
 Installation
 ------------
@@ -351,7 +395,7 @@ to the Discovery. Let's take a look::
             // Test...
         }
     }
-    
+
 In the example of a test class above, we have our ``MyCustomService`` which
 relies on an HTTP Client implementation. We do not need to test that the actual
 request our custom service makes is successful in this test class, so it makes

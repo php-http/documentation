@@ -159,7 +159,6 @@ html_static_path = ['_static']
 
 html_css_files = [
     'custom.css',
-    'highlight.css',
 ]
 
 # Add any extra paths that contain custom files (such as robots.txt or

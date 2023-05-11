@@ -226,6 +226,9 @@ Or pass a callable, and return a response or exception based on the request::
 
 .. hint::
 
-    If you're using the :doc:`/integrations/symfony-bundle`, the mock client is available as a service with ``httplug.client.mock`` id.
+    If you're using the :doc:`/integrations/symfony-bundle`, the mock client is
+    available as a service with ``httplug.client.mock`` id.
+
+    See :ref:`symfony-functional-tests` for more on how to use the mock client in Symfony.
 
 .. include:: includes/further-reading-async.inc

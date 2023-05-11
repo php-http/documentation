@@ -507,6 +507,8 @@ The only steps they need is ``require`` one of the adapter implementations in
 their projects ``composer.json`` and instantiating the ``HttplugBundle`` in
 their kernel.
 
+.. _symfony-functional-tests:
+
 Mock Responses In Functional Tests
 ``````````````````````````````````
 
@@ -522,8 +524,13 @@ Then, use the mock client factory in your test environment configuration:
                 factory: 'httplug.factory.mock' # replace factory
 
 The client is always wrapped into a plugin client. Therefore you need to access
-the inner client, which has `.client` appended. For the example above, the full
-name is `httplug.clients.my_awesome_backend.client`.
+the inner client to get the mock client. It is available in the container with
+the suffix ``.inner``. For the example above, the full name is
+``httplug.clients.my_awesome_backend.inner``.
+
+If you enable a decorator like ``http_methods_client: true``, the actual mock
+client will be at ``httplug.client.my_awesome_backend.http_methods.inner``. Use
+the ``container:debug`` command to make sure you grab the correct service.
 
 To mock a response in your tests, do:
 
@@ -538,6 +545,20 @@ To mock a response in your tests, do:
     $response = $this->createMock('Psr\Http\Message\ResponseInterface');
     $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
     $client->getContainer()->get('httplug.clients.my_awesome_backend.client')->addResponse($response);
+
+If you do not specify the factory in your configuration, you can also directly
+overwrite the httplug services:
+
+    # config/services_test.yaml
+    services:
+        # overwrite the http clients for mocking
+        httplug.client.my_awesome_backend:
+            class: Http\Mock\Client
+            public: true
+
+With this method, the plugin client is not applied. However, if you configure a
+decorator, your mock client will still be decorated and the mock available as
+service ``...<decorator>.inner``.
 
 Read more on how the mock client works in the :doc:`mock client documentation </clients/mock-client>`.
 

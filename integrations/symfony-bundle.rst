@@ -88,11 +88,12 @@ Usage
     $response = $this->container->get('httplug.client.acme')->sendRequest($request);
 
 Autowiring
-----------
+``````````
 
-The first configured client is considered the "default" client. It is available
-for `autowiring`_ both for ``HttpClient`` and ``HttpAsyncClient``. This can be
-convenient to build your application.
+The first configured client is considered the "default" client. The default
+clients are available for `autowiring`_: The PSR-18 ``Psr\Http\Client\ClientInterface``
+(or the deprecated ``Http\Client\HttpClient``) and the ``Http\Client\HttpAsyncClient``.
+Autowiring can be convenient to build your application.
 
 However, if you configured several different clients and need to be sure that
 the correct client is used in each service, it can also hide mistakes.
@@ -103,15 +104,18 @@ Therefore you can disable autowiring with a configuration option:
     httplug:
         default_client_autowiring: false
 
-When using this bundle with Symfony 5.3 or newer, you can use the `#[Target]` attribute to select a
-client by name:
+When using this bundle with Symfony 5.3 or newer, you can use the Symfony
+`#[Target]` attribute to select a client by name. For a client configured as
+``httplug.clients.acme``, this would be:
 
 .. code-block:: php
+
+    use Symfony\Component\DependencyInjection\Attribute as DI;
 
     final class MyService
     {
         public function __construct(
-            #[Target('acme')] HttpClient $client
+            #[DI\Target('acme')] HttpClient $client
         ) {}
     }
 
@@ -255,6 +259,7 @@ services are:
 * ``httplug.factory.buzz``
 * ``httplug.factory.guzzle5``
 * ``httplug.factory.guzzle6``
+* ``httplug.factory.guzzle7``
 * ``httplug.factory.react``
 * ``httplug.factory.socket``
 * ``httplug.factory.mock`` (Install ``php-http/mock-client`` first)
@@ -312,6 +317,15 @@ Additionally you can configure any of the ``php-http/plugins`` specifically on
 a client. For some plugins this is the only place where they can be configured.
 The order in which you specify the plugins **does** matter.
 
+See :doc:`the plugin documentation <../plugins/index>` for more information on
+the plugins.
+
+See :doc:`full configuration </integrations/symfony-full-configuration>` for
+the full list of plugins you can configure through this bundle. If a plugin is
+not available in the configuration, you can configure it as a service and
+reference the plugin by service id as you would do for a
+:ref:`custom plugin <symfony_custom_plugin>`.
+
 You can configure many of the plugins directly on the client:
 
 .. code-block:: yaml
@@ -334,10 +348,6 @@ You can configure many of the plugins directly on the client:
                             type: 'basic'
                             username: 'my_username'
                             password: 'p4ssw0rd'
-
-
-See :doc:`full configuration </integrations/symfony-full-configuration>` for
-the full list of plugins you can configure.
 
 Alternatively, the same configuration also works on a global level. With this,
 you can configure plugins once and then use them in several clients. The plugin
@@ -364,6 +374,11 @@ service names follow the pattern ``httplug.plugin.<name>``:
     To configure HTTP caching, you need to require ``php-http/cache-plugin`` in
     your project. It is available as a separate composer package.
 
+.. _symfony_custom_plugin:
+
+Configure a Custom Plugin
+-------------------------
+
 To use a custom plugin or when you need specific configuration that is not
 covered by the bundle configuration, you can configure the plugin as a normal
 Symfony service and then reference that service name in the plugin list of your
@@ -387,7 +402,7 @@ client:
                     - 'acme_plugin'
 
 Authentication
-``````````````
+--------------
 
 You can configure a client with authentication. Valid authentication types are
 ``basic``, ``bearer``, ``service``, ``wsse`` and ``query_param``. See more examples at the
@@ -415,7 +430,7 @@ You can configure a client with authentication. Valid authentication types are
     The auth params will appear on the URL and we recommend to NOT log your request, especially on production side.
 
 VCR Plugin
-``````````
+----------
 
 The :doc:`VCR Plugin </plugins/vcr>` allows to record and/or replay HTTP requests. You can configure the mode you want,
 how to find recorded responses and how to match requests with responses. The mandatory options are:
@@ -548,6 +563,9 @@ To mock a response in your tests, do:
 
 If you do not specify the factory in your configuration, you can also directly
 overwrite the httplug services:
+
+
+.. code-block:: yaml
 
     # config/services_test.yaml
     services:

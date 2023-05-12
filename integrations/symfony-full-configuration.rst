@@ -3,6 +3,15 @@ Full configuration
 
 This page shows an example of all configuration values provided by the bundle.
 
+.. hint::
+
+    See :doc:`the plugin documentation <../plugins/index>` for more information
+    on the plugins.
+
+    If a plugin is not listed in the configuration reference below, you can
+    configure it as a service and reference the plugin by service id as you
+    would do for a :ref:`custom plugin <symfony_custom_plugin>`.
+
 .. code-block:: yaml
 
     // config.yml
@@ -141,6 +150,13 @@ This page shows an example of all configuration values provided by the bundle.
                     - query_defaults:
                         parameters:
                             locale: en
+                    # Plugins to ensure the request resp response body is seekable
+                    - request_seekable_body:
+                        use_file_buffer: true
+                        memory_buffer_size: 2097152
+                    - response_seekable_body:
+                        use_file_buffer: true
+                        memory_buffer_size: 2097152
                     # Enable VCR plugin integration (Must be installed first).
                     - vcr:
                         mode: replay # record | replay | replay_or_record

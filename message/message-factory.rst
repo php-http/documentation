@@ -138,4 +138,5 @@ to do that yet. Contributions are welcome if you want to define the
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7
 .. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
 .. _Slim PSR-7: https://github.com/slimphp/Slim-Psr7
+.. _HTTP Software PSR-17 Factories: https://github.com/httpsoft/http-message
 .. _Zend Diactoros: https://github.com/zendframework/zend-diactoros

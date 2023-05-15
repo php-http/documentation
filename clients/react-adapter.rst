@@ -13,10 +13,6 @@ dependency.
 
     $ composer require php-http/react-adapter
 
-.. include:: includes/install-message-factory.inc
-
-.. include:: includes/install-discovery.inc
-
 Usage
 -----
 

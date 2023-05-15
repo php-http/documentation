@@ -1,8 +1,11 @@
-Socket Client
-=============
+Socket Client (deprecated)
+==========================
 
 The socket client uses the stream extension from PHP, which is integrated into
 the core.
+
+This client only implements the PHP-HTTP synchronous interface, which has been
+superseded by PSR-18. Use one of the PSR-18 clients instead.
 
 Features
 --------
@@ -21,7 +24,23 @@ To install the Socket client, run:
 
     $ composer require php-http/socket-client
 
-.. include:: includes/install-message-factory.inc
+This client does not come with a PSR-7 implementation out of the box, so you have
+to install one as well (for example `Guzzle PSR-7`_):
+
+.. code-block:: bash
+
+    $ composer require guzzlehttp/psr7
+
+In order to provide full interoperability, message implementations are accessed
+through :ref:`factories <message-factory>`. Message factories for
+`Laminas Diactoros`_ (and its abandoned predecessor `Zend Diactoros`_),
+`Guzzle PSR-7`_ and `Slim PSR-7`_ are available in the
+:doc:`message </message>` component:
+
+.. code-block:: bash
+
+    $ composer require php-http/message
+
 
 Usage
 -----
@@ -49,8 +68,8 @@ The available options are:
 :write_buffer_size: When sending the request we need to buffer the body, this option specify the size of this buffer, default is 8192,
  if you are sending big file with your client it may be interesting to have a bigger value in order to increase performance.
 
-As an example someone may want to pass a client certificate when using the ssl, a valid configuration for this
-use case would be::
+As an example someone may want to pass a client certificate when using the ssl,
+a valid configuration for this use case would be::
 
     use Http\Client\Socket\Client;
 
@@ -65,9 +84,11 @@ use case would be::
 
 .. warning::
 
-    This client assumes that the request is compliant with HTTP 2.0, 1.1 or 1.0 standard. So a request without a ``Host`` header, or
-    with a body but without a ``Content-Length`` will certainly fail.
-    To make sure all requests will be sent out correctly, we recommend to use the ``PluginClient`` with the following plugins:
+    This client assumes that the request is compliant with HTTP 2.0, 1.1 or 1.0
+    standard. So a request without a ``Host`` header, or with a body but
+    without a ``Content-Length`` will certainly fail. To make sure all requests
+    will be sent out correctly, we recommend to use the ``PluginClient`` with
+    the following plugins:
 
     * ``ContentLengthPlugin`` sets the correct ``Content-Length`` header, or decorate the stream to use chunked encoding
     * ``DecoderPlugin`` decodes encoding coming from the response (chunked, gzip, deflate and compress)
@@ -75,3 +96,8 @@ use case would be::
     :doc:`Read more on plugins </plugins/introduction>`
 
 .. include:: includes/further-reading-sync.inc
+
+.. _Guzzle PSR-7: https://github.com/guzzle/psr7
+.. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
+.. _Slim PSR-7: https://github.com/slimphp/Slim-Psr7
+.. _Zend Diactoros: https://github.com/zendframework/zend-diactoros

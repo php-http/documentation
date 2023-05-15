@@ -2,8 +2,9 @@ Guzzle 7 Adapter
 ================
 
 An HTTPlug adapter for the `Guzzle 7 HTTP client`_. Guzzle 7 supports PSR-18
-out of the box. This adapter makes sense if you want to use HTTPlug async interface or to use
-Guzzle 7 with a library that did not upgrade to PSR-18 yet and depends on ``php-http/client-implementation``.
+out of the box. This adapter makes sense if you want to use HTTPlug async
+interface or to use Guzzle 7 with a library that did not upgrade to PSR-18 yet
+and depends on ``php-http/client-implementation``.
 
 Installation
 ------------

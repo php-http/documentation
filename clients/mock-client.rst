@@ -1,7 +1,6 @@
 Mock Client
 ===========
 
-
 The mock client is a special type of client. It is a test double that does not
 send the requests that you pass to it, but collects them instead. You can then
 retrieve those request objects and make assertions about them. Additionally, you

@@ -1,28 +1,26 @@
 .. _message-factory:
 .. _stream-factory:
 
-HTTP Factories
-==============
+HTTP Factories (deprecated)
+===========================
 
 **Factory interfaces for PSR-7 HTTP objects.**
+
+This package has been superseded by `PSR-17`_. Our HTTP-PHP factories have been
+retired and the repository archived. The PHP-HTTP libraries switched to use the
+PSR-17 factories. Please migrate your code to the PSR-17 factories too.
 
 Rationale
 ---------
 
-While it should be possible to use every PSR-7 aware HTTP client with any
-request, URI and stream implementation, instantiating objects explicitly would
-still tie the code to a specific implementation. If each reusable library is
-tied to a specific message implementation, an application could end up
-installing several message implementations. The factories move instantiation
-out of the library code, further decoupling libraries from implementation.
-
-The FIG was pretty straightforward by NOT putting any construction logic into PSR-7.
-The ``MessageFactory`` aims to provide an easy way to construct messages.
+At the time of building this, PSR-17 did not yet exist. Read the documentation
+of `PSR-17`_ to learn why a standard for factories is useful.
 
 Factories
 ---------
 
-The `php-http/message-factory` package defines interfaces for PSR-7 factories including:
+The `php-http/message-factory` package defines interfaces for PSR-7 factories
+including:
 
 - ``RequestFactory``
 - ``ResponseFactory``
@@ -30,7 +28,9 @@ The `php-http/message-factory` package defines interfaces for PSR-7 factories in
 - ``StreamFactory``
 - ``UriFactory``
 
-Implementations of the interfaces above for `Laminas Diactoros`_ (and its abandoned predecessor `Zend Diactoros`_), `Guzzle PSR-7`_ and the `Slim Framework`_ can be found in ``php-http/message``.
+Implementations of the interfaces above for `Laminas Diactoros`_ (and its
+abandoned predecessor `Zend Diactoros`_), `Guzzle PSR-7`_ and the
+`Slim PSR-7`_ can be found in ``php-http/message``.
 
 Usage
 -----
@@ -127,14 +127,7 @@ automatically find an available factory in the client::
     type hint, instead of the ``MessageFactory``. And vice versa if you create
     responses only.
 
-Server Side Factories
----------------------
-
-It would make sense to also provide factories for the server side constructs
-``ServerRequestInterface`` and ``UploadedFileInterface``. We did not get around
-to do that yet. Contributions are welcome if you want to define the
-``ServerRequestFactory`` and ``UploadedFileFactory``.
-
+.. _PSR-17: https://www.php-fig.org/psr/psr-17/
 .. _Guzzle PSR-7: https://github.com/guzzle/psr7
 .. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
 .. _Slim PSR-7: https://github.com/slimphp/Slim-Psr7

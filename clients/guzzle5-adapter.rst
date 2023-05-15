@@ -1,7 +1,13 @@
-Guzzle5 Adapter
-===============
+Guzzle5 Adapter (deprecated)
+============================
 
 An HTTPlug adapter for the `Guzzle 5 HTTP client`_.
+
+This adapter only implements the PHP-HTTP synchronous interface. This interface
+has been superseded by PSR-18.
+
+Guzzle 5 is very old and `not maintained anymore`_. We recommend to upgrade to
+Guzzle version 7.
 
 Installation
 ------------
@@ -12,10 +18,6 @@ not yet included in your project), run:
 .. code-block:: bash
 
     $ composer require php-http/guzzle5-adapter
-
-.. include:: includes/install-message-factory.inc
-
-.. include:: includes/install-discovery.inc
 
 Usage
 -----
@@ -50,3 +52,4 @@ Or if you installed the :doc:`discovery </discovery>` layer::
 .. include:: includes/further-reading-sync.inc
 
 .. _Guzzle 5 HTTP client: http://docs.guzzlephp.org/en/5.3/
+.. _not maintained anymore: https://github.com/guzzle/guzzle#version-guidance

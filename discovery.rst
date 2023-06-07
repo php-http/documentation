@@ -438,14 +438,14 @@ to the Discovery. Let's take a look::
 
     use MyCustomService;
     use Http\Mock\Client as MockClient;
-    use Http\Discovery\HttpClientDiscovery;
+    use Http\Discovery\Psr18ClientDiscovery;
     use Http\Discovery\Strategy\MockClientStrategy;
 
     class MyCustomServiceTest extends TestCase
     {
         public function setUp()
         {
-            HttpClientDiscovery::prependStrategy(MockClientStrategy::class);
+            Psr18ClientDiscovery::prependStrategy(MockClientStrategy::class);
 
             $this->service = new MyCustomService;
         }

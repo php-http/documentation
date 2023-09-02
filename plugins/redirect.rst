@@ -32,7 +32,7 @@ Initiate the redirect plugin as follows::
 .. note::
 
     Depending on the status code, redirecting should change POST/PUT requests to GET requests. This
-    plugin implements this behaviour - except if you set the ``strict`` option to true, as explained
+    plugin implements this behavior - except if you set the ``strict`` option to true, as explained
     below. It removes the request body if the method changes, see ``stream_factory`` below.
 
     To understand the exact semantics of which HTTP status changes the method and which not, have a

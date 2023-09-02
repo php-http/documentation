@@ -562,7 +562,7 @@ To mock a response in your tests, do:
     $client->getContainer()->get('httplug.clients.my_awesome_backend.client')->addResponse($response);
 
 If you do not specify the factory in your configuration, you can also directly
-overwrite the httplug services:
+overwrite the HTTPlug services:
 
 
 .. code-block:: yaml

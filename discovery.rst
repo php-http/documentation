@@ -30,23 +30,26 @@ implementations but only on the standard. The library should only require the
 PSR standards.
 
 To run tests, you might still need an implementation. We recommend to
-explicitly require that, but only for dev. To build a library that needs to
-send HTTP requests, you could do:
+explicitly require that, but only for development. To build a library that
+needs to send HTTP requests, you could do:
 
 .. code-block:: bash
+
     $ composer require --dev symfony/http-client
     $ composer require --dev nyholm/psr7
 
 Then, you can disable the Composer plugin provided by ``php-http/discovery``
-because you just installed the dev dependencies you need for testing:
+because you just installed the ``dev`` dependencies you need for testing:
 
 .. code-block:: bash
+
     $ composer config allow-plugins.php-http/discovery false
 
 Finally, you need to require ``php-http/discovery`` and the generic implementations
 that your library is going to need:
 
 .. code-block:: bash
+
     $ composer require php-http/discovery:^1.17
     $ composer require psr/http-client-implementation:*
     $ composer require psr/http-factory-implementation:*
@@ -132,6 +135,7 @@ to prefer. You can specify the implementation for one of the standards:
 
 
 .. code-block:: bash
+
     $ composer config extra.discovery.psr/http-factory-implementation GuzzleHttp\Psr7\HttpFactory
 
 This will update your ``composer.json`` file to add the following configuration:
@@ -158,6 +162,7 @@ Don't forget to run composer install to apply the changes, and ensure that
 the composer plugin is enabled:
 
 .. code-block:: bash
+
     $ composer config allow-plugins.php-http/discovery true
     $ composer install
 
@@ -338,7 +343,7 @@ Internally, this class relies on the concrete PSR-17 factories that are installe
 and can use discovery to find implementations if you do not specify them in the constructor.
 
 ``Psr17Factory`` provides two additional methods that allow creating
-server requests or URI objects from the PHP super-globals::
+server requests or URI objects from the PHP superglobals::
 
     $serverRequest = $factory->createServerRequestFromGlobals();
     $uri = $factory->createUriFromGlobals();

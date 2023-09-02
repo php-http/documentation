@@ -27,6 +27,7 @@ plugin
 plugins
 matchers
 matcher
+Monolog
 multipart
 natively
 param
@@ -35,11 +36,13 @@ profiler
 PHP
 phpdoc
 rebase
+redirections
 Semver
 Seekable
 seekable
 sexualized
 sublicense
+superglobals
 sync
 toolbar
 typehint

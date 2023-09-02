@@ -139,3 +139,4 @@ to do that yet. Contributions are welcome if you want to define the
 .. _Laminas Diactoros: https://github.com/laminas/laminas-diactoros
 .. _Slim PSR-7: https://github.com/slimphp/Slim-Psr7
 .. _Zend Diactoros: https://github.com/zendframework/zend-diactoros
+.. _Slim Framework: https://github.com/slimphp/Slim

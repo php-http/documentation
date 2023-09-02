@@ -82,7 +82,7 @@ executed if the request results in an error::
     );
 
 The failure callback can also return a ``Promise``. This can be useful to implement a retry
-mechanism, as follows:
+mechanism, as follows::
 
     use Http\Discovery\HttpAsyncClientDiscovery;
     use Http\Discovery\Psr17FactoryDiscovery;
@@ -103,7 +103,7 @@ mechanism, as follows:
         // try another execution
         return $client->sendAsyncRequest($request);
     };
-    
+
     $promise = $client->sendAsyncRequest($request);
     for ($i=0; $i < $retries; $i++) {
         $promise = $promise->then($success, $failure);

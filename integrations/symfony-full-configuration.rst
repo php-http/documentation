@@ -50,6 +50,10 @@ This page shows an example of all configuration values provided by the bundle.
                     type: 'query_param'
                     params:
                         access_token: '9zh987g86fg87gh978hg9g79'
+                my_header:
+                    type: 'header'
+                    header_name: 'ApiKey'
+                    header_value: '9zh987g86fg87gh978hg9g79'
                 my_service:
                     type: 'service'
                     service: 'my_authentication_service'

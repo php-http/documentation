@@ -405,7 +405,7 @@ Authentication
 --------------
 
 You can configure a client with authentication. Valid authentication types are
-``basic``, ``bearer``, ``service``, ``wsse`` and ``query_param``. See more examples at the
+``basic``, ``bearer``, ``service``, ``wsse``, ``query_param`` and ``header``. See more examples at the
 :doc:`full configuration </integrations/symfony-full-configuration>`.
 
 .. code-block:: yaml

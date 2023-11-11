@@ -15,6 +15,7 @@ interface and forwarding the calls to an HTTP client not implementing the interf
 
    clients/curl-client
    clients/socket-client
+   clients/batch-client
    clients/mock-client
    clients/symfony-client
    clients/artax-adapter

@@ -14,7 +14,7 @@ Usage
 The ``CachePlugin`` allows you to cache responses from the server. It can use
 any PSR-6 compatible caching engine. By default, the plugin respects the cache
 control headers from the server as specified in :rfc:`7234`. It needs a
-:ref:`stream <stream-factory>` and a `PSR-6`_ implementation::
+`PSR-17`_ StreamFactoryInterface and a `PSR-6`_ implementation::
 
     use Http\Discovery\HttpClientDiscovery;
     use Http\Client\Common\PluginClient;
@@ -22,7 +22,7 @@ control headers from the server as specified in :rfc:`7234`. It needs a
 
     /** @var \Psr\Cache\CacheItemPoolInterface $pool */
     $pool = ...
-    /** @var \Http\Message\StreamFactory $streamFactory */
+    /** @var \Psr\Http\Message\StreamFactoryInterface $streamFactory */
     $streamFactory = ...
 
     $options = [];
@@ -180,3 +180,4 @@ It does store responses with cookies or a ``Set-Cookie`` header. Be careful with
 the order of your plugins.
 
 .. _PSR-6: http://www.php-fig.org/psr/psr-6/
+.. _PSR-17: http://www.php-fig.org/psr/psr-17/

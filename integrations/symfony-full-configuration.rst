@@ -22,15 +22,17 @@ This page shows an example of all configuration values provided by the bundle.
         # this does NOT change autowiring, which will always go to the "default" client
         main_alias:
             client: httplug.client.default
-            message_factory: httplug.message_factory.default
-            uri_factory: httplug.uri_factory.default
-            stream_factory: httplug.stream_factory.default
+            psr17_request_factory: httplug.psr17_request_factory.default
+            psr17_response_factory: httplug.psr17_response_factory.default
+            psr17_uri_factory: httplug.psr17_uri_factory.default
+            psr17_stream_factory: httplug.psr17_stream_factory.default
         classes:
             # uses discovery if not specified
             client: ~
-            message_factory: ~
-            uri_factory: ~
-            stream_factory: ~
+            psr17_request_factory: ~
+            psr17_response_factory: ~
+            psr17_uri_factory: ~
+            psr17_stream_factory: ~
 
         plugins: # Global plugin configuration. When configured here, plugins need to be explicitly added to clients by service name.
             authentication:

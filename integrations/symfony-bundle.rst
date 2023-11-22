@@ -84,7 +84,7 @@ Usage
 
 .. code-block:: php
 
-    $request = $this->container->get('httplug.message_factory')->createRequest('GET', 'http://example.com');
+    $request = $this->container->get('httplug.psr17_request_factory')->createRequest('GET', 'http://example.com');
     $response = $this->container->get('httplug.client.acme')->sendRequest($request);
 
 Autowiring
@@ -92,7 +92,7 @@ Autowiring
 
 The first configured client is considered the "default" client. The default
 clients are available for `autowiring`_: The PSR-18 ``Psr\Http\Client\ClientInterface``
-(or the deprecated ``Http\Client\HttpClient``) and the ``Http\Client\HttpAsyncClient``.
+and the ``Http\Client\HttpAsyncClient``.
 Autowiring can be convenient to build your application.
 
 However, if you configured several different clients and need to be sure that
@@ -110,12 +110,13 @@ When using this bundle with Symfony 5.3 or newer, you can use the Symfony
 
 .. code-block:: php
 
+    use Psr\Http\Client\ClientInterface;
     use Symfony\Component\DependencyInjection\Attribute as DI;
 
     final class MyService
     {
         public function __construct(
-            #[DI\Target('acme')] HttpClient $client
+            #[DI\Target('acme')] ClientInterface $client
         ) {}
     }
 
@@ -175,8 +176,8 @@ also disable the profiling by configuration.
 You can configure the bundle to show debug information for clients found with
 discovery. You may also force a specific client to be found when a third party
 library is using discovery. The configuration below makes sure the client with
-service id ``httplug.client.my_guzzle5`` is returned when calling
-``HttpClientDiscovery::find()`` . It does also make sure to show debug info for
+service id ``httplug.client.my_guzzle7`` is returned when calling
+``Psr18ClientDiscovery::find()`` . It does also make sure to show debug info for
 asynchronous clients.
 
 .. note::
@@ -187,10 +188,10 @@ asynchronous clients.
 
     httplug:
         clients:
-            my_guzzle5:
-                factory: 'httplug.factory.guzzle5'
+            my_guzzle7:
+                factory: 'httplug.factory.guzzle7'
         discovery:
-            client: 'httplug.client.my_guzzle5'
+            client: 'httplug.client.my_guzzle7'
             async_client: 'auto'
 
 For normal clients, the auto discovery debug info is enabled by default. For
@@ -211,10 +212,11 @@ example shows how you configure factory classes using Guzzle:
 
     httplug:
         classes:
-            client: Http\Adapter\Guzzle6\Client
-            message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
-            uri_factory: Http\Message\UriFactory\GuzzleUriFactory
-            stream_factory: Http\Message\StreamFactory\GuzzleStreamFactory
+            client: Http\Adapter\Guzzle7\Client
+            psr17_request_factory: GuzzleHttp\Psr7\HttpFactory
+            psr17_response_factory: GuzzleHttp\Psr7\HttpFactory
+            psr17_uri_factory: GuzzleHttp\Psr7\HttpFactory
+            psr17_stream_factory: GuzzleHttp\Psr7\HttpFactory
 
 Configure Clients
 `````````````````
@@ -227,8 +229,8 @@ services.
 
     httplug:
         clients:
-            my_guzzle5:
-                factory: 'httplug.factory.guzzle5'
+            my_guzzle7:
+                factory: 'httplug.factory.guzzle7'
                 config:
                     # These options are given to Guzzle without validation.
                     defaults:
@@ -244,10 +246,10 @@ services.
 
 .. code-block:: php
 
-    $httpClient = $this->container->get('httplug.client.my_guzzle5');
+    $httpClient = $this->container->get('httplug.client.my_guzzle7');
     $httpClient = $this->container->get('httplug.client.acme');
 
-    // will be the same as ``httplug.client.my_guzzle5``
+    // will be the same as ``httplug.client.my_guzzle7``
     $httpClient = $this->container->get('httplug.client');
 
 The bundle has client factory services that you can use to build your client.
@@ -257,11 +259,11 @@ services are:
 
 * ``httplug.factory.curl``
 * ``httplug.factory.buzz``
-* ``httplug.factory.guzzle5``
 * ``httplug.factory.guzzle6``
 * ``httplug.factory.guzzle7``
 * ``httplug.factory.react``
 * ``httplug.factory.socket``
+* ``httplug.factory.symfony``
 * ``httplug.factory.mock`` (Install ``php-http/mock-client`` first)
 
 .. note::
@@ -479,11 +481,13 @@ List of Services
 +-------------------------------------+-------------------------------------------------------------------------+
 | Service id                          | Description                                                             |
 +=====================================+=========================================================================+
-| ``httplug.message_factory``         | Service* that provides the `Http\Message\MessageFactory`                |
+| ``httplug.psr17_request_factory``   | Service* that provides the `Psr\Http\Message\RequestFactoryInterface`   |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.uri_factory``             | Service* that provides the `Http\Message\UriFactory`                    |
+| ``httplug.psr17_response_factory``  | Service* that provides the `Psr\Http\Message\ResponseFactoryInterface`  |
 +-------------------------------------+-------------------------------------------------------------------------+
-| ``httplug.stream_factory``          | Service* that provides the `Http\Message\StreamFactory`                 |
+| ``httplug.psr17_uri_factory``       | Service* that provides the `Psr\Http\Message\UriFactoryInterface`       |
++-------------------------------------+-------------------------------------------------------------------------+
+| ``httplug.psr17_stream_factory``    | Service* that provides the `Psr\Http\Message\StreamFactoryInterface`    |
 +-------------------------------------+-------------------------------------------------------------------------+
 | ``httplug.client.[name]``           | There is one service per named client.                                  |
 +-------------------------------------+-------------------------------------------------------------------------+

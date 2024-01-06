@@ -1,7 +1,9 @@
-Guzzle 6 Adapter
-================
+Guzzle 6 Adapter (deprecated)
+=============================
 
 An HTTPlug adapter for the `Guzzle 6 HTTP client`_.
+
+Guzzle 5 is `not maintained anymore`_. We recommend to upgrade to Guzzle version 7.
 
 Installation
 ------------
@@ -66,3 +68,4 @@ Or send asynchronous ones::
 .. include:: includes/further-reading-async.inc
 
 .. _Guzzle 6 HTTP client: http://docs.guzzlephp.org/en/6.5/
+.. _not maintained anymore: https://github.com/guzzle/guzzle#version-guidance

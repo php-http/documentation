@@ -13,10 +13,6 @@ not yet included in your project), run:
 
     $ composer require php-http/cakephp-adapter
 
-.. include:: includes/install-message-factory.inc
-
-.. include:: includes/install-discovery.inc
-
 Usage
 -----
 
@@ -33,9 +29,8 @@ like::
 Then create the adapter::
 
     use Http\Adapter\Cake\Client as CakeAdapter;
-    use Http\Message\MessageFactory\GuzzleMessageFactory;
 
-    $adapter = new CakeAdapter($cakeClient, new GuzzleMessageFactory());
+    $adapter = new CakeAdapter($cakeClient);
 
 .. note::
 
@@ -53,6 +48,6 @@ Or if you installed the :doc:`discovery </discovery>` layer::
 
     The message factory parameter is mandatory if the discovery layer is not installed.
 
-.. include:: includes/further-reading-sync.inc
+.. include:: includes/further-reading-async.inc
 
 .. _CakePHP HTTP client: https://book.cakephp.org/3.0/en/core-libraries/httpclient.html

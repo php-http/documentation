@@ -1,7 +1,9 @@
-Buzz Adapter
-============
+Buzz Adapter (deprecated)
+=========================
 
-An HTTPlug adapter for the `Buzz HTTP client`_.
+This adapter only implements the PHP-HTTP synchronous interface. This interface
+has been superseded by PSR-18, which the `Buzz HTTP client`_ implements
+directly.
 
 Installation
 ------------
@@ -12,10 +14,6 @@ not yet included in your project), run:
 .. code-block:: bash
 
     $ composer require php-http/buzz-adapter
-
-.. include:: includes/install-message-factory.inc
-
-.. include:: includes/install-discovery.inc
 
 Usage
 -----
@@ -44,15 +42,11 @@ Then create the adapter::
 
     $adapter = new BuzzAdapter($browser, new GuzzleMessageFactory());
 
-Or if you installed the :doc:`discovery </discovery>` layer::
+Or relying on :doc:`discovery </discovery>`::
 
     use Http\Adapter\Buzz\Client as BuzzAdapter;
 
     $adapter = new BuzzAdapter($browser);
-
-.. warning::
-
-    The message factory parameter is mandatory if the discovery layer is not installed.
 
 Be Aware
 --------

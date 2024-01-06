@@ -12,14 +12,14 @@ To install the Symfony client, run:
 
     $ composer require symfony/http-client
 
-This client does not come with a PSR-7 implementation out of the box, so you have
-to install one as well. `Nyholm PSR-7`_ is supported natively:
+This client does not come with a PSR-7 implementation out of the box. If you do
+not require one, `discovery <../discovery>` will install `Nyholm PSR-7`_. If
+you do not allow the composer plugin of the ``php-http/discovery`` component,
+you need to install a PSR-7 implementation manually:
 
 .. code-block:: bash
 
     $ composer require nyholm/psr7
-
-.. include:: includes/install-discovery.inc
 
 Usage
 -----

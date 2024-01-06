@@ -11,6 +11,4 @@ This package contains various PSR-7 tools which might be useful in an HTTP workf
 * Authentication method implementations
 * Various Stream encoding tools
 * Message decorators
-* Message factory implementations for Guzzle PSR-7, Diactoros and Slim Framework.
-* Stream and URI factory implementations for Guzzle PSR-7 and Diactoros
 * Cookie implementation

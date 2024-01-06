@@ -26,21 +26,41 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    clients/react-adapter
    clients/zend-adapter
 
+Current Clients and Adapters
+----------------------------
+
+.. hint::
+
+    Modern PHP clients implement the ``PSR-18 HTTP Client`` standard. If you want to do synchronous requests, you don't
+    need a PHP-HTTP adapter anymore. We keep providing the the curl client and a mock client for testing.
+
+    The adapters are still useful if you need the PHP-HTTP ``HttpAsyncClient``.
+
 .. csv-table::
    :header: "Name", "Type", "Links", "Stats"
    :widths: 32, 15, 15, 38
 
    "``php-http/curl-client``", "Client", ":doc:`Docs </clients/curl-client>`, `Repo <https://github.com/php-http/curl-client>`__", "|curl_version| |curl_downloads| "
-   "``php-http/socket-client``", "Client", ":doc:`Docs </clients/socket-client>`, `Repo <https://github.com/php-http/socket-client>`__", "|socket_version| |socket_downloads| "
    "``php-http/mock-client``", "Client", ":doc:`Docs </clients/mock-client>`, `Repo <https://github.com/php-http/mock-client>`__", "|mock_version| |mock_downloads| "
    "``symfony/http-client``", "Client", ":doc:`Docs </clients/symfony-client>`, `Repo <https://github.com/symfony/http-client>`__", "|symfony_version| |symfony_downloads| "
    "``php-http/artax-adapter``", "Adapter", ":doc:`Docs </clients/artax-adapter>`, `Repo <https://github.com/php-http/artax-adapter>`__", "|artax_version| |artax_downloads| "
    "``php-http/buzz-adapter``", "Adapter", ":doc:`Docs </clients/buzz-adapter>`, `Repo <https://github.com/php-http/buzz-adapter>`__", "|buzz_version| |buzz_downloads| "
    "``php-http/cakephp-adapter``", "Adapter", ":doc:`Docs </clients/cakephp-adapter>`, `Repo <https://github.com/php-http/cakephp-adapter>`__", "|cakephp_version| |cakephp_downloads| "
-   "``php-http/guzzle5-adapter``", "Adapter", ":doc:`Docs </clients/guzzle5-adapter>`, `Repo <https://github.com/php-http/guzzle5-adapter>`__", "|guzzle5_version| |guzzle5_downloads| "
-   "``php-http/guzzle6-adapter``", "Adapter", ":doc:`Docs </clients/guzzle6-adapter>`, `Repo <https://github.com/php-http/guzzle6-adapter>`__", "|guzzle6_version| |guzzle6_downloads| "
    "``php-http/guzzle7-adapter``", "Adapter", ":doc:`Docs </clients/guzzle7-adapter>`, `Repo <https://github.com/php-http/guzzle7-adapter>`__", "|guzzle7_version| |guzzle7_downloads| "
    "``php-http/react-adapter``", "Adapter", ":doc:`Docs </clients/react-adapter>`, `Repo <https://github.com/php-http/react-adapter>`__", "|react_version| |react_downloads| "
+
+Legacy Clients and Adapters
+---------------------------
+
+These are not maintained anymore, but we keep documentation around for now. Please upgrade your applications to use a maintained client or adapter.
+
+.. csv-table::
+   :header: "Name", "Type", "Links", "Stats"
+   :widths: 32, 15, 15, 38
+
+   "``php-http/socket-client``", "Client", ":doc:`Docs </clients/socket-client>`, `Repo <https://github.com/php-http/socket-client>`__", "|socket_version| |socket_downloads| "
+   "``php-http/guzzle5-adapter``", "Adapter", ":doc:`Docs </clients/guzzle5-adapter>`, `Repo <https://github.com/php-http/guzzle5-adapter>`__", "|guzzle5_version| |guzzle5_downloads| "
+   "``php-http/guzzle6-adapter``", "Adapter", ":doc:`Docs </clients/guzzle6-adapter>`, `Repo <https://github.com/php-http/guzzle6-adapter>`__", "|guzzle6_version| |guzzle6_downloads| "
    "``php-http/zend-adapter``", "Adapter", ":doc:`Docs </clients/zend-adapter>`, `Repo <https://github.com/php-http/zend-adapter>`__", "|zend_version| |zend_downloads| "
 
 Composer Virtual Packages

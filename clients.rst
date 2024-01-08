@@ -21,16 +21,16 @@ interface and forwarding the calls to an HTTP client not implementing the interf
    :hidden:
 
    clients/curl-client
-   clients/socket-client
    clients/mock-client
    clients/symfony-client
    clients/artax-adapter
+   clients/guzzle7-adapter
+   clients/react-adapter
    clients/buzz-adapter
    clients/cakephp-adapter
    clients/guzzle5-adapter
    clients/guzzle6-adapter
-   clients/guzzle7-adapter
-   clients/react-adapter
+   clients/socket-client
    clients/zend-adapter
 
 Current Clients and Adapters
@@ -44,7 +44,6 @@ Current Clients and Adapters
    "``php-http/mock-client``", "Client", ":doc:`Docs </clients/mock-client>`, `Repo <https://github.com/php-http/mock-client>`__", "|mock_version| |mock_downloads| "
    "``symfony/http-client``", "Client", ":doc:`Docs </clients/symfony-client>`, `Repo <https://github.com/symfony/http-client>`__", "|symfony_version| |symfony_downloads| "
    "``php-http/artax-adapter``", "Adapter", ":doc:`Docs </clients/artax-adapter>`, `Repo <https://github.com/php-http/artax-adapter>`__", "|artax_version| |artax_downloads| "
-   "``php-http/cakephp-adapter``", "Adapter", ":doc:`Docs </clients/cakephp-adapter>`, `Repo <https://github.com/php-http/cakephp-adapter>`__", "|cakephp_version| |cakephp_downloads| "
    "``php-http/guzzle7-adapter``", "Adapter", ":doc:`Docs </clients/guzzle7-adapter>`, `Repo <https://github.com/php-http/guzzle7-adapter>`__", "|guzzle7_version| |guzzle7_downloads| "
    "``php-http/react-adapter``", "Adapter", ":doc:`Docs </clients/react-adapter>`, `Repo <https://github.com/php-http/react-adapter>`__", "|react_version| |react_downloads| "
 
@@ -59,6 +58,7 @@ These are not maintained anymore, but we keep documentation around for now. Plea
 
    "``php-http/socket-client``", "Client", ":doc:`Docs </clients/socket-client>`, `Repo <https://github.com/php-http/socket-client>`__", "|socket_version| |socket_downloads| "
    "``php-http/buzz-adapter``", "Adapter", ":doc:`Docs </clients/buzz-adapter>`, `Repo <https://github.com/php-http/buzz-adapter>`__", "|buzz_version| |buzz_downloads| "
+   "``php-http/cakephp-adapter``", "Adapter", ":doc:`Docs </clients/cakephp-adapter>`, `Repo <https://github.com/php-http/cakephp-adapter>`__", "|cakephp_version| |cakephp_downloads| "
    "``php-http/guzzle5-adapter``", "Adapter", ":doc:`Docs </clients/guzzle5-adapter>`, `Repo <https://github.com/php-http/guzzle5-adapter>`__", "|guzzle5_version| |guzzle5_downloads| "
    "``php-http/guzzle6-adapter``", "Adapter", ":doc:`Docs </clients/guzzle6-adapter>`, `Repo <https://github.com/php-http/guzzle6-adapter>`__", "|guzzle6_version| |guzzle6_downloads| "
    "``php-http/zend-adapter``", "Adapter", ":doc:`Docs </clients/zend-adapter>`, `Repo <https://github.com/php-http/zend-adapter>`__", "|zend_version| |zend_downloads| "

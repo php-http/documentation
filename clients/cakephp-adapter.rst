@@ -1,7 +1,9 @@
-CakePHP Adapter
-===============
+CakePHP Adapter (deprecated)
+============================
 
-An HTTPlug adapter for the `CakePHP HTTP client`_.
+This adapter only implements the PHP-HTTP synchronous interface. This interface
+has been superseded by PSR-18, which the `CakePHP HTTP client`_ implements
+directly.
 
 Installation
 ------------
@@ -50,4 +52,4 @@ Or if you installed the :doc:`discovery </discovery>` layer::
 
 .. include:: includes/further-reading-async.inc
 
-.. _CakePHP HTTP client: https://book.cakephp.org/3.0/en/core-libraries/httpclient.html
+.. _CakePHP HTTP client: https://book.cakephp.org/5.0/en/core-libraries/httpclient.html

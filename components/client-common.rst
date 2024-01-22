@@ -6,7 +6,7 @@ Include them in your project with composer:
 
 .. code-block:: bash
 
-    composer require php-http/client-common "^1.0"
+    composer require php-http/client-common
 
 HttpMethodsClient
 -----------------

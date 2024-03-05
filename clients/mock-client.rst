@@ -161,7 +161,7 @@ To conditionally return a response when a request is matched::
 
             // $requestMatcher is an instance of Http\Message\RequestMatcher
 
-            $response = $this->createMock(ResponseInterface:class);
+            $response = $this->createMock(ResponseInterface::class);
             $client->on($requestMatcher, $response);
 
             // $request is an instance of Psr\Http\Message\RequestInterface

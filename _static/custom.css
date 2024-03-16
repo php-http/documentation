@@ -6,6 +6,21 @@
     font-weight: bold;
 }
 
+.wy-nav-side {
+    background: #0190c9;
+    background-image: linear-gradient(#64caf6, #012038);
+}
+
+.wy-side-nav-search {
+    background: #d9e1f2;
+}
+.wy-side-nav-search > a, .wy-side-nav-search > div.version {
+    color: #404040;
+}
+
+.wy-menu-vertical a:hover {
+    color: #122437;
+}
 .wy-menu-vertical p.caption {
     color: #b3b3b3;
     margin-top: 16px;

@@ -85,6 +85,11 @@ This page shows an example of all configuration values provided by the bundle.
             error:
                 enabled: false
                 only_server_exception: false
+            throttle:
+                name: default
+                key: null
+                tokens: 1
+                max_time: 1
 
         profiling:
             enabled: true # Defaults to kernel.debug

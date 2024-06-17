@@ -505,6 +505,7 @@ List of Services
 | | ``httplug.plugin.cookie``         | | activated when configured.                                            |
 | | ``httplug.plugin.history``        | | These services are private and should only be used to configure       |
 | | ``httplug.plugin.error``          | | clients or other services.                                            |
+| | ``httplug.plugin.throttle``       | |                                                                       |
 +-------------------------------------+-------------------------------------------------------------------------+
 
 \* *These services are always an alias to another service. You can specify your own service or leave the default, which is the same name with `.default` appended.*

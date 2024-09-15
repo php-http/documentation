@@ -84,7 +84,7 @@ Usage
 
 .. code-block:: php
 
-    $request = $this->container->get('httplug.psr17_request_factory')->createRequest('GET', 'http://example.com');
+    $request = $this->container->get(\Psr\Http\Message\RequestFactoryInterface::class)->createRequest('GET', 'http://example.com');
     $response = $this->container->get('httplug.client.acme')->sendRequest($request);
 
 Autowiring
@@ -205,7 +205,7 @@ the value of ``discovery.client`` to ``false``.
 Discovery of Factory Classes
 ````````````````````````````
 
-You need to specify all the factory classes for you client. The following
+You can specify all the factory classes for you client. The following
 example shows how you configure factory classes using Guzzle:
 
 .. code-block:: yaml
@@ -250,7 +250,7 @@ services.
     $httpClient = $this->container->get('httplug.client.acme');
 
     // will be the same as ``httplug.client.my_guzzle7``
-    $httpClient = $this->container->get('httplug.client');
+    $httpClient = $this->container->get(\Psr\Http\Client\ClientInterface::class);
 
 The bundle has client factory services that you can use to build your client.
 If you need a very custom made client you could create your own factory service
@@ -562,7 +562,7 @@ To mock a response in your tests, do:
     // If your test has the client (BrowserKit) make multiple requests, you need to disable reboot as the kernel is rebooted on each request.
     // $client->disableReboot();
 
-    $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+    $response = $this->createMock(Psr\\Http\Message\ResponseInterface:class);
     $response->method('getBody')->willReturn(/* Psr\Http\Message\Interface instance containing expected response content. */);
     $client->getContainer()->get('httplug.clients.my_awesome_backend.client')->addResponse($response);
 

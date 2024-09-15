@@ -64,7 +64,7 @@ This page shows an example of all configuration values provided by the bundle.
                 stream_factory: 'httplug.stream_factory'
                 config:
                     default_ttl: 3600
-                    respect_cache_headers: true
+                    respect_response_cache_directives: ['no-cache', 'private', 'max-age', 'no-store']
                     cache_key_generator: null # This must be a service id to a service implementing 'Http\Client\Common\Plugin\Cache\Generator\CacheKeyGenerator'. If 'null' 'Http\Client\Common\Plugin\Cache\Generator\SimpleGenerator' will be used.
             cookie:
                 cookie_jar: my_cookie_jar

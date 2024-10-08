@@ -133,7 +133,7 @@ Store a response as long the cache implementation allows::
     ];
 
 
-Ask the server if the response is valid at most ever hour. Store the cache item forever::
+Ask the server if the response is valid at most every hour. Store the cache item forever::
 
     $options = [
         'default_ttl' => 3600,
@@ -142,7 +142,7 @@ Ask the server if the response is valid at most ever hour. Store the cache item 
     ];
 
 
-Ask the server if the response is valid at most ever hour. If the response has not been used within one year it will be
+Ask the server if the response is valid at most every hour. If the response has not been used within one year it will be
 removed from the cache::
 
     $options = [

@@ -113,6 +113,12 @@ This page shows an example of all configuration values provided by the bundle.
                 plugins:
                     # Can reference a globally configured plugin service
                     - 'httplug.plugin.authentication.my_wsse'
+                    # Configure a plugin using a custom PluginConfigurator
+                    - configurator:
+                        id: App\Httplug\Plugin\MyPluginConfigurator
+                        config:
+                            foo: 'bar'
+                            baz: 'qux'
                     # Can configure a plugin customized for this client
                     - cache:
                         cache_pool: 'my_other_pool'

@@ -403,6 +403,49 @@ client:
                 plugins:
                     - 'acme_plugin'
 
+If you want to configure your plugin using the bundle configuration, you can
+create a class that implements ``PluginConfigurator`` and define ``configurator`` plugins.
+
+
+.. code-block:: php
+
+    final class CustomPluginConfigurator implements PluginConfigurator
+    {
+        public static function getConfigTreeBuilder() : TreeBuilder
+        {
+            $treeBuilder = new TreeBuilder('custom_plugin');
+            $rootNode = $treeBuilder->getRootNode();
+
+            $rootNode
+                ->children()
+                    ->scalarNode('name')
+                        ->isRequired()
+                        ->cannotBeEmpty()
+                    ->end()
+                ->end();
+
+            return $treeBuilder;
+        }
+
+        public function create(array $config) : CustomPlugin
+        {
+            return new CustomPlugin($config['name']);
+        }
+    }
+
+.. code-block:: yaml
+
+    // config.yml
+    httplug:
+        clients:
+            acme:
+                factory: 'httplug.factory.guzzle6'
+                plugins:
+                    - configurator:
+                        id: 'App\CustomPluginConfigurator'
+                        config:
+                            name: 'foo'
+
 Authentication
 --------------
 

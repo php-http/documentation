@@ -404,7 +404,7 @@ client:
                     - 'acme_plugin'
 
 If you want to configure your plugin using the bundle configuration, you can
-create a class that implements PluginConfigurator.
+create a class that implements ``PluginConfigurator`` and define ``configurator`` plugins.
 
 
 .. code-block:: php
